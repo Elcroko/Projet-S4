@@ -1,0 +1,167 @@
+/* ============================== */
+/* Importation des polices Google */
+/* ============================== */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300&display=swap');
+
+/* ============================== */
+/* Reset général */
+/* ============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1C2541;
+    color: white;
+    text-align: center;
+}
+
+/* ============================== */
+/* HEADER */
+/* ============================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(28, 37, 65, 0.9);
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+}
+
+/* Animation du logo (facultatif) */
+@keyframes vortex {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================== */
+/* Navigation */
+/* ============================== */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #FFD700;
+}
+
+/* ============================== */
+/* SECTION HERO (Introduction) */
+/* ============================== */
+.hero {
+    padding: 100px 20px;
+    background: url('images/hero-bg.jpg') no-repeat center center/cover;
+    text-align: center;
+}
+
+.hero h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Bouton principal */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #6A0572, #FFD700);
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #FFD700, #6A0572);
+}
+
+/* ============================== */
+/* SECTION CIRCUITS */
+/* ============================== */
+.featured {
+    padding: 60px 20px;
+}
+
+.featured h3 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+/* Conteneur des circuits */
+.circuits-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Style des cartes de circuits */
+.circuit {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.circuit:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Images des circuits */
+.circuit img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Titre des circuits */
+.circuit h4 {
+    margin: 15px 0 10px;
+    font-size: 1.5rem;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* ============================== */
+/* FOOTER */
+/* ============================== */
+footer {
+    padding: 20px;
+    background: rgba(28, 37, 65, 0.9);
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 40px;
+}
