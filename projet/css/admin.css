@@ -1,0 +1,91 @@
+.admin-container {
+    width: 90%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin: 50px auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    color: black;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background: #FFD700;
+}
+
+.btn {
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.btn.vip {
+    background: green;
+    color: white;
+}
+
+.btn.ban {
+    background: red;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* ============================== */
+/* STYLE DU LIEN "MOT DE PASSE OUBLIÉ ?" */
+/* ============================== */
+.forgot-password {
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.forgot-password:hover {
+    color: darkred;
+    text-decoration: underline;
+}
+
+/* ============================== */
+/* STYLE DU BOUTON ADMIN */
+/* ============================== */
+.admin-btn {
+    background: linear-gradient(45deg, #FFD700, #B8860B);
+    color: black;
+    font-weight: bold;
+    border: 2px solid #FFD700;
+    padding: 12px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.admin-btn:hover {
+    background: linear-gradient(45deg, #B8860B, #FFD700);
+    transform: scale(1.05);
+}
