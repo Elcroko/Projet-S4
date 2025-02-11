@@ -6,108 +6,7 @@
     <title>Circuits - Tempus Odyssey</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/png" href="images/portail.png">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #1C2541;
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            width: 100%;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 20px;
-            background: rgba(28, 37, 65, 0.9);
-        }
-        header h1 {
-            margin-left: 20px;
-            font-size: 2rem;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            padding: 0;
-            margin-right: 20px;
-        }
-        nav ul li {
-            display: inline;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover {
-            color: #FFD700;
-        }
-        .filters {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 800px;
-            margin: 20px auto;
-            text-align: center;
-        }
-        .filters input, .filters select, .filters button {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-        }
-        .filters button {
-            background: linear-gradient(45deg, #6A0572, #FFD700);
-            color: white;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background 0.3s ease;
-        }
-        .filters button:hover {
-            background: linear-gradient(45deg, #FFD700, #6A0572);
-        }
-        .circuits-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 20px auto;
-            max-width: 1200px;
-        }
-        .circuit {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 250px;
-            transition: transform 0.3s ease;
-        }
-        .circuit:hover {
-            transform: scale(1.05);
-        }
-        .circuit img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        .circuit h4 {
-            margin: 15px 0 10px;
-            font-size: 1.5rem;
-            font-family: 'Orbitron', sans-serif;
-        }
-    </style>
+    <link rel="stylesheet" href="css/circuits.css">
 </head>
 <body>
     <header>
@@ -135,23 +34,53 @@
             </select>
             <button>Rechercher</button>
         </section>
-        <section class="circuits-container">
+        <!-- Section des circuits temporels -->
+       <section class="featured">
+        <h3>Nos circuits temporels</h3>
+        <div class="circuits-container">
             <article class="circuit">
-                <img src="images/mort.jpeg" alt="Le jour de votre Mort">
+                <img src="images/mort.jpeg" alt="Illustration du circuit Le jour de votre Mort">
                 <h4>Le jour de votre Mort</h4>
                 <p>Découvrez votre fin.</p>
             </article>
+
             <article class="circuit">
-                <img src="images/Udino.jpeg" alt="La préhistoire">
+                <img src="images/Udino.jpeg" alt="Illustration du circuit La Préhistoire">
                 <h4>La Préhistoire</h4>
                 <p>Survivez aux dangers de la préhistoire.</p>
             </article>
+
             <article class="circuit">
-                <img src="images/fin_du_monde.jpeg" alt="Fin du monde">
+                <img src="images/fin_du_monde.jpeg" alt="Illustration du circuit Fin du Monde">
                 <h4>Fin du Monde</h4>
                 <p>Assistez au dernier jour de l’humanité.</p>
             </article>
-        </section>
+
+            <article class="circuit">
+                <img src="images/vinkings.jpeg" alt="Vikings">
+                <h4>L'époque des Vikings</h4>
+                <p> Voyage avec Ragnar</p>
+            </article>
+            
+            <article class="circuit">
+                <img src="images/chateau.jpeg" alt="chateau">
+                <h4>vivez avec le roi soleil</h4>
+                <p> découvrez le moyen age</p>
+            </article>
+           
+            <article class="circuit">
+                <img src="images/bitcoin.jpeg" alt="chateau">
+                <h4>BITCOIN</h4>
+                <p> Changer votre niveau de vie et acheter du bitcoin</p>
+            </article>
+
+            <article class="circuit">
+                <img src="images/colomb.jpeg" alt="colomb">
+                <h4>voyager avec christophe colomb</h4>
+                <p>Decouvret la decouverte</p>
+            </article>
+        </div>
+    </section>
     </main>
     <footer>
         <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
