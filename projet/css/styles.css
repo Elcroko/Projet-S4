@@ -81,13 +81,18 @@ nav ul li a:hover {
 
 .hero h2 {
     font-family: 'Orbitron', sans-serif;
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Bouton principal */
@@ -100,6 +105,7 @@ nav ul li a:hover {
     text-decoration: none;
     border-radius: 8px;
     transition: transform 0.3s ease, background 0.3s ease;
+    font-weight: bold;
 }
 
 .btn:hover {
@@ -108,61 +114,120 @@ nav ul li a:hover {
 }
 
 /* ============================== */
+/* SECTION DESCRIPTION */
+/* ============================== */
+.about {
+    padding: 80px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: 40px auto;
+    max-width: 900px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-container h3 {
+    font-size: 2.5rem;
+    font-family: 'Orbitron', sans-serif;
+    color: #FFD700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about-container p {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: #E0E0E0;
+    text-align: justify;
+}
+
+/* Animation d'apparition */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ============================== */
 /* SECTION CIRCUITS */
 /* ============================== */
 .featured {
-    padding: 60px 20px;
+    padding: 100px 40px;
 }
 
 .featured h3 {
-    font-size: 2rem;
-    margin-bottom: 30px;
+    font-size: 3rem;
+    margin-bottom: 40px;
+    font-family: 'Orbitron', sans-serif;
 }
 
 /* Conteneur des circuits */
 .circuits-container {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 40px;
     flex-wrap: wrap;
 }
 
 /* Style des cartes de circuits */
 .circuit {
     background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
+    padding: 30px;
+    border-radius: 15px;
     text-align: center;
-    width: 250px;
+    width: 350px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .circuit:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
 }
 
 /* Images des circuits */
 .circuit img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 12px;
+    height: 250px; /* Fixer une hauteur pour harmoniser */
+    object-fit: cover; /* Éviter la déformation */
 }
 
 /* Titre des circuits */
 .circuit h4 {
-    margin: 15px 0 10px;
-    font-size: 1.5rem;
+    margin: 20px 0 15px;
+    font-size: 2rem; /* Texte plus grand */
     font-family: 'Orbitron', sans-serif;
+}
+
+/* Description des circuits */
+.circuit p {
+    font-size: 1.4rem; /* Agrandir le texte */
+    color: #E0E0E0;
+    max-width: 90%;
+    margin: 0 auto;
+    line-height: 1.6;
 }
 
 /* ============================== */
 /* FOOTER */
 /* ============================== */
 footer {
-    padding: 20px;
+    padding: 25px;
     background: rgba(28, 37, 65, 0.9);
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-top: 40px;
 }
 
