@@ -1,13 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300&display=swap');
+
+/* ============================== */
+/* Reset général */
+/* ============================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    
     min-height: 100vh;
     background-color: #1C2541;
     color: white;
@@ -15,6 +21,62 @@ body {
     width: 100%;
     overflow-x: hidden;
 }
+
+
+/* ============================== */
+/* HEADER */
+/* ============================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(28, 37, 65, 0.9);
+   
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+}
+
+/* Animation du logo (facultatif) */
+@keyframes vortex {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+header, footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background: rgba(28, 37, 65, 0.9);
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+}
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: #FFD700;
+}
+
 .form-container {
     background: rgba(255, 255, 255, 0.1);
     padding: 40px;
@@ -75,3 +137,4 @@ nav ul li a {
 nav ul li a:hover {
     color: #FFD700;
 }
+
