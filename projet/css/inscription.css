@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300&display=swap');
 
 /* ============================== */
@@ -34,6 +35,33 @@ header {
     background: rgba(28, 37, 65, 0.9);
    
 }
+
+/* Animation du titre Tempus Odyssey */
+.site-title {
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    position: relative;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    animation: glow-effect 2s infinite alternate;
+}
+
+/* Animation du glow */
+@keyframes glow-effect {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        color: white;
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 30px rgba(255, 215, 0, 0.8);
+        color: #FFD700;
+    }
+}
+
 
 .logo {
     width: 200px;
@@ -110,9 +138,17 @@ nav ul li a:hover {
 .form-container button:hover {
     background: linear-gradient(45deg, #FFD700, #6A0572);
 }
-header, footer {
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    background: rgba(28, 37, 65, 0.9);
+/* ============================== */
+/* TERME ET CONDITIONS */
+/* ============================== */
+.form-container label a {
+    color: #FFD700; /* Couleur dorée pour plus de visibilité */
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.form-container label a:hover {
+    color: #FFAA00; /* Variation légère au survol */
+    text-decoration: underline;
 }
