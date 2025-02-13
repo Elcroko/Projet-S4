@@ -1,3 +1,4 @@
+
 /* ============================== */
 /* Importation des polices Google */
 /* ============================== */
@@ -17,6 +18,7 @@ body {
     background-color: #1C2541;
     color: white;
     text-align: center;
+    font-size: 67%; /* Réduction de la taille du texte */
 }
 
 /* ============================== */
@@ -26,12 +28,39 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 14px;
     background: rgba(28, 37, 65, 0.9);
 }
 
+/* Animation du titre Tempus Odyssey */
+.site-title {
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    position: relative;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    animation: glow-effect 2s infinite alternate;
+}
+
+/* Animation du glow */
+@keyframes glow-effect {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        color: white;
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 30px rgba(255, 215, 0, 0.8);
+        color: #FFD700;
+    }
+}
+
+
 .logo {
-    width: 200px;
+    width: 134px;
     height: auto;
 }
 
@@ -94,6 +123,38 @@ nav ul li a:hover {
     margin-left: auto;
     margin-right: auto;
 }
+/* ============================== */
+/* Style de la barre de recherche */
+/* ============================== */
+.search-bar {
+    display: block;
+    width: 350px; /* Taille initiale plus grande */
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 12px;
+    font-size: 18px;
+    font-style: italic;
+    border: 2px solid #FFD700;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-align: left;
+    padding-left: 15px;
+    transition: width 0.3s ease-in-out; /* Animation fluide */
+}
+.search-bar::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+/* Lorsque l'utilisateur clique, la barre s'étend */
+.search-bar:focus {
+    width: 90%;
+    border-color: #FFD700; /* Garder la bordure jaune même en focus */
+    outline: none; /* Supprimer l'effet par défaut du navigateur */
+}
+
+
+
+
 
 /* Bouton principal */
 .btn {
