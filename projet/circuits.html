@@ -11,7 +11,7 @@
 <body>
     <header>
         <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
-        <h1>Tempus Odyssey</h1>
+        <h1 class="site-title">Tempus Odyssey</h1>
         <nav aria-label="Navigation principale">
             <ul>
                 <li><a href="index.html">Accueil</a></li>
@@ -26,61 +26,136 @@
     <main>
         <section class="filters">
             <h2>Recherchez votre voyage temporel</h2>
-            <input type="text" placeholder="Destination ou époque">
-            <input type="date" placeholder="Date de départ">
-            <select>
-                <option value="">Options spéciales</option>
-                <option value="vip">Accès VIP</option>
-                <option value="guide">Guide historique</option>
-                <option value="deluxe">Voyage de luxe</option>
+            <div class="search-container">
+                <input type="text" placeholder="🔎 Recherchez une époque ou une destination...">
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <label for="lieu">Choisissez votre lieu :</label>
+            <select id="lieu">
+                <option value="terre">🌍 Sur Terre</option>
+                <option value="espace">🚀 Dans l'Espace</option>
+                <option value="univers-parallele">🔮 Univers Parallèle</option>
             </select>
+        
+            <label for="temps-debut"></label>
+            <p id="temps-debut-label">Début : -∞</p>
+            <input type="range" id="temps-debut" min="0" max="6" step="1" value="0" class="time-slider">
+        
+            <label for="temps-fin"></label>
+            <p id="temps-fin-label">Fin : +∞</p>
+            <input type="range" id="temps-fin" min="0" max="6" step="1" value="6" class="time-slider">
+        
+            <script>
+                const debutSlider = document.getElementById("temps-debut");
+                const finSlider = document.getElementById("temps-fin");
+                const debutLabel = document.getElementById("temps-debut-label");
+                const finLabel = document.getElementById("temps-fin-label");
+        
+                const epoqueLabels = ["-∞", "Passé lointain", "Passé moyen", "Présent", "Futur proche", "Futur moyen", "+∞"];
+        
+                function updateLabels() {
+                    let debutVal = parseInt(debutSlider.value);
+                    let finVal = parseInt(finSlider.value);
+        
+                    if (debutVal >= finVal) {
+                        debutSlider.value = finVal - 1;
+                        if (debutSlider.value < 0) debutSlider.value = 0;
+                    }
+        
+                    debutLabel.innerText = "Début : " + epoqueLabels[debutSlider.value];
+                    finLabel.innerText = "Fin : " + epoqueLabels[finSlider.value];
+                }
+        
+                debutSlider.addEventListener("input", updateLabels);
+                finSlider.addEventListener("input", updateLabels);
+            </script>
+        
             <button>Rechercher</button>
-        </section>
+        </section>        
+        
         <!-- Section des circuits temporels -->
        <section class="featured">
         <h3>Nos circuits temporels</h3>
         <div class="circuits-container">
             <article class="circuit">
                 <img src="images/mort.jpeg" alt="Illustration du circuit Le jour de votre Mort">
-                <h4>Le jour de votre Mort</h4>
-                <p>Découvrez votre fin.</p>
+                <h4>Le Jour de votre Mort</h4>
+                <p>Oserez-vous affronter votre destinée et découvrir ce que l’avenir vous réserve ?</p>
             </article>
-
+    
             <article class="circuit">
                 <img src="images/Udino.jpeg" alt="Illustration du circuit La Préhistoire">
                 <h4>La Préhistoire</h4>
-                <p>Survivez aux dangers de la préhistoire.</p>
+                <p>Évitez les prédateurs préhistoriques et survivez dans un monde sauvage et impitoyable.</p>
             </article>
-
+    
             <article class="circuit">
                 <img src="images/fin_du_monde.jpeg" alt="Illustration du circuit Fin du Monde">
                 <h4>Fin du Monde</h4>
-                <p>Assistez au dernier jour de l’humanité.</p>
+                <p>Vivez en direct l’apocalypse et assistez aux derniers instants de l’humanité.</p>
             </article>
-
+    
             <article class="circuit">
                 <img src="images/vinkings.jpeg" alt="Vikings">
-                <h4>L'époque des Vikings</h4>
-                <p> Voyage avec Ragnar</p>
+                <h4>L'Époque des Vikings</h4>
+                <p>Rejoignez Ragnar et ses guerriers pour des raids épiques et une conquête sans pitié.</p>
             </article>
             
             <article class="circuit">
                 <img src="images/chateau.jpeg" alt="chateau">
-                <h4>vivez avec le roi soleil</h4>
-                <p> découvrez le moyen age</p>
+                <h4>À la Cour du Roi Soleil</h4>
+                <p>Vivez dans le faste du château de Versailles et assistez aux intrigues royales.</p>
             </article>
-           
+    
             <article class="circuit">
-                <img src="images/bitcoin.jpeg" alt="chateau">
-                <h4>BITCOIN</h4>
-                <p> Changer votre niveau de vie et acheter du bitcoin</p>
+                <img src="images/bitcoin.jpeg" alt="bitcoin">
+                <h4>L'Ère du Bitcoin</h4>
+                <p>Voyagez dans le passé et changez votre destinée financière en maîtrisant la cryptomonnaie.</p>
+            </article>
+    
+            <article class="circuit">
+                <img src="images/colomb.jpeg" alt="colomb">
+                <h4>À Bord avec Christophe Colomb</h4>
+                <p>Traversez l’Atlantique et assistez à la découverte d’un Nouveau Monde.</p>
             </article>
 
             <article class="circuit">
-                <img src="images/colomb.jpeg" alt="colomb">
-                <h4>voyager avec christophe colomb</h4>
-                <p>Decouvret la decouverte</p>
+                <img src="images/pyramides.jpeg" alt="Construction des Pyramides">
+                <h4>Le Secret des Pyramides</h4>
+                <p>Assistez à la construction des pyramides et découvrez leurs mystères.</p>
             </article>
+            
+            <article class="circuit">
+                <img src="images/bastille.jpeg" alt="Prise de la Bastille">
+                <h4>Révolution à Paris</h4>
+                <p>Vivez la prise de la Bastille et plongez en pleine Révolution française.</p>
+            </article>
+            
+            <article class="circuit">
+                <img src="images/1ere_gm.jpeg" alt="Première Guerre Mondiale">
+                <h4>L'Enfer des Tranchées</h4>
+                <p>Expérimentez la dure réalité des soldats de la Première Guerre mondiale.</p>
+            </article>
+            
+            <article class="circuit">
+                <img src="images/2eme_gm.jpeg" alt="Seconde Guerre Mondiale">
+                <h4>Mission Résistance</h4>
+                <p>Rejoignez la Résistance et luttez contre l’occupation nazie.</p>
+            </article>
+            
+            <article class="circuit">
+                <img src="images/croisiere_interplanetaire.jpeg" alt="Croisière Interplanétaire">
+                <h4>Croisière Interplanétaire</h4>
+                <p>Embarquez pour un voyage à travers les étoiles et explorez les confins de l’univers.</p>
+            </article>
+            
+            <article class="circuit">
+                <img src="images/jo_3000.jpeg" alt="Jeux Olympiques de l'An 3000">
+                <h4>Jeux Olympiques de l'An 3000</h4>
+                <p>Assistez aux performances incroyables des athlètes du futur dans un stade ultra-technologique.</p>
+            </article>
+            
         </div>
     </section>
     </main>
