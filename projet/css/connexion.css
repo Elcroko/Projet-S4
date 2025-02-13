@@ -35,6 +35,33 @@ header {
    
 }
 
+/* Animation du titre Tempus Odyssey */
+.site-title {
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    position: relative;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    animation: glow-effect 2s infinite alternate;
+}
+
+/* Animation du glow */
+@keyframes glow-effect {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        color: white;
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 30px rgba(255, 215, 0, 0.8);
+        color: #FFD700;
+    }
+}
+
+
 .logo {
     width: 200px;
     height: auto;
@@ -111,30 +138,17 @@ nav ul li a:hover {
 .form-container button:hover {
     background: linear-gradient(45deg, #FFD700, #6A0572);
 }
-header, footer {
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    background: rgba(28, 37, 65, 0.9);
-}
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 0;
-}
-nav ul li {
-    display: inline;
-}
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
+/* Amélioration de la visibilité du lien "Mot de passe oublié ?" */
+.forgot-password {
+    color: #FFD700; /* Couleur dorée pour plus de visibilité */
     font-weight: bold;
-    transition: color 0.3s;
-}
-nav ul li a:hover {
-    color: #FFD700;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+    transition: color 0.3s ease-in-out;
 }
 
+.forgot-password:hover {
+    color: #FFAA00; /* Variation légère au survol */
+    text-decoration: underline;
+}
