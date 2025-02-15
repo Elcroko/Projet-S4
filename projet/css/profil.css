@@ -12,14 +12,22 @@
 body {
     display: flex;
     flex-direction: column;
-    align-items: center;
     min-height: 100vh;
-    background-color: #1C2541;
+    font-family: 'Audiowide', sans-serif;
+    background-color: #365829; 
     color: white;
-    font-family: 'Montserrat', sans-serif;
-    width: 100%;
-    overflow-x: hidden;
+    text-align: center;
+    font-size: 67%;
 }
+
+
+.main-content {
+    flex: 1; /* Permet au contenu de prendre l'espace disponible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* ============================== */
 /* HEADER */
@@ -29,22 +37,52 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: rgba(28, 37, 65, 0.9);
+    background: linear-gradient(5deg, #7cbc6c, #c1f762);
+    width: 100%;
+    margin-bottom: 40px; /* Ajoute un espace sous le header */
 }
 
-header, footer {
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    background: rgba(28, 37, 65, 0.9);
+/* Logo cliquable ON RETIRE OU PAS ?????*/
+.logo {
+    width: 150px; /* Taille du logo */
+    height: auto;
+    transition: transform 0.3s ease-in-out;
 }
+
+.logo:hover {
+    transform: scale(1.1); /* Effet zoom au survol */
+}
+
+/* Titre animé */
+.site-title {
+    font-size: 28px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(193, 247, 98, 0.5);
+    
+}
+
+/* Animation Glow */
+@keyframes glow-effect {
+    0% {
+        text-shadow: 0 0 5px rgba(193, 247, 98, 0.5);
+        color: white;
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(193, 247, 98, 1), 0 0 30px rgba(193, 247, 98, 0.8);
+        color: #c1f762;
+    }
+}
+
+
 
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
     gap: 20px;
-    padding: 0;
 }
 
 nav ul li {
@@ -60,50 +98,61 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #FFD700;
+    color: #c1f762;
 }
 
-/* Animation du titre Tempus Odyssey */
+/* Titre animé */
 .site-title {
     font-size: 28px;
-    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
     text-transform: uppercase;
     color: white;
     text-align: center;
-    display: block; /* S'assurer qu'il occupe toute la largeur */
-    margin: 0 auto; /* Centrage horizontal */
-    position: relative;
-    font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    animation: glow-effect 2s infinite alternate;
+    text-shadow: 0 0 10px rgba(193, 247, 98, 0.5);
+    
 }
 
-/* Animation du glow */
+/* Animation Glow */
 @keyframes glow-effect {
     0% {
-        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        text-shadow: 0 0 5px rgba(193, 247, 98, 0.5);
         color: white;
     }
     100% {
-        text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 30px rgba(255, 215, 0, 0.8);
-        color: #FFD700;
+        text-shadow: 0 0 20px rgba(193, 247, 98, 1), 0 0 30px rgba(193, 247, 98, 0.8);
+        color: #c1f762;
     }
 }
 
 /* ============================== */
 /* CONTAINER DU PROFIL */
 /* ============================== */
+
+
+.profil-container-wrapper {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    width: 100%;
+    height: 100vh; /* Prend toute la hauteur de l'écran */
+}
+
 .profil-container {
     background: rgba(255, 255, 255, 0.1);
     padding: 40px;
     border-radius: 10px;
     width: 90%;
-    max-width: 500px;
+    max-width: 400px;
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    margin-top: 20px;
+    margin: 0 auto; /* S'assure que l'élément est bien centré */
 }
+
+
+
+
+
 
 .profil-header {
     display: flex;
@@ -116,12 +165,12 @@ nav ul li a:hover {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 3px solid #FFD700;
+    border: 3px solid #c1f762;
 }
 
 .edit-photo-btn {
-    background-color: #FFD700;
-    color: #1C2541;
+    background-color: #c1f762;
+    color: #365829;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
@@ -171,7 +220,7 @@ nav ul li a:hover {
 
 .form-group input:focus {
     outline: none;
-    border: 2px solid #FFD700;
+    border: 2px solid #c1f762;
 }
 
 .edit-btn {
@@ -179,14 +228,14 @@ nav ul li a:hover {
     border: none;
     cursor: pointer;
     font-size: 18px;
-    color: #FFD700;
+    color: #c1f762;
 }
 
 /* ============================== */
 /* BOUTON ENREGISTRER */
 /* ============================== */
 .save-btn {
-    background: linear-gradient(45deg, #6A0572, #FFD700);
+    background: linear-gradient(45deg, #7cbc6c, #c1f762);
     color: white;
     border: none;
     padding: 12px;
@@ -199,5 +248,18 @@ nav ul li a:hover {
 }
 
 .save-btn:hover {
-    background: linear-gradient(45deg, #FFD700, #6A0572);
+    background: linear-gradient(45deg, #c1f762, #7cbc6c);
 }
+
+footer {
+    width: 100%;
+    padding: 25px;
+    background: rgba(199, 250, 108, 0.3);
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: auto; /* Pousse le footer en bas */
+}
+
+
+
+
