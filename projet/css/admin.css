@@ -206,12 +206,13 @@ th {
 /* STYLE DES BOUTONS */
 /* ============================== */
 .btn {
-    padding: 8px;
+    padding: 8px 12px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     font-size: 14px;
     margin: 5px;
+    transition: opacity 0.3s;
 }
 
 .btn.vip {
