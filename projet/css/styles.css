@@ -14,7 +14,7 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Audiowide', sans-serif;
     background-color: #1C2541;
     color: white;
     text-align: center;
@@ -28,25 +28,36 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px;
+    padding: 20px;
     background: rgba(28, 37, 65, 0.9);
+    width: 100%;
 }
 
-/* Animation du titre Tempus Odyssey */
+/* Logo cliquable */
+.logo {
+    width: 150px; /* Taille du logo */
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Effet zoom au survol */
+}
+
+/* Titre animé */
 .site-title {
     font-size: 28px;
-    font-weight: bold;
+    font-family: 'Bebas Neue', sans-serif;
     text-transform: uppercase;
     color: white;
     text-align: center;
-    position: relative;
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
     animation: glow-effect 2s infinite alternate;
 }
 
-/* Animation du glow */
+/* Animation Glow */
 @keyframes glow-effect {
     0% {
         text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
@@ -58,22 +69,30 @@ header {
     }
 }
 
-
-.logo {
-    width: 134px;
-    height: auto;
+/* Navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
 }
 
-/* Animation du logo (facultatif) */
-@keyframes vortex {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+nav ul li {
+    display: inline;
 }
 
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #FFD700;
+}
 /* ============================== */
 /* Navigation */
 /* ============================== */
@@ -103,10 +122,20 @@ nav ul li a:hover {
 /* SECTION HERO (Introduction) */
 /* ============================== */
 .hero {
-    padding: 100px 20px;
-    background: url('images/hero-bg.jpg') no-repeat center center/cover;
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Pleine hauteur d'écran */
+   background-image: url('../images/fond.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Effet Parallax */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    color: white;
 }
+
 
 .hero h2 {
     font-family: 'Orbitron', sans-serif;
@@ -178,19 +207,18 @@ nav ul li a:hover {
 /* SECTION DESCRIPTION */
 /* ============================== */
 .about {
-    padding: 80px 20px;
-    text-align: center;
+    width: 100%; /* Prend toute la largeur */
+    padding: 50px 5%; /* Padding ajusté */
+    margin: 0 auto;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    margin: 40px auto;
-    max-width: 900px;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
-    animation: fadeIn 1.5s ease-in-out;
 }
 
 .about-container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 100%; /* Utilise toute la largeur */
+    margin: 0; /* Supprime les marges */
+    padding: 40px 5%; /* Ajoute un padding latéral */
+    text-align: justify; /* Justifie le texte */
 }
 
 .about-container h3 {
@@ -291,4 +319,5 @@ footer {
     font-size: 1.1rem;
     margin-top: 40px;
 }
+
 
