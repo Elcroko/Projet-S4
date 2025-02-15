@@ -7,80 +7,78 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #1C2541;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Audiowide', sans-serif;
+    background-color: #365829; 
     color: white;
     text-align: center;
+    font-size: 67%;
 }
 
+
+.main-content {
+    flex: 1; /* Permet au contenu de prendre l'espace disponible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ============================== */
+/* HEADER */
+/* ============================== */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: rgba(28, 37, 65, 0.9);
+    background: linear-gradient(5deg, #7cbc6c, #c1f762);
+    width: 100%;
+    margin-bottom: 40px; /* Ajoute un espace sous le header */
 }
 
-/* Animation du titre Tempus Odyssey */
+/* Logo cliquable ON RETIRE OU PAS ?????*/
+.logo {
+    width: 150px; /* Taille du logo */
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Effet zoom au survol */
+}
+
+/* Titre animé */
 .site-title {
     font-size: 28px;
-    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
     text-transform: uppercase;
     color: white;
     text-align: center;
-    position: relative;
-    font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    animation: glow-effect 2s infinite alternate;
+    text-shadow: 0 0 10px rgba(193, 247, 98, 0.5);
+    
 }
 
-/* Animation du glow */
+/* Animation Glow */
 @keyframes glow-effect {
     0% {
-        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        text-shadow: 0 0 5px rgba(193, 247, 98, 0.5);
         color: white;
     }
     100% {
-        text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 30px rgba(255, 215, 0, 0.8);
-        color: #FFD700;
+        text-shadow: 0 0 20px rgba(193, 247, 98, 1), 0 0 30px rgba(193, 247, 98, 0.8);
+        color: #c1f762;
     }
 }
 
 
-.logo {
-    width: 200px;
-    height: auto;
-}
-
-/* Animation du logo (facultatif) */
-@keyframes vortex {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Style du titre */
-header h1 {
-    font-size: 2rem;
-    margin-left: 10px; /* Espace entre le logo et le texte */
-}
-
-/* Conteneur du logo et du titre */
-.header-left {
-    display: flex;
-    align-items: center;
-}
 
 nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
-    padding: 0;
-    margin-right: 20px;
 }
 
 nav ul li {
@@ -96,9 +94,8 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #FFD700;
+    color: #c1f762;
 }
-
 /* ============================== */
 /* STYLE DES FILTRES */
 /* ============================== */
@@ -268,3 +265,13 @@ th {
     background: linear-gradient(45deg, #B8860B, #FFD700);
     transform: scale(1.05);
 }
+
+footer {
+    width: 100%;
+    padding: 25px;
+    background: rgba(199, 250, 108, 0.3);
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: auto; /* Pousse le footer en bas */
+}
+
