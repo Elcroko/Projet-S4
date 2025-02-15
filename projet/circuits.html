@@ -48,31 +48,6 @@
             <p id="temps-fin-label">Fin : +∞</p>
             <input type="range" id="temps-fin" min="0" max="6" step="1" value="6" class="time-slider">
         
-            <script>
-                const debutSlider = document.getElementById("temps-debut");
-                const finSlider = document.getElementById("temps-fin");
-                const debutLabel = document.getElementById("temps-debut-label");
-                const finLabel = document.getElementById("temps-fin-label");
-        
-                const epoqueLabels = ["-∞", "Passé lointain", "Passé moyen", "Présent", "Futur proche", "Futur moyen", "+∞"];
-        
-                function updateLabels() {
-                    let debutVal = parseInt(debutSlider.value);
-                    let finVal = parseInt(finSlider.value);
-        
-                    if (debutVal >= finVal) {
-                        debutSlider.value = finVal - 1;
-                        if (debutSlider.value < 0) debutSlider.value = 0;
-                    }
-        
-                    debutLabel.innerText = "Début : " + epoqueLabels[debutSlider.value];
-                    finLabel.innerText = "Fin : " + epoqueLabels[finSlider.value];
-                }
-        
-                debutSlider.addEventListener("input", updateLabels);
-                finSlider.addEventListener("input", updateLabels);
-            </script>
-        
             <button>Rechercher</button>
         </section>        
         
@@ -166,3 +141,4 @@
     </footer>
 </body>
 </html>
+
