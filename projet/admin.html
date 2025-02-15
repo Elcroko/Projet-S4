@@ -1,91 +1,280 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Gestion des Utilisateurs</title>
 
-    <link rel="stylesheet" href="css/admin.css">
-</head>
-<body>
-    <header>
-        <a href="index.html">
-            <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
-        </a>
-        <h1 class="site-title">Tempus Odyssey</h1>
-        <nav aria-label="Navigation principale">
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="circuits.html">Circuits</a></li>
-                <li><a href="inscription.html">Inscription</a></li>
-                <li><a href="connexion.html">Connexion</a></li>
-                <li><a href="profil.html">Profil</a></li>
-                
-            </ul>
-        </nav>
-    </header>
-    <main class="admin-container">
-        <h2>Liste des Utilisateurs</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    <th>Email</th>
-                    <th>Statut</th>
-                    <th>Actions</th>
-                    
-                </tr>
-            </thead>
-            <tbody id="userTableBody">
-              
-                    <tr>
-                        <td>1</td>
-                        <td>Jean Dupont</td>
-                        <td>jean.dupont@example.com</td>
-                        <td>Actif</td>
-                        <td>
-                            <button class="btn vip">VIP</button>
-                            <button class="btn ban">Bannir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Sophie Martin</td>
-                        <td>sophie.martin@example.com</td>
-                        <td>Actif</td>
-                        <td>
-                            <button class="btn vip">VIP</button>
-                            <button class="btn ban">Bannir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Thomas Leroy</td>
-                        <td>thomas.leroy@example.com</td>
-                        <td>VIP</td>
-                        <td>
-                            <button class="btn vip">VIP</button>
-                            <button class="btn ban">Bannir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Julie Moreau</td>
-                        <td>julie.moreau@example.com</td>
-                        <td>Banni</td>
-                        <td>
-                            <button class="btn vip">VIP</button>
-                            <button class="btn ban">Bannir</button>
-                        </td>
-                    </tr>
-                
-            </tbody>
-        </table>
-    </main>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Audiowide', sans-serif;
+    background-color: #365829; 
+    color: white;
+    text-align: center;
+    font-size: 67%;
+}
+
+
+.main-content {
+    flex: 1; /* Permet au contenu de prendre l'espace disponible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ============================== */
+/* HEADER */
+/* ============================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(5deg, #7cbc6c, #c1f762);
+    width: 100%;
+    margin-bottom: 40px; /* Ajoute un espace sous le header */
+}
+
+/* Logo cliquable ON RETIRE OU PAS ?????*/
+.logo {
+    width: 150px; /* Taille du logo */
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Effet zoom au survol */
+}
+
+/* Titre animé */
+.site-title {
+    font-size: 28px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(193, 247, 98, 0.5);
     
-</body>
-</html>
+}
+
+/* Animation Glow */
+@keyframes glow-effect {
+    0% {
+        text-shadow: 0 0 5px rgba(193, 247, 98, 0.5);
+        color: white;
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(193, 247, 98, 1), 0 0 30px rgba(193, 247, 98, 0.8);
+        color: #c1f762;
+    }
+}
+
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #c1f762;
+}
+/* ============================== */
+/* STYLE DES FILTRES */
+/* ============================== */
+.filters {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.filters input,
+.filters select,
+.filters button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.filters button {
+    background: linear-gradient(45deg, #6A0572, #FFD700);
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s ease;
+}
+
+.filters button:hover {
+    background: linear-gradient(45deg, #FFD700, #6A0572);
+}
+
+/* ============================== */
+/* STYLE DES CIRCUITS */
+/* ============================== */
+.circuits-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.circuit {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s ease;
+}
+
+.circuit:hover {
+    transform: scale(1.05);
+}
+
+.circuit img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.circuit h4 {
+    margin: 15px 0 10px;
+    font-size: 1.5rem;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* ============================== */
+/* STYLE DE LA PAGE ADMIN */
+/* ============================== */
+.admin-container {
+    width: 90%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin: 50px auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    color: black;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background: #FFD700;
+}
+
+/* ============================== */
+/* STYLE DES BOUTONS */
+/* ============================== */
+.btn {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 5px;
+    transition: opacity 0.3s;
+}
+
+.btn.vip {
+    background: green;
+    color: white;
+}
+
+.btn.ban {
+    background: red;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* ============================== */
+/* STYLE DU LIEN "MOT DE PASSE OUBLIÉ ?" */
+/* ============================== */
+.forgot-password {
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.forgot-password:hover {
+    color: darkred;
+    text-decoration: underline;
+}
+
+/* ============================== */
+/* STYLE DU BOUTON ADMIN */
+/* ============================== */
+.admin-btn {
+    background: linear-gradient(45deg, #FFD700, #B8860B);
+    color: black;
+    font-weight: bold;
+    border: 2px solid #FFD700;
+    padding: 12px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.admin-btn:hover {
+    background: linear-gradient(45deg, #B8860B, #FFD700);
+    transform: scale(1.05);
+}
+
+footer {
+    width: 100%;
+    padding: 25px;
+    background: rgba(199, 250, 108, 0.3);
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: auto; /* Pousse le footer en bas */
+}
+
 
 </body>
 </html>
