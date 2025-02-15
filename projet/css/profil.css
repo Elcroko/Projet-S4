@@ -70,8 +70,9 @@ nav ul li a:hover {
     text-transform: uppercase;
     color: white;
     text-align: center;
+    display: block; /* S'assurer qu'il occupe toute la largeur */
+    margin: 0 auto; /* Centrage horizontal */
     position: relative;
-    margin-bottom: 10px;
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
