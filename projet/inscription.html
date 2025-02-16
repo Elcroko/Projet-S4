@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription - Tempus Odyssey</title>
-  
+    <title>Inscription - Tempus Odyssey</title>  
     <link rel="icon" type="image/png" href="images/portail.png">
     <link rel="stylesheet" href="css/inscription.css">
 </head>
@@ -20,8 +19,7 @@
                 <li><a href="circuits.html">Circuits</a></li>
                 <li><a href="inscription.html">Inscription</a></li>
                 <li><a href="connexion.html">Connexion</a></li>
-                <li><a href="profil.html">Profil</a></li>
-                
+                <li><a href="profil.html">Profil</a></li>               
             </ul>
         </nav>
     </header>
@@ -36,10 +34,10 @@
                 <input type="password" id="password" name="password" placeholder="Mot de passe" required>
                 <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe" required>
                 <input type="date" id="birthdate" name="birthdate" required>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="terms" name="terms">
-                    <label for="terms">J'accepte les termes et conditions</label>
-                </div>
+                <label for="terms">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    J'accepte les <a href="#">termes et conditions</a>
+                </label>
                 <button type="submit">S'inscrire</button>
             </form>
         </section>
