@@ -33,9 +33,7 @@ header {
     padding: 20px;
     background: rgba(28, 37, 65, 0.9);
     width: 100%;
-    margin-bottom: 40px; /* Ajoute un espace sous le header */
 }
-
 
 .logo {
     width: 150px; /* Taille du logo */
@@ -46,6 +44,7 @@ header {
 .logo:hover {
     transform: scale(1.1); /* Effet zoom au survol */
 }
+
 /* Animation du titre Tempus Odyssey */
 .site-title {
     font-size: 28px;
@@ -53,23 +52,9 @@ header {
     text-transform: uppercase;
     color: white;
     text-align: center;
-    position: relative;
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    animation: glow-effect 2s infinite alternate;
-}
-
-/* Animation du glow */
-@keyframes glow-effect {
-    0% {
-        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-        color: white;
-    }
-    100% {
-        text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 30px rgba(255, 215, 0, 0.8);
-        color: #FFD700;
-    }
 }
 
 
