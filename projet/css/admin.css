@@ -1,5 +1,5 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -14,6 +14,7 @@ body {
     background-color: #1C2541;
     color: white;
     text-align: center;
+    font-size: 67%;
 }
 
 .main-content {
@@ -23,6 +24,8 @@ body {
     align-items: center;
 }
 
+/* HEADER */
+
 header {
     display: flex;
     justify-content: space-between;
@@ -30,7 +33,16 @@ header {
     padding: 20px;
     background: rgba(28, 37, 65, 0.9);
     width: 100%;
-    margin-bottom: 40px; /* Ajoute un espace sous le header */
+}
+
+.logo {
+    width: 150px; /* Taille du logo */
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Effet zoom au survol */
 }
 
 /* Animation du titre Tempus Odyssey */
@@ -40,46 +52,11 @@ header {
     text-transform: uppercase;
     color: white;
     text-align: center;
-    position: relative;
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    animation: glow-effect 2s infinite alternate;
 }
 
-/* Animation du glow */
-@keyframes glow-effect {
-    0% {
-        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-        color: white;
-    }
-    100% {
-        text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 30px rgba(255, 215, 0, 0.8);
-        color: #FFD700;
-    }
-}
-
-
-.logo {
-    width: 150px;
-    height: auto;
-}
-
-.logo:hover {
-    transform: scale(1.1); /* Effet zoom au survol */
-}
-
-/* Style du titre
-header h1 {
-    font-size: 2rem;
-    margin-left: 10px; /* Espace entre le logo et le texte 
-}
-
-/* Conteneur du logo et du titre 
-.header-left {
-    display: flex;
-    align-items: center;
-} */
 
 /* Navigation */
 nav ul {
