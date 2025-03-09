@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -10,12 +10,13 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #1C2541;
+    font-family: 'Audiowide', sans-serif;
+    background-color: #365829; 
     color: white;
     text-align: center;
     font-size: 67%;
 }
+
 
 .main-content {
     flex: 1; /* Permet au contenu de prendre l'espace disponible */
@@ -24,17 +25,20 @@ body {
     align-items: center;
 }
 
+/* ============================== */
 /* HEADER */
-
+/* ============================== */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: rgba(28, 37, 65, 0.9);
+    background: linear-gradient(5deg, #7cbc6c, #c1f762);
     width: 100%;
+    margin-bottom: 40px; /* Ajoute un espace sous le header */
 }
 
+/* Logo cliquable ON RETIRE OU PAS ?????*/
 .logo {
     width: 150px; /* Taille du logo */
     height: auto;
@@ -45,20 +49,32 @@ header {
     transform: scale(1.1); /* Effet zoom au survol */
 }
 
-/* Animation du titre Tempus Odyssey */
+/* Titre animé */
 .site-title {
     font-size: 28px;
-    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
     text-transform: uppercase;
     color: white;
     text-align: center;
-    font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    text-shadow: 0 0 10px rgba(193, 247, 98, 0.5);
+    
+}
+
+/* Animation Glow */
+@keyframes glow-effect {
+    0% {
+        text-shadow: 0 0 5px rgba(193, 247, 98, 0.5);
+        color: white;
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(193, 247, 98, 1), 0 0 30px rgba(193, 247, 98, 0.8);
+        color: #c1f762;
+    }
 }
 
 
-/* Navigation */
+
 nav ul {
     list-style: none;
     display: flex;
@@ -78,12 +94,11 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #FFD700;
+    color: #c1f762;
 }
-
-
+/* ============================== */
 /* STYLE DES FILTRES */
-
+/* ============================== */
 .filters {
     background: rgba(255, 255, 255, 0.1);
     padding: 20px;
@@ -116,9 +131,9 @@ nav ul li a:hover {
     background: linear-gradient(45deg, #FFD700, #6A0572);
 }
 
-
+/* ============================== */
 /* STYLE DES CIRCUITS */
-
+/* ============================== */
 .circuits-container {
     display: flex;
     justify-content: center;
@@ -152,8 +167,9 @@ nav ul li a:hover {
     font-family: 'Orbitron', sans-serif;
 }
 
+/* ============================== */
 /* STYLE DE LA PAGE ADMIN */
-
+/* ============================== */
 .admin-container {
     width: 90%;
     max-width: 800px;
@@ -183,8 +199,9 @@ th {
     background: #FFD700;
 }
 
+/* ============================== */
 /* STYLE DES BOUTONS */
-
+/* ============================== */
 .btn {
     padding: 8px 12px;
     border: none;
@@ -209,9 +226,9 @@ th {
     opacity: 0.8;
 }
 
-
+/* ============================== */
 /* STYLE DU LIEN "MOT DE PASSE OUBLIÉ ?" */
-
+/* ============================== */
 .forgot-password {
     color: red;
     font-weight: bold;
@@ -225,9 +242,9 @@ th {
     text-decoration: underline;
 }
 
-
+/* ============================== */
 /* STYLE DU BOUTON ADMIN */
-
+/* ============================== */
 .admin-btn {
     background: linear-gradient(45deg, #FFD700, #B8860B);
     color: black;
@@ -252,8 +269,9 @@ th {
 footer {
     width: 100%;
     padding: 25px;
-    background: rgba(28, 37, 65, 0.9);
+    background: rgba(199, 250, 108, 0.3);
     text-align: center;
     font-size: 1.1rem;
     margin-top: auto; /* Pousse le footer en bas */
 }
+
