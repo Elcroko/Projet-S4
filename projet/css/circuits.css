@@ -1,9 +1,5 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300&display=swap');
-
-/* ============================== */
-/* Reset général */
-/* ============================== */
 * {
     margin: 0;
     padding: 0;
@@ -29,7 +25,6 @@ body {
     align-items: center;
 }
 
-
 /* ============================== */
 /* HEADER */
 /* ============================== */
@@ -42,6 +37,7 @@ header {
     width: 100%;
     margin-bottom: 40px; /* Ajoute un espace sous le header */
 }
+
 /* Logo cliquable ON RETIRE OU PAS ?????*/
 .logo {
     width: 150px; /* Taille du logo */
@@ -78,9 +74,7 @@ header {
 }
 
 
-/* ============================== */
-/* Navigation */
-/* ============================== */
+
 nav ul {
     list-style: none;
     display: flex;
@@ -102,10 +96,9 @@ nav ul li a {
 nav ul li a:hover {
     color: #c1f762;
 }
-
-
-
-
+/* ============================== */
+/* STYLE DES FILTRES */
+/* ============================== */
 .filters {
     background: rgba(255, 255, 255, 0.1);
     padding: 20px;
@@ -113,70 +106,34 @@ nav ul li a:hover {
     width: 90%;
     max-width: 800px;
     margin: 20px auto;
-   
+    text-align: center;
 }
-.filters input, .filters select, .filters button {
+
+.filters input,
+.filters select,
+.filters button {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: none;
     border-radius: 5px;
 }
+
 .filters button {
-    background: linear-gradient(45deg, #7cbc6c, #c1f762);
+    background: linear-gradient(45deg, #6A0572, #FFD700);
     color: white;
     cursor: pointer;
     font-size: 18px;
     transition: background 0.3s ease;
 }
+
 .filters button:hover {
-    background: linear-gradient(45deg, #c1f762, #7cbc6c);
-}
-.filters label {
-    display: block;
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: bold;
+    background: linear-gradient(45deg, #FFD700, #6A0572);
 }
 
-.filters select, .filters input[type="range"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-}
-
-/* Styles des curseurs de temps */
-.time-slider {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 5px;
-    background: #c1f762;
-    border-radius: 5px;
-    outline: none;
-    opacity: 0.9;
-    transition: opacity 0.2s;
-}
-
-.time-slider:hover {
-    opacity: 1;
-}
-
-.filters label {
-    display: block;
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-#temps-debut-label, #temps-fin-label {
-    font-size: 16px;
-    margin-top: 5px;
-    color: white;
-    font-weight: bold;
-}
+/* ============================== */
+/* STYLE DES CIRCUITS */
+/* ============================== */
 .circuits-container {
     display: flex;
     justify-content: center;
@@ -185,79 +142,128 @@ nav ul li a:hover {
     margin: 20px auto;
     max-width: 1200px;
 }
+
 .circuit {
     background: rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: 10px;
+    text-align: center;
     width: 250px;
     transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
 }
+
 .circuit:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px  #c1f762;
+    transform: scale(1.05);
 }
+
 .circuit img {
-    display: block;
-    max-width: 90%;
-    height: 150px;
+    width: 100%;
     border-radius: 10px;
-    object-fit: cover;
-    margin: 0 auto;
 }
+
 .circuit h4 {
     margin: 15px 0 10px;
     font-size: 1.5rem;
     font-family: 'Orbitron', sans-serif;
 }
-/* Nouvelle barre de recherche futuriste */
-.search-container {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-}
 
-.search-container input {
-    width: 100%;
-    padding: 12px 50px 12px 20px;
-    font-size: 18px;
-    border-radius: 30px;
-    border: 2px solid #c1f762;
+/* ============================== */
+/* STYLE DE LA PAGE ADMIN */
+/* ============================== */
+.admin-container {
+    width: 90%;
+    max-width: 800px;
     background: rgba(255, 255, 255, 0.1);
-    color: white;
-    transition: all 0.3s ease-in-out;
-}
-
-.search-container input:focus {
-    border-color: #c1f762;
-    box-shadow: 0 0 10px #c1f762;
-    outline: none;
-}
-
-/* Icône de recherche intégrée */
-.search-container .search-icon {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-    color: #c1f762;
-    pointer-events: none;
-}
-
-/* ============================== */
-/* FOOTER */
-/* ============================== */
-footer {
-    padding: 25px;
-    background: rgba(199, 250, 108, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     text-align: center;
-    font-size: 1.1rem;
-    margin-top: 40px;
+    margin: 50px auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    color: black;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background: #FFD700;
+}
+
+/* ============================== */
+/* STYLE DES BOUTONS */
+/* ============================== */
+.btn {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 5px;
+    transition: opacity 0.3s;
+}
+
+.btn.vip {
+    background: green;
+    color: white;
+}
+
+.btn.ban {
+    background: red;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* ============================== */
+/* STYLE DU LIEN "MOT DE PASSE OUBLIÉ ?" */
+/* ============================== */
+.forgot-password {
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.forgot-password:hover {
+    color: darkred;
+    text-decoration: underline;
+}
+
+/* ============================== */
+/* STYLE DU BOUTON ADMIN */
+/* ============================== */
+.admin-btn {
+    background: linear-gradient(45deg, #FFD700, #B8860B);
+    color: black;
+    font-weight: bold;
+    border: 2px solid #FFD700;
+    padding: 12px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.admin-btn:hover {
+    background: linear-gradient(45deg, #B8860B, #FFD700);
+    transform: scale(1.05);
 }
 
 footer {
@@ -268,4 +274,5 @@ footer {
     font-size: 1.1rem;
     margin-top: auto; /* Pousse le footer en bas */
 }
+
 
