@@ -1,5 +1,9 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300&display=swap');
 
+/* ============================== */
+/* Reset général */
+/* ============================== */
 * {
     margin: 0;
     padding: 0;
@@ -10,12 +14,13 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #1C2541;
+    font-family: 'Audiowide', sans-serif;
+    background-color: #365829; 
     color: white;
     text-align: center;
     font-size: 67%;
 }
+
 
 .main-content {
     flex: 1; /* Permet au contenu de prendre l'espace disponible */
@@ -24,17 +29,21 @@ body {
     align-items: center;
 }
 
-/* HEADER */
 
+/* ============================== */
+/* HEADER */
+/* ============================== */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: rgba(28, 37, 65, 0.9);
+    background: linear-gradient(5deg, #7cbc6c, #c1f762);
     width: 100%;
+    margin-bottom: 40px; /* Ajoute un espace sous le header */
 }
 
+/* Logo cliquable ON RETIRE OU PAS ?????*/
 .logo {
     width: 150px; /* Taille du logo */
     height: auto;
@@ -45,29 +54,42 @@ header {
     transform: scale(1.1); /* Effet zoom au survol */
 }
 
-/* Animation du titre Tempus Odyssey */
+/* Titre animé */
 .site-title {
     font-size: 28px;
-    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
     text-transform: uppercase;
     color: white;
     text-align: center;
-    font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    text-shadow: 0 0 10px rgba(193, 247, 98, 0.5);
+    
+}
+
+/* Animation Glow */
+@keyframes glow-effect {
+    0% {
+        text-shadow: 0 0 5px rgba(193, 247, 98, 0.5);
+        color: white;
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(193, 247, 98, 1), 0 0 30px rgba(193, 247, 98, 0.8);
+        color: #c1f762;
+    }
 }
 
 
 
-/* Navigation */
 nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
 }
+
 nav ul li {
     display: inline;
 }
+
 nav ul li a {
     text-decoration: none;
     color: white;
@@ -75,8 +97,9 @@ nav ul li a {
     font-weight: bold;
     transition: color 0.3s;
 }
+
 nav ul li a:hover {
-    color: #FFD700;
+    color: #c1f762;
 }
 
 .form-container-wrapper {
@@ -109,7 +132,7 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 .form-container button {
-    background: linear-gradient(45deg, #6A0572, #FFD700);
+    background: linear-gradient(45deg, #7cbc6c, #c1f762);
     color: white;
     border: none;
     padding: 12px;
@@ -120,29 +143,43 @@ nav ul li a:hover {
     transition: background 0.3s ease;
 }
 .form-container button:hover {
-    background: linear-gradient(45deg, #FFD700, #6A0572);
+    background: linear-gradient(45deg, #c1f762, #7cbc6c);
+}
+/* ============================== */
+/* TERME ET CONDITIONS */
+/* ============================== */
+.checkbox-container {
+    display: flex;
+    align-items: center; /* Aligner verticalement */
+    gap: 10px; /* Espacement entre la case et le texte */
 }
 
-/* TERME ET CONDITIONS */
+.checkbox-container input[type="checkbox"] {
+    width: 20px; /* Taille personnalisée de la case */
+    height: 20px;
+    cursor: pointer;
+}
 
-.form-container label a {
+.checkbox-container label {
     font-size: 16px;
     font-weight: bold;
-    color: #FFD700; /* Couleur dorée pour plus de visibilité */
+    color: #c1f762;
     transition: color 0.3s ease-in-out;
     cursor: pointer;
 }
 
-.form-container label a:hover {
-    color: #FFAA00; /* Variation légère au survol */
-    text-decoration: underline;
-}
 
+/* ============================== */
+/* FOOTER */
+/* ============================== */
 footer {
     width: 100%;
     padding: 25px;
-    background: rgba(28, 37, 65, 0.9);
+    background: rgba(199, 250, 108, 0.3);
     text-align: center;
     font-size: 1.1rem;
     margin-top: auto; /* Pousse le footer en bas */
 }
+
+
+
