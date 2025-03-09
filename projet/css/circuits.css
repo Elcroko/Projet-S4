@@ -1,5 +1,9 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300&display=swap');
 
+/* ============================== */
+/* Reset général */
+/* ============================== */
 * {
     margin: 0;
     padding: 0;
@@ -10,12 +14,13 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #1C2541;
+    font-family: 'Audiowide', sans-serif;
+    background-color: #365829; 
     color: white;
     text-align: center;
     font-size: 67%;
 }
+
 
 .main-content {
     flex: 1; /* Permet au contenu de prendre l'espace disponible */
@@ -24,17 +29,20 @@ body {
     align-items: center;
 }
 
-/* HEADER */
 
+/* ============================== */
+/* HEADER */
+/* ============================== */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: rgba(28, 37, 65, 0.9);
+    background: linear-gradient(5deg, #7cbc6c, #c1f762);
     width: 100%;
+    margin-bottom: 40px; /* Ajoute un espace sous le header */
 }
-
+/* Logo cliquable ON RETIRE OU PAS ?????*/
 .logo {
     width: 150px; /* Taille du logo */
     height: auto;
@@ -45,28 +53,44 @@ header {
     transform: scale(1.1); /* Effet zoom au survol */
 }
 
-/* Animation du titre Tempus Odyssey */
+/* Titre animé */
 .site-title {
     font-size: 28px;
-    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
     text-transform: uppercase;
     color: white;
     text-align: center;
-    font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    text-shadow: 0 0 10px rgba(193, 247, 98, 0.5);
+    
+}
+
+/* Animation Glow */
+@keyframes glow-effect {
+    0% {
+        text-shadow: 0 0 5px rgba(193, 247, 98, 0.5);
+        color: white;
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(193, 247, 98, 1), 0 0 30px rgba(193, 247, 98, 0.8);
+        color: #c1f762;
+    }
 }
 
 
+/* ============================== */
 /* Navigation */
+/* ============================== */
 nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
 }
+
 nav ul li {
     display: inline;
 }
+
 nav ul li a {
     text-decoration: none;
     color: white;
@@ -74,31 +98,23 @@ nav ul li a {
     font-weight: bold;
     transition: color 0.3s;
 }
+
 nav ul li a:hover {
-    color: #FFD700;
+    color: #c1f762;
 }
+
+
+
 
 .filters {
     background: rgba(255, 255, 255, 0.1);
-    padding: 25px;
-    border-radius: 15px;
+    padding: 20px;
+    border-radius: 10px;
     width: 90%;
     max-width: 800px;
     margin: 20px auto;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-    backdrop-filter: blur(10px);
+   
 }
-
-/* Titre du filtre */
-.filters h2 {
-    font-size: 22px;
-    color: #FFD700;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    font-family: 'Orbitron', sans-serif;
-}
-
 .filters input, .filters select, .filters button {
     width: 100%;
     padding: 10px;
@@ -107,21 +123,14 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 .filters button {
-    background: linear-gradient(45deg, #6A0572, #FFD700);
+    background: linear-gradient(45deg, #7cbc6c, #c1f762);
     color: white;
     cursor: pointer;
     font-size: 18px;
-    font-weight: bold;
-    border: 2px solid #FFD700;
-    padding: 12px 20px;
-    margin-top: 15px;
-    border-radius: 5px;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: background 0.3s ease;
 }
-
 .filters button:hover {
-    background: linear-gradient(45deg, #FFD700, #6A0572);
-    transform: scale(1.05);
+    background: linear-gradient(45deg, #c1f762, #7cbc6c);
 }
 .filters label {
     display: block;
@@ -135,11 +144,7 @@ nav ul li a:hover {
     padding: 10px;
     margin: 10px 0;
     border: none;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    font-size: 16px;
-    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
 }
 
 /* Styles des curseurs de temps */
@@ -148,7 +153,7 @@ nav ul li a:hover {
     appearance: none;
     width: 100%;
     height: 5px;
-    background: linear-gradient(90deg, #FFD700, #FFAA00);
+    background: #c1f762;
     border-radius: 5px;
     outline: none;
     opacity: 0.9;
@@ -157,10 +162,15 @@ nav ul li a:hover {
 
 .time-slider:hover {
     opacity: 1;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
 }
 
-/* Style des labels des curseurs */
+.filters label {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 #temps-debut-label, #temps-fin-label {
     font-size: 16px;
     margin-top: 5px;
@@ -188,7 +198,7 @@ nav ul li a:hover {
 }
 .circuit:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    box-shadow: 0 0 20px  #c1f762;
 }
 .circuit img {
     display: block;
@@ -203,12 +213,12 @@ nav ul li a:hover {
     font-size: 1.5rem;
     font-family: 'Orbitron', sans-serif;
 }
-
+/* Nouvelle barre de recherche futuriste */
 .search-container {
     position: relative;
     width: 100%;
     max-width: 600px;
-    margin: 15px auto;
+    margin: 20px auto;
 }
 
 .search-container input {
@@ -216,35 +226,46 @@ nav ul li a:hover {
     padding: 12px 50px 12px 20px;
     font-size: 18px;
     border-radius: 30px;
-    border: 2px solid #FFD700;
+    border: 2px solid #c1f762;
     background: rgba(255, 255, 255, 0.1);
     color: white;
     transition: all 0.3s ease-in-out;
 }
 
 .search-container input:focus {
-    border-color: #FFAA00;
-    box-shadow: 0 0 10px #FFD700;
+    border-color: #c1f762;
+    box-shadow: 0 0 10px #c1f762;
     outline: none;
 }
 
+/* Icône de recherche intégrée */
 .search-container .search-icon {
     position: absolute;
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
-    color: #FFD700;
+    color: #c1f762;
     pointer-events: none;
+}
+
+/* ============================== */
+/* FOOTER */
+/* ============================== */
+footer {
+    padding: 25px;
+    background: rgba(199, 250, 108, 0.3);
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: 40px;
 }
 
 footer {
     width: 100%;
     padding: 25px;
-    background: rgba(28, 37, 65, 0.9);
+    background: rgba(199, 250, 108, 0.3);
     text-align: center;
     font-size: 1.1rem;
     margin-top: auto; /* Pousse le footer en bas */
 }
-
 
