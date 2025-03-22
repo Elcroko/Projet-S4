@@ -15,7 +15,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     font-family: 'Audiowide', sans-serif;
-    background-color: #365829; 
+    background-color: #365829;
     color: white;
     text-align: center;
     font-size: 67%;
@@ -23,10 +23,12 @@ body {
 
 
 .main-content {
-    flex: 1; /* Permet au contenu de prendre l'espace disponible */
+    flex: 1;
+    /* Permet au contenu de prendre l'espace disponible */
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 20px;
 }
 
 /* ============================== */
@@ -39,18 +41,21 @@ header {
     padding: 20px;
     background: linear-gradient(5deg, #7cbc6c, #c1f762);
     width: 100%;
-    margin-bottom: 40px; /* Ajoute un espace sous le header */
+    margin-bottom: auto;
+    /* Ajoute un espace sous le header */
 }
 
 /* Logo cliquable ON RETIRE OU PAS ?????*/
 .logo {
-    width: 150px; /* Taille du logo */
+    width: 150px;
+    /* Taille du logo */
     height: auto;
     transition: transform 0.3s ease-in-out;
 }
 
 .logo:hover {
-    transform: scale(1.1); /* Effet zoom au survol */
+    transform: scale(1.1);
+    /* Effet zoom au survol */
 }
 
 /* Titre animé */
@@ -62,7 +67,7 @@ header {
     text-align: center;
     letter-spacing: 2px;
     text-shadow: 0 0 10px rgba(193, 247, 98, 0.5);
-    
+
 }
 
 /* Animation Glow */
@@ -71,6 +76,7 @@ header {
         text-shadow: 0 0 5px rgba(193, 247, 98, 0.5);
         color: white;
     }
+
     100% {
         text-shadow: 0 0 20px rgba(193, 247, 98, 1), 0 0 30px rgba(193, 247, 98, 0.8);
         color: #c1f762;
@@ -103,50 +109,72 @@ nav ul li a:hover {
 
 .form-container-wrapper {
     display: flex;
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 100vh; /* Prend toute la hauteur de l'écran */
+    height: 100vh;
+    padding: 30px 0;
+    /* Prend toute la hauteur de l'écran */
 }
 
 .form-container {
     background: rgba(255, 255, 255, 0.1);
     padding: 40px;
     border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
+    width: 100%;
+    max-width: 500px;
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    margin: 0 auto; /* S'assure que l'élément est bien centré */
+    margin: 0 auto;
+    /* S'assure que l'élément est bien centré */
 }
+
 .form-container h2 {
-    margin-bottom: 20px;
+    margin-bottom: auto;
     font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+
 }
+
+.form-container p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: auto;
+}
+
+
 .form-container input {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 20px;
+    margin: 12px 0;
     border: none;
     border-radius: 5px;
 }
+
 .form-container button {
     background: linear-gradient(5deg, #7cbc6c, #c1f762);
     color: white;
     border: none;
-    padding: 12px;
+    padding: 18px;
     width: 100%;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px;
     transition: background 0.3s ease;
 }
+
 .form-container button:hover {
     background: linear-gradient(45deg, #c1f762, #7cbc6c);
 }
+
 /* Amélioration de la visibilité du lien "Mot de passe oublié ?" */
 .forgot-password {
-    color: #c1f762; /* Couleur dorée pour plus de visibilité */
+    color: #c1f762;
+    /* Couleur dorée pour plus de visibilité */
     font-weight: bold;
     text-decoration: none;
     display: block;
@@ -155,18 +183,21 @@ nav ul li a:hover {
 }
 
 .forgot-password:hover {
-    color: #c1f762; /* Variation légère au survol */
+    color: #c1f762;
+    /* Variation légère au survol */
     text-decoration: underline;
 }
+
 footer {
     width: 100%;
     padding: 25px;
     background: rgba(199, 250, 108, 0.3);
     text-align: center;
     font-size: 1.1rem;
-    margin-top: auto; /* Pousse le footer en bas */
-}
+    margin-top: auto;
 
+    /* Pousse le footer en bas */
+}
 
 
 
