@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,10 +22,18 @@
             <ul>
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="circuits.php">Circuits</a></li>
-                <li><a href="inscription.php">Inscription</a></li>
-                <li><a href="connexion.php">Connexion</a></li>
-                <li><a href="profil.php" class="active">Profil</a></li>
-                
+
+                <?php if (!isset($_SESSION['user'])): ?>
+                    <li><a href="inscription.php">Inscription</a></li>
+                    <li><a href="connexion.php">Connexion</a></li>
+                <?php else: ?>
+                    <?php if (!empty($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                        <li><a href="admin.php">Admin</a></li>
+                    <?php endif; ?>
+                    <li><a href="profil.php" class="active">Profil</a></li>
+                    <li><a href="logout.php">Se déconnecter</a></li>
+                <?php endif; ?>
+
             </ul>
         </nav>
     </header>
@@ -65,7 +75,7 @@
             <div class="circuits-container">
 
                 <article class="circuit">
-                    <a href="Mort.html">
+                    <a href="voyage.php?titre=Le+Jour+de+votre+Mort">
                         <img src="images/mort.jpeg" alt="Illustration du circuit Le jour de votre Mort">
                     </a>
                     <h4>Le Jour de votre Mort</h4>
@@ -73,7 +83,7 @@
                 </article>
 
                 <article class="circuit">
-                    <a href="Préhistoire.html">
+                    <a href="voyage.php?titre=La+Préhistoire">
                         <img src="images/Udino.jpeg" alt="Illustration du circuit La Préhistoire">
                     </a>
                     <h4>La Préhistoire</h4>
@@ -81,7 +91,7 @@
                 </article>
 
                 <article class="circuit">
-                    <a href="Fin.html">
+                    <a href="voyage.php?titre=Fin+du+Monde">
                         <img src="images/fin_du_monde.jpeg" alt="Illustration du circuit Fin du Monde">
                     </a>
                     <h4>Fin du Monde</h4>
@@ -89,7 +99,7 @@
                 </article>
 
                 <article class="circuit">
-                    <a href="Vikings.html">
+                    <a href="voyage.php?titre=L'Époque+des+Vikings">
                         <img src="images/vinkings.jpeg" alt="Vikings">
                     </a>
                     <h4>L'Époque des Vikings</h4>
@@ -97,7 +107,7 @@
                 </article>
 
                 <article class="circuit">
-                    <a href="Bitcoin.html">
+                    <a href="voyage.php?titre=L'Ère+du+Bitcoin">
                         <img src="images/bitcoin.jpeg" alt="bitcoin">
                     </a>
                     <h4>L'Ère du Bitcoin</h4>
@@ -105,7 +115,7 @@
                 </article>
 
                 <article class="circuit">
-                    <a href="Colomb.html">
+                    <a href="voyage.php?titre=À+Bord+avec+Christophe+Colomb">
                         <img src="images/colomb.jpeg" alt="colomb">
                     </a>
                     <h4>À Bord avec Christophe Colomb</h4>
