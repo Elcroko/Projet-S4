@@ -1,6 +1,7 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,22 +9,21 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/png" href="images/portail.png">
 </head>
-
 <body>
     <!-- En-tête -->
     <header>
         <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
         <h1 class="site-title">
-            <a href="index.html" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
-        </h1>
+            <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
+        </h1>        
         <nav aria-label="Navigation principale">
             <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="circuits.html">Circuits</a></li>
-                <li><a href="inscription.html">Inscription</a></li>
-                <li><a href="connexion.html">Connexion</a></li>
-                <li><a href="profil.html">Profil</a></li>
-
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="circuits.php">Circuits</a></li>
+                <li><a href="inscription.php">Inscription</a></li>
+                <li><a href="connexion.php">Connexion</a></li>
+                <li><a href="profil.php" class="active">Profil</a></li>
+                
             </ul>
         </nav>
     </header>
@@ -35,8 +35,8 @@
             <div class="hero-content">
                 <h2 class="hero-title">Embarquez pour un voyage à travers le temps</h2>
                 <p class="hero-subtitle">Revivez les époques légendaires et percez les mystères du futur.</p>
-                <a href="circuits.html" class="btn">Explorer</a>
-                <input type="text" class="search-bar" placeholder="Votre voyage temporel commence ici !">
+                <a href="circuits.php" class="btn">Explorer</a>
+                <input type="text" class="search-bar" placeholder= "Votre voyage temporel commence ici !">
             </div>
         </section>
 
@@ -45,16 +45,12 @@
             <div class="about-container">
                 <h3>Bienvenue sur Tempus Odyssey</h3>
                 <p>
-                    Découvrez un concept révolutionnaire de voyage temporel qui vous permet de parcourir les âges comme
-                    jamais auparavant.
-                    Que vous soyez passionné par l’histoire, curieux du futur ou en quête d’expériences inédites, nous
-                    avons conçu pour vous des circuits immersifs qui vous transporteront à travers les époques.
+                    Découvrez un concept révolutionnaire de voyage temporel qui vous permet de parcourir les âges comme jamais auparavant. 
+                    Que vous soyez passionné par l’histoire, curieux du futur ou en quête d’expériences inédites, nous avons conçu pour vous des circuits immersifs qui vous transporteront à travers les époques.
                 </p>
                 <p>
-                    Au cœur de la Rome antique aux secrets du Moyen Âge, en passant par les grandes découvertes et les
-                    futurs possibles de l’humanité,
-                    nos voyages sont sécurisés, accompagnés de guides spécialisés et adaptés à tous les aventuriers du
-                    temps.
+                    Au cœur de la Rome antique aux secrets du Moyen Âge, en passant par les grandes découvertes et les futurs possibles de l’humanité, 
+                    nos voyages sont sécurisés, accompagnés de guides spécialisés et adaptés à tous les aventuriers du temps.
                 </p>
                 <p>
                     Osez l’aventure et devenez un explorateur temporel dès aujourd’hui !
@@ -126,5 +122,4 @@
         <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
     </footer>
 </body>
-
 </html>
