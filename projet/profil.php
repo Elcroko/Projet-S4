@@ -1,14 +1,32 @@
 <?php
 session_start();
 
-// Vérifier si l'utilisateur est connecté
+$file = 'json/utilisateurs.json';
+
 if (!isset($_SESSION['user'])) {
     header("Location: connexion.php");
     exit;
 }
 
-// Récupérer les données de l'utilisateur depuis la session
-$user = $_SESSION['user'];
+$userEmail = $_SESSION['user']['email'];
+$user = null;
+
+if (file_exists($file)) {
+    $data = file_get_contents($file);
+    $users = json_decode($data, true);
+
+    foreach ($users as $u) {
+        if ($u['email'] === $userEmail) {
+            $user = $u;
+            break;
+        }
+    }
+}
+
+if (!$user) {
+    echo "Utilisateur non trouvé.";
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +35,6 @@ $user = $_SESSION['user'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil - Tempus Odyssey</title>
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/profil.css">
 </head>
 <body>
@@ -27,15 +44,23 @@ $user = $_SESSION['user'];
         <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
         <h1 class="site-title">
             <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
-        </h1>
+        </h1>        
         <nav aria-label="Navigation principale">
             <ul>
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="circuits.php">Circuits</a></li>
-                <li><a href="inscription.php">Inscription</a></li>
-                <li><a href="connexion.php">Connexion</a></li>
-                <li><a href="profil.php" class="active">Profil</a></li>
-                <li><a href="logout.php" class="logout-btn">Se déconnecter</a></li>
+
+                <?php if (!isset($_SESSION['user'])): ?>
+                    <li><a href="inscription.php">Inscription</a></li>
+                    <li><a href="connexion.php">Connexion</a></li>
+                <?php else: ?>
+                    <?php if (!empty($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                        <li><a href="admin.php">Admin</a></li>
+                    <?php endif; ?>
+                    <li><a href="profil.php" class="active">Profil</a></li>
+                    <li><a href="logout.php">Se déconnecter</a></li>
+                <?php endif; ?>
+
             </ul>
         </nav>
     </header>
@@ -68,19 +93,21 @@ $user = $_SESSION['user'];
             </div>
             <div class="form-group">
                 <label for="date_naissance">Date de naissance :</label>
-                <input type="text" id="date_naissance" value="<?= isset($user['date_de_naissance']) ? htmlspecialchars($user['date_de_naissance']) : 'Non renseigné' ?>" readonly>
+                <input type="text" id="date_naissance" value="<?= htmlspecialchars($user['date_naissance']) ?>" readonly>
+            </div>
+            <div class="form-group">
+                <label for="date_inscription">Date d'inscription :</label>
+                <input type="text" id="date_inscription" value="<?= htmlspecialchars($user['date_inscription']) ?>" readonly>
+            </div>
+            <div class="form-group">
+                <label for="nombre_voyages">Nombre de voyages :</label>
+                <input type="text" id="nombre_voyages" value="<?= htmlspecialchars($user['nombre_voyages']) ?>" readonly>
             </div>
             <div class="form-group">
                 <label for="telephone">Téléphone :</label>
-                <input type="tel" id="telephone" value="000000"><!-- ?= htmlspecialchars($user['telephone']) ?>" readonly--> 
-                <button type="button" class="edit-btn"></button>
+                <input type="tel" id="telephone" value="<?= htmlspecialchars($user['telephone']) ?>" readonly>
             </div>
-            <div class="form-group">
-                <label for="adresse">Adresse :</label>
-                <input type="text" id="adresse" value="000000"> <!-- ?= htmlspecialchars($user['adresse']) ? readonly-->
-                
-                <button type="button" class="edit-btn"></button>
-            </div>
+
             
             <button type="submit" class="save-btn">Enregistrer les modifications</button>
         </form>
