@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,6 +12,7 @@
     <link rel="stylesheet" href="css/circuits.css">
 </head>
 <body>
+    <!-- En-tête -->
     <header>
         <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
         <h1 class="site-title">
@@ -19,9 +22,18 @@
             <ul>
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="circuits.php">Circuits</a></li>
-                <li><a href="inscription.php">Inscription</a></li>
-                <li><a href="connexion.php">Connexion</a></li>
-                <li><a href="profil.php" class="active">Profil</a></li>                
+
+                <?php if (!isset($_SESSION['user'])): ?>
+                    <li><a href="inscription.php">Inscription</a></li>
+                    <li><a href="connexion.php">Connexion</a></li>
+                <?php else: ?>
+                    <?php if (!empty($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                        <li><a href="admin.php">Admin</a></li>
+                    <?php endif; ?>
+                    <li><a href="profil.php" class="active">Profil</a></li>
+                    <li><a href="logout.php">Se déconnecter</a></li>
+                <?php endif; ?>
+
             </ul>
         </nav>
     </header>
@@ -55,55 +67,55 @@
         <h3>Nos circuits temporels</h3>
         <div class="circuits-container">
             <article class="circuit">
-                <a href="Mort.html">
+                <a href="voyage.php?titre=Le+Jour+de+votre+Mort">
                     <img src="images/mort.jpeg" alt="Illustration du circuit Le jour de votre Mort">
                 </a>
                 <h4>Le Jour de votre Mort</h4>
                 <p>Oserez-vous affronter votre destinée et découvrir ce que l’avenir vous réserve ?</p>
             </article>
-    
+
             <article class="circuit">
-                <a href="Préhistoire.html">
+                <a href="voyage.php?titre=La+Préhistoire">
                     <img src="images/Udino.jpeg" alt="Illustration du circuit La Préhistoire">
                 </a>
                 <h4>La Préhistoire</h4>
                 <p>Évitez les prédateurs préhistoriques et survivez dans un monde sauvage et impitoyable.</p>
             </article>
-    
+
             <article class="circuit">
-                <a href="Fin.html">
+                <a href="voyage.php?titre=Fin+du+Monde">
                     <img src="images/fin_du_monde.jpeg" alt="Illustration du circuit Fin du Monde">
                 </a>
                 <h4>Fin du Monde</h4>
                 <p>Vivez en direct l’apocalypse et assistez aux derniers instants de l’humanité.</p>
             </article>
-    
+
             <article class="circuit">
-                <a href="Vikings.html">
+                <a href="voyage.php?titre=L'Époque+des+Vikings">
                     <img src="images/vinkings.jpeg" alt="Vikings">
                 </a>
                 <h4>L'Époque des Vikings</h4>
                 <p>Rejoignez Ragnar et ses guerriers pour des raids épiques et une conquête sans pitié.</p>
             </article>
-            
+
             <article class="circuit">
-                <a href="Chateau.html">
+                <a href="voyage.php?titre=À+la+Cour+du+Roi+Soleil">
                     <img src="images/chateau.jpeg" alt="chateau">
                 </a>
                 <h4>À la Cour du Roi Soleil</h4>
                 <p>Vivez dans le faste du château de Versailles et assistez aux intrigues royales.</p>
             </article>
-    
+
             <article class="circuit">
-                <a href="Bitcoin.html">
+                <a href="voyage.php?titre=L'Ère+du+Bitcoin">
                     <img src="images/bitcoin.jpeg" alt="bitcoin">
                 </a>
                 <h4>L'Ère du Bitcoin</h4>
                 <p>Voyagez dans le passé et changez votre destinée financière en maîtrisant la cryptomonnaie.</p>
             </article>
-    
+
             <article class="circuit">
-                <a href="Colomb.html">
+                <a href="voyage.php?titre=À+Bord+avec+Christophe+Colomb">
                     <img src="images/colomb.jpeg" alt="colomb">
                 </a>
                 <h4>À Bord avec Christophe Colomb</h4>
@@ -111,52 +123,53 @@
             </article>
 
             <article class="circuit">
-                <a href="Pyramide.html">
+                <a href="voyage.php?titre=Le+Secret+des+Pyramides">
                     <img src="images/pyramides.jpeg" alt="Construction des Pyramides">
                 </a>
                 <h4>Le Secret des Pyramides</h4>
                 <p>Assistez à la construction des pyramides et découvrez leurs mystères.</p>
             </article>
-            
+
             <article class="circuit">
-                <a href="Revolution.html">
+                <a href="voyage.php?titre=Révolution+à+Paris">
                     <img src="images/bastille.jpeg" alt="Prise de la Bastille">
                 </a>
                 <h4>Révolution à Paris</h4>
                 <p>Vivez la prise de la Bastille et plongez en pleine Révolution française.</p>
             </article>
-            
+
             <article class="circuit">
-                <a href="Aged'or.html">
+                <a href="voyage.php?titre=L'Enfer+des+Tranchées">
                     <img src="images/1ere_gm.jpeg" alt="Première Guerre Mondiale">
                 </a>
                 <h4>L'Enfer des Tranchées</h4>
                 <p>Expérimentez la dure réalité des soldats de la Première Guerre mondiale.</p>
             </article>
-            
+
             <article class="circuit">
-                <a href="Résistance.html">
+                <a href="voyage.php?titre=Mission+Résistance">
                     <img src="images/2eme_gm.jpeg" alt="Seconde Guerre Mondiale">
                 </a>
                 <h4>Mission Résistance</h4>
                 <p>Rejoignez la Résistance et luttez contre l’occupation nazie.</p>
             </article>
-            
+
             <article class="circuit">
-                <a href="Croisière.html">
+                <a href="voyage.php?titre=Croisière+Interplanétaire">
                     <img src="images/croisiere_interplanetaire.jpeg" alt="Croisière Interplanétaire">
                 </a>
                 <h4>Croisière Interplanétaire</h4>
                 <p>Embarquez pour un voyage à travers les étoiles et explorez les confins de l’univers.</p>
             </article>
-            
+
             <article class="circuit">
-                <a href="Olympique.html">
+                <a href="voyage.php?titre=Jeux+Olympiques+de+l'An+3000">
                     <img src="images/jo_3000.jpeg" alt="Jeux Olympiques de l'An 3000">
                 </a>
                 <h4>Jeux Olympiques de l'An 3000</h4>
                 <p>Assistez aux performances incroyables des athlètes du futur dans un stade ultra-technologique.</p>
-            </article>          
+            </article>
+          
         </div>
     </section>
     </main>
