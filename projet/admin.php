@@ -8,17 +8,17 @@
 </head>
 <body>
     <header>
-        <a href="index.html">
+        <a href="index.php">
             <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
         </a>
         <h1 class="site-title">Tempus Odyssey</h1>
         <nav aria-label="Navigation principale">
             <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="circuits.html">Circuits</a></li>
-                <li><a href="inscription.html">Inscription</a></li>
-                <li><a href="connexion.html">Connexion</a></li>
-                <li><a href="profil.html">Profil</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="circuits.php">Circuits</a></li>
+                <li><a href="inscription.php">Inscription</a></li>
+                <li><a href="connexion.php">Connexion</a></li>
+                <li><a href="profil.php" class="active">Profil</a></li>
             </ul>
         </nav>
     </header>
