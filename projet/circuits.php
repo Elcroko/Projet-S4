@@ -1,7 +1,44 @@
 <?php
 session_start();
 
+function chargerVoyages() {
+    $voyages = [];
+    foreach (glob("json/voyage*.json") as $file) {
+        $content = file_get_contents($file);
+        $voyage = json_decode($content, true);
+        if ($voyage) {
+            $voyages[] = $voyage;
+        }
+    }
+    return $voyages;
+}
+
+$tousVoyages = chargerVoyages();
+$voyagesFiltres = $tousVoyages;
+
+if (isset($_GET['recherche']) && isset($_GET['btn_rechercher'])) {
+    $mot = strtolower(trim($_GET['recherche']));
+    $voyagesFiltres = [];
+
+    foreach ($tousVoyages as $voyage) {
+        $titre = strtolower($voyage['titre'] ?? '');
+        $description = strtolower($voyage['description'] ?? '');
+
+        if (strpos($titre, $mot) !== false || strpos($description, $mot) !== false) {
+            $voyagesFiltres[] = $voyage;
+        }
+    }
+}
+
+// Pagination
+$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+$voyagesParPage = 6;
+$totalVoyages = count($voyagesFiltres);
+$totalPages = ceil($totalVoyages / $voyagesParPage);
+$offset = ($page - 1) * $voyagesParPage;
+$voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -38,140 +75,76 @@ session_start();
         </nav>
     </header>
     <main>
-        <section class="filters">
+    <section class="filters">
             <h2>Recherchez votre voyage temporel</h2>
-            <div class="search-container">
-                <input type="text" placeholder="🔎 Recherchez une époque ou une destination...">
-                <span class="search-icon">🔍</span>
-            </div>
-            <label for="lieu">Choisissez votre lieu :</label>
-            <select id="lieu">
-                <option value="terre">🌍 Sur Terre</option>
-                <option value="espace">🚀 Dans l'Espace</option>
-                <option value="univers-parallele">🔮 Univers Parallèle</option>
+            <form method="get">
+                <input class="search-bar" type="text" name="recherche" placeholder="Rechercher un circuit...">
+                <button class="btn" type="submit" name="btn_rechercher">Rechercher</button>
+            </form>
+        </section>     
+        
+        <form method="get" class="filtres-voyages">
+            <label for="epoque">Époque :</label>
+            <select name="epoque" id="epoque">
+                <option value="">Toutes</option>
+                <option value="préhistoire">Préhistoire</option>
+                <option value="antiquité">Antiquité</option>
+                <option value="moyen-age">Moyen-Âge</option>
+                <option value="renaissance">Renaissance</option>
+                <option value="temps-modernes">Temps modernes</option>
+                <option value="futur">Futur</option>
             </select>
 
-            <label for="temps-debut"></label>
-            <p id="temps-debut-label">Début de la période : -∞</p>
-            <input type="range" id="temps-debut" min="0" max="6" step="1" value="0" class="time-slider">
-        
-            <label for="temps-fin"></label>
-            <p id="temps-fin-label">Fin de la période : +∞</p>
-            <input type="range" id="temps-fin" min="0" max="6" step="1" value="6" class="time-slider">
-        
-            <button>Rechercher</button>
-        </section>        
+            <label for="lieu">Lieu :</label>
+            <select name="lieu" id="lieu">
+                <option value="">Tous</option>
+                <option value="europe">Europe</option>
+                <option value="asie">Asie</option>
+                <option value="afrique">Afrique</option>
+                <option value="amerique">Amérique</option>
+                <option value="espace">Espace</option>
+            </select>
+
+            <label for="prix">Prix :</label>
+            <select name="prix" id="prix">
+                <option value="">Tous</option>
+                <option value="1">Moins de 1000 €</option>
+                <option value="2">Entre 1000 € et 2000 €</option>
+                <option value="3">Plus de 2000 €</option>
+            </select>
+
+            <button type="submit" class="btn">Filtrer</button>
+        </form>
         
         <!-- Section des circuits temporels -->
-       <section class="featured">
-        <h3>Nos circuits temporels</h3>
-        <div class="circuits-container">
-            <article class="circuit">
-                <a href="voyage.php?id=voyage01">
-                    <img src="images/mort.jpeg" alt="Illustration du circuit Le jour de votre Mort">
-                </a>
-                <h4>Le Jour de votre Mort</h4>
-                <p>Oserez-vous affronter votre destinée et découvrir ce que l’avenir vous réserve ?</p>
-            </article>
+        <section class="featured">
+            <h3>Nos circuits temporels</h3>
+            <div class="circuits-container">
+            <?php if (count($voyagesPage) === 0): ?>
+                <p>Aucun résultat pour cette recherche.</p>
+            <?php else: ?>
+                <?php foreach ($voyagesPage as $index => $voyage): ?>
+                <article class="circuit">
+                    <a href="voyage.php?id=<?= 'voyage' . str_pad($index + 1 + $offset, 2, '0', STR_PAD_LEFT) ?>">
+                    <img src="<?= htmlspecialchars($voyage['image']) ?>" alt="Illustration du circuit <?= htmlspecialchars($voyage['titre']) ?>" />
+                    </a>
+                    <h4><?= htmlspecialchars($voyage['titre']) ?></h4>
+                    <p><?= htmlspecialchars($voyage['description']) ?></p>
+                </article>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </div>
 
-            <article class="circuit">
-                <a href="voyage.php?id=voyage02">
-                    <img src="images/Udino.jpeg" alt="Illustration du circuit La Préhistoire">
+            <?php if ($totalPages > 1): ?>
+            <div class="pagination">
+            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                <a href="?<?= http_build_query(array_merge($_GET, ['page' => $i])) ?>" <?= $i === $page ? 'style="font-weight: bold;"' : '' ?>>
+                <?= $i ?>
                 </a>
-                <h4>La Préhistoire</h4>
-                <p>Évitez les prédateurs préhistoriques et survivez dans un monde sauvage et impitoyable.</p>
-            </article>
-
-            <article class="circuit">
-                <a href="voyage.php?id=voyage03">
-                    <img src="images/fin_du_monde.jpeg" alt="Illustration du circuit Fin du Monde">
-                </a>
-                <h4>Fin du Monde</h4>
-                <p>Vivez en direct l’apocalypse et assistez aux derniers instants de l’humanité.</p>
-            </article>
-
-            <article class="circuit">
-                <a href="voyage.php?id=voyage04">
-                    <img src="images/vinkings.jpeg" alt="Vikings">
-                </a>
-                <h4>L'Époque des Vikings</h4>
-                <p>Rejoignez Ragnar et ses guerriers pour des raids épiques et une conquête sans pitié.</p>
-            </article>
-
-            <article class="circuit">
-                <a href="voyage.php?id=voyage05">
-                    <img src="images/chateau.jpeg" alt="chateau">
-                </a>
-                <h4>À la Cour du Roi Soleil</h4>
-                <p>Vivez dans le faste du château de Versailles et assistez aux intrigues royales.</p>
-            </article>
-
-            <article class="circuit">
-                <a href="voyage.php?id=voyage06">
-                    <img src="images/bitcoin.jpeg" alt="bitcoin">
-                </a>
-                <h4>L'Ère du Bitcoin</h4>
-                <p>Voyagez dans le passé et changez votre destinée financière en maîtrisant la cryptomonnaie.</p>
-            </article>
-
-            <article class="circuit">
-                <a href="voyage.php?id=voyage07">
-                    <img src="images/colomb.jpeg" alt="colomb">
-                </a>
-                <h4>À Bord avec Christophe Colomb</h4>
-                <p>Traversez l’Atlantique et assistez à la découverte d’un Nouveau Monde.</p>
-            </article>
-
-            <article class="circuit">
-                <a href="voyage.php?id=voyage08">
-                    <img src="images/pyramides.jpeg" alt="Construction des Pyramides">
-                </a>
-                <h4>Le Secret des Pyramides</h4>
-                <p>Assistez à la construction des pyramides et découvrez leurs mystères.</p>
-            </article>
-
-            <article class="circuit">
-                <a href="voyage.php?id=voyage09">
-                    <img src="images/bastille.jpeg" alt="Prise de la Bastille">
-                </a>
-                <h4>Révolution à Paris</h4>
-                <p>Vivez la prise de la Bastille et plongez en pleine Révolution française.</p>
-            </article>
-
-            <article class="circuit">
-                <a href="voyage.php?id=voyage10">
-                    <img src="images/1ere_gm.jpeg" alt="Première Guerre Mondiale">
-                </a>
-                <h4>L'Enfer des Tranchées</h4>
-                <p>Expérimentez la dure réalité des soldats de la Première Guerre mondiale.</p>
-            </article>
-
-            <article class="circuit">
-                <a href="voyage.php?id=voyage11">
-                    <img src="images/2eme_gm.jpeg" alt="Seconde Guerre Mondiale">
-                </a>
-                <h4>Mission Résistance</h4>
-                <p>Rejoignez la Résistance et luttez contre l’occupation nazie.</p>
-            </article>
-
-            <article class="circuit">
-                <a href="voyage.php?id=voyage12">
-                    <img src="images/croisiere_interplanetaire.jpeg" alt="Croisière Interplanétaire">
-                </a>
-                <h4>Croisière Interplanétaire</h4>
-                <p>Embarquez pour un voyage à travers les étoiles et explorez les confins de l’univers.</p>
-            </article>
-
-            <article class="circuit">
-                <a href="voyage.php?id=voyage13">
-                    <img src="images/jo_3000.jpeg" alt="Jeux Olympiques de l'An 3000">
-                </a>
-                <h4>Jeux Olympiques de l'An 3000</h4>
-                <p>Assistez aux performances incroyables des athlètes du futur dans un stade ultra-technologique.</p>
-            </article>
-          
-        </div>
-    </section>
+            <?php endfor; ?>
+            </div>
+            <?php endif; ?>
+        </section>
     </main>
     <footer>
         <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
