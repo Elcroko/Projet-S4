@@ -67,7 +67,7 @@ session_start();
         <h3>Nos circuits temporels</h3>
         <div class="circuits-container">
             <article class="circuit">
-                <a href="voyage.php?titre=Le+Jour+de+votre+Mort">
+                <a href="voyage.php?id=voyage01">
                     <img src="images/mort.jpeg" alt="Illustration du circuit Le jour de votre Mort">
                 </a>
                 <h4>Le Jour de votre Mort</h4>
@@ -75,7 +75,7 @@ session_start();
             </article>
 
             <article class="circuit">
-                <a href="voyage.php?titre=La+Préhistoire">
+                <a href="voyage.php?id=voyage02">
                     <img src="images/Udino.jpeg" alt="Illustration du circuit La Préhistoire">
                 </a>
                 <h4>La Préhistoire</h4>
@@ -83,7 +83,7 @@ session_start();
             </article>
 
             <article class="circuit">
-                <a href="voyage.php?titre=Fin+du+Monde">
+                <a href="voyage.php?id=voyage03">
                     <img src="images/fin_du_monde.jpeg" alt="Illustration du circuit Fin du Monde">
                 </a>
                 <h4>Fin du Monde</h4>
@@ -91,7 +91,7 @@ session_start();
             </article>
 
             <article class="circuit">
-                <a href="voyage.php?titre=L'Époque+des+Vikings">
+                <a href="voyage.php?id=voyage04">
                     <img src="images/vinkings.jpeg" alt="Vikings">
                 </a>
                 <h4>L'Époque des Vikings</h4>
@@ -99,7 +99,7 @@ session_start();
             </article>
 
             <article class="circuit">
-                <a href="voyage.php?titre=À+la+Cour+du+Roi+Soleil">
+                <a href="voyage.php?id=voyage05">
                     <img src="images/chateau.jpeg" alt="chateau">
                 </a>
                 <h4>À la Cour du Roi Soleil</h4>
@@ -107,7 +107,7 @@ session_start();
             </article>
 
             <article class="circuit">
-                <a href="voyage.php?titre=L'Ère+du+Bitcoin">
+                <a href="voyage.php?id=voyage06">
                     <img src="images/bitcoin.jpeg" alt="bitcoin">
                 </a>
                 <h4>L'Ère du Bitcoin</h4>
@@ -115,7 +115,7 @@ session_start();
             </article>
 
             <article class="circuit">
-                <a href="voyage.php?titre=À+Bord+avec+Christophe+Colomb">
+                <a href="voyage.php?id=voyage07">
                     <img src="images/colomb.jpeg" alt="colomb">
                 </a>
                 <h4>À Bord avec Christophe Colomb</h4>
@@ -123,7 +123,7 @@ session_start();
             </article>
 
             <article class="circuit">
-                <a href="voyage.php?titre=Le+Secret+des+Pyramides">
+                <a href="voyage.php?id=voyage08">
                     <img src="images/pyramides.jpeg" alt="Construction des Pyramides">
                 </a>
                 <h4>Le Secret des Pyramides</h4>
@@ -131,7 +131,7 @@ session_start();
             </article>
 
             <article class="circuit">
-                <a href="voyage.php?titre=Révolution+à+Paris">
+                <a href="voyage.php?id=voyage09">
                     <img src="images/bastille.jpeg" alt="Prise de la Bastille">
                 </a>
                 <h4>Révolution à Paris</h4>
@@ -139,7 +139,7 @@ session_start();
             </article>
 
             <article class="circuit">
-                <a href="voyage.php?titre=L'Enfer+des+Tranchées">
+                <a href="voyage.php?id=voyage10">
                     <img src="images/1ere_gm.jpeg" alt="Première Guerre Mondiale">
                 </a>
                 <h4>L'Enfer des Tranchées</h4>
@@ -147,7 +147,7 @@ session_start();
             </article>
 
             <article class="circuit">
-                <a href="voyage.php?titre=Mission+Résistance">
+                <a href="voyage.php?id=voyage11">
                     <img src="images/2eme_gm.jpeg" alt="Seconde Guerre Mondiale">
                 </a>
                 <h4>Mission Résistance</h4>
@@ -155,7 +155,7 @@ session_start();
             </article>
 
             <article class="circuit">
-                <a href="voyage.php?titre=Croisière+Interplanétaire">
+                <a href="voyage.php?id=voyage12">
                     <img src="images/croisiere_interplanetaire.jpeg" alt="Croisière Interplanétaire">
                 </a>
                 <h4>Croisière Interplanétaire</h4>
@@ -163,7 +163,7 @@ session_start();
             </article>
 
             <article class="circuit">
-                <a href="voyage.php?titre=Jeux+Olympiques+de+l'An+3000">
+                <a href="voyage.php?id=voyage13">
                     <img src="images/jo_3000.jpeg" alt="Jeux Olympiques de l'An 3000">
                 </a>
                 <h4>Jeux Olympiques de l'An 3000</h4>
