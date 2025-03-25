@@ -31,7 +31,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggle_admin']) && is
 }
 
 $users = json_decode(file_get_contents($file), true);
+
+// Pagination
+$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+$usersPerPage = 5;
+$totalUsers = count($users);
+$totalPages = ceil($totalUsers / $usersPerPage);
+$offset = ($page - 1) * $usersPerPage;
+$usersPage = array_slice($users, $offset, $usersPerPage);
+
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -75,7 +85,7 @@ $users = json_decode(file_get_contents($file), true);
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($users as $user): ?>
+            <?php foreach ($usersPage as $user): ?>
                 <tr>
                     <td><?= htmlspecialchars($user['nom']) ?></td>
                     <td><?= htmlspecialchars($user['prenom']) ?></td>
@@ -101,6 +111,18 @@ $users = json_decode(file_get_contents($file), true);
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <?php if ($totalPages > 1): ?>
+    <div class="pagination">
+      <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+        <a href="?<?= http_build_query(array_merge($_GET, ['page' => $i])) ?>"
+           <?= $i === $page ? 'style="font-weight: bold;"' : '' ?>>
+          <?= $i ?>
+        </a>
+      <?php endfor; ?>
+    </div>
+    <?php endif; ?>
+
     </main>   
     <footer>
         <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
