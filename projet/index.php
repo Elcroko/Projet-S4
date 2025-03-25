@@ -75,7 +75,7 @@ session_start();
             <div class="circuits-container">
 
                 <article class="circuit">
-                    <a href="voyage.php?titre=Le+Jour+de+votre+Mort">
+                    <a href="voyage.php?id=voyage01">
                         <img src="images/mort.jpeg" alt="Illustration du circuit Le jour de votre Mort">
                     </a>
                     <h4>Le Jour de votre Mort</h4>
@@ -83,7 +83,7 @@ session_start();
                 </article>
 
                 <article class="circuit">
-                    <a href="voyage.php?titre=La+Préhistoire">
+                    <a href="voyage.php?id=voyage02">
                         <img src="images/Udino.jpeg" alt="Illustration du circuit La Préhistoire">
                     </a>
                     <h4>La Préhistoire</h4>
@@ -91,7 +91,7 @@ session_start();
                 </article>
 
                 <article class="circuit">
-                    <a href="voyage.php?titre=Fin+du+Monde">
+                    <a href="voyage.php?id=voyage03">
                         <img src="images/fin_du_monde.jpeg" alt="Illustration du circuit Fin du Monde">
                     </a>
                     <h4>Fin du Monde</h4>
@@ -99,7 +99,7 @@ session_start();
                 </article>
 
                 <article class="circuit">
-                    <a href="voyage.php?titre=L'Époque+des+Vikings">
+                    <a href="voyage.php?id=voyage04">
                         <img src="images/vinkings.jpeg" alt="Vikings">
                     </a>
                     <h4>L'Époque des Vikings</h4>
@@ -107,7 +107,7 @@ session_start();
                 </article>
 
                 <article class="circuit">
-                    <a href="voyage.php?titre=L'Ère+du+Bitcoin">
+                    <a href="voyage.php?id=voyage06">
                         <img src="images/bitcoin.jpeg" alt="bitcoin">
                     </a>
                     <h4>L'Ère du Bitcoin</h4>
@@ -115,7 +115,7 @@ session_start();
                 </article>
 
                 <article class="circuit">
-                    <a href="voyage.php?titre=À+Bord+avec+Christophe+Colomb">
+                    <a href="voyage.php?id=voyage07">
                         <img src="images/colomb.jpeg" alt="colomb">
                     </a>
                     <h4>À Bord avec Christophe Colomb</h4>
