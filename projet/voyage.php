@@ -19,7 +19,6 @@ $data = json_decode(file_get_contents($nom_fichier), true);
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($data['titre']) ?> - Tempus Odyssey</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/voyage.css">
 </head>
 <body>
 <header>
