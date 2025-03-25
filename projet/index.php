@@ -46,7 +46,6 @@ session_start();
                 <h2 class="hero-title">Embarquez pour un voyage à travers le temps</h2>
                 <p class="hero-subtitle">Revivez les époques légendaires et percez les mystères du futur.</p>
                 <a href="circuits.php" class="btn">Explorer</a>
-                <input type="text" class="search-bar" placeholder= "Votre voyage temporel commence ici !">
             </div>
         </section>
 
