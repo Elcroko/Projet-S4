@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Audiowide', sans-serif;
+    background-color: #365829; 
+    color: white;
+    text-align: center;
+    font-size: 67%;
+}
+
+.main-content {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ============================== */
+/* HEADER */
+/* ============================== */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+      background:linear-gradient(5deg, #7cbc6c, #c1f762);
+    width: 100%;
+}
+
+.logo {
+    width: 150px; 
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.1); 
+}
+
+.site-title {
+    font-size: 28px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(193, 247, 98, 0.5);   
+}
+
+/* ============================== */
+/* Navigation */
+/* ============================== */
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #c1f762;
+}
+
+/* ============================== */
+/* TERME ET CONDITIONS */
+/* ============================== */
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+
+}
+
+.terms-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+.terms-container h2 {
+    font-size: 40px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.terms-container h3 {
+    font-size: 28px;
+    color: white;
+    margin-top: 20px;
+}
+
+.terms-container p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+/* ============================== */
+/* FOOTER */
+/* ============================== */
+
+footer {
+    width: 100%;
+    padding: 25px;
+    background: rgba(199, 250, 108, 0.3);
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: auto;
+}
