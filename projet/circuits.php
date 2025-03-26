@@ -121,7 +121,7 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
             <h3>Nos circuits temporels</h3>
             <div class="circuits-container">
             <?php if (count($voyagesPage) === 0): ?>
-                <p>Aucun résultat pour cette recherche.</p>
+                <p class="no-result">Aucun résultat pour cette recherche.</p>
             <?php else: ?>
                 <?php foreach ($voyagesPage as $index => $voyage): ?>
                 <article class="circuit">
