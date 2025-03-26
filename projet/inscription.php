@@ -6,7 +6,7 @@ session_start();
 
 
 $file = 'json/utilisateurs.json';
-$message = "";
+$erreurs = [];
 
 // Créer le fichier s'il n'existe pas
 if (!file_exists($file)) {
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
-    $email = $_POST['email'];
+    $email = strtolower($_POST['email']);
     $mot_de_passe = $_POST['mot_de_passe'];
     $confirm_mdp = $_POST['confirm_mdp'];
     $date_naissance = $_POST['date_naissance'];
@@ -25,11 +25,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $terms = isset($_POST['terms']) ? true : false;
 
 
-    // Vérification de l'âge
-    $age = date_diff(date_create($date_naissance), date_create('today'))->y;
-    if ($age < 18) {
-        $message = "Vous devez avoir au moins 18 ans pour vous inscrire.";
-        exit;
+    // Vérification de la date de naissance
+    $birthDate = DateTime::createFromFormat('Y-m-d', $date_naissance);
+    $today = new DateTime();
+
+    if (!$birthDate || $birthDate > $today) {
+        $erreurs[] = "La date de naissance est invalide.";
+    } else {
+        $age = $today->diff($birthDate)->y;
+        if ($age < 18) {
+            $erreurs[] = "Vous devez avoir au moins 18 ans pour vous inscrire.";
+        }
     }
 
     // Vérifier si tous les champs sont remplis
@@ -40,56 +46,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $message = "Email invalide !";
     } else {
-        // Hacher le mot de passe 
-        $mdp_hacher = password_hash($mot_de_passe, PASSWORD_DEFAULT);
+        if (empty($erreurs)){
+            // Hacher le mot de passe 
+            $mdp_hacher = password_hash($mot_de_passe, PASSWORD_DEFAULT);
 
-        // Charger les utilisateurs existants depuis le fichier JSON
-        $data = file_get_contents($file);
-        $users = json_decode($data, true);
+            // Charger les utilisateurs existants depuis le fichier JSON
+            $data = file_get_contents($file);
+            $users = json_decode($data, true);
 
-        // Vérifier si l'email existe déjà
-        $emailExists = false;
-        foreach ($users as $user) {
-            if ($user['email'] === $email) {
-                $emailExists = true;
-                break;
+            // Vérifier si l'email existe déjà
+            $emailExists = false;
+            foreach ($users as $user) {
+                if ($user['email'] === $email) {
+                    $emailExists = true;
+                    break;
+                }
             }
-        }
 
-        if ($emailExists) {
-            $message = "Cet email est déjà utilisé !";
-        } else {
-            // Créer un nouvel utilisateur
-            $newUser = [
-                "id" => count($users) + 1,
-                "nom" => $nom,
-                "prenom" => $prenom,
-                "email" => $email,
-                "mot_de_passe" => $mdp_hacher,
-                "date_naissance" => $date_naissance,
-                "date_inscription" => date("d/m/Y"),
-                "admin" => false,
-                "nombre_voyages" => 0,
-                "telephone" => $telephone
-            ];
+            if ($emailExists) {
+                $message = "Cet email est déjà utilisé !";
+            } else {
+                // Créer un nouvel utilisateur
+                $newUser = [
+                    "id" => count($users) + 1,
+                    "nom" => $nom,
+                    "prenom" => $prenom,
+                    "email" => $email,
+                    "mot_de_passe" => $mdp_hacher,
+                    "date_naissance" => $date_naissance,
+                    "date_inscription" => date("d/m/Y"),
+                    "admin" => false,
+                    "nombre_voyages" => 0,
+                    "telephone" => $telephone
+                ];
 
-            // Ajouter le nouvel utilisateur au tableau
-            $users[] = $newUser;
+                // Ajouter le nouvel utilisateur au tableau
+                $users[] = $newUser;
 
-           // Enregistrer les données mises à jour dans le fichier JSON
-           if (file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT)) === false) {
-            $message = "Erreur lors de l'enregistrement des données !";
-        } else {
-            $_SESSION['user'] = [
-                'id' => $newUser['id'],
-                'nom' => $newUser['nom'],
-                'prenom' => $newUser['prenom'],
-                'email' => $newUser['email']
-            ];
-            $_SESSION['role'] = $newUser['admin'] === true ? 'admin' : 'user';
+            // Enregistrer les données mises à jour dans le fichier JSON
+            if (file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT)) === false) {
+                $message = "Erreur lors de l'enregistrement des données !";
+            } else {
+                $_SESSION['user'] = [
+                    'id' => $newUser['id'],
+                    'nom' => $newUser['nom'],
+                    'prenom' => $newUser['prenom'],
+                    'email' => $newUser['email']
+                ];
+                $_SESSION['role'] = $newUser['admin'] === true ? 'admin' : 'user';
 
-            header("Location: index.php");
-            exit;
+                header("Location: index.php");
+                exit;
+                }
             }
         }
     }
@@ -137,21 +145,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h2>Inscription</h2>
             <p>Rejoignez-nous pour explorer les voyages temporels !</p>
 
-            <?php if (!empty($message)): ?>
-                <p style="color: <?= strpos($message, 'réussie') !== false ? 'green' : 'red' ?>;"><?= $message ?></p>
+            <?php if (!empty($erreurs)): ?>
+                <div class="erreurs">
+                    <?php foreach ($erreurs as $err): ?>
+                        <p style="color: red; font-weight: bold;"><?= htmlspecialchars($err) ?></p>
+                    <?php endforeach; ?>
+                </div>
             <?php endif; ?>
 
             <form action="inscription.php" method="POST">
                 <input type="text" id="nom" name="nom" placeholder="Nom" required>
                 <input type="text" id="prenom" name="prenom" placeholder="Prénom" required>
-                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input type="email" id="email" name="email" placeholder="Email" required style="text-transform: lowercase;">
                 <input type="password" id="mot_de_passe" name="mot_de_passe" placeholder="Mot de passe" required>
                 <input type="password" id="confirm_mdp" name="confirm_mdp" placeholder="Confirmer le mot de passe" required>
-                <input type="date" id="date_naissance" name="date_naissance" required>
+                <input type="date" name="date_naissance" max="<?= date('Y-m-d') ?>">
                 <input type="tel" name="telephone" placeholder="Téléphone" required>
                 <div class="checkbox-container">
                     <input type="checkbox" id="terms" name="terms" required>
-                    <p>J'accepte les <a href="termes.html" target="_blank">termes et conditions</a></p>
+                    <p>J'accepte les <a href="termes.html">termes et conditions</a></p>
                 </div>
                 <button type="submit">S'inscrire</button>
             </form>
