@@ -1,33 +1,48 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start();
 
-$file = 'json/utilisateurs.json';
+// ↓ Bloc ajouté pour gérer la sauvegarde des modifications
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_SESSION['user']['id'];
+    $file = 'json/utilisateurs.json';
+    $users = json_decode(file_get_contents($file), true);
 
-if (!isset($_SESSION['user'])) {
-    header("Location: connexion.php");
-    exit;
-}
-
-$userEmail = $_SESSION['user']['email'];
-$user = null;
-
-if (file_exists($file)) {
-    $data = file_get_contents($file);
-    $users = json_decode($data, true);
-
-    foreach ($users as $u) {
-        if ($u['email'] === $userEmail) {
-            $user = $u;
+    // Mise à jour des champs modifiables
+    foreach ($users as &$user) {
+        if ($user['id'] == $id) {
+            $user['nom'] = $_POST['nom'];
+            $user['prenom'] = $_POST['prenom'];
+            $user['email'] = $_POST['email'];
+            $user['telephone'] = $_POST['telephone'];
             break;
         }
     }
+
+    // Sauvegarde dans le fichier JSON
+    file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT));
+
+    // Mise à jour de la session
+    $_SESSION['user']['nom'] = $_POST['nom'];
+    $_SESSION['user']['prenom'] = $_POST['prenom'];
+    $_SESSION['user']['email'] = $_POST['email'];
 }
 
-if (!$user) {
-    echo "Utilisateur non trouvé.";
-    exit;
+// Charger les infos utilisateur
+$file = 'json/utilisateurs.json';
+$users = json_decode(file_get_contents($file), true);
+$id = $_SESSION['user']['id'];
+$user = null;
+
+foreach ($users as $u) {
+    if ($u['id'] == $id) {
+        $user = $u;
+        break;
+    }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -66,51 +81,64 @@ if (!$user) {
     </header>
     
     <!-- Contenu principal -->
-    <main class="profil-container">
-        <div class="profil-header">
-            <div class="profil-photo">
-                <img src="images/profil.jpg" alt="Photo de profil">
-                <button class="edit-photo-btn">Changer</button>
-            </div>
-            <h2><?= htmlspecialchars($user['prenom']) . ' ' . htmlspecialchars($user['nom']) ?></h2>
-            <p class="profil-email"><?= htmlspecialchars($user['email']) ?></p>
-        </div>
-        
-        <form class="profil-form">
-            <div class="form-group">
-                <label for="nom">Nom :</label>
-                <input type="text" id="nom" value="<?= htmlspecialchars($user['nom']) ?>" readonly>
-                <button type="button" class="edit-btn"></button>
-            </div>
-            <div class="form-group">
-                <label for="prenom">Prénom :</label>
-                <input type="text" id="prenom" value="<?= htmlspecialchars($user['prenom']) ?>" readonly>
-            </div>
-            <div class="form-group">
-                <label for="email">Email :</label>
-                <input type="email" id="email" value="<?= htmlspecialchars($user['email']) ?>" readonly>
-                <button type="button" class="edit-btn"></button>
-            </div>
-            <div class="form-group">
-                <label for="date_naissance">Date de naissance :</label>
-                <input type="text" id="date_naissance" value="<?= htmlspecialchars($user['date_naissance']) ?>" readonly>
-            </div>
-            <div class="form-group">
-                <label for="date_inscription">Date d'inscription :</label>
-                <input type="text" id="date_inscription" value="<?= htmlspecialchars($user['date_inscription']) ?>" readonly>
-            </div>
-            <div class="form-group">
-                <label for="nombre_voyages">Nombre de voyages :</label>
-                <input type="text" id="nombre_voyages" value="<?= htmlspecialchars($user['nombre_voyages']) ?>" readonly>
-            </div>
-            <div class="form-group">
-                <label for="telephone">Téléphone :</label>
-                <input type="tel" id="telephone" value="<?= htmlspecialchars($user['telephone']) ?>" readonly>
-            </div>
+    <main>
+        <?php
+        $file = 'json/utilisateurs.json';
+        $users = json_decode(file_get_contents($file), true);
+        $id = $_SESSION['user']['id'];
+        $user = null;
 
-            
-            <button type="submit" class="save-btn">Enregistrer les modifications</button>
-        </form>
+        foreach ($users as $u) {
+            if ($u['id'] == $id) {
+                $user = $u;
+                break;
+            }
+        }
+        ?>
+         <?php if ($user): ?>
+            <section class="profil-container">
+            <h2>Informations personnelles</h2>
+                <form method="post" action="profil.php" class="profil-form">
+                
+                <div class="form-group">
+                    <label for="nom">Nom :</label>
+                    <input type="text" name="nom" value="<?= htmlspecialchars($user['nom']) ?>" required>
+                    <button type="button" class="edit-btn">✏️</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="prenom">Prénom :</label>
+                    <input type="text" name="prenom" value="<?= htmlspecialchars($user['prenom']) ?>" required>
+                    <button type="button" class="edit-btn">✏️</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required>
+                    <button type="button" class="edit-btn">✏️</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="telephone">Téléphone :</label>
+                    <input type="tel" name="telephone" value="<?= htmlspecialchars($user['telephone']) ?>" required>
+                    <button type="button" class="edit-btn">✏️</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="date_inscription">Date d'inscription :</label>
+                    <input type="text" name="date_inscription" value="<?= htmlspecialchars($user['date_inscription']) ?>" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre_voyages">Nombre de voyages :</label>
+                    <input type="number" name="nombre_voyages" value="<?= htmlspecialchars($user['nombre_voyages']) ?>" readonly>
+                </div>
+                    <button type="submit" class="save-btn">Enregistrer les modifications</button>
+                </form>
+            </section>
+        <?php else: ?>
+            <p>Utilisateur introuvable.</p>
+        <?php endif; ?>
     </main>
 
     <!-- Pied de page -->
