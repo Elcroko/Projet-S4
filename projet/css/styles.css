@@ -189,6 +189,16 @@ nav ul li a:hover {
 /* Circuits */
 /* ============================== */
 
+.featured h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+
 .circuits-container {
     display: flex;
     justify-content: center;
