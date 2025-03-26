@@ -96,13 +96,13 @@ $usersPage = array_slice($users, $offset, $usersPerPage);
                     <td><?= htmlspecialchars($user['nombre_voyages']) ?></td>
                     <td><?= $user['admin'] ? 'Oui' : 'Non' ?></td>
                     <td>
-                        <?php if ($user['email'] !== $_SESSION['user']['email']): ?>
-                            <form method="POST" action="admin.php" style="display:inline;">
-                                <input type="hidden" name="email" value="<?= htmlspecialchars($user['email']) ?>">
-                                <button type="submit" name="toggle_admin">
-                                    <?= $user['admin'] ? 'Retirer Admin' : 'Rendre Admin' ?>
-                                </button>
-                            </form>
+                    <?php if ($user['email'] !== $_SESSION['user']['email']): ?>
+                        <form method="POST" action="admin.php" style="display:inline;">
+                            <input type="hidden" name="email" value="<?= htmlspecialchars($user['email']) ?>">
+                            <button type="submit" name="toggle_admin" class="admin-btn">
+                                <?= $user['admin'] ? 'Retirer Admin' : 'Rendre Admin' ?>
+                            </button>
+                        </form>
                         <?php else: ?>
                             <em>Vous</em>
                         <?php endif; ?>
