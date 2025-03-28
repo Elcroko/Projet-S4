@@ -1,0 +1,47 @@
+{
+    "titre": "La Préhistoire",
+    "description": "Évitez les prédateurs préhistoriques et survivez dans un monde sauvage et impitoyable.",
+    "image" : "images/Udino.jpeg",
+    "dates": {
+    "choix_date_depart": true,
+    "durée": "3 jours"
+  },
+  "prix_base": 1917,
+  "prix_total": 0,
+  "paiement": false,
+  "nombre_personnes": 0,
+  "personnes": [],
+  "etape1": [{
+    "options_disponibles": {
+      "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
+      "activite": ["Chasse au mammouth", "Allumage de feu", "Peinture rupestre", "Aucune option"],
+      "hebergement": ["Grotte naturelle", "Tente peau d’animal", "Cabane en bois", "Aucune option"],
+      "restauration": ["Viande crue", "Racines & baies", "Poisson grillé", "Aucune option"],
+      "transport": ["À pied", "Chariot en bois", "Dos de dinosaure", "Aucune option"]
+    },
+    "options_choisies": {},
+    "personnes_supplementaires": []
+  }],
+  "etape2": [{
+    "options_disponibles": {
+      "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
+      "activite": ["Chasse au mammouth", "Allumage de feu", "Peinture rupestre", "Aucune option"],
+      "hebergement": ["Grotte naturelle", "Tente peau d’animal", "Cabane en bois", "Aucune option"],
+      "restauration": ["Viande crue", "Racines & baies", "Poisson grillé", "Aucune option"],
+      "transport": ["À pied", "Chariot en bois", "Dos de dinosaure", "Aucune option"]
+    },
+    "options_choisies": {},
+    "personnes_supplementaires": []
+  }],
+  "etape3": [{
+    "options_disponibles": {
+      "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
+      "activite": ["Chasse au mammouth", "Allumage de feu", "Peinture rupestre", "Aucune option"],
+      "hebergement": ["Grotte naturelle", "Tente peau d’animal", "Cabane en bois", "Aucune option"],
+      "restauration": ["Viande crue", "Racines & baies", "Poisson grillé", "Aucune option"],
+      "transport": ["À pied", "Chariot en bois", "Dos de dinosaure", "Aucune option"]
+    },
+    "options_choisies": {},
+    "personnes_supplementaires": []
+  }]
+}

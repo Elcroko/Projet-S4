@@ -1,0 +1,36 @@
+{
+    "titre": "L'Enfer des Tranchées",
+    "description" : "Expérimentez la dure réalité des soldats de la Première Guerre mondiale.",
+    "image" : "images/1ere_gm.jpeg",
+    "dates": {
+        "choix_date_depart": true,
+        "duree": "10 jours"
+    },
+    "prix_base": 1899,
+  "prix_total": 0,
+  "paiement": false,
+  "nombre_personnes": 0,
+  "personnes": [],
+  "etape1": [{
+    "options_disponibles": {
+      "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
+      "activite": ["Simulation de tranchée", "Formation camouflage", "Lecture de lettres", "Aucune option"],
+      "hebergement": ["Tranchée", "Tente militaire", "Bunker reconstitué", "Aucune option"],
+      "restauration": ["Rations militaires", "Soupes de soldat", "Biscuits secs", "Aucune option"],
+      "transport": ["Train de guerre", "Camion militaire", "À pied", "Aucune option"]
+    },
+    "options_choisies": {},
+    "personnes_supplementaires": []
+  }],
+  "etape2": [{
+    "options_disponibles": {
+      "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
+      "activite": ["Simulation de tranchée", "Formation camouflage", "Lecture de lettres", "Aucune option"],
+      "hebergement": ["Tranchée", "Tente militaire", "Bunker reconstitué", "Aucune option"],
+      "restauration": ["Rations militaires", "Soupes de soldat", "Biscuits secs", "Aucune option"],
+      "transport": ["Train de guerre", "Camion militaire", "À pied", "Aucune option"]
+    },
+    "options_choisies": {},
+    "personnes_supplementaires": []
+  }]
+}
