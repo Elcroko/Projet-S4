@@ -4,6 +4,11 @@ ini_set('display_errors', 1);
 ob_start(); 
 session_start();
 
+if (isset($_SESSION['user'])) {
+    header("Location: index.php");
+    exit;
+}
+
 
 $file = 'json/utilisateurs.json';
 $erreurs = [];
@@ -91,7 +96,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     'id' => $newUser['id'],
                     'nom' => $newUser['nom'],
                     'prenom' => $newUser['prenom'],
-                    'email' => $newUser['email']
+                    'email' => $newUser['email'],
+                    'date_naissance' => $user['date_naissance']
                 ];
                 $_SESSION['role'] = $newUser['admin'] === true ? 'admin' : 'user';
 
