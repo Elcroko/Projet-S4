@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Audiowide', sans-serif;
+    background-color: #365829; 
+    color: white;
+    text-align: center;
+    font-size: 67%;
+    
+    
+}
+
+
+.main-content {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ============================== */
+/* HEADER */
+/* ============================== */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(5deg, #7cbc6c, #c1f762);
+    width: 100%;
+    margin-bottom: 40px; 
+}
+
+.logo {
+    width: 150px; 
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.1); 
+}
+
+.site-title {
+    font-size: 28px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(193, 247, 98, 0.5);
+    
+}
+
+/* ============================== */
+/* Navigation */
+/* ============================== */
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #c1f762;
+}
+
+.recap-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    background-color: #1e2d1e;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #72ff72;
+    margin-bottom: 60px;
+}
+
+.recap-container h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #c4ff6f;
+}
+
+.recap-block {
+    margin-bottom: 30px;
+}
+
+.recap-block h3 {
+    font-size: 1.4em;
+    border-bottom: 2px solid #c4ff6f;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.recap-block h4 {
+    font-size: 1.2em;
+    margin: 20px 0 10px;
+    color: #c1f762;
+}
+
+.recap-block ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.recap-block ul li {
+    background-color: #203520;
+    border: 1px solid #4caf50;
+    margin-bottom: 6px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    text-align: left;
+    color: #f0f0f0;
+}
+
+.recap-block li {
+    margin-bottom: 8px;
+    padding: 8px;
+    background-color: #2a3c2a;
+    border-radius: 8px;
+}
+
+.price-total {
+    text-align: center;
+    font-size: 1.8em;
+    margin-top: 30px;
+    font-weight: bold;
+    color: #e1ff7d;
+    margin-bottom: 30px;
+}
+
+.retour-voyage {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.retour-btn {
+    background-color: #8bc34a;
+    color: black;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.retour-btn:hover {
+    background-color: #76a636;
+}
+
+
+
+/* ============================== */
+/* FOOTER */
+/* ============================== */
+
+footer {
+    width: 100%;
+    padding: 25px;
+    background: rgba(199, 250, 108, 0.3);
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: auto; 
+}

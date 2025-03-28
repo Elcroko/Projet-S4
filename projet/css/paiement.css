@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Audiowide', sans-serif;
+    background-color: #365829; 
+    color: white;
+    text-align: center;
+    font-size: 67%;
+    
+    
+}
+
+
+.main-content {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ============================== */
+/* HEADER */
+/* ============================== */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(5deg, #7cbc6c, #c1f762);
+    width: 100%;
+    margin-bottom: 40px; 
+}
+
+.logo {
+    width: 150px; 
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.1); 
+}
+
+.site-title {
+    font-size: 28px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(193, 247, 98, 0.5);
+    
+}
+
+/* ============================== */
+/* Navigation */
+/* ============================== */
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #c1f762;
+}
+
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #122212;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #8bc34a;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #c1f762;
+}
+
+h3 {
+    color: #a5ea5d;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+button,
+.retour-btn {
+    display: inline-block;
+    background-color: #8bc34a;
+    color: black;
+    padding: 12px 20px;
+    margin: 20px auto;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+button:hover,
+.retour-btn:hover {
+    background-color: #76a636;
+}
+
+.retour-voyage {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.rappel {
+    background-color: #203520;
+    border-left: 5px solid #c1f762;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+/* ============================== */
+/* FOOTER */
+/* ============================== */
+
+footer {
+    width: 100%;
+    padding: 25px;
+    background: rgba(199, 250, 108, 0.3);
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: auto; 
+}
+

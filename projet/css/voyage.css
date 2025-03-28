@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Audiowide', sans-serif;
+    background-color: #365829; 
+    color: white;
+    text-align: center;
+    font-size: 67%;
+    
+}
+
+
+.main-content {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ============================== */
+/* HEADER */
+/* ============================== */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(5deg, #7cbc6c, #c1f762);
+    width: 100%;
+    margin-bottom: 40px; 
+}
+
+.logo {
+    width: 150px; 
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.1); 
+}
+
+.site-title {
+    font-size: 28px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(193, 247, 98, 0.5);
+    
+}
+
+/* ============================== */
+/* Navigation */
+/* ============================== */
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #c1f762;
+}
+
+/* ============================== */
+/* Formulaire de voyage */
+/* ============================== */
+
+.voyage-form {
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(193, 247, 98, 0.2);
+}
+
+.voyage-form h2 {
+    font-size: 2.2rem;
+    color: #c1f762;
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 20px;
+}
+
+.voyage-form h3 {
+    font-size: 1.6rem;
+    margin-top: 30px;
+    color: #c1f762;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.voyage-form h4 {
+    font-size: 1.4rem;
+    color: #aaff66;
+    margin-top: 20px;
+}
+
+.voyage-form p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #ddd;
+}
+
+.voyage-form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 1rem;
+    color: white;
+    text-align: left;
+}
+
+.voyage-form input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 5px;
+    font-size: 1rem;
+    background: linear-gradient(to right, #7cbc6c, #365829);
+    color: #fdfce5;
+    font-weight: bold;
+    border: 2px solid #c1f762;
+    box-shadow: inset 0 0 5px rgba(193, 247, 98, 0.3);
+    transition: 0.3s ease;
+}
+
+.voyage-form select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 5px;
+    font-size: 1rem;
+    background: linear-gradient(to right, #c1f762, #8fd17f);
+    color: #1a1a1a;
+    font-weight: bold;
+    border: 2px solid #7cbc6c;
+    box-shadow: inset 0 0 5px rgba(193, 247, 98, 0.3);
+    transition: 0.3s ease;
+}
+
+.voyage-form input:focus,
+.voyage-form select:focus {
+    outline: none;
+    box-shadow: 0 0 10px #c1f762;
+    border-color: #c1f762;
+}
+
+
+.voyage-form .step {
+    background-color: rgba(255,255,255,0.07);
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.voyage-form button {
+    margin-top: 30px;
+    padding: 14px 24px;
+    font-size: 1.1rem;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(45deg, #7cbc6c, #c1f762);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.voyage-form button:hover {
+    background: linear-gradient(45deg, #c1f762, #7cbc6c);
+    transform: scale(1.05);
+}
+
+.voyage-form .etapes-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.voyage-form .etapes-wrapper .step {
+    flex: 0 0 48%;
+}
+
+::placeholder {
+    font-style: italic;
+    color: #FFFAF0; 
+    opacity: 0.9; 
+}
+
+
+/* ============================== */
+/* Retour Aux Circuits */
+/* ============================== */
+
+.retour-circuits {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 20px;
+    background: linear-gradient(45deg, #5c7d4f, #8fdb61);
+    color: #1a1a1a;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(193, 247, 98, 0.2);
+    transition: 0.3s ease;
+}
+
+.retour-circuits:hover {
+    background: linear-gradient(45deg, #c1f762, #7cbc6c);
+    transform: scale(1.05);
+    color: black;
+}
+
+/* ============================== */
+/* FOOTER */
+/* ============================== */
+
+footer {
+    width: 100%;
+    padding: 25px;
+    background: rgba(199, 250, 108, 0.3);
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: auto; 
+}
+
