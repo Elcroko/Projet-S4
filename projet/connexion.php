@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (isset($_SESSION['user'])) {
+    header("Location: index.php");
+    exit;
+}
+
 $file = 'json/utilisateurs.json';
 $message = "";
 
@@ -26,7 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             "id" => $user['id'],
                             "nom" => $user['nom'],
                             "prenom" => $user['prenom'],
-                            "email" => $user['email']
+                            "email" => $user['email'],
+                            'date_naissance' => $user['date_naissance']
                         ];
                         $_SESSION['role'] = $user['admin'] === true ? 'admin' : 'user';
 
