@@ -72,54 +72,53 @@ session_start();
         <section class="featured">
             <h3>Nos Voyages les Plus Demandés </h3>
             <div class="circuits-container">
-
-                <article class="circuit">
-                    <a href="voyage.php?id=voyage01">
+                <a href="voyage.php?id=voyage01" class="circuit-link">
+                    <article class="circuit">
                         <img src="images/mort.jpeg" alt="Illustration du circuit Le jour de votre Mort">
-                    </a>
-                    <h4>Le Jour de votre Mort</h4>
-                    <p>Oserez-vous affronter votre destinée et découvrir ce que l’avenir vous réserve ?</p>
-                </article>
+                        <h4>Le Jour de votre Mort</h4>
+                        <p>Oserez-vous affronter votre destinée et découvrir ce que l’avenir vous réserve ?</p>
+                    </article>
+                </a>
 
+                <a href="voyage.php?id=voyage02" class="circuit-link">
                 <article class="circuit">
-                    <a href="voyage.php?id=voyage02">
-                        <img src="images/Udino.jpeg" alt="Illustration du circuit La Préhistoire">
-                    </a>
+                    <img src="images/Udino.jpeg" alt="Illustration du circuit La Préhistoire">
                     <h4>La Préhistoire</h4>
                     <p>Évitez les prédateurs préhistoriques et survivez dans un monde sauvage et impitoyable.</p>
                 </article>
+            </a>
 
+            <a href="voyage.php?id=voyage03" class="circuit-link">
                 <article class="circuit">
-                    <a href="voyage.php?id=voyage03">
-                        <img src="images/fin_du_monde.jpeg" alt="Illustration du circuit Fin du Monde">
-                    </a>
+                    <img src="images/fin_du_monde.jpeg" alt="Illustration du circuit Fin du Monde">
                     <h4>Fin du Monde</h4>
                     <p>Vivez en direct l’apocalypse et assistez aux derniers instants de l’humanité.</p>
                 </article>
+            </a>
 
+            <a href="voyage.php?id=voyage04" class="circuit-link">
                 <article class="circuit">
-                    <a href="voyage.php?id=voyage04">
-                        <img src="images/vinkings.jpeg" alt="Vikings">
-                    </a>
+                    <img src="images/vinkings.jpeg" alt="Vikings">
                     <h4>L'Époque des Vikings</h4>
                     <p>Rejoignez Ragnar et ses guerriers pour des raids épiques et une conquête sans pitié.</p>
                 </article>
+            </a>
 
+            <a href="voyage.php?id=voyage06" class="circuit-link">
                 <article class="circuit">
-                    <a href="voyage.php?id=voyage06">
-                        <img src="images/bitcoin.jpeg" alt="bitcoin">
-                    </a>
+                    <img src="images/bitcoin.jpeg" alt="bitcoin">
                     <h4>L'Ère du Bitcoin</h4>
                     <p>Voyagez dans le passé et changez votre destinée financière en maîtrisant la cryptomonnaie.</p>
                 </article>
+            </a>
 
+            <a href="voyage.php?id=voyage07" class="circuit-link">
                 <article class="circuit">
-                    <a href="voyage.php?id=voyage07">
-                        <img src="images/colomb.jpeg" alt="colomb">
-                    </a>
+                    <img src="images/colomb.jpeg" alt="colomb">
                     <h4>À Bord avec Christophe Colomb</h4>
                     <p>Traversez l’Atlantique et assistez à la découverte d’un Nouveau Monde.</p>
                 </article>
+            </a>
 
             </div>
         </section>
