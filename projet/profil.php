@@ -3,6 +3,12 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
 
+if (!isset($_SESSION['user'])) {
+    header("Location: index.php");
+    exit;
+}
+
+
 // ↓ Bloc ajouté pour gérer la sauvegarde des modifications
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_SESSION['user']['id'];
@@ -121,8 +127,15 @@ foreach ($users as $u) {
                 <div class="form-group">
                     <label for="telephone">Téléphone :</label>
                     <input type="tel" name="telephone" value="<?= htmlspecialchars($user['telephone']) ?>" required>
-                    <button type="button" class="edit-btn">✏️</button>
+                    <button type="button" class="edit-btn"></button>
                 </div>
+
+                <div class="form-group">
+                    <label for="date_naissance">Date de naissance : </label>
+                    <input type="date" id="date_naissance" name="date_naissance"
+                        value="<?= htmlspecialchars($user['date_naissance']) ?>" readonly>
+                </div>
+
 
                 <div class="form-group">
                     <label for="date_inscription">Date d'inscription :</label>
@@ -130,7 +143,7 @@ foreach ($users as $u) {
                 </div>
 
                 <div class="form-group">
-                    <label for="nombre_voyages">Nombre de voyages :</label>
+                    <label for="nombre_voyages">Voyages réservés :</label>
                     <input type="number" name="nombre_voyages" value="<?= htmlspecialchars($user['nombre_voyages']) ?>" readonly>
                 </div>
                     <button type="submit" class="save-btn">Enregistrer les modifications</button>
