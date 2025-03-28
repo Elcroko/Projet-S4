@@ -213,6 +213,17 @@ nav ul li a:hover {
     margin-bottom: 20px;
 }
 
+.circuit-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.circuit-link:hover .circuit {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #c1f762;
+    transition: all 0.3s ease-in-out;
+}
 
 .circuits-container {
     display: flex;
@@ -221,6 +232,7 @@ nav ul li a:hover {
     gap: 20px;
     margin: 20px auto;
     max-width: 1200px;
+    align-items: stretch;
 }
 
 .no-result {
@@ -240,7 +252,10 @@ nav ul li a:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    justify-content: space-between;
+    height: 100%;
 }
+
 .circuit:hover {
     transform: scale(1.1);
     box-shadow: 0 0 20px  #c1f762;
@@ -360,7 +375,6 @@ nav ul li a:hover {
     color: #333;
     border: 2px solid #c1f762;
 }
-
 
 /* ============================== */
 /* FOOTER */
