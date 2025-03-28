@@ -198,26 +198,44 @@ nav ul li a:hover {
     margin-top: 40px;
 }
 
+.circuit-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
 
+.circuit-link:hover .circuit {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #c1f762;
+    transition: all 0.3s ease-in-out;
+}
 .circuits-container {
     display: flex;
     justify-content: center;
     gap: 40px;
     flex-wrap: wrap;
+    align-items: stretch;
+    margin-bottom: 40px;
 }
 
 .circuit {
-    background: rgba(199, 250, 108, 0.2);
-    padding: 30px;
-    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
     text-align: center;
     width: 350px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+    text-align: center;
+    height: 100%; 
 }
 
 .circuit:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(193, 247, 98, 0.7);
+    box-shadow: 0 0 20px #c1f762;
 }
 
 .circuit img {
