@@ -124,13 +124,30 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
                 <p class="no-result">Aucun résultat pour cette recherche.</p>
             <?php else: ?>
                 <?php foreach ($voyagesPage as $index => $voyage): ?>
-                <article class="circuit">
-                    <a href="voyage.php?id=<?= 'voyage' . str_pad($index + 1 + $offset, 2, '0', STR_PAD_LEFT) ?>">
-                    <img src="<?= htmlspecialchars($voyage['image']) ?>" alt="Illustration du circuit <?= htmlspecialchars($voyage['titre']) ?>" />
+                    <a href="voyage.php?id=<?= 'voyage' . str_pad($index + 1 + $offset, 2, '0', STR_PAD_LEFT) ?>" class="circuit-link">
+                        <article class="circuit">
+                            <img src="<?= htmlspecialchars($voyage['image']) ?>" alt="Illustration du circuit <?= htmlspecialchars($voyage['titre']) ?>" />
+                            <h4><?= htmlspecialchars($voyage['titre']) ?></h4>
+                            <p><?= htmlspecialchars($voyage['description']) ?></p>
+
+                            <?php if (isset($voyage['dates']['duree'])): ?>
+                                <p><strong>Durée :</strong> <?= htmlspecialchars($voyage['dates']['duree']) ?></p>
+                            <?php endif; ?>
+
+                            <?php if (isset($voyage['prix_base'])): ?>
+                                <p><strong>A partir de </strong> <?= htmlspecialchars($voyage['prix_base']) ?> €</p>
+                            <?php endif; ?>
+
+                            <?php
+                            $nbEtapes = 0;
+                            foreach ($voyage as $cle => $valeur) {
+                                if (str_starts_with($cle, 'etape')) $nbEtapes++;
+                            }
+                            ?>
+                            <p><strong>Nombre d’étapes :</strong> <?= $nbEtapes ?></p>
+                        </article>
                     </a>
-                    <h4><?= htmlspecialchars($voyage['titre']) ?></h4>
-                    <p><?= htmlspecialchars($voyage['description']) ?></p>
-                </article>
+
                 <?php endforeach; ?>
             <?php endif; ?>
             </div>

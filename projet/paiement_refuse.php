@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Paiement refusé</title>
     <link rel="stylesheet" href="css/paiement.css">
+    <link rel="icon" type="image/png" href="images/portail.png">
+
 </head>
 <body>
 

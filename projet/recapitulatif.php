@@ -1,12 +1,33 @@
 <?php
 session_start();
+$isHistorique = false;
+$commande = null;
+$recapitulatif_id = 'voyage01'; // par défaut
 
-if (!isset($_SESSION['recapitulatif'])) {
-    header('Location: index.php');
-    exit;
+// Si l'utilisateur consulte un ancien voyage via l'historique
+if (isset($_GET['fichier'])) {
+    $fichierHistorique = 'paiements_json/' . basename($_GET['fichier']);
+    if (file_exists($fichierHistorique)) {
+        $commande = json_decode(file_get_contents($fichierHistorique), true);
+        $recapitulatif_id = $commande['voyage']['id'] ?? 'voyage01';
+        $isHistorique = true;
+        $data = $commande['voyage']; // ✅ on affiche les données de l’historique
+    } else {
+        echo "Erreur : fichier introuvable.";
+        exit;
+    }
 }
 
-$data = $_SESSION['recapitulatif'];
+// Sinon on affiche les données de la session (réservation en cours)
+if (!$isHistorique) {
+    if (!isset($_SESSION['recapitulatif'])) {
+        header('Location: index.php');
+        exit;
+    }
+
+    $data = $_SESSION['recapitulatif'];
+    $recapitulatif_id = $_SESSION['recapitulatif_id'] ?? 'voyage01';
+}
 ?>
 
 <!DOCTYPE html>
@@ -78,17 +99,21 @@ $data = $_SESSION['recapitulatif'];
                 <?php endforeach; ?>
             </div>
 
-            <div class="price-total">Prix total : <?= number_format($data['prix_total'], 0, ',', ' ') ?> €</div>
+        <div class="price-total">Prix total : <?= number_format($data['prix_total'], 0, ',', ' ') ?> €</div>
 
-            <div class="retour-voyage">
-                <form method="get" action="voyage.php">
-                    <input type="hidden" name="id" value="<?= htmlspecialchars($_SESSION['recapitulatif']['id'] ?? 'voyage01') ?>">
-                    <button type="submit" class="retour-btn">Modifier ce voyage</button>
-                </form>
-                <form action="cybank.php" method="post">
-                    <button type="submit" class="retour-btn">Confirmer la personnalisation et passer au paiement</button>
-                </form>
-            </div>
+            <?php if (!$isHistorique): ?>
+                <div class="retour-voyage">
+                    <form action="voyage.php" method="get">
+                        <input type="hidden" name="id" value="<?= htmlspecialchars($recapitulatif_id ?? ($_SESSION['recapitulatif_id'] ?? 'voyage01')) ?>">
+                        <button class="retour-btn">Modifier ce voyage</button>
+                    </form>
+
+                    <form action="cybank.php" method="post">
+                        <button type="submit" class="retour-btn">Confirmer la personnalisation et passer au paiement</button>
+                    </form>
+                </div>
+            <?php endif; ?>
+
         </div>
 
     </main>

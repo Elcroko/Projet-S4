@@ -66,6 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil - Tempus Odyssey</title>
     <link rel="stylesheet" href="css/voyage.css">
+    <link rel="icon" type="image/png" href="images/portail.png">
 </head>
 <body class="dynamic-bg" style="background-image: url('<?= htmlspecialchars($data['image']) ?>');">
 

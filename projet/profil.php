@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 session_start();
 
 if (!isset($_SESSION['user'])) {
-    header("Location: index.php");
+    header("Location: connexion.php");
     exit;
 }
 
@@ -101,57 +101,90 @@ foreach ($users as $u) {
             }
         }
         ?>
-         <?php if ($user): ?>
-            <section class="profil-container">
-            <h2>Informations personnelles</h2>
-                <form method="post" action="profil.php" class="profil-form">
-                
-                <div class="form-group">
-                    <label for="nom">Nom :</label>
-                    <input type="text" name="nom" value="<?= htmlspecialchars($user['nom']) ?>" required>
-                    <button type="button" class="edit-btn">✏️</button>
-                </div>
+        <div class="main-container">
+            <?php if ($user): ?>
+                <section class="profil-container">
+                    <h2>Informations personnelles</h2>
+                    <form method="post" action="profil.php" class="profil-form">
+                    
+                    <div class="form-group">
+                        <label for="nom">Nom :</label>
+                        <input type="text" name="nom" value="<?= htmlspecialchars($user['nom']) ?>" required>
+                        <button type="button" class="edit-btn"></button>
+                    </div>
 
-                <div class="form-group">
-                    <label for="prenom">Prénom :</label>
-                    <input type="text" name="prenom" value="<?= htmlspecialchars($user['prenom']) ?>" required>
-                    <button type="button" class="edit-btn">✏️</button>
-                </div>
+                    <div class="form-group">
+                        <label for="prenom">Prénom :</label>
+                        <input type="text" name="prenom" value="<?= htmlspecialchars($user['prenom']) ?>" required>
+                        <button type="button" class="edit-btn"></button>
+                    </div>
 
-                <div class="form-group">
-                    <label for="email">Email :</label>
-                    <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required>
-                    <button type="button" class="edit-btn">✏️</button>
-                </div>
+                    <div class="form-group">
+                        <label for="email">Email :</label>
+                        <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required>
+                        <button type="button" class="edit-btn"></button>
+                    </div>
 
-                <div class="form-group">
-                    <label for="telephone">Téléphone :</label>
-                    <input type="tel" name="telephone" value="<?= htmlspecialchars($user['telephone']) ?>" required>
-                    <button type="button" class="edit-btn"></button>
-                </div>
+                    <div class="form-group">
+                        <label for="telephone">Téléphone :</label>
+                        <input type="tel" name="telephone" value="<?= htmlspecialchars($user['telephone']) ?>" required>
+                        <button type="button" class="edit-btn"></button>
+                    </div>
 
-                <div class="form-group">
-                    <label for="date_naissance">Date de naissance : </label>
-                    <input type="date" id="date_naissance" name="date_naissance"
-                        value="<?= htmlspecialchars($user['date_naissance']) ?>" readonly>
-                </div>
+                    <div class="form-group">
+                        <label for="date_naissance">Date de naissance : </label>
+                        <input type="date" id="date_naissance" name="date_naissance"
+                            value="<?= htmlspecialchars($user['date_naissance']) ?>" readonly>
+                    </div>
 
 
-                <div class="form-group">
-                    <label for="date_inscription">Date d'inscription :</label>
-                    <input type="text" name="date_inscription" value="<?= htmlspecialchars($user['date_inscription']) ?>" readonly>
-                </div>
+                    <div class="form-group">
+                        <label for="date_inscription">Date d'inscription :</label>
+                        <input type="text" name="date_inscription" value="<?= htmlspecialchars($user['date_inscription']) ?>" readonly>
+                    </div>
 
-                <div class="form-group">
-                    <label for="nombre_voyages">Voyages réservés :</label>
-                    <input type="number" name="nombre_voyages" value="<?= htmlspecialchars($user['nombre_voyages']) ?>" readonly>
-                </div>
-                    <button type="submit" class="save-btn">Enregistrer les modifications</button>
-                </form>
+                    <div class="form-group">
+                        <label for="nombre_voyages">Voyages réservés :</label>
+                        <input type="number" name="nombre_voyages" value="<?= htmlspecialchars($user['nombre_voyages']) ?>" readonly>
+                    </div>
+                        <button type="submit" class="save-btn">Enregistrer les modifications</button>
+                    </form>
+                </section>
+            <?php else: ?>
+                <p>Utilisateur introuvable.</p>
+            <?php endif; ?>
+
+            <section class="historique">
+                <h2>Historique des voyages</h2>
+                <?php
+                $data = file_get_contents('json/utilisateurs.json');
+                $utilisateurs = json_decode($data, true);
+                $historique = [];
+
+                foreach ($utilisateurs as $user) {
+                    if ($user['email'] === $_SESSION['user']['email']) {
+                        $historique = $user['historique'] ?? [];
+                        break;
+                    }
+                }
+                ?>
+
+                <?php if (empty($historique)): ?>
+                    <p>Aucun voyage encore effectué.</p>
+                <?php else: ?>
+                    <ul>
+                    <?php foreach ($historique as $item): ?>
+                        <li>
+                            <strong><?= htmlspecialchars($item['titre']) ?></strong> —
+                            <?= htmlspecialchars($item['prix']) ?> €
+                            <a href="recapitulatif.php?fichier=<?= urlencode($item['fichier_commande']) ?>">Voir le récapitulatif</a>
+                        </li>
+                    <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
             </section>
-        <?php else: ?>
-            <p>Utilisateur introuvable.</p>
-        <?php endif; ?>
+        </div>
+
     </main>
 
     <!-- Pied de page -->

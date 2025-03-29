@@ -1,30 +1,88 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['recapitulatif']) || !isset($_SESSION['user'])) {
+if (!isset($_SESSION['recapitulatif']) || !isset($_SESSION['user'],$_SESSION['cybank_transaction'])) {
     header('Location: index.php');
     exit;
 }
 
-$commande = [
-    'utilisateur' => $_SESSION['user'],
-    'voyage' => $_SESSION['recapitulatif'],
-    'date' => date('Y-m-d H:i:s'),
-    'montant' => $_SESSION['cybank_montant'] ?? 0,
-    'transaction' => $_SESSION['cybank_transaction'] ?? 'inconnue',
-];
+// Si la transaction a déjà été enregistrée, ne pas la retraiter
+if (isset($_SESSION['paiement_enregistre']) && $_SESSION['paiement_enregistre'] === $_SESSION['cybank_transaction']) {
+    // Affichage seulement (aucune modification)
+} else {
 
-// Sauvegarde dans un fichier JSON
-if (!file_exists('paiements_json')) {
-    mkdir('paiements_json');
+    $commande = [
+        'utilisateur' => $_SESSION['user'],
+        'voyage' => $_SESSION['recapitulatif'],
+        'date' => date('Y-m-d H:i:s'),
+        'montant' => $_SESSION['cybank_montant'] ?? 0,
+        'transaction' => $_SESSION['cybank_transaction'] ?? 'inconnue',
+    ];
+
+    // Sauvegarde dans un fichier JSON
+    if (!file_exists('paiements_json')) {
+        mkdir('paiements_json');
+    }
+    $id_utilisateur = $_SESSION['user']['id'];
+    $datetime = date("Y-m-d_H.i.s"); // Ex: 2025-04-06_14-30-12
+    $filename = "paiements_json/commande_user{$id_utilisateur}_{$datetime}.json";
+
+    file_put_contents($filename, json_encode($commande, JSON_PRETTY_PRINT));
+
+    // Préparation d’une entrée pour l’historique
+    $titre = $commande['voyage']['titre'] ?? "Voyage inconnu";
+    $prix = $commande['montant'] ?? 0;
+    $historique_entree = [
+        'titre' => $titre,
+        'prix' => $prix,
+        'fichier_commande' => basename($filename)
+    ];
+
+    // Incrémenter le nombre de voyages de l'utilisateur
+    $utilisateursFile = 'json/utilisateurs.json';
+    if (file_exists($utilisateursFile)) {
+        $utilisateurs = json_decode(file_get_contents($utilisateursFile), true);
+        foreach ($utilisateurs as &$utilisateur) {
+            if ($utilisateur['email'] === $_SESSION['user']['email']) {
+                if (!isset($utilisateur['historique'])) {
+                    $utilisateur['historique'] = [];
+                }
+                // 🔒 Empêcher les doublons dans l’historique
+                $deja_present = false;
+                foreach ($utilisateur['historique'] as $voyage) {
+                    if ($voyage['fichier_commande'] === $historique_entree['fichier_commande']) {
+                        $deja_present = true;
+                        break;
+                    }
+                }
+                if (!$deja_present) {
+                    $utilisateur['historique'][] = $historique_entree;
+
+                    // ✅ Incrémenter le compteur une seule fois ici
+                    if (!isset($utilisateur['nombre_voyages'])) {
+                        $utilisateur['nombre_voyages'] = 1;
+                    } else {
+                        $utilisateur['nombre_voyages']++;
+                    }
+
+                    // Mise à jour session
+                    $_SESSION['user']['nombre_voyages'] = $utilisateur['nombre_voyages'];
+                }
+
+                break;
+            }
+        }
+        file_put_contents($utilisateursFile, json_encode($utilisateurs, JSON_PRETTY_PRINT));
+    }
+
+    // ✅ Marquer comme enregistré (pour éviter les doubles traitements)
+    $_SESSION['paiement_enregistre'] = true;
+
+    // 🧹 Supprime les infos sensibles (nettoyage après paiement)
+    unset($_SESSION['recapitulatif']);
+    unset($_SESSION['cybank_montant']);
+    unset($_SESSION['cybank_transaction']);
 }
-$id_utilisateur = $_SESSION['user']['id'];
-$datetime = date("Y-m-d_H.i.s"); // Ex: 2025-04-06_14-30-12
-$filename = "paiements_json/commande_user{$id_utilisateur}_{$datetime}.json";
-
-// Enregistre le fichier sans doublon
-file_put_contents($filename, json_encode($commande, JSON_PRETTY_PRINT));
-
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +91,8 @@ file_put_contents($filename, json_encode($commande, JSON_PRETTY_PRINT));
     <meta charset="UTF-8">
     <title>Paiement validé</title>
     <link rel="stylesheet" href="css/paiement.css">
+    <link rel="icon" type="image/png" href="images/portail.png">
+
 </head>
 <body>
 
