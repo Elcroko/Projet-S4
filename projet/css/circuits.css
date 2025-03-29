@@ -274,6 +274,17 @@ nav ul li a:hover {
     font-family: 'Orbitron', sans-serif;
 }
 
+.circuit p {
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    margin: 6px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.circuit p strong {
+    color: #c1f762;
+}
+
 /* ============================== */
 /* Barre de recherche */
 /* ============================== */
