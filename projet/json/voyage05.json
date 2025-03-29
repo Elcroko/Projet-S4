@@ -1,7 +1,7 @@
 {
     "titre": "À la Cour du Roi Soleil",
     "description": "Vivez dans le faste du château de Versailles et assistez aux intrigues royales.",
-    "image" : "images/chateau.jpeg",
+    "image" : "images/Chateau.jpeg",
     "dates": {
         "choix_date_depart": true,
         "duree": "10 jours"
