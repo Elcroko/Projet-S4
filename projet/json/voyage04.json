@@ -1,7 +1,7 @@
 {
     "titre": "L'Époque des Vikings",
     "description": "Rejoignez Ragnar et ses guerriers pour des raids épiques et une conquête sans pitié.",
-    "image" : "images/vinkings.jpeg",
+    "image" : "images/vinkings.png",
     "dates": { 
         "choix_date_depart": true,
         "durée" : "2 semaines"
