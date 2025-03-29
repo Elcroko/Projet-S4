@@ -1,0 +1,88 @@
+{
+    "titre": "La Construction de la Muraille de Chine",
+    "description": "Plongez dans l'immensité du chantier qui a marqué des siècles d’histoire chinoise.",
+    "image": "images/Chine.png",
+    "dates": {
+        "choix_date_depart": true,
+        "duree": "10 jours"
+    },
+    "prix_base": 1329,
+    "prix_total": 0,
+    "paiement": false,
+    "nombre_personnes": 0,
+    "personnes": [],
+    "etape1": [
+        {
+            "options_disponibles": {
+                "position": [
+                    "Secteur montagneux",
+                    "Désert de Gobi",
+                    "Aucune option"
+                ],
+                "activite": [
+                    "Transport de pierres",
+                    "Pose de briques",
+                    "Technique de mortier ancestral",
+                    "Aucune option"
+                ],
+                "hebergement": [
+                    "Camp de travailleurs",
+                    "Grotte naturelle",
+                    "Abri de fortune",
+                    "Aucune option"
+                ],
+                "restauration": [
+                    "Riz nature",
+                    "Soupe aux herbes",
+                    "Galette de mil",
+                    "Aucune option"
+                ],
+                "transport": [
+                    "Charrette à bœufs",
+                    "À dos d’homme",
+                    "À pied",
+                    "Aucune option"
+                ]
+            },
+            "options_choisies": {},
+            "personnes_supplementaires": []
+        }
+    ],
+    "etape2": [
+        {
+            "options_disponibles": {
+                "position": [
+                    "Secteur montagneux",
+                    "Désert de Gobi",
+                    "Aucune option"
+                ],
+                "activite": [
+                    "Transport de pierres",
+                    "Pose de briques",
+                    "Technique de mortier ancestral",
+                    "Aucune option"
+                ],
+                "hebergement": [
+                    "Camp de travailleurs",
+                    "Grotte naturelle",
+                    "Abri de fortune",
+                    "Aucune option"
+                ],
+                "restauration": [
+                    "Riz nature",
+                    "Soupe aux herbes",
+                    "Galette de mil",
+                    "Aucune option"
+                ],
+                "transport": [
+                    "Charrette à bœufs",
+                    "À dos d’homme",
+                    "À pied",
+                    "Aucune option"
+                ]
+            },
+            "options_choisies": {},
+            "personnes_supplementaires": []
+        }
+    ]
+}
