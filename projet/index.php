@@ -82,7 +82,7 @@ session_start();
 
                 <a href="voyage.php?id=voyage02" class="circuit-link">
                 <article class="circuit">
-                    <img src="images/udino.jpeg" alt="Illustration du circuit La Préhistoire">
+                    <img src="images/Udino.jpeg" alt="Illustration du circuit La Préhistoire">
                     <h4>La Préhistoire</h4>
                     <p>Évitez les prédateurs préhistoriques et survivez dans un monde sauvage et impitoyable.</p>
                 </article>
@@ -90,7 +90,7 @@ session_start();
 
             <a href="voyage.php?id=voyage03" class="circuit-link">
                 <article class="circuit">
-                    <img src="images/Fin_du_monde.jpeg" alt="Illustration du circuit Fin du Monde">
+                    <img src="images/fin_du_monde.jpeg" alt="Illustration du circuit Fin du Monde">
                     <h4>Fin du Monde</h4>
                     <p>Vivez en direct l’apocalypse et assistez aux derniers instants de l’humanité.</p>
                 </article>
@@ -131,4 +131,3 @@ session_start();
     </footer>
 </body>
 </html>
-
