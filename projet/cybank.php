@@ -11,7 +11,10 @@ $voyage = $_SESSION['recapitulatif'];
 $transaction = uniqid();
 $montant = number_format($_SESSION['cybank_montant'] , 2, '.', '');
 $vendeur = "MEF-2_C"; 
-$retour = "http://127.0.0.1:8000/www/Projet-S4-main/projet/paiement_retour.php"; // URL de retour après le paiement
+$host = $_SERVER['HTTP_HOST'];
+$uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+$retour = "http://$host$uri/paiement_retour.php";
+ // URL de retour après le paiement
 
 
 $api_key = getAPIKey($vendeur);
