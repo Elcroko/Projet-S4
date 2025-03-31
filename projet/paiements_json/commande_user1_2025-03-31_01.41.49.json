@@ -1,0 +1,167 @@
+{
+    "utilisateur": {
+        "id": 1,
+        "nom": "Z",
+        "prenom": "Z",
+        "email": "zz@gmail.com",
+        "date_naissance": "2000-09-26",
+        "nombre_voyages": 1
+    },
+    "voyage": {
+        "titre": "R\u00e9volution \u00e0 Paris",
+        "description": "Vivez la prise de la Bastille et plongez en pleine R\u00e9volution fran\u00e7aise.",
+        "\u00e9poque": "Temps modernes",
+        "lieu": "Europe",
+        "image": "images\/bastille.jpeg",
+        "dates": {
+            "choix_date_depart": true,
+            "duree": "10 jours"
+        },
+        "prix_base": 2079,
+        "prix_total": 2754,
+        "paiement": false,
+        "nombre_personnes": "4",
+        "personnes": [
+            {
+                "nom": "Z",
+                "prenom": "Z",
+                "date_naissance": "2000-09-26"
+            }
+        ],
+        "etape1": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Lieu myst\u00e8re": 0,
+                        "Coordonn\u00e9es GPS inconnues": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Prise de la Bastille": 120,
+                        "Impression de pamphlets": 70,
+                        "D\u00e9bat r\u00e9volutionnaire": 90,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Grenier citoyen": 60,
+                        "Appart r\u00e9quisitionn\u00e9": 90,
+                        "Chambre d\u2019ouvrier": 50,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Pain et fromage": 25,
+                        "Soupe populaire": 30,
+                        "Tarte r\u00e9volutionnaire": 40,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Charette": 20,
+                        "\u00c0 pied": 0,
+                        "Bateau sur la Seine": 45,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Lieu myst\u00e8re",
+                    "activite": "Prise de la Bastille",
+                    "hebergement": "Grenier citoyen",
+                    "restauration": "Pain et fromage",
+                    "transport": "Charette"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape2": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Lieu myst\u00e8re": 0,
+                        "Coordonn\u00e9es GPS inconnues": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Prise de la Bastille": 120,
+                        "Impression de pamphlets": 70,
+                        "D\u00e9bat r\u00e9volutionnaire": 90,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Grenier citoyen": 60,
+                        "Appart r\u00e9quisitionn\u00e9": 90,
+                        "Chambre d\u2019ouvrier": 50,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Pain et fromage": 25,
+                        "Soupe populaire": 30,
+                        "Tarte r\u00e9volutionnaire": 40,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Charette": 20,
+                        "\u00c0 pied": 0,
+                        "Bateau sur la Seine": 45,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Lieu myst\u00e8re",
+                    "activite": "Prise de la Bastille",
+                    "hebergement": "Grenier citoyen",
+                    "restauration": "Pain et fromage",
+                    "transport": "Charette"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape3": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Lieu myst\u00e8re": 0,
+                        "Coordonn\u00e9es GPS inconnues": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Prise de la Bastille": 120,
+                        "Impression de pamphlets": 70,
+                        "D\u00e9bat r\u00e9volutionnaire": 90,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Grenier citoyen": 60,
+                        "Appart r\u00e9quisitionn\u00e9": 90,
+                        "Chambre d\u2019ouvrier": 50,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Pain et fromage": 25,
+                        "Soupe populaire": 30,
+                        "Tarte r\u00e9volutionnaire": 40,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Charette": 20,
+                        "\u00c0 pied": 0,
+                        "Bateau sur la Seine": 45,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Lieu myst\u00e8re",
+                    "activite": "Prise de la Bastille",
+                    "hebergement": "Grenier citoyen",
+                    "restauration": "Pain et fromage",
+                    "transport": "Charette"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "id": "voyage09",
+        "date_depart": "2025-07-14",
+        "duree": 10
+    },
+    "date": "2025-03-31 01:41:49",
+    "montant": "11016.00",
+    "transaction": "67e9f2d95f02c"
+}

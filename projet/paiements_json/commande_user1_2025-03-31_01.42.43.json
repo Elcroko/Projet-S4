@@ -1,0 +1,124 @@
+{
+    "utilisateur": {
+        "id": 1,
+        "nom": "Z",
+        "prenom": "Z",
+        "email": "zz@gmail.com",
+        "date_naissance": "2000-09-26",
+        "nombre_voyages": 2
+    },
+    "voyage": {
+        "titre": "La D\u00e9faite de Waterloo",
+        "description": "Revivez la c\u00e9l\u00e8bre bataille qui mit fin \u00e0 l'\u00e9pop\u00e9e napol\u00e9onienne.",
+        "\u00e9poque": "Moyen-\u00c2ge",
+        "lieu": "Europe",
+        "image": "images\/Waterloo.png",
+        "dates": {
+            "choix_date_depart": true,
+            "duree": "10 jours"
+        },
+        "prix_base": 2100,
+        "prix_total": 2500,
+        "paiement": false,
+        "nombre_personnes": "2",
+        "personnes": [
+            {
+                "nom": "Z",
+                "prenom": "Z",
+                "date_naissance": "2000-09-26"
+            }
+        ],
+        "etape1": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Champ de bataille de Waterloo": 0,
+                        "Ferme de la Haye Sainte": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Reconstitution de bataille": 80,
+                        "Strat\u00e9gie militaire napol\u00e9onienne": 60,
+                        "Lecture de r\u00e9cits historiques": 40,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Campement napol\u00e9onien": 70,
+                        "Ferme reconstitu\u00e9e": 90,
+                        "Tente d'\u00e9tat-major": 60,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Rations d\u2019\u00e9poque": 30,
+                        "Soupe au feu de bois": 25,
+                        "Pain et fromage de soldat": 20,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Cheval": 50,
+                        "Charrette": 30,
+                        "\u00c0 pied": 0,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Ferme de la Haye Sainte",
+                    "activite": "Strat\u00e9gie militaire napol\u00e9onienne",
+                    "hebergement": "Campement napol\u00e9onien",
+                    "restauration": "Pain et fromage de soldat",
+                    "transport": "Charrette"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape2": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Champ de bataille de Waterloo": 0,
+                        "Ferme de la Haye Sainte": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Reconstitution de bataille": 80,
+                        "Strat\u00e9gie militaire napol\u00e9onienne": 60,
+                        "Lecture de r\u00e9cits historiques": 40,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Campement napol\u00e9onien": 70,
+                        "Ferme reconstitu\u00e9e": 90,
+                        "Tente d'\u00e9tat-major": 60,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Rations d\u2019\u00e9poque": 30,
+                        "Soupe au feu de bois": 25,
+                        "Pain et fromage de soldat": 20,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Cheval": 50,
+                        "Charrette": 30,
+                        "\u00c0 pied": 0,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Champ de bataille de Waterloo",
+                    "activite": "Reconstitution de bataille",
+                    "hebergement": "Tente d'\u00e9tat-major",
+                    "restauration": "Rations d\u2019\u00e9poque",
+                    "transport": "Cheval"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "id": "voyage14",
+        "date_depart": "2025-04-30",
+        "duree": 10
+    },
+    "date": "2025-03-31 01:42:43",
+    "montant": "5000.00",
+    "transaction": "67e9f30ac1570"
+}

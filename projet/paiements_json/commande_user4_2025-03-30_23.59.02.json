@@ -1,0 +1,169 @@
+{
+    "utilisateur": {
+        "id": 4,
+        "nom": "z\u00e9ro",
+        "prenom": "deux",
+        "email": "2@gmail.com",
+        "date_naissance": "2002-02-02"
+    },
+    "voyage": {
+        "titre": "L'\u00c9poque des Vikings",
+        "description": "Rejoignez Ragnar et ses guerriers pour des raids \u00e9piques et une conqu\u00eate sans piti\u00e9.",
+        "image": "images\/vinkings.png",
+        "\u00e9poque": "Moyen-\u00c2ge",
+        "lieu": "Europe",
+        "dates": {
+            "choix_date_depart": true,
+            "duree": "2 semaines"
+        },
+        "prix_base": 2342,
+        "prix_total": 3152,
+        "paiement": false,
+        "nombre_personnes": "2",
+        "personnes": [
+            {
+                "nom": "z\u00e9ro",
+                "prenom": "deux",
+                "date_naissance": "2002-02-02"
+            }
+        ],
+        "etape1": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Village viking": 0,
+                        "Navire drakkar": 0,
+                        "Camp de bataille": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Combat \u00e0 la hache": 90,
+                        "Chant viking": 40,
+                        "Festin scandinave": 70,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Maison longue": 80,
+                        "Tente militaire": 60,
+                        "Bateau amarr\u00e9": 70,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Rago\u00fbt viking": 30,
+                        "Poisson fum\u00e9": 25,
+                        "Hydromel illimit\u00e9": 40,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Drakkar": 70,
+                        "Cheval de guerre": 60,
+                        "Marche": 0,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Village viking",
+                    "activite": "Combat \u00e0 la hache",
+                    "hebergement": "Maison longue",
+                    "restauration": "Rago\u00fbt viking",
+                    "transport": "Drakkar"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape2": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Village viking": 0,
+                        "Navire drakkar": 0,
+                        "Camp de bataille": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Combat \u00e0 la hache": 90,
+                        "Chant viking": 40,
+                        "Festin scandinave": 70,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Maison longue": 80,
+                        "Tente militaire": 60,
+                        "Bateau amarr\u00e9": 70,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Rago\u00fbt viking": 30,
+                        "Poisson fum\u00e9": 25,
+                        "Hydromel illimit\u00e9": 40,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Drakkar": 70,
+                        "Cheval de guerre": 60,
+                        "Marche": 0,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Village viking",
+                    "activite": "Combat \u00e0 la hache",
+                    "hebergement": "Maison longue",
+                    "restauration": "Rago\u00fbt viking",
+                    "transport": "Drakkar"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape3": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Village viking": 0,
+                        "Navire drakkar": 0,
+                        "Camp de bataille": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Combat \u00e0 la hache": 90,
+                        "Chant viking": 40,
+                        "Festin scandinave": 70,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Maison longue": 80,
+                        "Tente militaire": 60,
+                        "Bateau amarr\u00e9": 70,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Rago\u00fbt viking": 30,
+                        "Poisson fum\u00e9": 25,
+                        "Hydromel illimit\u00e9": 40,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Drakkar": 70,
+                        "Cheval de guerre": 60,
+                        "Marche": 0,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Village viking",
+                    "activite": "Combat \u00e0 la hache",
+                    "hebergement": "Maison longue",
+                    "restauration": "Rago\u00fbt viking",
+                    "transport": "Drakkar"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "id": "voyage04",
+        "date_depart": "2026-02-02",
+        "duree": 10
+    },
+    "date": "2025-03-30 23:59:02",
+    "montant": "6304.00",
+    "transaction": "67e9dac1bd401"
+}
