@@ -149,6 +149,11 @@ nav ul li a:hover {
     color: #f0f0f0;
 }
 
+.recap-block ul li strong {
+    color: #c1f762;
+}
+
+
 .recap-block li {
     margin-bottom: 8px;
     padding: 8px;
@@ -157,12 +162,12 @@ nav ul li a:hover {
 }
 
 .price-total {
-    text-align: center;
-    font-size: 1.8em;
-    margin-top: 30px;
-    font-weight: bold;
-    color: #e1ff7d;
-    margin-bottom: 30px;
+    border-top: 2px solid #c1f762;
+    padding-top: 15px;
+    margin-top: 25px;
+    font-size: 1.8rem;
+    color: #eaff8f;
+    margin-bottom: 20px;
 }
 
 .retour-voyage {
@@ -180,7 +185,7 @@ nav ul li a:hover {
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .retour-btn:hover {

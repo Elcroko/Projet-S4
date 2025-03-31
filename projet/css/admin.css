@@ -38,6 +38,7 @@ header {
     background: linear-gradient(5deg, #7cbc6c, #c1f762);
     width: 100%;
     margin-bottom: 40px;
+    gap: 20px;
 }
 
 
@@ -62,9 +63,15 @@ header {
 
 }
 
+/* ============================== */
+/* Navigation */
+/* ============================== */
+
 nav ul {
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
 }
 
@@ -93,6 +100,7 @@ nav ul li a:hover {
     max-width: 1300px;
     margin: 40px auto;
     padding: 0 20px;
+    overflow-x: auto;
 }
 
 .admin-container table {
@@ -106,6 +114,8 @@ nav ul li a:hover {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(193, 247, 98, 0.3);
+    table-layout: fixed;
+    word-wrap: break-word;
 }
 
 .admin-container h2 {
@@ -168,6 +178,52 @@ nav ul li a:hover {
     background-color: #a5e34a;
     transform: scale(1.05);
     box-shadow: 0 0 12px rgba(193, 247, 98, 0.7);
+}
+
+/* ============================== */
+/* MEDIA QUERIES POUR RESPONSIVE */
+/* ============================== */
+
+@media (max-width: 768px) {
+    .admin-container table {
+        font-size: 0.85rem; 
+    }
+
+    .admin-container th,
+    .admin-container td {
+        padding: 8px 6px; 
+    }
+
+    .admin-container {
+        padding: 0 10px;
+    }
+
+    .site-title {
+        font-size: 18px; /* MODIFICATION */
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .admin-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ============================== */
+/* SCROLLBAR STYLING */
+/* ============================== */
+
+.admin-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.admin-container::-webkit-scrollbar-thumb {
+    background-color: #c1f762;
+    border-radius: 4px;
 }
 
 /* ============================== */

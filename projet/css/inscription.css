@@ -167,7 +167,6 @@ nav ul li a:hover {
 .checkbox-container p {
     font-size: 16px;
     color: #c1f762;
-    /* Couleur du texte */
     font-weight: bold;
     transition: color 0.3s ease-in-out;
     margin-top: auto;
@@ -176,7 +175,6 @@ nav ul li a:hover {
 
 .checkbox-container p a {
     color: #c1f762;
-    /* Couleur du lien */
 }
 
 .checkbox-container p a:hover {

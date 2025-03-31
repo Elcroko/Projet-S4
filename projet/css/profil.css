@@ -123,10 +123,9 @@ nav ul li a:hover {
 }
 
 /* ============================== */
-/* FORMULAIRE DE MODIFICATION */
+/* 🟢 Partie gauche = Profil */
 /* ============================== */
 
-/* 🟢 Partie gauche = Profil */
 .profil-container {
     flex: 1;
     background-color: #203920;
@@ -206,7 +205,10 @@ h2 {
     background: linear-gradient(45deg, #c1f762, #7cbc6c);
 }
 
-/* 🟦 Partie droite = Historique */
+/* ============================== */
+/* Partie droite = Historique */
+/* ============================== */
+
 .historique {
     flex: 1;
     background-color: #1c321c;
