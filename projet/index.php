@@ -72,54 +72,46 @@ session_start();
         <section class="featured">
             <h3>Nos Voyages les Plus Demandés </h3>
             <div class="circuits-container">
-                <a href="voyage.php?id=voyage01" class="circuit-link">
-                    <article class="circuit">
-                        <img src="images/morts.jpeg" alt="Illustration du circuit Le jour de votre Mort">
-                        <h4>Le Jour de votre Mort</h4>
-                        <p>Oserez-vous affronter votre destinée et découvrir ce que l’avenir vous réserve ?</p>
-                    </article>
-                </a>
+                <?php
+                    $topVoyages = [];
 
-                <a href="voyage.php?id=voyage02" class="circuit-link">
-                <article class="circuit">
-                    <img src="images/Udino.jpeg" alt="Illustration du circuit La Préhistoire">
-                    <h4>La Préhistoire</h4>
-                    <p>Évitez les prédateurs préhistoriques et survivez dans un monde sauvage et impitoyable.</p>
-                </article>
-            </a>
+                    for ($i = 10; $i <= 15; $i++) {
+                        $fichier = "json/voyage" . str_pad($i, 2, '0', STR_PAD_LEFT) . ".json";
+                        if (file_exists($fichier)) {
+                            $data = json_decode(file_get_contents($fichier), true);
+                            if ($data) {
+                                $data['id'] = "voyage" . str_pad($i, 2, '0', STR_PAD_LEFT); 
+                                $topVoyages[] = $data;
+                            }
+                        }
+                    }
+                    
+                    foreach ($topVoyages as $voyage): ?>
+                        <a href="voyage.php?id=<?= htmlspecialchars($voyage['id']) ?>" class="circuit-link">
+                            <div class="circuit">
+                                <img src="<?= htmlspecialchars($voyage['image']) ?>" alt="Illustration du circuit <?= htmlspecialchars($voyage['titre']) ?>" />
+                                <h4><?= htmlspecialchars($voyage['titre']) ?></h4>
+                                <p><?= htmlspecialchars($voyage['description']) ?></p>
 
-            <a href="voyage.php?id=voyage03" class="circuit-link">
-                <article class="circuit">
-                    <img src="images/fin_du_monde.jpeg" alt="Illustration du circuit Fin du Monde">
-                    <h4>Fin du Monde</h4>
-                    <p>Vivez en direct l’apocalypse et assistez aux derniers instants de l’humanité.</p>
-                </article>
-            </a>
+                                <?php if (isset($voyage['dates']['duree'])): ?>
+                                    <p><strong>Durée :</strong> <?= htmlspecialchars($voyage['dates']['duree']) ?></p>
+                                <?php endif; ?>
 
-            <a href="voyage.php?id=voyage04" class="circuit-link">
-                <article class="circuit">
-                    <img src="images/vinkings.png" alt="Vikings">
-                    <h4>L'Époque des Vikings</h4>
-                    <p>Rejoignez Ragnar et ses guerriers pour des raids épiques et une conquête sans pitié.</p>
-                </article>
-            </a>
+                                <?php if (isset($voyage['prix_base'])): ?>
+                                    <p><strong>A partir de </strong> <?= htmlspecialchars($voyage['prix_base']) ?> €</p>
+                                <?php endif; ?>
 
-            <a href="voyage.php?id=voyage06" class="circuit-link">
-                <article class="circuit">
-                    <img src="images/coin.jpeg" alt="bitcoin">
-                    <h4>L'Ère du Bitcoin</h4>
-                    <p>Voyagez dans le passé et changez votre destinée financière en maîtrisant la cryptomonnaie.</p>
-                </article>
-            </a>
+                                <?php
+                                $nbEtapes = 0;
+                                foreach ($voyage as $cle => $valeur) {
+                                    if (str_starts_with($cle, 'etape')) $nbEtapes++;
+                                }
+                                ?>
+                                <p><strong>Nombre d’étapes :</strong> <?= $nbEtapes ?></p>
+                            </div>
+                        </a>
 
-            <a href="voyage.php?id=voyage07" class="circuit-link">
-                <article class="circuit">
-                    <img src="images/Colomb.jpeg" alt="colomb">
-                    <h4>À Bord avec Christophe Colomb</h4>
-                    <p>Traversez l’Atlantique et assistez à la découverte d’un Nouveau Monde.</p>
-                </article>
-            </a>
-
+                    <?php endforeach; ?>
             </div>
         </section>
 

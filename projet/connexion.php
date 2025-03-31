@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php endif; ?>
 
             <form action="connexion.php" method="POST">
-                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input type="email" id="email" name="email" style="text-transform: lowercase;" placeholder="Email" required>
                 <input type="password" id="password" name="password" placeholder="Mot de passe" required>
                 <button type="submit">Se connecter</button>
             </form>

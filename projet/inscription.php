@@ -29,6 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $telephone = $_POST['telephone'];
     $terms = isset($_POST['terms']) ? true : false;
 
+    if (!preg_match("/^[a-zA-ZÀ-ÿ\- ]+$/", $_POST['nom']) || !preg_match("/^[a-zA-ZÀ-ÿ\- ]+$/", $_POST['prenom'])) {
+        $erreur = "Le nom et le prénom doivent contenir uniquement des lettres.";
+    }    
+
 
     // Vérification de la date de naissance
     $birthDate = DateTime::createFromFormat('Y-m-d', $date_naissance);
@@ -160,8 +164,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php endif; ?>
 
             <form action="inscription.php" method="POST">
-                <input type="text" id="nom" name="nom" placeholder="Nom" required>
-                <input type="text" id="prenom" name="prenom" placeholder="Prénom" required>
+                <input type="text" id="nom" name="nom" required pattern="[a-zA-ZÀ-ÿ\- ]+" title="Lettres uniquement" placeholder="Nom" required>
+                <input type="text" id="prenom" name="prenom" required pattern="[a-zA-ZÀ-ÿ\- ]+" title="Lettres uniquement" placeholder="Prénom" required>
                 <input type="email" id="email" name="email" placeholder="Email" required style="text-transform: lowercase;">
                 <input type="password" id="mot_de_passe" name="mot_de_passe" placeholder="Mot de passe" required>
                 <input type="password" id="confirm_mdp" name="confirm_mdp" placeholder="Confirmer le mot de passe" required>

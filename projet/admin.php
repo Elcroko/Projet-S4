@@ -68,61 +68,63 @@ $usersPage = array_slice($users, $offset, $usersPerPage);
         </nav>
     </header>
     
-    <main class="admin-container">
-        <h2>Liste des Utilisateurs</h2>
-        <table border="1" cellpadding="8" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Email</th>
-                <th>Date de naissance</th>
-                <th>Date d'inscription</th>
-                <th>Téléphone</th>
-                <th>Voyages</th>
-                <th>Admin</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($usersPage as $user): ?>
-                <tr>
-                    <td><?= htmlspecialchars($user['nom']) ?></td>
-                    <td><?= htmlspecialchars($user['prenom']) ?></td>
-                    <td><?= htmlspecialchars($user['email']) ?></td>
-                    <td><?= htmlspecialchars($user['date_naissance']) ?></td>
-                    <td><?= htmlspecialchars($user['date_inscription']) ?></td>
-                    <td><?= htmlspecialchars($user['telephone']) ?></td>
-                    <td><?= htmlspecialchars($user['nombre_voyages']) ?></td>
-                    <td><?= $user['admin'] ? 'Oui' : 'Non' ?></td>
-                    <td>
-                    <?php if ($user['email'] !== $_SESSION['user']['email']): ?>
-                        <form method="POST" action="admin.php" style="display:inline;">
-                            <input type="hidden" name="email" value="<?= htmlspecialchars($user['email']) ?>">
-                            <button type="submit" name="toggle_admin" class="admin-btn">
-                                <?= $user['admin'] ? 'Retirer Admin' : 'Rendre Admin' ?>
-                            </button>
-                        </form>
-                        <?php else: ?>
-                            <em>Vous</em>
-                        <?php endif; ?>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-
-    <?php if ($totalPages > 1): ?>
-    <div class="pagination">
-      <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-        <a href="?<?= http_build_query(array_merge($_GET, ['page' => $i])) ?>"
-           <?= $i === $page ? 'style="font-weight: bold;"' : '' ?>>
-          <?= $i ?>
-        </a>
-      <?php endfor; ?>
-    </div>
-    <?php endif; ?>
-
+    <main>
+        <section class="admin-container">
+                <h2>Liste des Utilisateurs</h2>
+                <div class="table-responsive">
+                    <table border="1" cellpadding="8" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Email</th>
+                            <th>Date de naissance</th>
+                            <th>Date d'inscription</th>
+                            <th>Téléphone</th>
+                            <th>Voyages</th>
+                            <th>Admin</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($usersPage as $user): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($user['nom']) ?></td>
+                                <td><?= htmlspecialchars($user['prenom']) ?></td>
+                                <td><?= htmlspecialchars($user['email']) ?></td>
+                                <td><?= htmlspecialchars($user['date_naissance']) ?></td>
+                                <td><?= htmlspecialchars($user['date_inscription']) ?></td>
+                                <td><?= htmlspecialchars($user['telephone']) ?></td>
+                                <td><?= htmlspecialchars($user['nombre_voyages']) ?></td>
+                                <td><?= $user['admin'] ? 'Oui' : 'Non' ?></td>
+                                <td>
+                                <?php if ($user['email'] !== $_SESSION['user']['email']): ?>
+                                    <form method="POST" action="admin.php" style="display:inline;">
+                                        <input type="hidden" name="email" value="<?= htmlspecialchars($user['email']) ?>">
+                                        <button type="submit" name="toggle_admin" class="admin-btn">
+                                            <?= $user['admin'] ? 'Retirer Admin' : 'Rendre Admin' ?>
+                                        </button>
+                                    </form>
+                                    <?php else: ?>
+                                        <em>Vous</em>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                    </table>
+                </div>
+            <?php if ($totalPages > 1): ?>
+            <div class="pagination">
+            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                <a href="?<?= http_build_query(array_merge($_GET, ['page' => $i])) ?>"
+                <?= $i === $page ? 'style="font-weight: bold;"' : '' ?>>
+                <?= $i ?>
+                </a>
+            <?php endfor; ?>
+            </div>
+            <?php endif; ?>
+        </section>
     </main>   
     <footer>
         <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
