@@ -1,38 +1,91 @@
 {
     "titre": "Le Secret des Pyramides",
     "description": "Assistez à la construction des pyramides et découvrez leurs mystères.",
-    "époque": "Antiquité",
-    "lieu": "Afrique",
-    "image" : "images/pyramides.jpeg",
+    "époque": "antiquité",
+    "lieu": "afrique",
+    "image": "images/pyramides.jpeg",
     "dates": {
-        "choix_date_depart": true,
-        "duree": "10 jours"
+      "choix_date_depart": true,
+      "duree": "10 jours"
     },
     "prix_base": 1985,
     "prix_total": 0,
     "paiement": false,
     "nombre_personnes": 0,
     "personnes": [],
-    "etape1": [{
+    "etape1": [
+      {
         "options_disponibles": {
-        "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
-        "activite": ["Tailleur de pierre", "Marche du pharaon", "Décodage hiéroglyphes", "Aucune option"],
-        "hebergement": ["Tente nomade", "Chambre dans un temple", "Maison de scribe", "Aucune option"],
-        "restauration": ["Pain égyptien", "Viande d’agneau", "Légumineuses", "Aucune option"],
-        "transport": ["Chameau", "Char", "Bateau sur le Nil", "Aucune option"]
+          "position": {
+            "Lieu mystère": 0,
+            "Coordonnées GPS inconnues": 0,
+            "Aucune option": 0
+          },
+          "activite": {
+            "Tailleur de pierre": 60,
+            "Marche du pharaon": 50,
+            "Décodage hiéroglyphes": 55,
+            "Aucune option": 0
+          },
+          "hebergement": {
+            "Tente nomade": 35,
+            "Chambre dans un temple": 60,
+            "Maison de scribe": 45,
+            "Aucune option": 0
+          },
+          "restauration": {
+            "Pain égyptien": 20,
+            "Viande d’agneau": 30,
+            "Légumineuses": 25,
+            "Aucune option": 0
+          },
+          "transport": {
+            "Chameau": 35,
+            "Char": 45,
+            "Bateau sur le Nil": 50,
+            "Aucune option": 0
+          }
         },
         "options_choisies": {},
         "personnes_supplementaires": []
-    }],
-    "etape2": [{
+      }
+    ],
+    "etape2": [
+      {
         "options_disponibles": {
-        "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
-        "activite": ["Tailleur de pierre", "Marche du pharaon", "Décodage hiéroglyphes", "Aucune option"],
-        "hebergement": ["Tente nomade", "Chambre dans un temple", "Maison de scribe", "Aucune option"],
-        "restauration": ["Pain égyptien", "Viande d’agneau", "Légumineuses", "Aucune option"],
-        "transport": ["Chameau", "Char", "Bateau sur le Nil", "Aucune option"]
+          "position": {
+            "Lieu mystère": 0,
+            "Coordonnées GPS inconnues": 0,
+            "Aucune option": 0
+          },
+          "activite": {
+            "Tailleur de pierre": 60,
+            "Marche du pharaon": 50,
+            "Décodage hiéroglyphes": 55,
+            "Aucune option": 0
+          },
+          "hebergement": {
+            "Tente nomade": 35,
+            "Chambre dans un temple": 60,
+            "Maison de scribe": 45,
+            "Aucune option": 0
+          },
+          "restauration": {
+            "Pain égyptien": 20,
+            "Viande d’agneau": 30,
+            "Légumineuses": 25,
+            "Aucune option": 0
+          },
+          "transport": {
+            "Chameau": 35,
+            "Char": 45,
+            "Bateau sur le Nil": 50,
+            "Aucune option": 0
+          }
         },
         "options_choisies": {},
         "personnes_supplementaires": []
-    }]
-    }
+      }
+    ]
+  }
+  

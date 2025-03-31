@@ -1,49 +1,126 @@
 {
-    "titre": "Fin du Monde",
+  "titre": "Fin du Monde",
     "description": "Vivez en direct l’apocalypse et assistez aux derniers instants de l’humanité.",
     "image" : "images/fin_du_monde.jpeg",
     "époque": "Futur",
     "lieu": "Tous",
     "dates": { 
         "choix_date_depart": true,
-        "durée": "3 jours"
+        "duree": "3 jours"
     },
   "prix_base": 2120,
   "prix_total": 0,
   "paiement": false,
   "nombre_personnes": 0,
-  "personnes": [],
-  "etape1": [{
-    "options_disponibles": {
-      "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
-      "activite": ["Survie urbaine", "Atelier bunker", "Cours d’auto-défense", "Aucune option"],
-      "hebergement": ["Bunker souterrain", "Abri en ruines", "Conteneur blindé", "Aucune option"],
-      "restauration": ["Conserves", "Rations militaires", "Pillages encadrés", "Aucune option"],
-      "transport": ["Moto", "Camion militaire", "Drone taxi", "Aucune option"]
-    },
-    "options_choisies": {},
-    "personnes_supplementaires": []
-  }],
-  "etape2": [{
-    "options_disponibles": {
-      "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
-      "activite": ["Survie urbaine", "Atelier bunker", "Cours d’auto-défense", "Aucune option"],
-      "hebergement": ["Bunker souterrain", "Abri en ruines", "Conteneur blindé", "Aucune option"],
-      "restauration": ["Conserves", "Rations militaires", "Pillages encadrés", "Aucune option"],
-      "transport": ["Moto", "Camion militaire", "Drone taxi", "Aucune option"]
-    },
-    "options_choisies": {},
-    "personnes_supplementaires": []
-  }],
-  "etape3": [{
-    "options_disponibles": {
-      "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
-      "activite": ["Survie urbaine", "Atelier bunker", "Cours d’auto-défense", "Aucune option"],
-      "hebergement": ["Bunker souterrain", "Abri en ruines", "Conteneur blindé", "Aucune option"],
-      "restauration": ["Conserves", "Rations militaires", "Pillages encadrés", "Aucune option"],
-      "transport": ["Moto", "Camion militaire", "Drone taxi", "Aucune option"]
-    },
-    "options_choisies": {},
-    "personnes_supplementaires": []
-  }]
+  "etape1": [
+    {
+      "options_disponibles": {
+        "position": {
+          "Bunker sécurisé": 0,
+          "Toit d’un gratte-ciel": 0,
+          "Aucune option": 0
+        },
+        "activite": {
+          "Observation cataclysme": 100,
+          "Message final à l'humanité": 80,
+          "Survie extrême": 120,
+          "Aucune option": 0
+        },
+        "hebergement": {
+          "Chambre blindée": 100,
+          "Sous-sol renforcé": 80,
+          "Refuge temporaire": 60,
+          "Aucune option": 0
+        },
+        "restauration": {
+          "Ration militaire": 20,
+          "Plats déshydratés": 15,
+          "Aliments en conserve": 10,
+          "Aucune option": 0
+        },
+        "transport": {
+          "Camion blindé": 50,
+          "Hélicoptère d’évacuation": 150,
+          "Train de secours": 60,
+          "Aucune option": 0
+        }
+      },
+      "options_choisies": {},
+      "personnes_supplementaires": []
+    }
+  ],
+  "etape2": [
+    {
+      "options_disponibles": {
+        "position": {
+          "Bunker sécurisé": 0,
+          "Toit d’un gratte-ciel": 0,
+          "Aucune option": 0
+        },
+        "activite": {
+          "Observation cataclysme": 100,
+          "Message final à l'humanité": 80,
+          "Survie extrême": 120,
+          "Aucune option": 0
+        },
+        "hebergement": {
+          "Chambre blindée": 100,
+          "Sous-sol renforcé": 80,
+          "Refuge temporaire": 60,
+          "Aucune option": 0
+        },
+        "restauration": {
+          "Ration militaire": 20,
+          "Plats déshydratés": 15,
+          "Aliments en conserve": 10,
+          "Aucune option": 0
+        },
+        "transport": {
+          "Camion blindé": 50,
+          "Hélicoptère d’évacuation": 150,
+          "Train de secours": 60,
+          "Aucune option": 0
+        }
+      },
+      "options_choisies": {},
+      "personnes_supplementaires": []
+    }
+  ],
+  "etape3": [
+    {
+      "options_disponibles": {
+        "position": {
+          "Bunker sécurisé": 0,
+          "Toit d’un gratte-ciel": 0,
+          "Aucune option": 0
+        },
+        "activite": {
+          "Observation cataclysme": 100,
+          "Message final à l'humanité": 80,
+          "Survie extrême": 120,
+          "Aucune option": 0
+        },
+        "hebergement": {
+          "Chambre blindée": 100,
+          "Sous-sol renforcé": 80,
+          "Refuge temporaire": 60,
+          "Aucune option": 0
+        },
+        "restauration": {
+          "Ration militaire": 20,
+          "Plats déshydratés": 15,
+          "Aliments en conserve": 10,
+          "Aucune option": 0
+        },
+        "transport": {
+          "Camion blindé": 50,
+          "Hélicoptère d’évacuation": 150,
+          "Train de secours": 60,
+          "Aucune option": 0
+        }
+      },
+      "options_choisies": {},
+      "personnes_supplementaires": []
+    }
+  ]
 }

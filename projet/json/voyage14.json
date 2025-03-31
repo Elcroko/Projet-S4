@@ -5,8 +5,8 @@
     "lieu": "Europe",
     "image": "images/Waterloo.png",
     "dates": {
-        "choix_date_depart": true,
-        "duree": "10 jours"
+      "choix_date_depart": true,
+      "duree": "10 jours"
     },
     "prix_base": 2100,
     "prix_total": 0,
@@ -14,77 +14,78 @@
     "nombre_personnes": 0,
     "personnes": [],
     "etape1": [
-        {
-            "options_disponibles": {
-                "position": [
-                    "Champ de bataille de Waterloo",
-                    "Ferme de la Haye Sainte",
-                    "Aucune option"
-                ],
-                "activite": [
-                    "Reconstitution de bataille",
-                    "Stratégie militaire napoléonienne",
-                    "Lecture de récits historiques",
-                    "Aucune option"
-                ],
-                "hebergement": [
-                    "Campement napoléonien",
-                    "Ferme reconstituée",
-                    "Tente d'état-major",
-                    "Aucune option"
-                ],
-                "restauration": [
-                    "Rations d’époque",
-                    "Soupe au feu de bois",
-                    "Pain et fromage de soldat",
-                    "Aucune option"
-                ],
-                "transport": [
-                    "Cheval",
-                    "Charrette",
-                    "À pied",
-                    "Aucune option"
-                ]
-            },
-            "options_choisies": {},
-            "personnes_supplementaires": []
-        }
+      {
+        "options_disponibles": {
+          "position": {
+            "Champ de bataille de Waterloo": 0,
+            "Ferme de la Haye Sainte": 0,
+            "Aucune option": 0
+          },
+          "activite": {
+            "Reconstitution de bataille": 80,
+            "Stratégie militaire napoléonienne": 60,
+            "Lecture de récits historiques": 40,
+            "Aucune option": 0
+          },
+          "hebergement": {
+            "Campement napoléonien": 70,
+            "Ferme reconstituée": 90,
+            "Tente d'état-major": 60,
+            "Aucune option": 0
+          },
+          "restauration": {
+            "Rations d’époque": 30,
+            "Soupe au feu de bois": 25,
+            "Pain et fromage de soldat": 20,
+            "Aucune option": 0
+          },
+          "transport": {
+            "Cheval": 50,
+            "Charrette": 30,
+            "À pied": 0,
+            "Aucune option": 0
+          }
+        },
+        "options_choisies": {},
+        "personnes_supplementaires": []
+      }
     ],
     "etape2": [
-        {
-            "options_disponibles": {
-                "position": [
-                    "Champ de bataille de Waterloo",
-                    "Ferme de la Haye Sainte",
-                    "Aucune option"
-                ],
-                "activite": [
-                    "Reconstitution de bataille",
-                    "Stratégie militaire napoléonienne",
-                    "Lecture de récits historiques",
-                    "Aucune option"
-                ],
-                "hebergement": [
-                    "Campement napoléonien",
-                    "Ferme reconstituée",
-                    "Tente d'état-major",
-                    "Aucune option"
-                ],
-                "restauration": [
-                    "Rations d’époque",
-                    "Soupe au feu de bois",
-                    "Pain et fromage de soldat",
-                    "Aucune option"
-                ],
-                "transport": [
-                    "Cheval",
-                    "Charrette",
-                    "À pied",
-                    "Aucune option"
-                ]
-            },
-            "options_choisies": {},
-            "personnes_supplementaires": []
-        }
+      {
+        "options_disponibles": {
+          "position": {
+            "Champ de bataille de Waterloo": 0,
+            "Ferme de la Haye Sainte": 0,
+            "Aucune option": 0
+          },
+          "activite": {
+            "Reconstitution de bataille": 80,
+            "Stratégie militaire napoléonienne": 60,
+            "Lecture de récits historiques": 40,
+            "Aucune option": 0
+          },
+          "hebergement": {
+            "Campement napoléonien": 70,
+            "Ferme reconstituée": 90,
+            "Tente d'état-major": 60,
+            "Aucune option": 0
+          },
+          "restauration": {
+            "Rations d’époque": 30,
+            "Soupe au feu de bois": 25,
+            "Pain et fromage de soldat": 20,
+            "Aucune option": 0
+          },
+          "transport": {
+            "Cheval": 50,
+            "Charrette": 30,
+            "À pied": 0,
+            "Aucune option": 0
+          }
+        },
+        "options_choisies": {},
+        "personnes_supplementaires": []
+      }
     ]
-}
+  }
+  

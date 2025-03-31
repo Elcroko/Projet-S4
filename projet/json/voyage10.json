@@ -1,36 +1,84 @@
 {
-    "titre": "L'Enfer des Tranchées",
-    "description" : "Expérimentez la dure réalité des soldats de la Première Guerre mondiale.",
-    "époque": "Contemporaine",
-    "lieu": "Europe",
-    "image" : "images/1ere_gm.jpeg",
-    "dates": {
-        "choix_date_depart": true,
-        "duree": "10 jours"
-    },
-    "prix_base": 1899,
+  "titre": "L'Enfer des Tranchées",
+  "description": "Expérimentez la dure réalité des soldats de la Première Guerre mondiale.",
+  "époque": "Contemporaine",
+  "lieu": "Europe",
+  "image": "images/1ere_gm.jpeg",
+  "dates": {
+    "choix_date_depart": true,
+    "duree": "10 jours"
+  },
+  "prix_base": 1899,
   "prix_total": 0,
   "paiement": false,
   "nombre_personnes": 0,
   "personnes": [],
   "etape1": [{
     "options_disponibles": {
-      "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
-      "activite": ["Simulation de tranchée", "Formation camouflage", "Lecture de lettres", "Aucune option"],
-      "hebergement": ["Tranchée", "Tente militaire", "Bunker reconstitué", "Aucune option"],
-      "restauration": ["Rations militaires", "Soupes de soldat", "Biscuits secs", "Aucune option"],
-      "transport": ["Train de guerre", "Camion militaire", "À pied", "Aucune option"]
+      "position": {
+        "Lieu mystère": 0,
+        "Coordonnées GPS inconnues": 0,
+        "Aucune option": 0
+      },
+      "activite": {
+        "Simulation de tranchée": 150,
+        "Formation camouflage": 100,
+        "Lecture de lettres": 80,
+        "Aucune option": 0
+      },
+      "hebergement": {
+        "Tranchée": 50,
+        "Tente militaire": 70,
+        "Bunker reconstitué": 90,
+        "Aucune option": 0
+      },
+      "restauration": {
+        "Rations militaires": 30,
+        "Soupes de soldat": 35,
+        "Biscuits secs": 20,
+        "Aucune option": 0
+      },
+      "transport": {
+        "Train de guerre": 60,
+        "Camion militaire": 50,
+        "À pied": 0,
+        "Aucune option": 0
+      }
     },
     "options_choisies": {},
     "personnes_supplementaires": []
   }],
   "etape2": [{
     "options_disponibles": {
-      "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
-      "activite": ["Simulation de tranchée", "Formation camouflage", "Lecture de lettres", "Aucune option"],
-      "hebergement": ["Tranchée", "Tente militaire", "Bunker reconstitué", "Aucune option"],
-      "restauration": ["Rations militaires", "Soupes de soldat", "Biscuits secs", "Aucune option"],
-      "transport": ["Train de guerre", "Camion militaire", "À pied", "Aucune option"]
+      "position": {
+        "Lieu mystère": 0,
+        "Coordonnées GPS inconnues": 0,
+        "Aucune option": 0
+      },
+      "activite": {
+        "Simulation de tranchée": 150,
+        "Formation camouflage": 100,
+        "Lecture de lettres": 80,
+        "Aucune option": 0
+      },
+      "hebergement": {
+        "Tranchée": 50,
+        "Tente militaire": 70,
+        "Bunker reconstitué": 90,
+        "Aucune option": 0
+      },
+      "restauration": {
+        "Rations militaires": 30,
+        "Soupes de soldat": 35,
+        "Biscuits secs": 20,
+        "Aucune option": 0
+      },
+      "transport": {
+        "Train de guerre": 60,
+        "Camion militaire": 50,
+        "À pied": 0,
+        "Aucune option": 0
+      }
     },
     "options_choisies": {},
     "personnes_supplementaires": []

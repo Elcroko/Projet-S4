@@ -1,49 +1,130 @@
 {
-    "titre": "L'Époque des Vikings",
+  "titre": "L'Époque des Vikings",
     "description": "Rejoignez Ragnar et ses guerriers pour des raids épiques et une conquête sans pitié.",
     "image" : "images/vinkings.png",
     "époque": "Moyen-Âge",
     "lieu": "Europe",
     "dates": { 
         "choix_date_depart": true,
-        "durée" : "2 semaines"
+        "duree" : "2 semaines"
  },
   "prix_base": 2342,
   "prix_total": 0,
   "paiement": false,
   "nombre_personnes": 0,
   "personnes": [],
-  "etape1": [{
-    "options_disponibles": {
-      "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
-      "activite": ["Raid en drakkar", "Combat à la hache", "Banquet nordique", "Aucune option"],
-      "hebergement": ["Longhouse", "Tente de guerre", "Cabane de pêcheur", "Aucune option"],
-      "restauration": ["Viande fumée", "Hydromel & pain", "Poisson séché", "Aucune option"],
-      "transport": ["Drakkar", "Cheval", "Traîneau", "Aucune option"]
-    },
-    "options_choisies": {},
-    "personnes_supplementaires": []
-  }],
-  "etape2": [{
-    "options_disponibles": {
-      "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
-      "activite": ["Raid en drakkar", "Combat à la hache", "Banquet nordique", "Aucune option"],
-      "hebergement": ["Longhouse", "Tente de guerre", "Cabane de pêcheur", "Aucune option"],
-      "restauration": ["Viande fumée", "Hydromel & pain", "Poisson séché", "Aucune option"],
-      "transport": ["Drakkar", "Cheval", "Traîneau", "Aucune option"]
-    },
-    "options_choisies": {},
-    "personnes_supplementaires": []
-  }],
-  "etape3": [{
-    "options_disponibles": {
-      "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
-      "activite": ["Raid en drakkar", "Combat à la hache", "Banquet nordique", "Aucune option"],
-      "hebergement": ["Longhouse", "Tente de guerre", "Cabane de pêcheur", "Aucune option"],
-      "restauration": ["Viande fumée", "Hydromel & pain", "Poisson séché", "Aucune option"],
-      "transport": ["Drakkar", "Cheval", "Traîneau", "Aucune option"]
-    },
-    "options_choisies": {},
-    "personnes_supplementaires": []
-  }]
+  "etape1": [
+    {
+      "options_disponibles": {
+        "position": {
+          "Village viking": 0,
+          "Navire drakkar": 0,
+          "Camp de bataille": 0,
+          "Aucune option": 0
+        },
+        "activite": {
+          "Combat à la hache": 90,
+          "Chant viking": 40,
+          "Festin scandinave": 70,
+          "Aucune option": 0
+        },
+        "hebergement": {
+          "Maison longue": 80,
+          "Tente militaire": 60,
+          "Bateau amarré": 70,
+          "Aucune option": 0
+        },
+        "restauration": {
+          "Ragoût viking": 30,
+          "Poisson fumé": 25,
+          "Hydromel illimité": 40,
+          "Aucune option": 0
+        },
+        "transport": {
+          "Drakkar": 70,
+          "Cheval de guerre": 60,
+          "Marche": 0,
+          "Aucune option": 0
+        }
+      },
+      "options_choisies": {},
+      "personnes_supplementaires": []
+    }
+  ],
+  "etape2": [
+    {
+      "options_disponibles": {
+        "position": {
+          "Village viking": 0,
+          "Navire drakkar": 0,
+          "Camp de bataille": 0,
+          "Aucune option": 0
+        },
+        "activite": {
+          "Combat à la hache": 90,
+          "Chant viking": 40,
+          "Festin scandinave": 70,
+          "Aucune option": 0
+        },
+        "hebergement": {
+          "Maison longue": 80,
+          "Tente militaire": 60,
+          "Bateau amarré": 70,
+          "Aucune option": 0
+        },
+        "restauration": {
+          "Ragoût viking": 30,
+          "Poisson fumé": 25,
+          "Hydromel illimité": 40,
+          "Aucune option": 0
+        },
+        "transport": {
+          "Drakkar": 70,
+          "Cheval de guerre": 60,
+          "Marche": 0,
+          "Aucune option": 0
+        }
+      },
+      "options_choisies": {},
+      "personnes_supplementaires": []
+    }
+  ],
+  "etape3": [
+    {
+      "options_disponibles": {
+        "position": {
+          "Village viking": 0,
+          "Navire drakkar": 0,
+          "Camp de bataille": 0,
+          "Aucune option": 0
+        },
+        "activite": {
+          "Combat à la hache": 90,
+          "Chant viking": 40,
+          "Festin scandinave": 70,
+          "Aucune option": 0
+        },
+        "hebergement": {
+          "Maison longue": 80,
+          "Tente militaire": 60,
+          "Bateau amarré": 70,
+          "Aucune option": 0
+        },
+        "restauration": {
+          "Ragoût viking": 30,
+          "Poisson fumé": 25,
+          "Hydromel illimité": 40,
+          "Aucune option": 0
+        },
+        "transport": {
+          "Drakkar": 70,
+          "Cheval de guerre": 60,
+          "Marche": 0,
+          "Aucune option": 0
+        }
+      },
+      "options_choisies": {},
+      "personnes_supplementaires": []
+    }
+  ]
 }

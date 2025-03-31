@@ -1,27 +1,91 @@
 {
     "titre": "Jeux Olympiques de l'An 3000",
-    "description" : "Assistez aux performances incroyables des athlètes du futur dans un stade ultra-technologique.",
+    "description": "Assistez aux performances incroyables des athlètes du futur dans un stade ultra-technologique.",
     "époque": "Futur",
     "lieu": "Espace",
-    "image" : "images/jo_3000.jpeg",
+    "image": "images/jo_3000.jpeg",
     "dates": {
-        "choix_date_depart": true,
-        "duree": "10 jours"
+      "choix_date_depart": true,
+      "duree": "10 jours"
     },
     "prix_base": 2200,
     "prix_total": 0,
     "paiement": false,
     "nombre_personnes": 0,
     "personnes": [],
-    "etape1": [{
+    "etape1": [
+      {
         "options_disponibles": {
-        "position": ["Stade Principal", "34.0000, 118.0000", "Aucune option"],
-        "activite": ["Course en exosquelette", "Combat robotisé", "Natation laser", "Aucune option"],
-        "hebergement": ["Dortoir numérique", "Pod cyber-sportif", "Module partagé", "Aucune option"],
-        "restauration": ["Smoothie protéiné", "Boisson énergétique", "Plat imprimé 3D", "Aucune option"],
-        "transport": ["Drone personnel", "Tube pneumatique", "Monorail magnétique", "Aucune option"]
+          "position": {
+            "Stade Principal": 0,
+            "34.0000, 118.0000": 0,
+            "Aucune option": 0
+          },
+          "activite": {
+            "Course en exosquelette": 120,
+            "Combat robotisé": 150,
+            "Natation laser": 100,
+            "Aucune option": 0
+          },
+          "hebergement": {
+            "Dortoir numérique": 90,
+            "Pod cyber-sportif": 120,
+            "Module partagé": 80,
+            "Aucune option": 0
+          },
+          "restauration": {
+            "Smoothie protéiné": 30,
+            "Boisson énergétique": 20,
+            "Plat imprimé 3D": 50,
+            "Aucune option": 0
+          },
+          "transport": {
+            "Drone personnel": 70,
+            "Tube pneumatique": 60,
+            "Monorail magnétique": 50,
+            "Aucune option": 0
+          }
         },
         "options_choisies": {},
         "personnes_supplementaires": []
-    }]
-}
+      }
+    ],
+    "etape2": [
+      {
+        "options_disponibles": {
+          "position": {
+            "Stade Principal": 0,
+            "34.0000, 118.0000": 0,
+            "Aucune option": 0
+          },
+          "activite": {
+            "Course en exosquelette": 120,
+            "Combat robotisé": 150,
+            "Natation laser": 100,
+            "Aucune option": 0
+          },
+          "hebergement": {
+            "Dortoir numérique": 90,
+            "Pod cyber-sportif": 120,
+            "Module partagé": 80,
+            "Aucune option": 0
+          },
+          "restauration": {
+            "Smoothie protéiné": 30,
+            "Boisson énergétique": 20,
+            "Plat imprimé 3D": 50,
+            "Aucune option": 0
+          },
+          "transport": {
+            "Drone personnel": 70,
+            "Tube pneumatique": 60,
+            "Monorail magnétique": 50,
+            "Aucune option": 0
+          }
+        },
+        "options_choisies": {},
+        "personnes_supplementaires": []
+      }
+    ]
+  }
+  

@@ -5,8 +5,8 @@
     "lieu": "Asie",
     "image": "images/Chine.png",
     "dates": {
-        "choix_date_depart": true,
-        "duree": "10 jours"
+      "choix_date_depart": true,
+      "duree": "10 jours"
     },
     "prix_base": 1329,
     "prix_total": 0,
@@ -14,77 +14,78 @@
     "nombre_personnes": 0,
     "personnes": [],
     "etape1": [
-        {
-            "options_disponibles": {
-                "position": [
-                    "Secteur montagneux",
-                    "Désert de Gobi",
-                    "Aucune option"
-                ],
-                "activite": [
-                    "Transport de pierres",
-                    "Pose de briques",
-                    "Technique de mortier ancestral",
-                    "Aucune option"
-                ],
-                "hebergement": [
-                    "Camp de travailleurs",
-                    "Grotte naturelle",
-                    "Abri de fortune",
-                    "Aucune option"
-                ],
-                "restauration": [
-                    "Riz nature",
-                    "Soupe aux herbes",
-                    "Galette de mil",
-                    "Aucune option"
-                ],
-                "transport": [
-                    "Charrette à bœufs",
-                    "À dos d’homme",
-                    "À pied",
-                    "Aucune option"
-                ]
-            },
-            "options_choisies": {},
-            "personnes_supplementaires": []
-        }
+      {
+        "options_disponibles": {
+          "position": {
+            "Secteur montagneux": 0,
+            "Désert de Gobi": 0,
+            "Aucune option": 0
+          },
+          "activite": {
+            "Transport de pierres": 60,
+            "Pose de briques": 50,
+            "Technique de mortier ancestral": 45,
+            "Aucune option": 0
+          },
+          "hebergement": {
+            "Camp de travailleurs": 40,
+            "Grotte naturelle": 30,
+            "Abri de fortune": 25,
+            "Aucune option": 0
+          },
+          "restauration": {
+            "Riz nature": 10,
+            "Soupe aux herbes": 15,
+            "Galette de mil": 12,
+            "Aucune option": 0
+          },
+          "transport": {
+            "Charrette à bœufs": 20,
+            "À dos d’homme": 15,
+            "À pied": 0,
+            "Aucune option": 0
+          }
+        },
+        "options_choisies": {},
+        "personnes_supplementaires": []
+      }
     ],
     "etape2": [
-        {
-            "options_disponibles": {
-                "position": [
-                    "Secteur montagneux",
-                    "Désert de Gobi",
-                    "Aucune option"
-                ],
-                "activite": [
-                    "Transport de pierres",
-                    "Pose de briques",
-                    "Technique de mortier ancestral",
-                    "Aucune option"
-                ],
-                "hebergement": [
-                    "Camp de travailleurs",
-                    "Grotte naturelle",
-                    "Abri de fortune",
-                    "Aucune option"
-                ],
-                "restauration": [
-                    "Riz nature",
-                    "Soupe aux herbes",
-                    "Galette de mil",
-                    "Aucune option"
-                ],
-                "transport": [
-                    "Charrette à bœufs",
-                    "À dos d’homme",
-                    "À pied",
-                    "Aucune option"
-                ]
-            },
-            "options_choisies": {},
-            "personnes_supplementaires": []
-        }
+      {
+        "options_disponibles": {
+          "position": {
+            "Secteur montagneux": 0,
+            "Désert de Gobi": 0,
+            "Aucune option": 0
+          },
+          "activite": {
+            "Transport de pierres": 60,
+            "Pose de briques": 50,
+            "Technique de mortier ancestral": 45,
+            "Aucune option": 0
+          },
+          "hebergement": {
+            "Camp de travailleurs": 40,
+            "Grotte naturelle": 30,
+            "Abri de fortune": 25,
+            "Aucune option": 0
+          },
+          "restauration": {
+            "Riz nature": 10,
+            "Soupe aux herbes": 15,
+            "Galette de mil": 12,
+            "Aucune option": 0
+          },
+          "transport": {
+            "Charrette à bœufs": 20,
+            "À dos d’homme": 15,
+            "À pied": 0,
+            "Aucune option": 0
+          }
+        },
+        "options_choisies": {},
+        "personnes_supplementaires": []
+      }
     ]
-}
+  }
+  

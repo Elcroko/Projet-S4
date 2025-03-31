@@ -1,38 +1,90 @@
 {
-    "titre": "À la Cour du Roi Soleil",
-    "description": "Vivez dans le faste du château de Versailles et assistez aux intrigues royales.",
-    "époque": "Temps moderne",
-    "lieu": "Europe",
-    "image" : "images/Chateau.jpeg",
-    "dates": {
-        "choix_date_depart": true,
-        "duree": "10 jours"
-    },
-     "prix_base": 2005,
+  "titre": "À la Cour du Roi Soleil",
+  "description": "Vivez dans le faste du château de Versailles et assistez aux intrigues royales.",
+  "époque": "Temps moderne",
+  "lieu": "europe",
+  "image": "images/Chateau.jpeg",
+  "dates": {
+    "choix_date_depart": true,
+    "duree": "10 jours"
+  },
+  "prix_base": 2005,
   "prix_total": 0,
   "paiement": false,
   "nombre_personnes": 0,
   "personnes": [],
-  "etape1": [{
-    "options_disponibles": {
-      "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
-      "activite": ["Bal masqué", "Cours d’escrime", "Visite royale", "Aucune option"],
-      "hebergement": ["Appartement noble", "Chambre d’aile Est", "Orangerie privée", "Aucune option"],
-      "restauration": ["Festin royal", "Petit-déjeuner au lit", "Service d’argenterie", "Aucune option"],
-      "transport": ["Carrosse", "Marche guidée", "Chariot d'époque", "Aucune option"]
-    },
-    "options_choisies": {},
-    "personnes_supplementaires": []
-  }],
-  "etape2": [{
-    "options_disponibles": {
-      "position": ["Lieu mystère", "Coordonnées GPS inconnues", "Aucune option"],
-      "activite": ["Bal masqué", "Cours d’escrime", "Visite royale", "Aucune option"],
-      "hebergement": ["Appartement noble", "Chambre d’aile Est", "Orangerie privée", "Aucune option"],
-      "restauration": ["Festin royal", "Petit-déjeuner au lit", "Service d’argenterie", "Aucune option"],
-      "transport": ["Carrosse", "Marche guidée", "Chariot d'époque", "Aucune option"]
-    },
-    "options_choisies": {},
-    "personnes_supplementaires": []
-  }]
+  "etape1": [
+    {
+      "options_disponibles": {
+        "position": {
+          "Lieu mystère": 0,
+          "Coordonnées GPS inconnues": 0,
+          "Aucune option": 0
+        },
+        "activite": {
+          "Bal masqué": 60,
+          "Cours d’escrime": 70,
+          "Visite royale": 50,
+          "Aucune option": 0
+        },
+        "hebergement": {
+          "Appartement noble": 90,
+          "Chambre d’aile Est": 80,
+          "Orangerie privée": 100,
+          "Aucune option": 0
+        },
+        "restauration": {
+          "Festin royal": 40,
+          "Petit-déjeuner au lit": 30,
+          "Service d’argenterie": 35,
+          "Aucune option": 0
+        },
+        "transport": {
+          "Carrosse": 45,
+          "Marche guidée": 25,
+          "Chariot d'époque": 30,
+          "Aucune option": 0
+        }
+      },
+      "options_choisies": {},
+      "personnes_supplementaires": []
+    }
+  ],
+  "etape2": [
+    {
+      "options_disponibles": {
+        "position": {
+          "Lieu mystère": 0,
+          "Coordonnées GPS inconnues": 0,
+          "Aucune option": 0
+        },
+        "activite": {
+          "Bal masqué": 60,
+          "Cours d’escrime": 70,
+          "Visite royale": 50,
+          "Aucune option": 0
+        },
+        "hebergement": {
+          "Appartement noble": 90,
+          "Chambre d’aile Est": 80,
+          "Orangerie privée": 100,
+          "Aucune option": 0
+        },
+        "restauration": {
+          "Festin royal": 40,
+          "Petit-déjeuner au lit": 30,
+          "Service d’argenterie": 35,
+          "Aucune option": 0
+        },
+        "transport": {
+          "Carrosse": 45,
+          "Marche guidée": 25,
+          "Chariot d'époque": 30,
+          "Aucune option": 0
+        }
+      },
+      "options_choisies": {},
+      "personnes_supplementaires": []
+    }
+  ]
 }

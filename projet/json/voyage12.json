@@ -13,26 +13,116 @@
     "paiement": false,
     "nombre_personnes": 0,
     "personnes": [],
-    "etape1": [{
-        "options_disponibles": {
-        "position": ["Station Alpha", "00.0000, 00.0000", "Aucune option"],
-        "activite": ["Observation d’étoiles", "Gravité zéro", "Excursion spatiale", "Aucune option"],
-        "hebergement": ["Cabine lunaire", "Suite orbitale", "Pod individuel", "Aucune option"],
-        "restauration": ["Repas galactiques", "Bar stellaire", "Synthétiseur de repas", "Aucune option"],
-        "transport": ["Navette spatiale", "Télécapsule", "Ascenseur orbital", "Aucune option"]
+    "etape1": [
+    {
+      "options_disponibles": {
+        "position": {
+          "Station spatiale Alpha": 0,
+          "Orbital Lounge": 0,
+          "Aucune option": 0
         },
-        "options_choisies": {},
-        "personnes_supplementaires": []
-    }],
-    "etape2": [{
-        "options_disponibles": {
-        "position": ["Colonie Mars", "01.2345, 02.3456", "Aucune option"],
-        "activite": ["Observation d’étoiles", "Gravité zéro", "Excursion spatiale", "Aucune option"],
-        "hebergement": ["Cabine lunaire", "Suite orbitale", "Pod individuel", "Aucune option"],
-        "restauration": ["Repas galactiques", "Bar stellaire", "Synthétiseur de repas", "Aucune option"],
-        "transport": ["Navette spatiale", "Télécapsule", "Ascenseur orbital", "Aucune option"]
+        "activite": {
+          "Marche lunaire": 90,
+          "Observation des étoiles": 50,
+          "Simulation de vol spatial": 70,
+          "Aucune option": 0
         },
-        "options_choisies": {},
-        "personnes_supplementaires": []
-    }]
+        "hebergement": {
+          "Cabine avec hublot": 60,
+          "Module gravité 0": 75,
+          "Suite orbitale": 90,
+          "Aucune option": 0
+        },
+        "restauration": {
+          "Repas lyophilisé gourmet": 40,
+          "Cocktail galactique": 35,
+          "Fusion cosmique": 50,
+          "Aucune option": 0
+        },
+        "transport": {
+          "Shuttle spatial": 60,
+          "Train magnétique interorbital": 45,
+          "Drone personnel": 70,
+          "Aucune option": 0
+        }
+      },
+      "options_choisies": {},
+      "personnes_supplementaires": []
+    }
+  ],
+  "etape2": [
+    {
+      "options_disponibles": {
+        "position": {
+          "Station spatiale Alpha": 0,
+          "Orbital Lounge": 0,
+          "Aucune option": 0
+        },
+        "activite": {
+          "Marche lunaire": 90,
+          "Observation des étoiles": 50,
+          "Simulation de vol spatial": 70,
+          "Aucune option": 0
+        },
+        "hebergement": {
+          "Cabine avec hublot": 60,
+          "Module gravité 0": 75,
+          "Suite orbitale": 90,
+          "Aucune option": 0
+        },
+        "restauration": {
+          "Repas lyophilisé gourmet": 40,
+          "Cocktail galactique": 35,
+          "Fusion cosmique": 50,
+          "Aucune option": 0
+        },
+        "transport": {
+          "Shuttle spatial": 60,
+          "Train magnétique interorbital": 45,
+          "Drone personnel": 70,
+          "Aucune option": 0
+        }
+      },
+      "options_choisies": {},
+      "personnes_supplementaires": []
+    }
+  ],
+  "etape3": [
+    {
+      "options_disponibles": {
+        "position": {
+          "Station spatiale Alpha": 0,
+          "Orbital Lounge": 0,
+          "Aucune option": 0
+        },
+        "activite": {
+          "Marche lunaire": 90,
+          "Observation des étoiles": 50,
+          "Simulation de vol spatial": 70,
+          "Aucune option": 0
+        },
+        "hebergement": {
+          "Cabine avec hublot": 60,
+          "Module gravité 0": 75,
+          "Suite orbitale": 90,
+          "Aucune option": 0
+        },
+        "restauration": {
+          "Repas lyophilisé gourmet": 40,
+          "Cocktail galactique": 35,
+          "Fusion cosmique": 50,
+          "Aucune option": 0
+        },
+        "transport": {
+          "Shuttle spatial": 60,
+          "Train magnétique interorbital": 45,
+          "Drone personnel": 70,
+          "Aucune option": 0
+        }
+      },
+      "options_choisies": {},
+      "personnes_supplementaires": []
+    }
+  ]
 }
+  

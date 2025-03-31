@@ -10,42 +10,43 @@
         },
         "prix_base": 500,
         "prix_total": 0,
-        "paiement":{
-            "statut": false
-        },
+        "paiement": false,
         "nombre_personnes": 0,
         "personnes": [],
         "etape1": [
                         {
                             "options_disponibles": {
 
-                                "position": ["Aucune option disponible pour cette étape"
-                                            ],
+                                "position": {"Aucune option disponible pour cette étape" : 0
+                                        },
 
-                                "activite": ["Aucune option",
-                                            "Écriture de lettres posthumes",
-                                            "Marche silencieuse dans la forêt du souvenir",
-                                            "Rencontre avec un oracle",
-                                            "Cérémonie funéraire fictive",
-                                            "Plongée introspective guidée",
-                                            "Contemplation du fleuve du temps"
-                                            ],
+                                "activite": {"Aucune option" : 0,
+                                            "Écriture de lettres posthumes" : 30,
+                                            "Marche silencieuse dans la forêt du souvenir": 20,
+                                            "Rencontre avec un oracle": 50,
+                                            "Cérémonie funéraire fictive": 40,
+                                            "Plongée introspective guidée": 60,
+                                            "Contemplation du fleuve du temps": 70
+                                            
+                                        },
 
-                                "hebergement": ["Aucune option disponible pour cette étape"
-                                                ],
+                                "hebergement": {"Aucune option disponible pour cette étape" : 0
+                                            },
 
-                                "restauration": ["Aucune option",
-                                                "Soupes du souvenir",
-                                                "Repas végétal rituel",
-                                                "Menu préféré de votre vie passée",
-                                                "Jeûne symbolique (volontaire)"
-                                                ],
+                                "restauration": {"Aucune option" : 0,
+                                                "Soupes du souvenir" : 10,
+                                                "Repas végétal rituel" : 20,
+                                                "Menu préféré de votre vie passée": 30,
+                                                "Jeûne symbolique (volontaire)" : 0
+                                                 
+                                            },
 
-                                "transport": ["Aucune option",
-                                            "Portail temporel", 
-                                            "Bateau du passeur",
-                                            "Train du souvenir"
-                                            ]
+                                "transport": {"Aucune option" : 0,
+                                            "Portail temporel" : 100, 
+                                            "Bateau du passeur" : 50,
+                                            "Train du souvenir" : 30
+                                            }
+                                            
                             },
                             "options_choisies": {},
                             "personnes_supplementaires": []
@@ -55,37 +56,38 @@
             {
                 "options_disponibles": {
 
-                    "position": ["Aucune option disponible pour cette étape"
-                                ],
+                    "position": {"Aucune option disponible pour cette étape" : 0
+                                        },
 
-                    "activite": ["Aucune option",
-                                "Écriture de lettres posthumes",
-                                "Marche silencieuse dans la forêt du souvenir",
-                                "Rencontre avec un oracle",
-                                "Cérémonie funéraire fictive",
-                                "Plongée introspective guidée",
-                                "Contemplation du fleuve du temps"
-                                ],
+                    "activite": {"Aucune option" : 0,
+                                "Écriture de lettres posthumes" : 30,
+                                "Marche silencieuse dans la forêt du souvenir": 20,
+                                "Rencontre avec un oracle": 50,
+                                "Cérémonie funéraire fictive": 40,
+                                "Plongée introspective guidée": 60,
+                                "Contemplation du fleuve du temps": 70                        
+                                },
 
-                    "hebergement": ["Aucune option",
-                                    "Hôtel 3*", 
-                                    "Chambre secrète",
-                                    "Refuge du dernier repos",
-                                    "Tombeau reconstitué (expérience immersive)"
-                                    ],
+                    "hebergement": {"Aucune option" : 0,
+                                    "Hôtel 3*": 100, 
+                                    "Chambre secrète" : 50,
+                                    "Refuge du dernier repos" : 100,
+                                    "Tombeau reconstitué (expérience immersive)" : 200
+                                    },
 
-                    "restauration": ["Aucune option",
-                                    "Soupes du souvenir",
-                                    "Repas végétal rituel",
-                                    "Menu préféré de votre vie passée",
-                                    "Jeûne symbolique (volontaire)"
-                                    ],
+                    "restauration": {"Aucune option" : 0,
+                                                "Soupes du souvenir" : 10,
+                                                "Repas végétal rituel" : 20,
+                                                "Menu préféré de votre vie passée": 30,
+                                                "Jeûne symbolique (volontaire)" : 0
+                                                 
+                                            },
 
-                    "transport": ["Aucune option",
-                                "Portail temporel", 
-                                "Bateau du passeur",
-                                "Train du souvenir"
-                                ]
+                                "transport": {"Aucune option" : 0,
+                                            "Portail temporel" : 100, 
+                                            "Bateau du passeur" : 50,
+                                            "Train du souvenir" : 30
+                                            }
                 },
                 "options_choisies": {},
                 "personnes_supplementaires": []
