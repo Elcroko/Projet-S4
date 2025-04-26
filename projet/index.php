@@ -12,12 +12,18 @@ session_start();
     <link rel="icon" type="image/png" href="images/portail.png">
 </head>
 <body>
+    <!-- Détection du thème sombre -->
+    <script src="theme.js"></script>
+
     <!-- En-tête -->
     <header>
         <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
         <h1 class="site-title">
             <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
-        </h1>        
+        </h1>
+        
+        <button id="theme-toggle" class="btn">Changer de thème</button>
+
         <nav aria-label="Navigation principale">
             <ul>
                 <li><a href="index.php">Accueil</a></li>
