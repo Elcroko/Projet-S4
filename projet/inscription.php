@@ -125,6 +125,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="css/inscription.css">
 </head>
 <body>
+    <!-- Verification du formulaire d'inscription -->
+    <script src="js/verif_inscription.js"></script> 
+    
     <!-- En-tête -->
     <header>
         <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">

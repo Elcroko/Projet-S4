@@ -57,6 +57,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="css/connexion.css">
 </head>
 <body>
+
+    <!-- Verification du formulaire de connexion -->
+    <script src="js/verif_connexion.js"></script> 
+    
     <!-- En-tête -->
     <header>
         <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">

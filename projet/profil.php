@@ -59,6 +59,8 @@ foreach ($users as $u) {
     <link rel="stylesheet" href="css/profil.css">
 </head>
 <body>
+    <!-- Ajout du script JS -->
+    <script src="js/profil.js"></script>
     
     <!-- En-tête -->
     <header>
@@ -109,26 +111,26 @@ foreach ($users as $u) {
                     
                     <div class="form-group">
                         <label for="nom">Nom :</label>
-                        <input type="text" name="nom" value="<?= htmlspecialchars($user['nom']) ?>" required>
-                        <button type="button" class="edit-btn"></button>
+                        <input type="text" id= "nom" name="nom" value="<?= htmlspecialchars($user['nom']) ?>" required readonly>
+                        <button type="button" class="edit-btn" data-field="nom">Modifier</button>
                     </div>
 
                     <div class="form-group">
                         <label for="prenom">Prénom :</label>
-                        <input type="text" name="prenom" value="<?= htmlspecialchars($user['prenom']) ?>" required>
-                        <button type="button" class="edit-btn"></button>
+                        <input type="text" id="prenom" name="prenom" value="<?= htmlspecialchars($user['prenom']) ?>" required readonly>
+                        <button type="button" class="edit-btn" data-field="prenom">Modifier</button>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email :</label>
-                        <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required>
-                        <button type="button" class="edit-btn"></button>
+                        <input type="email" id="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required readonly>
+                        <button type="button" class="edit-btn" data-field="email">Modifier</button>
                     </div>
 
                     <div class="form-group">
                         <label for="telephone">Téléphone :</label>
-                        <input type="tel" name="telephone" value="<?= htmlspecialchars($user['telephone']) ?>" required>
-                        <button type="button" class="edit-btn"></button>
+                        <input type="tel" id="telephone" name="telephone" value="<?= htmlspecialchars($user['telephone']) ?>" required readonly>
+                        <button type="button" class="edit-btn" data-field="telephone">Modifier</button>
                     </div>
 
                     <div class="form-group">
@@ -147,7 +149,7 @@ foreach ($users as $u) {
                         <label for="nombre_voyages">Voyages réservés :</label>
                         <input type="number" name="nombre_voyages" value="<?= htmlspecialchars($user['nombre_voyages']) ?>" readonly>
                     </div>
-                        <button type="submit" class="save-btn">Enregistrer les modifications</button>
+                        <button type="submit" id="save-changes" class="save-btn" style="display: none;">Enregistrer les modifications</button>
                     </form>
                 </section>
             <?php else: ?>

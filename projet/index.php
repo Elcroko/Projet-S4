@@ -13,7 +13,7 @@ session_start();
 </head>
 <body>
     <!-- Détection du thème sombre -->
-    <script src="theme.js"></script>
+    <script src="js/theme.js"></script>
 
     <!-- En-tête -->
     <header>
@@ -51,7 +51,7 @@ session_start();
             <div class="hero-content">
                 <h2 class="hero-title">Embarquez pour un voyage à travers le temps</h2>
                 <p class="hero-subtitle">Revivez les époques légendaires et percez les mystères du futur.</p>
-                <a href="circuits.php" class="btn">Explorer</a>
+                <span href="circuits.php" class="btn">Explorer</span>
             </div>
         </section>
 

@@ -180,6 +180,14 @@ nav ul li a:hover {
     box-shadow: 0 0 12px rgba(193, 247, 98, 0.7);
 }
 
+.admin-btn.loading {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+
 /* ============================== */
 /* MEDIA QUERIES POUR RESPONSIVE */
 /* ============================== */

@@ -13,26 +13,28 @@ if (!file_exists($file)) {
     exit;
 }
 
-// Si un admin clique sur le bouton pour changer le rôle d'un utilisateur
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggle_admin']) && isset($_POST['email'])) {
+// Gestion spéciale des requêtes AJAX
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['admin'])) {
     $email = $_POST['email'];
+    $newAdminStatus = intval($_POST['admin']); // 0 ou 1
     $users = json_decode(file_get_contents($file), true);
 
     foreach ($users as &$user) {
         if ($user['email'] === $email && $user['email'] !== $_SESSION['user']['email']) {
-            $user['admin'] = !$user['admin']; // inverse le rôle admin
+            $user['admin'] = $newAdminStatus === 1 ? true : false;
             break;
         }
     }
 
-    file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT));
-    header("Location: admin.php");
+    file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+    echo "Statut admin mis à jour pour $email.";
     exit;
 }
 
-$users = json_decode(file_get_contents($file), true);
+// --- Si on arrive ici, c'est qu'on veut afficher la page normale ---
 
-// Pagination
+$users = json_decode(file_get_contents($file), true);
 $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
 $usersPerPage = 5;
 $totalUsers = count($users);
@@ -41,6 +43,7 @@ $offset = ($page - 1) * $usersPerPage;
 $usersPage = array_slice($users, $offset, $usersPerPage);
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -51,6 +54,9 @@ $usersPage = array_slice($users, $offset, $usersPerPage);
     <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
+    <!-- Ajout du script JS -->
+    <script src="js/admin.js"></script>
+
     <!-- En-tête -->
     <header>
         <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
@@ -96,18 +102,18 @@ $usersPage = array_slice($users, $offset, $usersPerPage);
                                 <td><?= htmlspecialchars($user['date_inscription']) ?></td>
                                 <td><?= htmlspecialchars($user['telephone']) ?></td>
                                 <td><?= htmlspecialchars($user['nombre_voyages']) ?></td>
-                                <td><?= $user['admin'] ? 'Oui' : 'Non' ?></td>
+                                <td class="admin-status"><?= $user['admin'] ? 'Oui' : 'Non' ?></td>
                                 <td>
                                 <?php if ($user['email'] !== $_SESSION['user']['email']): ?>
-                                    <form method="POST" action="admin.php" style="display:inline;">
-                                        <input type="hidden" name="email" value="<?= htmlspecialchars($user['email']) ?>">
-                                        <button type="submit" name="toggle_admin" class="admin-btn">
-                                            <?= $user['admin'] ? 'Retirer Admin' : 'Rendre Admin' ?>
-                                        </button>
-                                    </form>
-                                    <?php else: ?>
-                                        <em>Vous</em>
-                                    <?php endif; ?>
+                                    <button type="button" 
+                                            class="admin-btn" 
+                                            data-admin="<?= $user['admin'] ? '1' : '0' ?>" 
+                                            data-email="<?= htmlspecialchars($user['email']) ?>">
+                                        <?= $user['admin'] ? 'Retirer admin' : 'Rendre admin' ?>
+                                    </button>
+                                <?php else: ?>
+                                    <em>Vous</em>
+                                <?php endif; ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
