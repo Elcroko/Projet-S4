@@ -1,0 +1,53 @@
+1. Changer dynamiquement la charte graphique (mode clair/sombre/contrasté, etc.) A FAIRE POUR TOUTES LES PAGES ET QUE LORSUQE L'ON CHANGE 
+											CA GARDE L4INFORMATION POUR LES AUTRES PAGES
+
+	Avec un bouton pour changer de thème sans recharger la page.
+	
+	Sauvegarder le choix du thème dans un cookie.
+
+	Charger automatiquement le bon thème au démarrage en lisant le cookie.
+
+2. Vérification des formulaires côté client (inscription, connexion, etc.) A FAIRE
+
+	Vérifier les champs avant d’envoyer au serveur.
+
+	Afficher des messages d’erreur sans recharger la page.
+
+	Ajouter un bouton pour cacher/montrer les mots de passe (icône œil).
+
+	Ajouter un compteur pour la longueur des champs (ex : mot de passe, pseudo).
+
+3. Edition de profil en direct VVVVVVVVVVVVVVVV
+
+	Les champs sont non modifiables par défaut (grisés).
+
+	Cliquer sur un bouton "modifier" pour activer l’édition d'un champ.
+
+	Bouton "valider" ou "annuler" pour sauvegarder ou annuler sans recharger.
+
+	Quand au moins un champ est modifié, afficher un bouton global "soumettre" pour enregistrer côté serveur.
+	
+4. Simulation d’attente sur page admin VVVVVVVVVVVVVVVVVV
+
+	Lorsqu’on modifie un paramètre d’utilisateur (ex : bouton VIP), griser le bouton quelques secondes pour simuler un traitement.
+
+5. Trier dynamiquement les résultats de recherche de voyages A FAIRE
+
+	Ajouter tri par prix, dates, durée, nombre d’étapes, sans rechargement et sans requête serveur.
+
+6. Recalcul dynamique du prix du voyage A FAIRE
+
+	Sur la page de personnalisation du voyage : chaque modification (options, nombre de personnes, etc.) actualise immédiatement le prix affiché en JavaScript.
+
+7. Tout ton code JavaScript doit être dans des fichiers séparés (ex : script.js) et pas directement dans les pages HTML/PHP.
+
+8. Ajout d’une fonctionnalité de "panier" A FAIRE  
+
+	À partir du moment où un voyage est modifié ou personnalisé, il est ajouté au panier côté serveur (via la session PHP).
+
+9. Mettre à jour ton rapport de projet A FAIRE
+	
+	Ajouter un paragraphe expliquant ce que vous avez fait en Phase 3.
+
+	Le tout dans le même fichier PDF que pour la Phase 1 et Phase 2 (tu continues).
+
