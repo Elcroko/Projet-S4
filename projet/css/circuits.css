@@ -352,7 +352,27 @@ nav ul li a:hover {
     color: black;
 }
 
+.tri-container {
+    margin: 20px auto;
+    text-align: center;
+}
 
+.tri-container label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    margin-right: 10px;
+}
+
+.tri-container select {
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: #c1f762;
+    border: none;
+    font-weight: bold;
+    color: #2c2c2c;
+    font-size: 1rem;
+}
 
 /* ============================== */
 /* PAGINATION */

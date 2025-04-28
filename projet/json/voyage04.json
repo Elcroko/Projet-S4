@@ -6,7 +6,7 @@
     "lieu": "Europe",
     "dates": { 
         "choix_date_depart": true,
-        "duree" : "2 semaines"
+        "duree" : "15 jours"
  },
   "prix_base": 2342,
   "prix_total": 0,

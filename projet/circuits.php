@@ -83,9 +83,9 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
             </form>
         </section>     
         
-        <form method="get" class="filtres-voyages">
+        <form id="filters-form" class="filtres-voyages">
             <label for="epoque">Époque :</label>
-            <select name="epoque" id="epoque">
+            <select id="epoque">
                 <option value="">Toutes</option>
                 <option value="préhistoire">Préhistoire</option>
                 <option value="antiquité">Antiquité</option>
@@ -96,7 +96,7 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
             </select>
 
             <label for="lieu">Lieu :</label>
-            <select name="lieu" id="lieu">
+            <select id="lieu">
                 <option value="">Tous</option>
                 <option value="europe">Europe</option>
                 <option value="asie">Asie</option>
@@ -106,25 +106,40 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
             </select>
 
             <label for="prix">Prix :</label>
-            <select name="prix" id="prix">
+            <select id="prix">
                 <option value="">Tous</option>
                 <option value="1">Moins de 1000 €</option>
                 <option value="2">Entre 1000 € et 2000 €</option>
                 <option value="3">Plus de 2000 €</option>
             </select>
 
-            <button type="submit" class="btn">Filtrer</button>
+            <button type="button" class="btn">Filtrer</button>
         </form>
         
         <!-- Section des circuits temporels -->
         <section class="featured">
             <h3>Nos circuits temporels</h3>
+            <div class="tri-container">
+                <label for="sort-by">Trier par :</label>
+                <select id="sort-by">
+                    <option value="">-- Choisir --</option>
+                    <option value="prix">Prix</option>
+                    <option value="duree">Durée</option>
+                    <option value="etapes">Nombre d'étapes</option>
+                </select>
+            </div>
+
             <div class="circuits-container">
             <?php if (count($voyagesPage) === 0): ?>
                 <p class="no-result">Aucun résultat pour cette recherche.</p>
             <?php else: ?>
                 <?php foreach ($voyagesPage as $index => $voyage): ?>
-                    <a href="voyage.php?id=<?= 'voyage' . str_pad($index + 1 + $offset, 2, '0', STR_PAD_LEFT) ?>" class="circuit-link">
+                    <a href="voyage.php?id=<?= 'voyage' . str_pad($index + 1 + $offset, 2, '0', STR_PAD_LEFT) ?>" 
+                        class="circuit-link"
+                        data-epoque="<?= htmlspecialchars(strtolower($voyage['epoque'] ?? '')) ?>"
+                        data-lieu="<?= htmlspecialchars(strtolower($voyage['lieu'] ?? '')) ?>"
+                        data-prix="<?= htmlspecialchars($voyage['prix_base'] ?? 0) ?>">
+                                           
                         <article class="circuit">
                             <img src="<?= htmlspecialchars($voyage['image']) ?>" alt="Illustration du circuit <?= htmlspecialchars($voyage['titre']) ?>" />
                             <h4><?= htmlspecialchars($voyage['titre']) ?></h4>
@@ -166,5 +181,6 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
     <footer>
         <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
     </footer>
+    <script src="js/circuits.js"></script>
 </body>
 </html>
