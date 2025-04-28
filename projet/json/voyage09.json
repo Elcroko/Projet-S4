@@ -1,7 +1,7 @@
 {
     "titre": "Révolution à Paris",
     "description": "Vivez la prise de la Bastille et plongez en pleine Révolution française.",
-    "époque": "Temps modernes",
+    "epoque": "Temps modernes",
     "lieu": "Europe",
     "image": "images/bastille.jpeg",
     "dates": {

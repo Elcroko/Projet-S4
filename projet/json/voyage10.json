@@ -1,7 +1,7 @@
 {
   "titre": "L'Enfer des Tranchées",
   "description": "Expérimentez la dure réalité des soldats de la Première Guerre mondiale.",
-  "époque": "Contemporaine",
+  "epoque": "Contemporaine",
   "lieu": "Europe",
   "image": "images/1ere_gm.jpeg",
   "dates": {

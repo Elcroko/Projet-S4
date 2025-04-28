@@ -1,7 +1,7 @@
 {
   "titre": "Mission Résistance",
   "description" : "Rejoignez la Résistance et luttez contre l’occupation nazie.",
-  "époque": "Contemporaine",
+  "epoque": "Contemporaine",
   "lieu": "Europe",
   "image" : "images/2eme_gm.jpeg",
   "dates": {

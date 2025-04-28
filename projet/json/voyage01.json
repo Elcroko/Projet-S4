@@ -2,7 +2,7 @@
         "titre": "Le Jour de votre Mort",
         "description": "Oserez-vous affronter votre destinée et découvrir ce que l’avenir vous réserve ? ",
         "image": "images/morts.jpeg",
-        "époque": "Futur",
+        "epoque": "Futur",
         "lieu": "Tous",
         "dates": {
             "choix_date_depart": true,

@@ -2,7 +2,7 @@
   "titre": "L'Époque des Vikings",
     "description": "Rejoignez Ragnar et ses guerriers pour des raids épiques et une conquête sans pitié.",
     "image" : "images/vinkings.png",
-    "époque": "Moyen-Âge",
+    "epoque": "Moyen-Âge",
     "lieu": "Europe",
     "dates": { 
         "choix_date_depart": true,

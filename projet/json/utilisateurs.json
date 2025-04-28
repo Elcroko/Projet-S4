@@ -3,7 +3,7 @@
         "id": 1,
         "nom": "Z",
         "prenom": "Z",
-        "email": "zz@gmail.com",
+        "email": "zz@gmail.ccom",
         "mot_de_passe": "$2y$12$VIPyQJscjGVwq\/FbUCnK0uaryOKxT2b4G9.VZQ4TBGE57SwWen86O",
         "date_naissance": "2000-09-26",
         "date_inscription": "24\/03\/2025 ",
@@ -17,12 +17,12 @@
                 "fichier_commande": "commande_user1_2025-03-31_01.41.17.json"
             },
             {
-                "titre": "R\u00e9volution a Paris",
+                "titre": "Révolution a Paris",
                 "prix": "11016.00",
                 "fichier_commande": "commande_user1_2025-03-31_01.41.49.json"
             },
             {
-                "titre": "La D\u00e9faite de Waterloo",
+                "titre": "La Défaite de Waterloo",
                 "prix": "5000.00",
                 "fichier_commande": "commande_user1_2025-03-31_01.42.43.json"
             }
@@ -30,7 +30,7 @@
     },
     {
         "id": 2,
-        "nom": "Fran\u00e7ois",
+        "nom": "François",
         "prenom": "Thomas",
         "email": "thomas@gmail.com",
         "mot_de_passe": "$2y$12$0Zw6gTZLj..u\/s9WZcl.LeQYT.ZI.C5TQFNmKSQitcYdTg4W5dgP6",
@@ -61,7 +61,7 @@
     },
     {
         "id": 4,
-        "nom": "z\u00e9ro",
+        "nom": "zéro",
         "prenom": "deux",
         "email": "2@gmail.com",
         "mot_de_passe": "$2y$12$Y5dfcihCYdW3HmoN7CDKJ.ZednlCnGMT7A1s7oK.MteN5y9pEsx7m",
@@ -72,7 +72,7 @@
         "telephone": "0202020202",
         "historique": [
             {
-                "titre": "L'\u00c9poque des Vikings",
+                "titre": "L'Époque des Vikings",
                 "prix": "6304.00",
                 "fichier_commande": "commande_user4_2025-03-30_23.59.02.json"
             },
@@ -96,7 +96,7 @@
         "telephone": "0102030405",
         "historique": [
             {
-                "titre": "L'\u00c8re du Bitcoin",
+                "titre": "L'Ère du Bitcoin",
                 "prix": "5334.00",
                 "fichier_commande": "commande_user5_2025-03-30_23.53.37.json"
             }

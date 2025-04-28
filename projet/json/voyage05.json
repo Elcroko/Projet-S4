@@ -1,7 +1,7 @@
 {
   "titre": "À la Cour du Roi Soleil",
   "description": "Vivez dans le faste du château de Versailles et assistez aux intrigues royales.",
-  "époque": "Temps moderne",
+  "epoque": "Temps moderne",
   "lieu": "europe",
   "image": "images/Chateau.jpeg",
   "dates": {

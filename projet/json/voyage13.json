@@ -1,7 +1,7 @@
 {
     "titre": "Jeux Olympiques de l'An 3000",
     "description": "Assistez aux performances incroyables des athlètes du futur dans un stade ultra-technologique.",
-    "époque": "Futur",
+    "epoque": "Futur",
     "lieu": "Espace",
     "image": "images/jo_3000.jpeg",
     "dates": {

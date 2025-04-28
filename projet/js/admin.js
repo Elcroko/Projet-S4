@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Désactiver bouton
             button.disabled = true;
-            button.textContent = "Traitement...";
+            button.textContent = "⏳";
             button.classList.add('loading');
 
             // Simuler attente

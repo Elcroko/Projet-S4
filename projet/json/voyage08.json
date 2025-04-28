@@ -1,7 +1,7 @@
 {
     "titre": "Le Secret des Pyramides",
     "description": "Assistez à la construction des pyramides et découvrez leurs mystères.",
-    "époque": "antiquité",
+    "epoque": "antiquité",
     "lieu": "afrique",
     "image": "images/pyramides.jpeg",
     "dates": {

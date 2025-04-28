@@ -2,7 +2,7 @@
     "titre": "L'Ère du Bitcoin",
     "description": "Voyagez dans le passé et changez votre destinée financière en maîtrisant la cryptomonnaie.",
     "image" : "images/coin.jpeg",
-    "époque": "Contemporaine",
+    "epoque": "Contemporaine",
     "lieu": "Tous",
     "dates": {
         "choix_date_depart": true,

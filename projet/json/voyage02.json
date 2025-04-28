@@ -2,7 +2,7 @@
   "titre": "La Préhistoire",
     "description": "Évitez les prédateurs préhistoriques et survivez dans un monde sauvage et impitoyable.",
     "image" : "images/Udino.jpeg",
-    "époque": "Préhistoire",
+    "epoque": "Préhistoire",
     "lieu": "Tous",
     "dates": {
     "choix_date_depart": true,

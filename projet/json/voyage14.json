@@ -1,7 +1,7 @@
 {
     "titre": "La Défaite de Waterloo",
     "description": "Revivez la célèbre bataille qui mit fin à l'épopée napoléonienne.",
-    "époque": "Moyen-Âge",
+    "epoque": "Moyen-Âge",
     "lieu": "Europe",
     "image": "images/Waterloo.png",
     "dates": {

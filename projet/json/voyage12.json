@@ -1,7 +1,7 @@
 {
     "titre": "Croisière Interplanétaire",
     "description": "Embarquez pour un voyage à travers les étoiles et explorez les confins de l’univers.",
-    "époque": "Futur",
+    "epoque": "Futur",
     "lieu": "Espace",
     "image" : "images/croisiere_interplanetaire.jpeg",
     "dates": {
