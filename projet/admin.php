@@ -6,7 +6,7 @@ if (!isset($_SESSION['user']) || empty($_SESSION['role']) || $_SESSION['role'] !
     exit;
 }
 
-$file = 'json/utilisateurs.json';
+$file = 'json/utilisateurs.json'; 
 
 if (!file_exists($file)) {
     echo "Fichier utilisateur introuvable.";
