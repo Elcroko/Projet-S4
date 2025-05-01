@@ -14,6 +14,7 @@ body {
     color: white;
     text-align: center;
     font-size: 67%;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 
@@ -84,6 +85,27 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #c1f762;
+}
+
+/* ============================== */
+/* Bouton thème */
+/* ============================== */
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #7cbc6c, #c1f762);
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    font-weight: bold;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #c1f762, #7cbc6c);
 }
 
 /* ============================== */
@@ -310,6 +332,135 @@ nav ul li a:hover {
 
 #js-voyages {
     display: none !important;
+}
+
+/* ============================== */
+/* DARK MODE COMPLET */
+/* ============================== */
+
+.dark-mode {
+    background-color: #121212;
+    color: #c1f762;
+}
+
+.dark-mode body {
+    background-color: #121212;
+    color: #c1f762;
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode p,
+.dark-mode label {
+    color: #c1f762;
+}
+
+.dark-mode a {
+    color: #c1f762;
+}
+
+.dark-mode header {
+    background: linear-gradient(5deg, #1a1a1a, #222);
+}
+
+.dark-mode nav ul li a {
+    color: #c1f762;
+}
+
+.dark-mode nav ul li a:hover {
+    color: #7cbc6c;
+}
+
+.dark-mode .btn {
+    background: linear-gradient(45deg, #333, #222);
+    color: #c1f762;
+}
+
+.dark-mode .btn:hover {
+    background: linear-gradient(45deg, #444, #333);
+    color: white;
+}
+
+/* Filtres */
+.dark-mode .filters,
+.dark-mode .filtres-voyages,
+.dark-mode .search-section {
+    background-color: #1f1f1f;
+    box-shadow: 0 0 20px rgba(193, 247, 98, 0.15);
+}
+
+.dark-mode .filters form,
+.dark-mode .search-bar {
+    background: linear-gradient(90deg, #333, #444);
+}
+
+.dark-mode .filters .search-bar,
+.dark-mode .search-bar input[type="text"] {
+    background-color: #222;
+    color: #c1f762;
+}
+
+.dark-mode .filters .btn,
+.dark-mode .filtres-voyages .btn,
+.dark-mode .search-bar button {
+    background-color: #333;
+    color: #c1f762;
+}
+
+.dark-mode .filters .btn:hover,
+.dark-mode .filtres-voyages .btn:hover {
+    background-color: #444;
+    color: white;
+}
+
+.dark-mode .filtres-voyages select,
+.dark-mode .tri-container select {
+    background-color: #2a2a2a;
+    color: #c1f762;
+    border: none;
+}
+
+.dark-mode .tri-container label {
+    color: #c1f762;
+}
+
+/* Circuits */
+.dark-mode .circuit {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .circuit p {
+    color: #ccc;
+}
+
+.dark-mode .circuit p strong {
+    color: #c1f762;
+}
+
+/* Pagination */
+.dark-mode .pagination a {
+    background-color: #2a2a2a;
+    color: #c1f762;
+    border: 1px solid #c1f762;
+}
+
+.dark-mode .pagination a:hover {
+    background-color: #3a3a3a;
+    transform: scale(1.05);
+}
+
+.dark-mode .pagination a[style*="font-weight: bold"] {
+    background-color: #000;
+    color: #fff;
+    border-color: #c1f762;
+}
+
+/* Footer */
+.dark-mode footer {
+    background-color: #1a1a1a;
+    color: #c1f762;
 }
 
 

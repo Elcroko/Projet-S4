@@ -15,6 +15,7 @@ body {
     color: white;
     text-align: center;
     font-size: 67%;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 
@@ -268,7 +269,9 @@ nav ul li a:hover {
     color: #c1f762;
 }
 
+/* ============================== */
 /* Dark mode général */
+/* ============================== */
 .dark-mode {
     background-color: #121212;
     color: #c1f762;
@@ -309,8 +312,6 @@ nav ul li a:hover {
 .dark-mode nav ul li a:hover {
     color: #c1f762;
 }
-
-
 
 /* ============================== */
 /* FOOTER */
