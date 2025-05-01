@@ -87,12 +87,12 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
             <label for="epoque">Époque :</label>
             <select id="epoque">
                 <option value="">Toutes</option>
-                <option value="préhistoire">Préhistoire</option>
-                <option value="antiquité">Antiquité</option>
-                <option value="moyen-age">Moyen-Âge</option>
-                <option value="renaissance">Renaissance</option>
-                <option value="temps-modernes">Temps modernes</option>
-                <option value="futur">Futur</option>
+                <option value="Préhistoire">Préhistoire</option>
+                <option value="Antiquité">Antiquité</option>
+                <option value="Moyen-Âge">Moyen-Âge</option>
+                <option value="Renaissance">Renaissance</option>
+                <option value="Temps modernes">Temps modernes</option>
+                <option value="Futur">Futur</option>
             </select>
 
             <label for="lieu">Lieu :</label>
@@ -113,7 +113,6 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
                 <option value="3">Plus de 2000 €</option>
             </select>
 
-            <button type="button" class="btn">Filtrer</button>
         </form>
         
         <!-- Section des circuits temporels -->
@@ -128,7 +127,9 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
                     <option value="etapes">Nombre d'étapes</option>
                 </select>
             </div>
-
+            
+            <!-- Conteneur visible avec la pagination PHP -->
+            <?php ob_start(); ?>
             <div class="circuits-container">
             <?php if (count($voyagesPage) === 0): ?>
                 <p class="no-result">Aucun résultat pour cette recherche.</p>
@@ -139,7 +140,7 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
                         data-epoque="<?= htmlspecialchars(strtolower($voyage['epoque'] ?? '')) ?>"
                         data-lieu="<?= htmlspecialchars(strtolower($voyage['lieu'] ?? '')) ?>"
                         data-prix="<?= htmlspecialchars($voyage['prix_base'] ?? 0) ?>">
-                                           
+
                         <article class="circuit">
                             <img src="<?= htmlspecialchars($voyage['image']) ?>" alt="Illustration du circuit <?= htmlspecialchars($voyage['titre']) ?>" />
                             <h4><?= htmlspecialchars($voyage['titre']) ?></h4>
@@ -162,10 +163,15 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
                             <p><strong>Nombre d’étapes :</strong> <?= $nbEtapes ?></p>
                         </article>
                     </a>
-
                 <?php endforeach; ?>
             <?php endif; ?>
             </div>
+            <?php $originalCircuits = ob_get_clean(); ?>
+            <?= $originalCircuits ?>
+            <div id="original-circuits" style="display: none;">
+                <?= $originalCircuits ?>
+            </div>
+
 
             <?php if ($totalPages > 1): ?>
             <div class="pagination">
@@ -176,6 +182,38 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
             <?php endfor; ?>
             </div>
             <?php endif; ?>
+
+            <!-- ⬇️ CONTENEUR MASQUÉ POUR JS (TOUS LES VOYAGES) -->
+            <div id="js-voyages" style="display: none;">
+            <?php foreach ($tousVoyages as $index => $voyage): ?>
+                <a href="voyage.php?id=<?= 'voyage' . str_pad($index + 1, 2, '0', STR_PAD_LEFT) ?>" 
+                    class="circuit-link"
+                    data-epoque="<?= htmlspecialchars(strtolower($voyage['epoque'] ?? '')) ?>"
+                    data-lieu="<?= htmlspecialchars(strtolower($voyage['lieu'] ?? '')) ?>"
+                    data-prix="<?= htmlspecialchars($voyage['prix_base'] ?? 0) ?>">
+
+                    <article class="circuit">
+                        <img src="<?= htmlspecialchars($voyage['image']) ?>" alt="Illustration du circuit <?= htmlspecialchars($voyage['titre']) ?>" />
+                        <h4><?= htmlspecialchars($voyage['titre']) ?></h4>
+                        <p><?= htmlspecialchars($voyage['description']) ?></p>
+
+                        <?php if (isset($voyage['dates']['duree'])): ?>
+                            <p><strong>Durée :</strong> <?= htmlspecialchars($voyage['dates']['duree']) ?></p>
+                        <?php endif; ?>
+
+                        <p><strong>A partir de </strong> <?= htmlspecialchars($voyage['prix_base']) ?> €</p>
+
+                        <?php
+                        $nbEtapes = 0;
+                        foreach ($voyage as $cle => $valeur) {
+                            if (str_starts_with($cle, 'etape')) $nbEtapes++;
+                        }
+                        ?>
+                        <p><strong>Nombre d’étapes :</strong> <?= $nbEtapes ?></p>
+                    </article>
+                </a>
+            <?php endforeach; ?>
+            </div>
         </section>
     </main>
     <footer>

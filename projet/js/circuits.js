@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const circuitsContainer = document.querySelector('.circuits-container');
     const sortSelect = document.getElementById('sort-by');
     const form = document.getElementById('filters-form');
-    const filterButton = form.querySelector('button.btn');
 
     // *** Tableau contenant tous les circuits ***
     let circuits = Array.from(document.querySelectorAll('.circuit-link'));
@@ -12,40 +11,75 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedLieu = document.getElementById('lieu').value.toLowerCase();
         const selectedPrix = document.getElementById('prix').value;
         const sortBy = sortSelect.value;
-
-        // 1. Filtrage
-        let filteredCircuits = circuits.filter(circuit => {
-            const circuitEpoque = (circuit.dataset.epoque || '').toLowerCase();
-            const circuitLieu = (circuit.dataset.lieu || '').toLowerCase();
-            const circuitPrix = parseFloat(circuit.dataset.prix) || 0;
-
-            if (selectedEpoque && circuitEpoque !== selectedEpoque) return false;
-            if (selectedLieu && circuitLieu !== selectedLieu) return false;
-            if (selectedPrix) {
-                if (selectedPrix === '1' && circuitPrix >= 1000) return false;
-                if (selectedPrix === '2' && (circuitPrix < 1000 || circuitPrix > 2000)) return false;
-                if (selectedPrix === '3' && circuitPrix <= 2000) return false;
-            }
+    
+        const allCircuits = Array.from(document.querySelectorAll('#js-voyages .circuit-link'));
+        const container = document.querySelector('.circuits-container');
+        const pagination = document.querySelector('.pagination');
+    
+        // Vérifie s'il y a un filtre ou tri actif
+        const filtreActif = selectedEpoque || selectedLieu || selectedPrix || sortBy;
+    
+        // Si aucun filtre/tri, on n'agit pas : laisser le PHP afficher ses 6 voyages paginés
+        if (!filtreActif) {
+            // Remettre les éléments PHP
+            document.querySelectorAll('.pagination, .circuits-container').forEach(el => el.style.display = '');
+            return;
+        }
+    
+        // Sinon on filtre
+        let filtered = allCircuits.filter(circuit => {
+            const ep = (circuit.dataset.epoque || '').toLowerCase();
+            const li = (circuit.dataset.lieu || '').toLowerCase();
+            const pr = parseFloat(circuit.dataset.prix) || 0;
+    
+            if (selectedEpoque && ep !== selectedEpoque) return false;
+            if (selectedLieu && li !== selectedLieu) return false;
+            if (selectedPrix === '1' && pr >= 1000) return false;
+            if (selectedPrix === '2' && (pr < 1000 || pr > 2000)) return false;
+            if (selectedPrix === '3' && pr <= 2000) return false;
+    
             return true;
         });
-
-        // 2. Tri
+    
+        // Tri
         if (sortBy) {
-            filteredCircuits.sort((a, b) => {
-                const aValue = extractValue(a, sortBy);
-                const bValue = extractValue(b, sortBy);
-                return aValue - bValue;
+            filtered.sort((a, b) => {
+                const getValue = (el, type) => {
+                    if (type === 'prix') return parseFloat(el.dataset.prix) || 0;
+                    const texts = [...el.querySelectorAll('p')].map(p => p.textContent.toLowerCase());
+                    if (type === 'duree') return parseInt(texts.find(t => t.includes('durée'))?.replace(/\D/g, '') || 0);
+                    if (type === 'etapes') return parseInt(texts.find(t => t.includes('étapes'))?.replace(/\D/g, '') || 0);
+                    return 0;
+                };
+                return getValue(a, sortBy) - getValue(b, sortBy);
             });
         }
-
-        // 3. Affichage
-        circuitsContainer.innerHTML = '';
-        if (filteredCircuits.length === 0) {
-            circuitsContainer.innerHTML = '<p class="no-result">Aucun circuit ne correspond à votre recherche.</p>';
+    
+        // On masque les résultats PHP paginés
+        document.querySelector('.circuits-container').style.display = 'none';
+        pagination.style.display = 'none';
+    
+        // On réinjecte les résultats filtrés/triés dans le conteneur
+        const jsContainer = document.querySelector('.circuits-container');
+        jsContainer.innerHTML = '';
+        if (filtered.length === 0) {
+            jsContainer.innerHTML = '<p class="no-result">Aucun circuit ne correspond à votre recherche.</p>';
         } else {
-            filteredCircuits.forEach(circuit => circuitsContainer.appendChild(circuit));
+            filtered.forEach(c => jsContainer.appendChild(c.cloneNode(true)));
+            jsContainer.style.display = 'flex'; // ou '' selon ton CSS
+        }
+
+        const originalContainer = document.getElementById('original-circuits');
+        if (!selectedEpoque && !selectedLieu && !selectedPrix && !sortBy) {
+            if (originalContainer) {
+                circuitsContainer.innerHTML = originalContainer.innerHTML;
+                pagination.style.display = '';
+                return; // stop ici, on affiche le HTML original
+            }
         }
     }
+    
+    
 
     function extractValue(circuit, type) {
         switch (type) {
@@ -65,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Lancer au changement de filtres
     form.addEventListener('change', applyFiltersAndSort);
-    filterButton.addEventListener('click', applyFiltersAndSort);
     sortSelect.addEventListener('change', applyFiltersAndSort);
 
     // Lancer au chargement

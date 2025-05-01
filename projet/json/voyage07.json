@@ -2,7 +2,7 @@
     "titre": "À Bord avec Christophe Colomb",
     "description" : "Traversez l’Atlantique et assistez à la découverte d’un Nouveau Monde.",
     "epoque": "Renaissance",
-    "lieu": "Amérique",
+    "lieu": "amerique",
     "image" : "images/Colomb.jpeg",
     "dates": {
         "choix_date_depart": true,
