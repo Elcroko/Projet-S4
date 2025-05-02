@@ -62,6 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user'])) {
 </head>
 <body class="dynamic-bg" style="background-image: url('<?= htmlspecialchars($data['image']) ?>');">
 
+    <!-- Ajout du script JS -->
+    <script src="js/voyage.js"></script>
+
     <!-- Détection du thème sombre -->
     <script src="js/theme.js"></script>
 
@@ -153,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user'])) {
                 <?php endforeach; ?>
             </div>
 
-            <p class="prix-total">Prix initial /personne : <strong><?= number_format($data['prix_base'], 0, ',', ' ') ?> €</strong></p>
+            <p class="prix-total">Prix total : <strong><?= number_format($data['prix_base'], 0, ',', ' ') ?> €</strong></p>
 
             <?php if (isset($_SESSION['user'])): ?>
                 <button class="btn-valider">Valider la personnalisation</button>
