@@ -34,7 +34,7 @@
 
 	Ajouter tri par prix, dates, durée, nombre d’étapes, sans rechargement et sans requête serveur.
 
-6. Recalcul dynamique du prix du voyage A FAIRE
+6. Recalcul dynamique du prix du voyage VVVVVVVVVVVVVVVVVV
 
 	Sur la page de personnalisation du voyage : chaque modification (options, nombre de personnes, etc.) actualise immédiatement le prix affiché en JavaScript.
 
