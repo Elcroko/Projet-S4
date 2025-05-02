@@ -50,3 +50,6 @@
 
 	Le tout dans le même fichier PDF que pour la Phase 1 et Phase 2 (tu continues).
 
+
+BONUS : Pour ADMIN, Ajouter un bouton Bannir un utilisateur dans les actioons
+
