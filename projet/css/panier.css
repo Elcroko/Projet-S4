@@ -1,0 +1,102 @@
+/* Bouton fixe en bas à droite */
+#btn-panier-flottant {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #a5ef34;
+    color: black;
+    border-radius: 50%;
+    padding: 14px 18px;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #a5ef34;
+    z-index: 1001;
+    transition: transform 0.2s ease-in-out;
+}
+#btn-panier-flottant:hover {
+    transform: scale(1.1);
+}
+
+/* Surcouche panier */
+#panier-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+#panier-overlay.visible {
+    display: flex;
+}
+
+.panier-contenu {
+    background: #121212;
+    border: 2px solid #a5ef34;
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    color: #c1f762;
+    font-family: 'Orbitron', sans-serif;
+    position: relative;
+    box-shadow: 0 0 30px #a5ef34;
+}
+
+.panier-fermer {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #c1f762;
+}
+
+.voyage-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
+.btn-panier-payer {
+    background-color: #c1f762;
+    color: #1a1a1a;
+    padding: 8px 14px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 6px;
+    transition: background-color 0.2s ease-in-out;
+}
+.btn-panier-payer:hover {
+    background-color: #a5d94a;
+}
+
+.panier-vide {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+#btn-panier-header {
+    font-size: 22px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border: 2px solid #c1f762;
+    border-radius: 50%;
+    background-color: #1a1a1a;
+    color: #c1f762;
+    transition: background 0.2s ease-in-out;
+}
+#btn-panier-header:hover {
+    background-color: #c1f762;
+    color: black;
+}
