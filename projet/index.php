@@ -51,7 +51,7 @@ session_start();
             <div class="hero-content">
                 <h2 class="hero-title">Embarquez pour un voyage à travers le temps</h2>
                 <p class="hero-subtitle">Revivez les époques légendaires et percez les mystères du futur.</p>
-                <span href="circuits.php" class="btn">Explorer</span>
+                <a href="circuits.php" class="btn">Explorer</a>
             </div>
         </section>
 

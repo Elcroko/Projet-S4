@@ -104,6 +104,7 @@ nav ul li a:hover {
     border-radius: 8px;
     transition: transform 0.3s ease, background 0.3s ease;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .btn:hover {

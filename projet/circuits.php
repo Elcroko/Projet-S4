@@ -98,6 +98,7 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
                 <option value="Moyen-Âge">Moyen-Âge</option>
                 <option value="Renaissance">Renaissance</option>
                 <option value="Temps modernes">Temps modernes</option>
+                <option value="Contemporaine">Contemporaine</option>
                 <option value="Futur">Futur</option>
             </select>
 
