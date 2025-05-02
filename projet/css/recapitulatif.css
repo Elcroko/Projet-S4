@@ -15,8 +15,7 @@ body {
     color: white;
     text-align: center;
     font-size: 67%;
-
-
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 
@@ -89,6 +88,31 @@ nav ul li a:hover {
     color: #c1f762;
 }
 
+/* ============================== */
+/* Bouton thème */
+/* ============================== */
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #7cbc6c, #c1f762);
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    font-weight: bold;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #c1f762, #7cbc6c);
+}
+
+
+/* ============================== */
+/* Récapitulatif */
+/* ============================== */
 .recap-container {
     max-width: 1000px;
     margin: auto;
@@ -190,6 +214,87 @@ nav ul li a:hover {
 
 .retour-btn:hover {
     background-color: #76a636;
+}
+
+/* ============================== */
+/* DARK MODE  */
+/* ============================== */
+
+body.dark-mode {
+    background-color: #121212;
+    color: #c1f762;
+}
+
+/* Header */
+.dark-mode header {
+    background: linear-gradient(5deg, #2c2c2c, #1a1a1a);
+}
+
+.dark-mode .site-title,
+.dark-mode nav ul li a {
+    color: #c1f762;
+}
+
+.dark-mode nav ul li a:hover {
+    color: white;
+}
+
+/* Contenu principal */
+.dark-mode .recap-container {
+    background-color: #1a1a1a;
+    box-shadow: 0 0 25px #c1f762;
+    border: 1px solid #c1f762;
+}
+
+.dark-mode .recap-container h2,
+.dark-mode .recap-block h3,
+.dark-mode .recap-block h4 {
+    color: #c1f762;
+}
+
+.dark-mode .recap-container p {
+    color: #e0ffe0;
+}
+
+.dark-mode .recap-block ul li {
+    background-color: #252525;
+    color: #f0f0f0;
+    border: 1px solid #4caf50;
+}
+
+.dark-mode .recap-block ul li strong {
+    color: #c1f762;
+}
+
+.dark-mode .price-total {
+    color: #d9ff80;
+    border-top: 2px solid #c1f762;
+}
+
+/* Boutons */
+.dark-mode .retour-btn {
+    background-color: #c1f762;
+    color: #121212;
+}
+
+.dark-mode .retour-btn:hover {
+    background-color: #a9e346;
+}
+
+.dark-mode .btn {
+    background: linear-gradient(45deg, #333, #222);
+    color: #c1f762;
+}
+
+.dark-mode .btn:hover {
+    background: linear-gradient(45deg, #444, #333);
+    color: white;
+}
+
+/* Footer */
+.dark-mode footer {
+    background: rgba(255, 255, 255, 0.05);
+    color: #c1f762;
 }
 
 

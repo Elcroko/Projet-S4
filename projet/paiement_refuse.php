@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,6 +13,8 @@
 
 </head>
 <body>
+    <!-- Détection du thème sombre -->
+    <script src="js/theme.js"></script>
 
     <!-- En-tête -->
     <header>
@@ -16,6 +22,9 @@
         <h1 class="site-title">
             <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
         </h1>        
+
+        <button id="theme-toggle" class="btn">Changer de thème</button>
+        
         <nav aria-label="Navigation principale">
             <ul>
                 <li><a href="index.php">Accueil</a></li>

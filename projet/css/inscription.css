@@ -15,6 +15,7 @@ body {
     color: white;
     text-align: center;
     font-size: 67%;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 
@@ -87,6 +88,27 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #c1f762;
+}
+
+/* ============================== */
+/* Bouton thème */
+/* ============================== */
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #7cbc6c, #c1f762);
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    font-weight: bold;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #c1f762, #7cbc6c);
 }
 
 /* ============================== */
@@ -179,6 +201,75 @@ nav ul li a:hover {
 
 .checkbox-container p a:hover {
     text-decoration: underline;
+}
+
+/* ============================== */
+/* DARK MODE */
+/* ============================== */
+
+body.dark-mode {
+    background-color: #121212;
+    color: #c1f762;
+}
+
+.dark-mode header {
+    background: linear-gradient(5deg, #2c2c2c, #1a1a1a);
+}
+
+.dark-mode .form-container {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #c1f762;
+}
+
+.dark-mode .form-container h2,
+.dark-mode .form-container p {
+    color: #c1f762;
+}
+
+.dark-mode .form-container input {
+    background-color: #1f1f1f;
+    color: #c1f762;
+    border: 1px solid #444;
+}
+
+.dark-mode .form-container input::placeholder {
+    color: #888;
+}
+
+.dark-mode .form-container button {
+    background: linear-gradient(45deg, #1f1f1f, #3a3a3a);
+    color: #c1f762;
+    border: 1px solid #c1f762;
+}
+
+.dark-mode .form-container button:hover {
+    background: linear-gradient(45deg, #2f2f2f, #4a4a4a);
+    color: #fff;
+}
+
+.dark-mode .checkbox-container p,
+.dark-mode .forgot-password {
+    color: #c1f762;
+}
+
+/* Footer */
+.dark-mode footer {
+    background-color: #1a1a1a;
+    color: #c1f762;
+}
+
+.dark-mode nav ul li a {
+    color: #c1f762;
+}
+
+.dark-mode .btn {
+    background: linear-gradient(45deg, #333, #222);
+    color: #c1f762;
+}
+
+.dark-mode .btn:hover {
+    background: linear-gradient(45deg, #444, #333);
+    color: white;
 }
 
 /* ============================== */

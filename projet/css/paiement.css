@@ -85,6 +85,27 @@ nav ul li a:hover {
     color: #c1f762;
 }
 
+/* ============================== */
+/* Bouton thème */
+/* ============================== */
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #7cbc6c, #c1f762);
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    font-weight: bold;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #c1f762, #7cbc6c);
+}
+
 .container {
     max-width: 700px;
     margin: 40px auto;
@@ -143,6 +164,80 @@ button:hover,
     margin-top: 20px;
     border-radius: 8px;
     font-size: 0.95rem;
+}
+
+/* ============================== */
+/* DARK MODE */
+/* ============================== */
+
+body.dark-mode {
+    background-color: #121212;
+    color: #c1f762;
+}
+
+.dark-mode header {
+    background: linear-gradient(5deg, #2c2c2c, #1a1a1a);
+}
+
+.dark-mode nav ul li a {
+    color: #c1f762 !important;
+}
+
+.dark-mode .confirmation-box {
+    background-color: #0f0f0f;
+    border: 2px solid #c1f762;
+    box-shadow: 0 0 15px #c1f762;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    color: #fff;
+    max-width: 600px;
+    margin: 60px auto;
+}
+
+.dark-mode .confirmation-box h2 {
+    color: #c1f762;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.dark-mode .confirmation-box p {
+    font-size: 1.2rem;
+    color: #f0f0f0;
+    margin-bottom: 30px;
+}
+
+.dark-mode .confirmation-box a {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 0 10px;
+    background-color: #c1f762;
+    color: #1a1a1a;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+.dark-mode .confirmation-box a:hover {
+    background-color: #a9e346;
+    transform: scale(1.05);
+}
+
+.dark-mode .btn {
+    background: linear-gradient(45deg, #333, #222);
+    color: #c1f762;
+}
+
+.dark-mode .btn:hover {
+    background: linear-gradient(45deg, #444, #333);
+    color: white;
+}
+
+/* Footer */
+.dark-mode footer {
+    background-color: #1a1a1a;
+    color: #c1f762;
 }
 
 /* ============================== */

@@ -85,7 +85,7 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
             <h2>Recherchez votre voyage temporel</h2>
             <form method="get">
                 <input class="search-bar" type="text" name="recherche" placeholder="Rechercher un circuit...">
-                <button class="btn" type="submit" name="btn_rechercher">Rechercher</button>
+                <button class="btn_search" type="submit" name="btn_rechercher">Rechercher</button>
             </form>
         </section>     
         

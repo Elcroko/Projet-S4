@@ -270,7 +270,7 @@ nav ul li a:hover {
 }
 
 /* ============================== */
-/* Dark mode général */
+/* DARK MODE */
 /* ============================== */
 .dark-mode {
     background-color: #121212;
@@ -303,14 +303,25 @@ nav ul li a:hover {
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* Modifier le footer */
+/* Footer */
 .dark-mode footer {
-    background: rgba(255, 255, 255, 0.05);
+    background-color: #1a1a1a;
+    color: #c1f762;
 }
 
 /* Navigation lien hover */
 .dark-mode nav ul li a:hover {
     color: #c1f762;
+}
+
+.dark-mode .btn {
+    background: linear-gradient(45deg, #333, #222);
+    color: #c1f762;
+}
+
+.dark-mode .btn:hover {
+    background: linear-gradient(45deg, #444, #333);
+    color: white;
 }
 
 /* ============================== */

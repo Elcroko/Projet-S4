@@ -15,6 +15,7 @@ body {
     color: white;
     text-align: center;
     font-size: 67%;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 
@@ -89,6 +90,27 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #c1f762;
+}
+
+/* ============================== */
+/* Bouton thème */
+/* ============================== */
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #7cbc6c, #c1f762);
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    font-weight: bold;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #c1f762, #7cbc6c);
 }
 
 
@@ -267,6 +289,110 @@ nav ul li a:hover {
     color: #000000;
     border: 2px solid #c1f762;
 }
+
+/* ============================== */
+/* DARK MODE  */
+/* ============================== */
+
+.dark-mode {
+    background-color: #121212;
+    color: #c1f762;
+}
+
+/* TITRES */
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode .admin-title {
+    color: #c1f762;
+    text-shadow: 0 0 8px rgba(193, 247, 98, 0.3);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* HEADER */
+.dark-mode header {
+    background: linear-gradient(5deg, #2c2c2c, #1a1a1a);
+}
+
+.dark-mode nav ul li a {
+    color: #c1f762 !important;
+}
+
+.dark-mode nav ul li a:hover {
+    color: white;
+}
+
+/* TABLEAU */
+.dark-mode table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1a1a1a;
+    box-shadow: 0 0 20px rgba(193, 247, 98, 0.2);
+    margin-bottom: 30px;
+    color: #c1f762;
+}
+
+.dark-mode th {
+    background: linear-gradient(to bottom right, #c1f762, #a8e94f);
+    color: #121212;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.dark-mode td {
+    background-color: #1f1f1f;
+    border: 1px solid #2f2f2f;
+    padding: 10px 16px;
+    font-size: 1rem;
+    color: #c1f762;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dark-mode td i {
+    font-style: italic;
+    color: #c1f762;
+}
+
+/* BOUTONS */
+.dark-mode .btn-admin {
+    padding: 10px 18px;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(45deg, #c1f762, #a8e94f);
+    color: #121212;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(193, 247, 98, 0.3);
+    transition: all 0.3s ease-in-out;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.dark-mode .btn-admin:hover {
+    background: linear-gradient(45deg, #a8e94f, #c1f762);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(193, 247, 98, 0.5);
+}
+
+/* Footer */
+.dark-mode footer {
+    background-color: #1a1a1a;
+    color: #c1f762;
+}
+
+.dark-mode .btn {
+    background: linear-gradient(45deg, #333, #222);
+    color: #c1f762;
+}
+
+.dark-mode .btn:hover {
+    background: linear-gradient(45deg, #444, #333);
+    color: white;
+}
+
 
 /* ============================== */
 /* FOOTER */

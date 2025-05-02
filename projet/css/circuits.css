@@ -14,7 +14,7 @@ body {
     color: white;
     text-align: center;
     font-size: 67%;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 
@@ -155,7 +155,7 @@ nav ul li a:hover {
     min-width: 0;
 }
 
-.filters .btn {
+.filters .btn_search {
     background-color: #2e4b25; /* Vert foncé */
     color: #c1f762;            /* Texte vert fluo pour contraste */
     border: none;
@@ -335,7 +335,7 @@ nav ul li a:hover {
 }
 
 /* ============================== */
-/* DARK MODE COMPLET */
+/* DARK MODE */
 /* ============================== */
 
 .dark-mode {
@@ -373,7 +373,7 @@ nav ul li a:hover {
     color: #7cbc6c;
 }
 
-.dark-mode .btn {
+.dark-mode .btn,.btn_search {
     background: linear-gradient(45deg, #333, #222);
     color: #c1f762;
 }

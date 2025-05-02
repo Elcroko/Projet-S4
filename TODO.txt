@@ -1,5 +1,4 @@
-1. Changer dynamiquement la charte graphique (mode clair/sombre/contrasté, etc.) A FAIRE POUR TOUTES LES PAGES ET QUE LORSUQE L'ON CHANGE 
-											CA GARDE L4INFORMATION POUR LES AUTRES PAGES
+1. Changer dynamiquement la charte graphique (mode clair/sombre/contrasté, etc.) VVVVVVVVVVVV
 
 	Avec un bouton pour changer de thème sans recharger la page.
 	
@@ -31,7 +30,7 @@
 
 	Lorsqu’on modifie un paramètre d’utilisateur (ex : bouton VIP), griser le bouton quelques secondes pour simuler un traitement.
 
-5. Trier dynamiquement les résultats de recherche de voyages A FAIRE
+5. Trier dynamiquement les résultats de recherche de voyages A PAUFINER
 
 	Ajouter tri par prix, dates, durée, nombre d’étapes, sans rechargement et sans requête serveur.
 
