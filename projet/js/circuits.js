@@ -21,10 +21,19 @@ document.addEventListener('DOMContentLoaded', function () {
     
         // Si aucun filtre/tri, on n'agit pas : laisser le PHP afficher ses 6 voyages paginés
         if (!filtreActif) {
-            // Remettre les éléments PHP
-            document.querySelectorAll('.pagination, .circuits-container').forEach(el => el.style.display = '');
+            const originalContainer = document.getElementById('original-circuits');
+            const jsContainer = document.querySelector('.circuits-container');
+            const pagination = document.querySelector('.pagination');
+        
+            if (originalContainer && jsContainer) {
+                jsContainer.innerHTML = originalContainer.innerHTML;
+                jsContainer.style.display = 'flex';
+            }
+            if (pagination) {
+                pagination.style.display = '';
+            }
             return;
-        }
+        }        
     
         // Sinon on filtre
         let filtered = allCircuits.filter(circuit => {

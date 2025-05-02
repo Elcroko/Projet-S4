@@ -30,7 +30,7 @@
 
 	Lorsqu’on modifie un paramètre d’utilisateur (ex : bouton VIP), griser le bouton quelques secondes pour simuler un traitement.
 
-5. Trier dynamiquement les résultats de recherche de voyages A PAUFINER SI ON A LE TEMPS
+5. Trier dynamiquement les résultats de recherche de voyages VVVVVVVVVVVVVVVVVVVVVVV
 
 	Ajouter tri par prix, dates, durée, nombre d’étapes, sans rechargement et sans requête serveur.
 
