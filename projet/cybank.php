@@ -2,6 +2,20 @@
 session_start();
 require_once('getapikey.php'); 
 
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    // Rechercher le voyage personnalisé correspondant dans le panier
+    foreach ($_SESSION['panier'] ?? [] as $voyage) {
+        if (isset($voyage['id']) && $voyage['id'] === $id) {
+            $_SESSION['recapitulatif'] = $voyage;
+            $_SESSION['recapitulatif_id'] = $id;
+            break;
+        }
+    }
+}
+
+
 if (!isset($_SESSION['recapitulatif'])) {
     header('Location: index.php');
     exit;

@@ -1,6 +1,20 @@
 <?php
 session_start();
 
+if (isset($_SESSION['recapitulatif_id']) && isset($_SESSION['panier'])) {
+    $id = $_SESSION['recapitulatif_id'];
+
+    // Parcourir le panier et mettre à jour l'état de paiement
+    foreach ($_SESSION['panier'] as &$voyage) {
+        if (isset($voyage['id']) && $voyage['id'] === $id) {
+            $voyage['paiement'] = true;
+            break;
+        }
+    }
+    unset($voyage); // Bonnes pratiques pour éviter des références persistantes
+}
+
+
 if (!isset($_SESSION['recapitulatif']) || !isset($_SESSION['user'],$_SESSION['cybank_transaction'])) {
     header('Location: index.php');
     exit;

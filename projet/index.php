@@ -9,6 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tempus Odyssey - Voyagez à travers le temps</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/panier.css">
     <link rel="icon" type="image/png" href="images/portail.png">
 </head>
 <body>
@@ -17,7 +18,8 @@ session_start();
 
     <!-- En-tête -->
     <header>
-        <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
+        <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">  
+        <?php include 'panier.php'; ?>
         <h1 class="site-title">
             <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
         </h1>
@@ -127,5 +129,6 @@ session_start();
     <footer>
         <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
     </footer>
+    <script src="js/panier.js"></script>
 </body>
 </html>

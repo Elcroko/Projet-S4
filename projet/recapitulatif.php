@@ -27,7 +27,29 @@ if (!$isHistorique) {
 
     $data = $_SESSION['recapitulatif'];
     $recapitulatif_id = $_SESSION['recapitulatif_id'] ?? 'voyage01';
+
+    // ✅ AJOUTER AU PANIER UNIQUEMENT SI NON HISTORIQUE
+    if (!isset($_SESSION['panier'])) {
+        $_SESSION['panier'] = [];
+    }
+
+    // Empêche d’ajouter plusieurs fois la même personnalisation
+    $idUnique = $recapitulatif_id . '_' . md5(serialize($data)); // hash basé sur les données
+
+    $dejaDansPanier = false;
+    foreach ($_SESSION['panier'] as $item) {
+        if (isset($item['_uid']) && $item['_uid'] === $idUnique) {
+            $dejaDansPanier = true;
+            break;
+        }
+    }
+
+    if (!$dejaDansPanier) {
+        $data['_uid'] = $idUnique; // on garde une clé unique pour comparaison future
+        $_SESSION['panier'][] = $data;
+    }
 }
+
 
 function afficherOption($categorie, $valeur, $prix = 0) {
     if ($valeur && $valeur !== 'Aucune option') {
