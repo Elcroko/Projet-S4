@@ -40,7 +40,7 @@
 
 7. Tout ton code JavaScript doit être dans des fichiers séparés (ex : script.js) et pas directement dans les pages HTML/PHP.
 
-8. Ajout d’une fonctionnalité de "panier" A FAIRE  
+8. Ajout d’une fonctionnalité de "panier" A FAIRE 
 
 	À partir du moment où un voyage est modifié ou personnalisé, il est ajouté au panier côté serveur (via la session PHP).
 
