@@ -1,59 +1,122 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('form-inscription');
-    const passwordInput = document.getElementById('password');
-    const confirmPasswordInput = document.getElementById('confirm-password');
-    const emailInput = document.getElementById('email');
-    const prenomInput = document.getElementById('prenom');
-    const nomInput = document.getElementById('nom');
+    const form = document.querySelector('form');
+    const nom = document.querySelector('#nom');
+    const prenom = document.querySelector('#prenom');
+    const email = document.querySelector('#email');
+    const motDePasse = document.querySelector('#mot_de_passe');
+    const confirmMdp = document.querySelector('#confirm_mdp');
+    const dateNaissance = document.querySelector('input[name="date_naissance"]');
+    const telephone = document.querySelector('#telephone');
+    const nomCount = document.querySelector('#nom-count');
+    const prenomCount = document.querySelector('#prenom-count');
+    const mdpCount = document.querySelector('#mdp-count');
+    const eyeIcons = document.querySelectorAll('.toggle-password');
 
-    const passwordCounter = document.getElementById('password-counter');
-    const togglePassword = document.getElementById('toggle-password');
+    const showError = (input, message) => {
+        let error = input.parentElement.querySelector('.error-message');
+        if (!error) {
+            error = document.createElement('div');
+            error.classList.add('error-message');
+            input.parentElement.appendChild(error);
+        }
+        error.textContent = message;
+    };
 
-    // Compteur de caractères pour mot de passe
-    passwordInput.addEventListener('input', function() {
-        passwordCounter.textContent = `${passwordInput.value.length} caractères`;
+    const clearError = (input) => {
+        const error = input.parentElement.querySelector('.error-message');
+        if (error) error.textContent = '';
+    };
+
+    const updateCount = (input, countElement, max = 30) => {
+        countElement.textContent = `${input.value.length}/${max}`;
+    };
+
+    nom.addEventListener('input', () => updateCount(nom, nomCount));
+    prenom.addEventListener('input', () => updateCount(prenom, prenomCount));
+    motDePasse.addEventListener('input', () => updateCount(motDePasse, mdpCount, 20));
+
+    eyeIcons.forEach(icon => {
+        icon.addEventListener('click', function () {
+            const input = this.previousElementSibling;
+            const isPassword = input.type === 'password';
+            input.type = isPassword ? 'text' : 'password';
+            this.textContent = isPassword ? '🙈' : '👁️';
+        });
     });
 
-    // Bouton œil pour cacher/montrer le mot de passe
-    togglePassword.addEventListener('click', function () {
-        const type = passwordInput.type === 'password' ? 'text' : 'password';
-        passwordInput.type = type;
-        confirmPasswordInput.type = type;
-    });
-
-    // Validation du formulaire
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', (e) => {
         let valid = true;
-        let messages = [];
 
-        if (prenomInput.value.trim() === '' || nomInput.value.trim() === '') {
+        if (nom.value.length < 2) {
+            showError(nom, 'Nom trop court');
             valid = false;
-            messages.push('Nom et prénom obligatoires.');
+        } else {
+            clearError(nom);
         }
 
-        if (!validateEmail(emailInput.value)) {
+        if (prenom.value.length < 2) {
+            showError(prenom, 'Prénom trop court');
             valid = false;
-            messages.push('Adresse email invalide.');
+        } else {
+            clearError(prenom);
         }
 
-        if (passwordInput.value.length < 8) {
+        if (!email.value.includes('@') || email.value.trim() === '') {
+            showError(email, 'Email invalide');
             valid = false;
-            messages.push('Mot de passe trop court (8 caractères minimum).');
+        } else {
+            clearError(email);
         }
 
-        if (passwordInput.value !== confirmPasswordInput.value) {
+        if (motDePasse.value.length < 6) {
+            showError(motDePasse, 'Mot de passe trop court (min 6 caractères)');
             valid = false;
-            messages.push('Les mots de passe ne correspondent pas.');
+        } else {
+            clearError(motDePasse);
         }
 
-        if (!valid) {
-            e.preventDefault();
-            alert(messages.join('\n'));
+        if (confirmMdp.value !== motDePasse.value) {
+            showError(confirmMdp, 'Les mots de passe ne correspondent pas');
+            valid = false;
+        } else {
+            clearError(confirmMdp);
         }
+
+        if (!/^0[1-9](\d{2}){4}$/.test(telephone.value)) {
+            showError(telephone, 'Numéro de téléphone invalide (format attendu : 0612345678)');
+            valid = false;
+        } else {
+            clearError(telephone);
+        }
+
+        // Vérification de l'âge
+        if (dateNaissance.value) {
+            const birthDate = new Date(dateNaissance.value);
+            const today = new Date();
+            const age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            const dayDiff = today.getDate() - birthDate.getDate();
+
+            const is18 =
+                age > 18 ||
+                (age === 18 && (monthDiff > 0 || (monthDiff === 0 && dayDiff >= 0)));
+
+            if (!is18) {
+                showError(dateNaissance, 'Vous devez avoir au moins 18 ans');
+                valid = false;
+            } else {
+                clearError(dateNaissance);
+            }
+        } else {
+            showError(dateNaissance, 'Veuillez entrer votre date de naissance');
+            valid = false;
+        }
+
+        if (!document.querySelector('#terms').checked) {
+            alert("Vous devez accepter les termes et conditions.");
+            valid = false;
+        }
+
+        if (!valid) e.preventDefault();
     });
-
-    function validateEmail(email) {
-        const re = /\S+@\S+\.\S+/;
-        return re.test(email);
-    }
 });

@@ -173,18 +173,80 @@ nav ul li a:hover {
 }
 
 .forgot-password {
-    color: #c1f762;
+    font-size: 18px;
     font-weight: bold;
+    display: inline-block;
+    margin-top: 15px;
+    color: #c1f762;
     text-decoration: none;
-    display: block;
-    margin-top: 10px;
-    transition: color 0.3s ease-in-out;
+    transition: transform 0.2s ease;
 }
 
 .forgot-password:hover {
-    color: #c1f762;
+    transform: scale(1.05);
     text-decoration: underline;
 }
+
+
+.error-message {
+    color: #ff6b6b;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: left;
+    font-weight: bold;
+}
+
+
+.email-erreur {
+    text-align: center;
+    margin: 80px 0;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+}
+
+.email-erreur h2 {
+    color: #ff6b6b;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.email-erreur a {
+    color: #c1f762;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.email-erreur a:hover {
+    text-decoration: underline;
+}
+
+/* Masquer l'icône œil native de certains navigateurs */
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+}
+
+.eye-icon {
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    user-select: none;
+}
+
+
 
 /* ============================== */
 /* DARK MODE */
@@ -230,9 +292,10 @@ body.dark-mode {
     color: #fff;
 }
 
+.dark-mode a,
 .dark-mode .checkbox-container p,
 .dark-mode .forgot-password {
-    color: #c1f762;
+    color: #c1f762 !important;
 }
 
 /* Footer */

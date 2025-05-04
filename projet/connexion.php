@@ -6,46 +6,42 @@ if (isset($_SESSION['user'])) {
     exit;
 }
 
-$file = 'json/utilisateurs.json';
-$message = "";
+$fichier = "json/utilisateurs.json";
+$erreur_connexion = false;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $email = strtolower(trim($_POST['email']));
+    $mot_de_passe = $_POST['password'];
 
-    if (empty($email) || empty($password)) {
-        $message = "Tous les champs sont requis !";
+    $utilisateurs = json_decode(file_get_contents($fichier), true);
 
-    } elseif (!file_exists($file)) {
-            $message = "Aucun utilisateur enregistré.";
-            
+    $utilisateur_trouve = null;
+
+    foreach ($utilisateurs as $user) {
+        if ($user['email'] === $email && password_verify($mot_de_passe, $user['mot_de_passe'])) {
+            $utilisateur_trouve = $user;
+            break;
+        }
+    }
+
+    if ($utilisateur_trouve) {
+        $_SESSION['user'] = [
+            'id' => $utilisateur_trouve['id'],
+            'nom' => $utilisateur_trouve['nom'],
+            'prenom' => $utilisateur_trouve['prenom'],
+            'email' => $utilisateur_trouve['email'],
+            'date_naissance' => $utilisateur_trouve['date_naissance']
+        ];
+        $_SESSION['role'] = $utilisateur_trouve['admin'] === true ? 'admin' : 'user';
+        header("Location: index.php");
+        exit;
     } else {
-            $data = file_get_contents($file);
-            $users = json_decode($data, true);
-
-            $found = false;
-
-            foreach ($users as $user) {
-                    if ($user['email'] === $email && password_verify($password, $user['mot_de_passe'])) {
-                        $_SESSION['user'] = [
-                            "id" => $user['id'],
-                            "nom" => $user['nom'],
-                            "prenom" => $user['prenom'],
-                            "email" => $user['email'],
-                            'date_naissance' => $user['date_naissance']
-                        ];
-                        $_SESSION['role'] = $user['admin'] === true ? 'admin' : 'user';
-
-                        header("Location: profil.php");
-                        exit;
-                    }
-                
-            }
-        
-        $message = "Email ou mot de passe incorrect.";
+        $erreur_connexion = true;
+        header("refresh:5;url=inscription.php");
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -92,25 +88,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </nav>
     </header>
     <main>
-        <section class="form-container">
+    <section class="main-content">
+        <div class="form-container">
+
             <h2>Connexion</h2>
             <p>Connectez-vous pour accéder à vos voyages temporels !</p>
-            
-            <?php if (!empty($message)): ?>
-                <p style="color: red;"><?= htmlspecialchars($message) ?></p>
+
+            <?php if ($erreur_connexion): ?>
+                <div class="email-erreur">
+                    <h2>Adresse email ou mot de passe incorrect.</h2>
+                    <p>Vous n'avez pas encore de compte ?
+                        <a href="inscription.php">Inscrivez-vous ici</a>.
+                    </p>
+                </div>
+            <?php else: ?>
+                <form id="form-connexion" method="POST" action="connexion.php">
+
+                    <input type="email" id="email" name="email" placeholder="Adresse email" required>
+
+                    <div style="position:relative;">
+                    <input type="password" id="password" name="password" placeholder="Mot de passe" required autocomplete="new-password">
+                        <span id="toggle-password" class="eye-icon">👁️</span>
+                    </div>
+
+                    <button type="submit">Se connecter</button>
+
+                    <a class="forgot-password" href="inscription.php">Créer un compte</a>
+                </form>
             <?php endif; ?>
 
-            <form action="connexion.php" method="POST">
-                <input type="email" id="email" name="email" style="text-transform: lowercase;" placeholder="Email" required>
-                <input type="password" id="password" name="password" placeholder="Mot de passe" required>
-                <button type="submit">Se connecter</button>
-            </form>
-            <p>
-                <p>
-                    <a href="#" class="forgot-password">Mot de passe oublié ?</a>
-                </p>
-            </p>
-        </section>
+        </div>
+    </section>
+
     </main>
     <footer>
         <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>

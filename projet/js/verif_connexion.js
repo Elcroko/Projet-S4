@@ -2,39 +2,37 @@ document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('form-connexion');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
-    const passwordCounter = document.getElementById('password-counter');
     const togglePassword = document.getElementById('toggle-password');
 
-    // Compteur de caractères pour mot de passe
-    passwordInput.addEventListener('input', function() {
-        passwordCounter.textContent = `${passwordInput.value.length} caractères`;
-    });
+    // Création d'un conteneur d’erreurs par champ
+    const emailError = document.createElement('div');
+    emailError.classList.add('error-message');
+    emailInput.parentElement.appendChild(emailError);
 
-    // Bouton œil pour cacher/montrer le mot de passe
+    const passwordError = document.createElement('div');
+    passwordError.classList.add('error-message');
+    passwordInput.parentElement.appendChild(passwordError);
+
+    // Bouton œil
     togglePassword.addEventListener('click', function () {
         const type = passwordInput.type === 'password' ? 'text' : 'password';
         passwordInput.type = type;
+        this.textContent = type === 'text' ? '🙈' : '👁️';
     });
 
     // Validation du formulaire
     form.addEventListener('submit', function (e) {
         let valid = true;
-        let messages = [];
+
+        emailError.textContent = '';
+        passwordError.textContent = '';
 
         if (!validateEmail(emailInput.value)) {
             valid = false;
-            messages.push('Adresse email invalide.');
+            emailError.textContent = 'Adresse email invalide.';
         }
 
-        if (passwordInput.value.length < 8) {
-            valid = false;
-            messages.push('Mot de passe trop court (8 caractères minimum).');
-        }
-
-        if (!valid) {
-            e.preventDefault();
-            alert(messages.join('\n'));
-        }
+        if (!valid) e.preventDefault();
     });
 
     function validateEmail(email) {

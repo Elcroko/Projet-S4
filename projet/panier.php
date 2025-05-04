@@ -38,10 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['supprimer_id'])) {
                         <p><strong><?= htmlspecialchars($voyage['titre']) ?></strong></p>
                         <a href="cybank.php?id=<?= urlencode($voyage['id']) ?>" class="cart-link">Procéder au paiement</a>
                         <!-- 🧹 Bouton de suppression avec confirmation -->
-                        <form method="post" action="panier.php" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce voyage du panier ?');" class="form-suppression">
-                            <input type="hidden" name="supprimer_id" value="<?= htmlspecialchars($voyage['id']) ?>">
-                            <button type="submit" class="supprimer-btn" title="Supprimer">❌</button>
-                        </form>
+                        <button type="button" class="supprimer-btn" data-id="<?= htmlspecialchars($voyage['id']) ?>" title="Supprimer">❌</button>
                     </div>
                 </div>
             <?php endforeach; ?>
