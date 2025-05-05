@@ -1,16 +1,16 @@
-/* Agrandir et décaler le conteneur du panier */
+/* Conteneur du panier */
 .header-panier {
     position: relative;
     display: inline-block;
-    margin-left: 0px;             /* Plus à gauche */
-    transform: scale(1.3);        /* Plus gros */
-    transform-origin: top left;  /* Grossissement vers la gauche */
+    margin-left: 0px;             
+    transform: scale(1.3);       
+    transform-origin: top left;  
     z-index: 10;
 }
 
 /* Agrandir l’icône 🧳 */
 .header-panier .icone-panier {
-    font-size: 26px;              /* Icône plus grande */
+    font-size: 26px;              
     cursor: pointer;
     color: white;
     position: relative;
@@ -35,13 +35,13 @@
     font-weight: bold;
 }
 
-/* Menu déroulant plus large */
+/* Menu déroulant  */
 .header-panier .dropdown-panier {
     display: none;
     position: absolute;
     top: 30px;
-    left: 20%;            /* ✅ menu s’affiche à droite */
-    margin-left: 10px;     /* ✅ petit espace entre icône et menu */
+    left: 20%;            
+    margin-left: 10px;     
     background-color: #111;
     border: 1px solid #a5fe03;
     box-shadow: 0 0 15px #a5fe03;
