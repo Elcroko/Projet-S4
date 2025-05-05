@@ -1,0 +1,126 @@
+{
+    "utilisateur": {
+        "id": 1,
+        "nom": "ZZ",
+        "prenom": "ZZ",
+        "email": "zz@gmail.com",
+        "date_naissance": "2000-09-26"
+    },
+    "voyage": {
+        "titre": "Le Jour de votre Mort",
+        "description": "Oserez-vous affronter votre destin\u00e9e et d\u00e9couvrir ce que l\u2019avenir vous r\u00e9serve ? ",
+        "image": "images\/morts.jpeg",
+        "epoque": "Futur",
+        "lieu": "Tous",
+        "dates": {
+            "choix_date_depart": true,
+            "duree": "1 jour"
+        },
+        "prix_base": 500,
+        "prix_total": 600,
+        "paiement": false,
+        "nombre_personnes": "1",
+        "personnes": [
+            {
+                "nom": "ZZ",
+                "prenom": "ZZ",
+                "date_naissance": "2000-09-26"
+            }
+        ],
+        "etape1": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Aucune option disponible pour cette \u00e9tape": 0
+                    },
+                    "activite": {
+                        "Aucune option": 0,
+                        "\u00c9criture de lettres posthumes": 30,
+                        "Marche silencieuse dans la for\u00eat du souvenir": 20,
+                        "Rencontre avec un oracle": 50,
+                        "C\u00e9r\u00e9monie fun\u00e9raire fictive": 40,
+                        "Plong\u00e9e introspective guid\u00e9e": 60,
+                        "Contemplation du fleuve du temps": 70
+                    },
+                    "hebergement": {
+                        "Aucune option disponible pour cette \u00e9tape": 0
+                    },
+                    "restauration": {
+                        "Aucune option": 0,
+                        "Soupes du souvenir": 10,
+                        "Repas v\u00e9g\u00e9tal rituel": 20,
+                        "Menu pr\u00e9f\u00e9r\u00e9 de votre vie pass\u00e9e": 30,
+                        "Je\u00fbne symbolique (volontaire)": 0
+                    },
+                    "transport": {
+                        "Aucune option": 0,
+                        "Portail temporel": 100,
+                        "Bateau du passeur": 50,
+                        "Train du souvenir": 30
+                    }
+                },
+                "options_choisies": {
+                    "position": "Aucune option disponible pour cette \u00e9tape",
+                    "activite": "Aucune option",
+                    "hebergement": "Aucune option disponible pour cette \u00e9tape",
+                    "restauration": "Aucune option",
+                    "transport": "Portail temporel"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape2": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Aucune option disponible pour cette \u00e9tape": 0
+                    },
+                    "activite": {
+                        "Aucune option": 0,
+                        "\u00c9criture de lettres posthumes": 30,
+                        "Marche silencieuse dans la for\u00eat du souvenir": 20,
+                        "Rencontre avec un oracle": 50,
+                        "C\u00e9r\u00e9monie fun\u00e9raire fictive": 40,
+                        "Plong\u00e9e introspective guid\u00e9e": 60,
+                        "Contemplation du fleuve du temps": 70
+                    },
+                    "hebergement": {
+                        "Aucune option": 0,
+                        "H\u00f4tel 3*": 100,
+                        "Chambre secr\u00e8te": 50,
+                        "Refuge du dernier repos": 100,
+                        "Tombeau reconstitu\u00e9 (exp\u00e9rience immersive)": 200
+                    },
+                    "restauration": {
+                        "Aucune option": 0,
+                        "Soupes du souvenir": 10,
+                        "Repas v\u00e9g\u00e9tal rituel": 20,
+                        "Menu pr\u00e9f\u00e9r\u00e9 de votre vie pass\u00e9e": 30,
+                        "Je\u00fbne symbolique (volontaire)": 0
+                    },
+                    "transport": {
+                        "Aucune option": 0,
+                        "Portail temporel": 100,
+                        "Bateau du passeur": 50,
+                        "Train du souvenir": 30
+                    }
+                },
+                "options_choisies": {
+                    "position": "Aucune option disponible pour cette \u00e9tape",
+                    "activite": "Aucune option",
+                    "hebergement": "Aucune option",
+                    "restauration": "Aucune option",
+                    "transport": "Aucune option"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "id": "voyage01",
+        "date_depart": "2025-05-11",
+        "duree": 10,
+        "_uid": "voyage01_9305164293a428cda1612b787520faaf"
+    },
+    "date": "2025-05-04 22:56:56",
+    "montant": "600.00",
+    "transaction": "6817f0b320792"
+}

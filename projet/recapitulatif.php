@@ -66,6 +66,7 @@ function afficherOption($categorie, $valeur, $prix = 0) {
     <meta charset="UTF-8">
     <title>Récapitulatif du Voyage</title>
     <link rel="stylesheet" href="css/recapitulatif.css">
+    <link rel="stylesheet" href="css/panier.css">
 </head>
 <body class="dynamic-bg" style="background-image: url('<?= htmlspecialchars($data['image']) ?>');">
 
@@ -73,8 +74,11 @@ function afficherOption($categorie, $valeur, $prix = 0) {
     <script src="js/theme.js"></script>
 
     <!-- En-tête -->
-    <header>
-        <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
+    <header class="header-top">
+        <div class="logo-panier">
+            <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
+            <?php include 'panier.php'; ?>
+        </div>
         <h1 class="site-title">
             <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
         </h1>        

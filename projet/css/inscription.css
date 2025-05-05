@@ -252,6 +252,10 @@ nav ul li a:hover {
     top: 50%;
     transform: translateY(-50%);
     user-select: none;
+    -webkit-user-select: none; /* ✅ pour Safari */
+    -moz-user-select: none;    /* (optionnel) pour Firefox ancien */
+    -ms-user-select: none;     /* (optionnel) pour IE */
+    user-select: none;         /* ✅ pour les navigateurs modernes */
 }
 
 input::-ms-reveal,

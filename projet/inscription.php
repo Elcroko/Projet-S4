@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     ];
                     $_SESSION['role'] = $newUser['admin'] === true ? 'admin' : 'user';
 
-                    header("Location: index.php");
+                    header("Location: profil.php");
                     exit;
                 }
             }
@@ -107,6 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- En-tête -->
     <header>
         <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
+
         <h1 class="site-title">
             <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
         </h1>    
@@ -183,7 +184,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
 
                 <div>
-                    <input type="date" name="date_naissance" max="<?= date('Y-m-d') ?>">
+                    <label for="date_naissance">Date de naissance</label>
+                    <input type="date" id="date_naissance" name="date_naissance" max="<?= date('Y-m-d') ?>" title="Veuillez sélectionner votre date de naissance">
                     <div class="error-message"></div>
                 </div>
 
@@ -195,8 +197,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
 
                 <div class="checkbox-container">
-                    <input type="checkbox" id="terms" name="terms" required>
-                    <p>J'accepte les <a href="termes.html">termes et conditions</a></p>
+                    <label for="terms">
+                        <input type="checkbox" id="terms" name="terms" required title="Vous devez accepter les conditions d'utilisation">
+                        J'accepte les <a href="termes.html">termes et conditions</a>
+                    </label>
                 </div>
 
                 <button type="submit">S'inscrire</button>

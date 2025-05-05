@@ -52,6 +52,7 @@ $usersPage = array_slice($users, $offset, $usersPerPage);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Gestion des Utilisateurs</title>
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/panier.css">
 </head>
 <body>
     <!-- Ajout du script JS -->
@@ -61,8 +62,12 @@ $usersPage = array_slice($users, $offset, $usersPerPage);
     <script src="js/theme.js"></script>
 
     <!-- En-tête -->
-    <header>
-        <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
+    <header class="header-top">
+        <div class="logo-panier">
+            <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
+            <?php include 'panier.php'; ?>
+        </div>
+        
         <h1 class="site-title">
             <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
         </h1>   

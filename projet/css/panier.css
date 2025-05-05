@@ -1,22 +1,32 @@
-/* Conteneur du panier dans le header */
+/* Agrandir et décaler le conteneur du panier */
 .header-panier {
     position: relative;
     display: inline-block;
-    margin-left: 20px;
+    margin-left: 0px;             /* Plus à gauche */
+    transform: scale(1.3);        /* Plus gros */
+    transform-origin: top left;  /* Grossissement vers la gauche */
+    z-index: 10;
 }
 
-/* Icône panier */
+/* Agrandir l’icône 🧳 */
 .header-panier .icone-panier {
-    font-size: 20px;
+    font-size: 26px;              /* Icône plus grande */
     cursor: pointer;
     color: white;
+    position: relative;
 }
 
-/* Badge de nombre d'articles */
+.logo-panier {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Ajuster le badge */
 .header-panier .badge {
     position: absolute;
     top: -8px;
-    right: -8px;
+    right: -10px;
     background-color: #a5fe03;
     color: black;
     border-radius: 50%;
@@ -25,25 +35,28 @@
     font-weight: bold;
 }
 
-/* Contenu déroulant */
+/* Menu déroulant plus large */
 .header-panier .dropdown-panier {
     display: none;
     position: absolute;
     top: 30px;
-    right: 0;
+    left: 20%;            /* ✅ menu s’affiche à droite */
+    margin-left: 10px;     /* ✅ petit espace entre icône et menu */
     background-color: #111;
     border: 1px solid #a5fe03;
     box-shadow: 0 0 15px #a5fe03;
     border-radius: 8px;
-    min-width: 300px;
-    z-index: 1000;
-    padding: 10px;
+    min-width: 320px;
+    z-index: 9999;
+    padding: 15px;
 }
+
 
 /* Affichage au survol */
 .header-panier:hover .dropdown-panier {
     display: block;
 }
+
 
 /* Titre du panier */
 .dropdown-panier h3 {
@@ -99,4 +112,5 @@
 .supprimer-btn:hover {
     transform: scale(1.2);
 }
+
 

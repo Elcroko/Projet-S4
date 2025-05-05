@@ -47,14 +47,19 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
     <title>Circuits - Tempus Odyssey</title>
     <link rel="icon" type="image/png" href="images/portail.png">
     <link rel="stylesheet" href="css/circuits.css">
+    <link rel="stylesheet" href="css/panier.css">
 </head>
 <body>
     <!-- Détection du thème sombre -->
     <script src="js/theme.js"></script>
 
     <!-- En-tête -->
-    <header>
-        <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
+    <header class="header-top">
+        <div class="logo-panier">
+            <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
+            <?php include 'panier.php'; ?>
+        </div>
+        
         <h1 class="site-title">
             <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
         </h1>  

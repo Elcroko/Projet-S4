@@ -1,4 +1,9 @@
 <?php
+if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
+    header("Location: index.php");
+    exit;
+}
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -21,13 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['supprimer_id'])) {
 
 <div class="header-panier">
     <div class="icone-panier">
-        🧳
+        🛒
         <?php if ($nbVoyages > 0): ?>
-            <span class="badge"><?= $nbVoyages ?></span>
+            <span class="badge" id="panier-badge"><?= $nbVoyages ?></span>
         <?php endif; ?>
     </div>
     <div class="dropdown-panier">
-        <h3>🧳 Mon Panier</h3>
+        <div id="panier-message" class="message-panier" style="display:none;"></div>
+
+        <h3>🛒 Mon Panier</h3>
         <?php if ($nbVoyages === 0): ?>
             <p>Aucun voyage personnalisé non payé.</p>
         <?php else: ?>
@@ -38,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['supprimer_id'])) {
                         <p><strong><?= htmlspecialchars($voyage['titre']) ?></strong></p>
                         <a href="cybank.php?id=<?= urlencode($voyage['id']) ?>" class="cart-link">Procéder au paiement</a>
                         <!-- 🧹 Bouton de suppression avec confirmation -->
-                        <button type="button" class="supprimer-btn" data-id="<?= htmlspecialchars($voyage['id']) ?>" title="Supprimer">❌</button>
+                        <button type="button" class="supprimer-btn" data-id="<?= htmlspecialchars($voyage['_uid']) ?>" title="Supprimer">❌</button>
                     </div>
                 </div>
             <?php endforeach; ?>

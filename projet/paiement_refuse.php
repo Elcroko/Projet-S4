@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <title>Paiement refusé</title>
     <link rel="stylesheet" href="css/paiement.css">
+    <link rel="stylesheet" href="css/panier.css">
     <link rel="icon" type="image/png" href="images/portail.png">
 
 </head>
@@ -17,8 +18,12 @@
     <script src="js/theme.js"></script>
 
     <!-- En-tête -->
-    <header>
-        <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
+    <header class="header-top">
+        <div class="logo-panier">
+            <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
+            <?php include 'panier.php'; ?>
+        </div>
+
         <h1 class="site-title">
             <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
         </h1>        

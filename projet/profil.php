@@ -57,6 +57,7 @@ foreach ($users as $u) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil - Tempus Odyssey</title>
     <link rel="stylesheet" href="css/profil.css">
+    <link rel="stylesheet" href="css/panier.css">
 </head>
 <body>
     <!-- Ajout du script JS -->
@@ -66,8 +67,12 @@ foreach ($users as $u) {
     <script src="js/theme.js"></script>
     
     <!-- En-tête -->
-    <header>
-        <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
+    <header class="header-top">
+        <div class="logo-panier">
+            <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
+            <?php include 'panier.php'; ?>
+        </div>
+        
         <h1 class="site-title">
             <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
         </h1>    

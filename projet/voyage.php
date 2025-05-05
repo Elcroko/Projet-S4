@@ -58,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user'])) {
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($data['titre']) ?></title>
     <link rel="stylesheet" href="css/voyage.css">
+    <link rel="stylesheet" href="css/panier.css">
     <link rel="icon" type="image/png" href="images/portail.png">
 </head>
 <body class="dynamic-bg" style="background-image: url('<?= htmlspecialchars($data['image']) ?>');">
@@ -68,8 +69,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user'])) {
     <!-- Détection du thème sombre -->
     <script src="js/theme.js"></script>
 
-    <header>
-        <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
+    <header class="header-top">
+        <div class="logo-panier">
+            <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
+            <?php include 'panier.php'; ?>
+        </div>
         <h1 class="site-title">
             <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
         </h1>

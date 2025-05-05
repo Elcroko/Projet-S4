@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             'date_naissance' => $utilisateur_trouve['date_naissance']
         ];
         $_SESSION['role'] = $utilisateur_trouve['admin'] === true ? 'admin' : 'user';
-        header("Location: index.php");
+        header("Location: profil.php");
         exit;
     } else {
         $erreur_connexion = true;
@@ -62,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- En-tête -->
     <header>
         <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
+        
         <h1 class="site-title">
             <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
         </h1>   
