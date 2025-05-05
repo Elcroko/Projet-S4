@@ -31,7 +31,7 @@ body {
 
 header {
     display: flex;
-      flex-wrap: wrap;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 20px;

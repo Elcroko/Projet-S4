@@ -64,7 +64,7 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
             <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
         </h1>  
         
-        <button id="theme-toggle" class="btn">Changer de thème</button>
+        <button id="theme-toggle" class="btn">🌗</button>
 
         <nav aria-label="Navigation principale">
             <ul>
