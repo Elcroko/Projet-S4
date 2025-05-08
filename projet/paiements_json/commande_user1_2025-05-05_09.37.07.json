@@ -1,0 +1,124 @@
+{
+    "utilisateur": {
+        "id": 1,
+        "nom": "ZZ",
+        "prenom": "ZZ",
+        "email": "zz@gmail.com",
+        "date_naissance": "2000-09-26"
+    },
+    "voyage": {
+        "titre": "Le Secret des Pyramides",
+        "description": "Assistez \u00e0 la construction des pyramides et d\u00e9couvrez leurs myst\u00e8res.",
+        "epoque": "antiquit\u00e9",
+        "lieu": "afrique",
+        "image": "images\/pyramides.jpeg",
+        "dates": {
+            "choix_date_depart": true,
+            "duree": "10 jours"
+        },
+        "prix_base": 1985,
+        "prix_total": 2285,
+        "paiement": false,
+        "nombre_personnes": "2",
+        "personnes": [
+            {
+                "nom": "ZZ",
+                "prenom": "ZZ",
+                "date_naissance": "2000-09-26"
+            }
+        ],
+        "etape1": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Lieu myst\u00e8re": 0,
+                        "Coordonn\u00e9es GPS inconnues": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Tailleur de pierre": 60,
+                        "Marche du pharaon": 50,
+                        "D\u00e9codage hi\u00e9roglyphes": 55,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Tente nomade": 35,
+                        "Chambre dans un temple": 60,
+                        "Maison de scribe": 45,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Pain \u00e9gyptien": 20,
+                        "Viande d\u2019agneau": 30,
+                        "L\u00e9gumineuses": 25,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Chameau": 35,
+                        "Char": 45,
+                        "Bateau sur le Nil": 50,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Lieu myst\u00e8re",
+                    "activite": "Tailleur de pierre",
+                    "hebergement": "Tente nomade",
+                    "restauration": "Pain \u00e9gyptien",
+                    "transport": "Chameau"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape2": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Lieu myst\u00e8re": 0,
+                        "Coordonn\u00e9es GPS inconnues": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Tailleur de pierre": 60,
+                        "Marche du pharaon": 50,
+                        "D\u00e9codage hi\u00e9roglyphes": 55,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Tente nomade": 35,
+                        "Chambre dans un temple": 60,
+                        "Maison de scribe": 45,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Pain \u00e9gyptien": 20,
+                        "Viande d\u2019agneau": 30,
+                        "L\u00e9gumineuses": 25,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Chameau": 35,
+                        "Char": 45,
+                        "Bateau sur le Nil": 50,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Lieu myst\u00e8re",
+                    "activite": "Tailleur de pierre",
+                    "hebergement": "Tente nomade",
+                    "restauration": "Pain \u00e9gyptien",
+                    "transport": "Chameau"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "id": "voyage08",
+        "date_depart": "2025-05-07",
+        "duree": 10,
+        "_uid": "voyage08_abcb1dce3575c0bf891ec76ec493cf9a"
+    },
+    "date": "2025-05-05 09:37:07",
+    "montant": "4570.00",
+    "transaction": "681886a5341f1"
+}
