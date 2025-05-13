@@ -1,0 +1,124 @@
+{
+    "utilisateur": {
+        "id": 1,
+        "nom": "ZZ",
+        "prenom": "ZZ",
+        "email": "zz@gmail.com",
+        "date_naissance": "2000-09-26"
+    },
+    "voyage": {
+        "titre": "La D\u00e9faite de Waterloo",
+        "description": "Revivez la c\u00e9l\u00e8bre bataille qui mit fin \u00e0 l'\u00e9pop\u00e9e napol\u00e9onienne.",
+        "epoque": "Moyen-\u00c2ge",
+        "lieu": "Europe",
+        "image": "images\/Waterloo.png",
+        "dates": {
+            "choix_date_depart": true,
+            "duree": "10 jours"
+        },
+        "prix_base": 2100,
+        "prix_total": 2350,
+        "paiement": false,
+        "nombre_personnes": "3",
+        "personnes": [
+            {
+                "nom": "ZZ",
+                "prenom": "ZZ",
+                "date_naissance": "2000-09-26"
+            }
+        ],
+        "etape1": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Champ de bataille de Waterloo": 0,
+                        "Ferme de la Haye Sainte": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Reconstitution de bataille": 80,
+                        "Strat\u00e9gie militaire napol\u00e9onienne": 60,
+                        "Lecture de r\u00e9cits historiques": 40,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Campement napol\u00e9onien": 70,
+                        "Ferme reconstitu\u00e9e": 90,
+                        "Tente d'\u00e9tat-major": 60,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Rations d\u2019\u00e9poque": 30,
+                        "Soupe au feu de bois": 25,
+                        "Pain et fromage de soldat": 20,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Cheval": 50,
+                        "Charrette": 30,
+                        "\u00c0 pied": 0,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Ferme de la Haye Sainte",
+                    "activite": "Lecture de r\u00e9cits historiques",
+                    "hebergement": "Aucune option",
+                    "restauration": "Soupe au feu de bois",
+                    "transport": "\u00c0 pied"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape2": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Champ de bataille de Waterloo": 0,
+                        "Ferme de la Haye Sainte": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Reconstitution de bataille": 80,
+                        "Strat\u00e9gie militaire napol\u00e9onienne": 60,
+                        "Lecture de r\u00e9cits historiques": 40,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Campement napol\u00e9onien": 70,
+                        "Ferme reconstitu\u00e9e": 90,
+                        "Tente d'\u00e9tat-major": 60,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Rations d\u2019\u00e9poque": 30,
+                        "Soupe au feu de bois": 25,
+                        "Pain et fromage de soldat": 20,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Cheval": 50,
+                        "Charrette": 30,
+                        "\u00c0 pied": 0,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Ferme de la Haye Sainte",
+                    "activite": "Lecture de r\u00e9cits historiques",
+                    "hebergement": "Ferme reconstitu\u00e9e",
+                    "restauration": "Soupe au feu de bois",
+                    "transport": "Charrette"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "id": "voyage14",
+        "date_depart": "2025-05-22",
+        "duree": 10,
+        "_uid": "voyage14_9d361f799cefe90ed0ad16827816aa44"
+    },
+    "date": "2025-05-13 11:39:46",
+    "montant": "7050.00",
+    "transaction": "68232f7c7c82a"
+}
