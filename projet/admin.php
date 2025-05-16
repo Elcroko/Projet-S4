@@ -1,5 +1,6 @@
 <?php
-session_start();
+$page_title = "Admin - Gestion des Utilisateurs";
+require_once 'verif_banni.php';
 
 if (!isset($_SESSION['user']) || empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: connexion.php");
@@ -33,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
             }
 
             // Traitement banni
-           if (isset($_POST['banni'])) {
+            if (isset($_POST['banni'])) {
                 $newBanStatus = intval($_POST['banni']);
                 $user['banni'] = $newBanStatus === 1;
                 $changement[] = 'banni';
@@ -44,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
                     $changement[] = 'admin (révoqué)';
                 }
             }
-
 
             $found = true;
             break;
@@ -68,9 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
     exit;
 }
 
-
-
-
 // --- Si on arrive ici, c'est qu'on veut afficher la page normale ---
 
 $users = json_decode(file_get_contents($file), true);
@@ -80,49 +77,15 @@ $totalUsers = count($users);
 $totalPages = ceil($totalUsers / $usersPerPage);
 $offset = ($page - 1) * $usersPerPage;
 $usersPage = array_slice($users, $offset, $usersPerPage);
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Gestion des Utilisateurs</title>
-    <link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet" href="css/panier.css">
-</head>
+<?php include 'includes/head.php'; ?>
+
 <body>
-    <!-- Ajout du script JS -->
-    <script src="js/admin.js"></script>
-
-    <!-- Détection du thème sombre -->
-    <script src="js/theme.js"></script>
-
     <!-- En-tête -->
-    <header class="header-top">
-        <div class="logo-panier">
-            <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
-            <?php include 'panier.php'; ?>
-        </div>
-        
-        <h1 class="site-title">
-            <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
-        </h1>   
-        
-        <button id="theme-toggle" class="btn">🌗</button>
-
-        <nav aria-label="Navigation principale">
-            <ul>
-            <li><a href="index.php">Accueil</a></li>
-            <li><a href="circuits.php">Circuits</a></li>
-            <li><a href="admin.php">Admin</a></li>
-            <li><a href="profil.php">Profil</a></li>
-            <li><a href="logout.php">Se déconnecter</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include 'includes/header.php'; ?>
     
     <main>
         <section class="admin-container">
@@ -198,5 +161,6 @@ $usersPage = array_slice($users, $offset, $usersPerPage);
         <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
     </footer> 
     <script src="js/panier.js"></script>
+    <script src="js/admin.js"></script>
 </body>
 </html>
