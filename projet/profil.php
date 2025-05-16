@@ -4,9 +4,7 @@ ini_set('display_errors', 1);
 session_start();
 
 // Vérification de l'authentification
-if (!isset($_SESSION['user'])) {
-    if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-        header('Content-Type: application/json');
+if (!isset($_SESSION['user'])) {ation/json');
         echo json_encode(['success' => false, 'message' => 'Utilisateur non authentifié.', 'redirect' => 'connexion.php']);
         exit;
     } else {
