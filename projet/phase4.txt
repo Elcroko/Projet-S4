@@ -1,0 +1,41 @@
+1. Mise à jour du profil utilisateur
+
+Lorsqu’un utilisateur modifie ses infos dans son profil, l’envoi doit se faire par requête asynchrone (AJAX).
+
+Une fois la réponse reçue :
+
+Si succès → afficher les nouvelles valeurs.
+
+Si erreur → restaurer les anciennes.
+
+2. Modification depuis la vue administrateur
+
+Même principe que ci-dessus : modification d’un utilisateur via AJAX.
+
+Affichage d’une icône de chargement pendant le traitement (simulateur de latence recommandé pour la démo).
+
+3. Chargement dynamique des options dans un voyage
+
+Les listes déroulantes d’options (activités, hébergement…) ne doivent plus être statiques dans le HTML.
+
+Elles doivent être chargées dynamiquement en JavaScript via une requête AJAX.
+
+4. Calcul asynchrone du prix total du voyage
+
+À chaque modification d’option, une requête AJAX envoie les nouvelles données.
+
+Le serveur retourne le nouveau prix, qui est affiché dynamiquement.
+
+5. Finalisation du projet
+
+C’est la dernière phase, profitez-en pour :
+
+Corriger les bugs.
+
+Ajouter des fonctionnalités manquantes des phases précédentes.
+
+Rapport de projet
+
+Mettre à jour le rapport (PDF) avec les éléments de la phase 4.
+
+Ne pas créer un nouveau fichier, mais compléter l’existant.
