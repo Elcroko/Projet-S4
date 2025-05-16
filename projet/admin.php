@@ -14,35 +14,64 @@ if (!file_exists($file)) {
 }
 
 // Gestion spéciale des requêtes AJAX
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['banni'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
     header('Content-Type: application/json');
 
     $email = $_POST['email'];
-    $newBanStatus = intval($_POST['banni']); // 0 ou 1
-
     $users = json_decode(file_get_contents($file), true);
     $found = false;
+    $changement = [];
 
     foreach ($users as &$user) {
         if ($user['email'] === $email && $user['email'] !== $_SESSION['user']['email']) {
-            $user['banni'] = $newBanStatus === 1 ? true : false;
+
+            // Traitement admin
+            if (isset($_POST['admin'])) {
+                $newAdminStatus = intval($_POST['admin']);
+                $user['admin'] = $newAdminStatus === 1;
+                $changement[] = 'admin';
+            }
+
+            // Traitement banni
+            if (isset($_POST['banni'])) {
+                $newBanStatus = intval($_POST['banni']);
+
+                // 🚫 Interdiction de bannir un admin
+                if (!empty($user['admin']) && $newBanStatus === 1) {
+                    echo json_encode([
+                        'success' => false,
+                        'message' => "Impossible de bannir un utilisateur admin."
+                    ]);
+                    exit;
+                }
+
+                $user['banni'] = $newBanStatus === 1;
+                $changement[] = 'banni';
+            }
+
             $found = true;
             break;
         }
     }
 
     if ($found) {
-    $success = file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-    if ($success === false) {
-        echo json_encode(['success' => false, 'message' => "Erreur lors de la sauvegarde."]);
+        $success = file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        if ($success === false) {
+            echo json_encode(['success' => false, 'message' => "Erreur lors de la sauvegarde."]);
+        } else {
+            echo json_encode([
+                'success' => true,
+                'message' => "Changement(s) appliqué(s) à $email : " . implode(', ', $changement)
+            ]);
+        }
     } else {
-        echo json_encode(['success' => true, 'message' => "Statut banni mis à jour pour $email."]);
+        echo json_encode(['success' => false, 'message' => "Utilisateur non trouvé ou modification non autorisée."]);
     }
-}
-
 
     exit;
 }
+
+
 
 
 // --- Si on arrive ici, c'est qu'on veut afficher la page normale ---
@@ -133,13 +162,20 @@ $usersPage = array_slice($users, $offset, $usersPerPage);
                                 <?php if ($user['email'] !== $_SESSION['user']['email']): ?>
                                     <button type="button" 
                                             class="admin-btn rendre-admin-btn" 
-                                            data-admin="<?= !empty($user['admin']) ?>" 
+                                            data-admin="<?= !empty($user['admin']) ? '1' : '0' ?>" 
                                             data-email="<?= htmlspecialchars($user['email']) ?>">
                                         <?= !empty($user['admin']) ? 'Retirer admin' : 'Rendre admin' ?>
                                     </button>
-                                    <button class="admin-btn bannir-btn" data-email="<?= htmlspecialchars($user['email']) ?>">
-                                        <?= !empty($user['banni']) ? 'Débannir' : 'Bannir' ?>
-                                    </button>
+
+                                    <?php if (!empty($user['admin'])): ?>
+                                        <button class="admin-btn bannir-btn disabled-btn" disabled title="Impossible de bannir un admin">
+                                            Admin protégé
+                                        </button>
+                                    <?php else: ?>
+                                        <button class="admin-btn bannir-btn" data-email="<?= htmlspecialchars($user['email']) ?>">
+                                            <?= !empty($user['banni']) ? 'Débannir' : 'Bannir' ?>
+                                        </button>
+                                    <?php endif; ?>
                                 <?php else: ?>
                                     <em>Vous</em>
                                 <?php endif; ?>
@@ -164,5 +200,6 @@ $usersPage = array_slice($users, $offset, $usersPerPage);
     <footer>
         <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
     </footer> 
+    <script src="js/panier.js"></script>
 </body>
 </html>

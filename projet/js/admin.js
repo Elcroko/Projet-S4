@@ -11,38 +11,57 @@ document.addEventListener('DOMContentLoaded', function () {
             button.textContent = "⏳";
             button.classList.add('loading');
 
-            setTimeout(() => {
-                let newAdminStatus;
+            const currentAdmin = adminCell.textContent.trim().toLowerCase() === "oui";
+            const newAdminStatus = currentAdmin ? 0 : 1;
 
-                if (adminCell.textContent.trim().toLowerCase() === "oui") {
-                    adminCell.textContent = "Non";
-                    button.textContent = "Rendre admin";
-                    newAdminStatus = 0;
-                } else {
-                    adminCell.textContent = "Oui";
-                    button.textContent = "Retirer admin";
-                    newAdminStatus = 1;
-                }
+            fetch('admin.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'email=' + encodeURIComponent(email) + '&admin=' + encodeURIComponent(newAdminStatus)
+            })
+            .then(response => response.json())
+            .then(data => {
+                setTimeout(() => {
+                    button.disabled = false;
+                    button.classList.remove('loading');
 
-                button.dataset.admin = newAdminStatus;
+                    if (data.success) {
+                        // Mise à jour de l'affichage admin
+                        adminCell.textContent = newAdminStatus === 1 ? "Oui" : "Non";
+                        button.textContent = newAdminStatus === 1 ? "Retirer admin" : "Rendre admin";
+                        button.dataset.admin = newAdminStatus;
+
+                        // Mise à jour dynamique du bouton Bannir
+                        const banButton = row.querySelector('.bannir-btn');
+                        if (banButton) {
+                            if (newAdminStatus === 1) {
+                                banButton.disabled = true;
+                                banButton.classList.add('disabled-btn');
+                                banButton.textContent = "Admin protégé";
+                                banButton.removeAttribute('data-email');
+                                banButton.title = "Impossible de bannir un admin";
+                            } else {
+                                banButton.disabled = false;
+                                banButton.classList.remove('disabled-btn');
+                                banButton.dataset.email = email;
+                                banButton.textContent = "Bannir";
+                                banButton.title = "";
+                            }
+                        }
+                    } else {
+                        alert(data.message);
+                        button.textContent = currentAdmin ? "Retirer admin" : "Rendre admin";
+                    }
+                }, 3000); // Délai de 3 secondes
+            })
+            .catch(error => {
+                console.error('Erreur serveur (admin):', error);
+                button.textContent = "❌ Erreur";
                 button.disabled = false;
                 button.classList.remove('loading');
-
-                fetch('admin.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: 'email=' + encodeURIComponent(email) + '&admin=' + encodeURIComponent(newAdminStatus)
-                })
-                .then(response => response.text())
-                .then(data => {
-                    console.log('Serveur (admin):', data);
-                })
-                .catch(error => {
-                    console.error('Erreur serveur (admin):', error);
-                });
-            }, 3000);
+            });
         });
     });
 
@@ -54,42 +73,42 @@ document.addEventListener('DOMContentLoaded', function () {
             const banCell = row.querySelector('.ban-status');
             const email = button.dataset.email;
 
+            const isCurrentlyBanned = banCell.textContent.trim().toLowerCase() === "oui";
+            const newBanStatus = isCurrentlyBanned ? 0 : 1;
+
             button.disabled = true;
             button.textContent = "⏳";
             button.classList.add('loading');
 
-            setTimeout(() => {
-                let newBanStatus;
+            fetch('admin.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'email=' + encodeURIComponent(email) + '&banni=' + encodeURIComponent(newBanStatus)
+            })
+            .then(response => response.json())
+            .then(data => {
+                setTimeout(() => {
+                    button.disabled = false;
+                    button.classList.remove('loading');
 
-                if (banCell.textContent.trim().toLowerCase() === "oui") {
-                    banCell.textContent = "Non";
-                    button.textContent = "Bannir";
-                    newBanStatus = 0;
-                } else {
-                    banCell.textContent = "Oui";
-                    button.textContent = "Débannir";
-                    newBanStatus = 1;
-                }
-
-                button.dataset.banni = newBanStatus;
+                    if (data.success) {
+                        banCell.textContent = newBanStatus === 1 ? "Oui" : "Non";
+                        button.textContent = newBanStatus === 1 ? "Débannir" : "Bannir";
+                        button.dataset.banni = newBanStatus;
+                    } else {
+                        alert(data.message);
+                        button.textContent = isCurrentlyBanned ? "Débannir" : "Bannir";
+                    }
+                }, 3000); // Délai de 3 secondes
+            })
+            .catch(error => {
+                console.error('Erreur serveur (ban):', error);
+                button.textContent = "❌ Erreur";
                 button.disabled = false;
                 button.classList.remove('loading');
-
-                fetch('admin.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: 'email=' + encodeURIComponent(email) + '&banni=' + encodeURIComponent(newBanStatus)
-                })
-                .then(response => response.text())
-                .then(data => {
-                    console.log('Serveur (ban):', data);
-                })
-                .catch(error => {
-                    console.error('Erreur serveur (ban):', error);
-                });
-            }, 3000);
+            });
         });
     });
 });
