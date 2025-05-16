@@ -210,6 +210,16 @@ nav ul li a:hover {
     box-shadow: none;
 }
 
+.bannir-btn {
+    background-color: #ff4c4c;
+    color: white;
+}
+
+.bannir-btn:hover {
+    background-color: #ff0000;
+}
+
+
 
 /* ============================== */
 /* MEDIA QUERIES POUR RESPONSIVE */

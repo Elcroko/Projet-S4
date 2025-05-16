@@ -14,23 +14,36 @@ if (!file_exists($file)) {
 }
 
 // Gestion spéciale des requêtes AJAX
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['admin'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['banni'])) {
+    header('Content-Type: application/json');
+
     $email = $_POST['email'];
-    $newAdminStatus = intval($_POST['admin']); // 0 ou 1
+    $newBanStatus = intval($_POST['banni']); // 0 ou 1
+
     $users = json_decode(file_get_contents($file), true);
+    $found = false;
 
     foreach ($users as &$user) {
         if ($user['email'] === $email && $user['email'] !== $_SESSION['user']['email']) {
-            $user['admin'] = $newAdminStatus === 1 ? true : false;
+            $user['banni'] = $newBanStatus === 1 ? true : false;
+            $found = true;
             break;
         }
     }
 
-    file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    if ($found) {
+    $success = file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    if ($success === false) {
+        echo json_encode(['success' => false, 'message' => "Erreur lors de la sauvegarde."]);
+    } else {
+        echo json_encode(['success' => true, 'message' => "Statut banni mis à jour pour $email."]);
+    }
+}
 
-    echo "Statut admin mis à jour pour $email.";
+
     exit;
 }
+
 
 // --- Si on arrive ici, c'est qu'on veut afficher la page normale ---
 
@@ -100,7 +113,8 @@ $usersPage = array_slice($users, $offset, $usersPerPage);
                             <th>Téléphone</th>
                             <th>Voyages</th>
                             <th>Admin</th>
-                            <th>Action</th>
+                            <th>Banni</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -113,14 +127,18 @@ $usersPage = array_slice($users, $offset, $usersPerPage);
                                 <td><?= htmlspecialchars($user['date_inscription']) ?></td>
                                 <td><?= htmlspecialchars($user['telephone']) ?></td>
                                 <td><?= htmlspecialchars($user['nombre_voyages']) ?></td>
-                                <td class="admin-status"><?= $user['admin'] ? 'Oui' : 'Non' ?></td>
+                                <td class="admin-status"><?= !empty($user['admin']) ? 'Oui' : 'Non' ?></td>
+                                <td class="ban-status"><?= !empty($user['banni']) ? 'Oui' : 'Non' ?></td>
                                 <td>
                                 <?php if ($user['email'] !== $_SESSION['user']['email']): ?>
                                     <button type="button" 
-                                            class="admin-btn" 
-                                            data-admin="<?= $user['admin'] ? '1' : '0' ?>" 
+                                            class="admin-btn rendre-admin-btn" 
+                                            data-admin="<?= !empty($user['admin']) ?>" 
                                             data-email="<?= htmlspecialchars($user['email']) ?>">
-                                        <?= $user['admin'] ? 'Retirer admin' : 'Rendre admin' ?>
+                                        <?= !empty($user['admin']) ? 'Retirer admin' : 'Rendre admin' ?>
+                                    </button>
+                                    <button class="admin-btn bannir-btn" data-email="<?= htmlspecialchars($user['email']) ?>">
+                                        <?= !empty($user['banni']) ? 'Débannir' : 'Bannir' ?>
                                     </button>
                                 <?php else: ?>
                                     <em>Vous</em>

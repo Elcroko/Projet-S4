@@ -62,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     "date_naissance" => $date_naissance,
                     "date_inscription" => date("d/m/Y"),
                     "admin" => false,
+                    "banni" => false,
                     "nombre_voyages" => 0,
                     "telephone" => $telephone
                 ];
