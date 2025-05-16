@@ -8,11 +8,14 @@ session_destroy();
 <head>
     <meta charset="UTF-8">
     <title>Compte banni</title>
-    <link rel="stylesheet" href="connexion.css">
+    <link rel="stylesheet" href="css/banni.css">
 </head>
 <body>
-    <div class="erreur-connexion" style="margin: 100px auto; max-width: 600px;">
-        ❌ Vous avez été banni. Accès refusé.
+    <div class="banni-container">
+        <div class="icon">🔒</div>
+        <h1>Accès refusé</h1>
+        <p>Votre compte a été <strong>banni</strong> par un administrateur.<br>Vous ne pouvez plus accéder au site.</p>
+        <a href="index.php">Retour à l’accueil</a>
     </div>
 </body>
 </html>

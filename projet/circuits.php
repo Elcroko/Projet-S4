@@ -1,24 +1,5 @@
 <?php
-session_start();
-
-// Si l'utilisateur est connecté
-if (isset($_SESSION['user'])) {
-    // Charger les données à jour
-    $utilisateurs = json_decode(file_get_contents('json/utilisateurs.json'), true);
-    $emailConnecte = $_SESSION['user']['email'];
-
-    foreach ($utilisateurs as $u) {
-        if ($u['email'] === $emailConnecte) {
-            if (!empty($u['banni']) && empty($u['admin'])) {
-                // S'il a été banni et n'est pas admin → rediriger
-                header('Location: banni.php');
-                exit;
-            }
-        }
-    }
-}
-
-
+require_once 'verif_banni.php';
 
 function chargerVoyages() {
     $voyages = [];

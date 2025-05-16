@@ -101,7 +101,7 @@
         "date_naissance": "2000-01-01",
         "date_inscription": "30\/03\/2025",
         "admin": false,
-        "banni": false,
+        "banni": true,
         "nombre_voyages": 1,
         "telephone": "0102030405",
         "historique": [

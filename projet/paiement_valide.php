@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once 'verif_banni.php';
 
 if (isset($_SESSION['recapitulatif_id']) && isset($_SESSION['panier'])) {
     $id = $_SESSION['recapitulatif_id'];

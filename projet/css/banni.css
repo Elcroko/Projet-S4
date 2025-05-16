@@ -1,0 +1,45 @@
+body {
+    background-color: #1a1a1a;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.banni-container {
+    text-align: center;
+    background-color: #2a2a2a;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    max-width: 500px;
+}
+
+.banni-container h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.banni-container .icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #ff4444;
+}
+
+.banni-container p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.banni-container a {
+    color: #ccc;
+    text-decoration: underline;
+    font-size: 1rem;
+}
+
+.banni-container a:hover {
+    color: white;
+}

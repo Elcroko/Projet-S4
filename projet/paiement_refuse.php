@@ -1,6 +1,5 @@
-<?php session_start(); 
-
-
+<?php 
+require_once 'verif_banni.php';
 ?>
 
 <!DOCTYPE html>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once 'verif_banni.php';
 
 $id = isset($_GET['id']) ? basename($_GET['id']) : 'voyage01';
 $nom_fichier = "json/{$id}.json";

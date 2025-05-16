@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once 'verif_banni.php';
 $isHistorique = false;
 $commande = null;
 $recapitulatif_id = 'voyage01'; // par défaut
