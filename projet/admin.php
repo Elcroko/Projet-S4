@@ -162,5 +162,6 @@ $usersPage = array_slice($users, $offset, $usersPerPage);
     </footer> 
     <script src="js/panier.js"></script>
     <script src="js/admin.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 </html>
