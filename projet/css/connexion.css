@@ -250,6 +250,17 @@ input::-webkit-credentials-auto-fill-button {
     user-select: none;         
 }
 
+.erreur-connexion {
+    background-color: #ff4444;
+    color: white;
+    font-size: 1.5rem;
+    padding: 1em;
+    margin-top: 1em;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
 
 
 /* ============================== */

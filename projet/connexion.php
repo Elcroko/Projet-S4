@@ -112,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <a class="forgot-password" href="inscription.php">Créer un compte</a>
                 </form>
                 <?php if (!empty($erreur_connexion)): ?>
-                    <div style="background-color: #ff4444; color: white; font-size: 1.3rem; padding: 1em; margin-top: 1em; text-align: center; border-radius: 8px;">
+                    <div class="erreur-connexion">
                         <?= htmlspecialchars($erreur_connexion) ?>
                     </div>
                 <?php endif; ?>
