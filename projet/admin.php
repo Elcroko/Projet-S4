@@ -33,21 +33,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
             }
 
             // Traitement banni
-            if (isset($_POST['banni'])) {
+           if (isset($_POST['banni'])) {
                 $newBanStatus = intval($_POST['banni']);
-
-                // 🚫 Interdiction de bannir un admin
-                if (!empty($user['admin']) && $newBanStatus === 1) {
-                    echo json_encode([
-                        'success' => false,
-                        'message' => "Impossible de bannir un utilisateur admin."
-                    ]);
-                    exit;
-                }
-
                 $user['banni'] = $newBanStatus === 1;
                 $changement[] = 'banni';
+
+                // Si l'utilisateur est banni, on lui retire les droits admin automatiquement
+                if ($newBanStatus === 1 && !empty($user['admin'])) {
+                    $user['admin'] = false;
+                    $changement[] = 'admin (révoqué)';
+                }
             }
+
 
             $found = true;
             break;

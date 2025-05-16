@@ -97,6 +97,30 @@ document.addEventListener('DOMContentLoaded', function () {
                         banCell.textContent = newBanStatus === 1 ? "Oui" : "Non";
                         button.textContent = newBanStatus === 1 ? "Débannir" : "Bannir";
                         button.dataset.banni = newBanStatus;
+                        const adminButton = row.querySelector('.rendre-admin-btn');
+const adminCell = row.querySelector('.admin-status');
+
+if (newBanStatus === 1) {
+    // Désactiver bouton admin
+    if (adminButton) {
+        adminButton.disabled = true;
+        adminButton.classList.add('disabled-btn');
+        adminButton.title = "Impossible de rendre admin un utilisateur banni";
+        adminButton.textContent = "Accès retiré";
+    }
+    if (adminCell) {
+        adminCell.textContent = "Non";
+    }
+} else {
+    // Réactiver bouton admin
+    if (adminButton) {
+        adminButton.disabled = false;
+        adminButton.classList.remove('disabled-btn');
+        adminButton.title = "";
+        adminButton.textContent = "Rendre admin";
+    }
+}
+
                     } else {
                         alert(data.message);
                         button.textContent = isCurrentlyBanned ? "Débannir" : "Bannir";
