@@ -177,6 +177,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user'])) {
     <footer>
         <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
     </footer>
-
+    <script src="js/panier.js"></script>
 </body>
 </html>
