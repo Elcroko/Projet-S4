@@ -1,0 +1,18 @@
+# ==============================================================================
+# Protection des fichiers JSON de paiement
+# Empêche l'accès direct aux fichiers .json via le navigateur.
+# Les scripts PHP peuvent toujours y accéder via le système de fichiers.
+# ==============================================================================
+
+<Files "*.json">
+    # Pour Apache 2.4 et versions ultérieures
+    Require all denied
+
+    # Décommentez les lignes ci-dessous et commentez "Require all denied"
+    # si vous utilisez Apache 2.2 ou une version antérieure
+    # Order allow,deny
+    # Deny from all
+</Files>
+
+# Optionnel : Empêcher le listage du contenu du répertoire
+Options -Indexes
