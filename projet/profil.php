@@ -3,53 +3,160 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
 
+// Vérification de l'authentification
 if (!isset($_SESSION['user'])) {
-    header("Location: connexion.php");
-    exit;
+    if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'message' => 'Utilisateur non authentifié.', 'redirect' => 'connexion.php']);
+        exit;
+    } else {
+        header("Location: connexion.php");
+        exit;
+    }
 }
 
+$file = 'json/utilisateurs.json';
+$is_ajax_request = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
 
-// ↓ Bloc ajouté pour gérer la sauvegarde des modifications
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_SESSION['user']['id'];
-    $file = 'json/utilisateurs.json';
-    $users = json_decode(file_get_contents($file), true);
+    
+    if (!file_exists($file)) {
+        if ($is_ajax_request) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => 'Erreur système: Fichier de données introuvable.']);
+            exit;
+        }
+        die('Erreur système: Fichier de données introuvable.');
+    }
 
-    // Mise à jour des champs modifiables
-    foreach ($users as &$user) {
-        if ($user['id'] == $id) {
-            $user['nom'] = $_POST['nom'];
-            $user['prenom'] = $_POST['prenom'];
-            $user['email'] = $_POST['email'];
-            $user['telephone'] = $_POST['telephone'];
+    $users_data = file_get_contents($file);
+    if ($users_data === false) {
+        if ($is_ajax_request) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => 'Erreur: Impossible de lire le fichier utilisateurs.']);
+            exit;
+        }
+        die('Erreur: Impossible de lire le fichier utilisateurs.');
+    }
+
+    $users = json_decode($users_data, true);
+    if ($users === null) {
+         if ($is_ajax_request) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => 'Erreur: Format de données invalide.']);
+            exit;
+        }
+        die('Erreur: Format de données invalide.');
+    }
+
+    $user_found_and_updated = false;
+    $updated_user_data_for_session = [];
+
+    foreach ($users as &$user_record) { // Utiliser une référence pour modifier directement le tableau
+        if ($user_record['id'] == $id) {
+            // Récupérer et valider les données postées
+            $nom = isset($_POST['nom']) ? trim($_POST['nom']) : $user_record['nom'];
+            $prenom = isset($_POST['prenom']) ? trim($_POST['prenom']) : $user_record['prenom'];
+            $email = isset($_POST['email']) ? trim(strtolower($_POST['email'])) : $user_record['email'];
+            $telephone = isset($_POST['telephone']) ? trim($_POST['telephone']) : $user_record['telephone'];
+
+            // Validation basique (vous devriez étendre cela)
+            if (empty($nom) || !preg_match("/^[a-zA-ZÀ-ÿ\s-]+$/i", $nom)) { $error_msg = 'Nom invalide.'; break; }
+            if (empty($prenom) || !preg_match("/^[a-zA-ZÀ-ÿ\s-]+$/i", $prenom)) { $error_msg = 'Prénom invalide.'; break; }
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { $error_msg = 'Email invalide.'; break; }
+            if (!preg_match("/^[0-9]{10}$/", $telephone)) { $error_msg = 'Téléphone invalide (10 chiffres attendus).'; break; }
+            
+            $user_record['nom'] = $nom;
+            $user_record['prenom'] = $prenom;
+            $user_record['email'] = $email; 
+            $user_record['telephone'] = $telephone;
+            
+            $user_found_and_updated = true;
+            
+            // Préparer les données pour la session et la réponse AJAX
+            $updated_user_data_for_session = [
+                'id' => $id, // Conserver l'id
+                'nom' => $nom,
+                'prenom' => $prenom,
+                'email' => $email,
+                'date_naissance' => $user_record['date_naissance'] // Conserver la date de naissance de la session
+                // Ajoutez d'autres champs de session si nécessaire
+            ];
+             $_SESSION['user'] = $updated_user_data_for_session; // Mettre à jour la session immédiatement
             break;
         }
     }
+    unset($user_record); // Casser la référence
 
-    // Sauvegarde dans le fichier JSON
-    file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT));
+    if (isset($error_msg)) { // Si une erreur de validation est survenue
+        if ($is_ajax_request) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => $error_msg]);
+            exit;
+        } else {
+            $_SESSION['error_message_profil'] = $error_msg;
+            header("Location: profil.php");
+            exit;
+        }
+    }
 
-    // Mise à jour de la session
-    $_SESSION['user']['nom'] = $_POST['nom'];
-    $_SESSION['user']['prenom'] = $_POST['prenom'];
-    $_SESSION['user']['email'] = $_POST['email'];
+    if ($user_found_and_updated) {
+        if (file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE))) {
+            if ($is_ajax_request) {
+                header('Content-Type: application/json');
+                echo json_encode([
+                    'success' => true, 
+                    'message' => 'Profil mis à jour avec succès!', 
+                    'user' => [ // Renvoyer les champs mis à jour
+                        'nom' => $nom,
+                        'prenom' => $prenom,
+                        'email' => $email,
+                        'telephone' => $telephone
+                    ]
+                ]);
+                exit;
+            } else {
+                header("Location: profil.php"); // Rechargement simple pour non-AJAX
+                exit;
+            }
+        } else { // Erreur de sauvegarde fichier
+            if ($is_ajax_request) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Erreur lors de la sauvegarde des modifications.']);
+                exit;
+            } else {
+                 $_SESSION['error_message_profil'] = 'Erreur lors de la sauvegarde des modifications.';
+                 header("Location: profil.php");
+                 exit;
+            }
+        }
+    } elseif (!$is_ajax_request) { // Si non AJAX et utilisateur non trouvé (ne devrait pas arriver si session est OK)
+        $_SESSION['error_message_profil'] = 'Utilisateur non trouvé pour la mise à jour.';
+        header("Location: profil.php");
+        exit;
+    } elseif ($is_ajax_request) { // Si AJAX et utilisateur non trouvé
+         header('Content-Type: application/json');
+         echo json_encode(['success' => false, 'message' => 'Utilisateur non trouvé pour la mise à jour.']);
+         exit;
+    }
 }
 
-// Charger les infos utilisateur
-$file = 'json/utilisateurs.json';
-$users = json_decode(file_get_contents($file), true);
-$id = $_SESSION['user']['id'];
-$user = null;
+// Le reste du code PHP pour afficher la page (quand ce n'est pas une requête POST AJAX)
+$users_data_display = file_get_contents($file);
+$users_display = json_decode($users_data_display, true);
+$current_user_id_display = $_SESSION['user']['id']; // Utiliser l'id de la session
+$user_to_display = null;
 
-foreach ($users as $u) {
-    if ($u['id'] == $id) {
-        $user = $u;
-        break;
+if ($users_display) {
+    foreach ($users_display as $u_disp) {
+        if ($u_disp['id'] == $current_user_id_display) {
+            $user_to_display = $u_disp;
+            break;
+        }
     }
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -58,32 +165,31 @@ foreach ($users as $u) {
     <title>Profil - Tempus Odyssey</title>
     <link rel="stylesheet" href="css/profil.css">
     <link rel="stylesheet" href="css/panier.css">
+    <style>
+        /* Styles pour les messages de succès/erreur */
+        .profil-message { padding: 10px; margin-bottom: 15px; border-radius: 5px; text-align: center; font-weight: bold; }
+        .profil-message.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .profil-message.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
 </head>
 <body>
-    <!-- Ajout du script JS -->
-    <script src="js/profil.js"></script>
+    <script src="js/profil.js"></script> 
 
-    <!-- Détection du thème sombre -->
     <script src="js/theme.js"></script>
     
-    <!-- En-tête -->
     <header class="header-top">
         <div class="logo-panier">
             <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
             <?php include 'panier.php'; ?>
         </div>
-        
         <h1 class="site-title">
             <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
         </h1>    
-        
         <button id="theme-toggle" class="btn">🌗</button>
-
         <nav aria-label="Navigation principale">
             <ul>
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="circuits.php">Circuits</a></li>
-
                 <?php if (!isset($_SESSION['user'])): ?>
                     <li><a href="inscription.php">Inscription</a></li>
                     <li><a href="connexion.php">Connexion</a></li>
@@ -94,72 +200,57 @@ foreach ($users as $u) {
                     <li><a href="profil.php" class="active">Profil</a></li>
                     <li><a href="logout.php">Se déconnecter</a></li>
                 <?php endif; ?>
-
             </ul>
         </nav>
     </header>
     
-    <!-- Contenu principal -->
     <main>
-        <?php
-        $file = 'json/utilisateurs.json';
-        $users = json_decode(file_get_contents($file), true);
-        $id = $_SESSION['user']['id'];
-        $user = null;
-
-        foreach ($users as $u) {
-            if ($u['id'] == $id) {
-                $user = $u;
-                break;
-            }
-        }
-        ?>
         <div class="main-container">
-            <?php if ($user): ?>
+            <?php if ($user_to_display): ?>
                 <section class="profil-container">
                     <h2>Informations personnelles</h2>
-                    <form method="post" action="profil.php" class="profil-form">
-                    
-                    <div class="form-group">
-                        <label for="nom">Nom :</label>
-                        <input type="text" id= "nom" name="nom" value="<?= htmlspecialchars($user['nom']) ?>" required readonly>
-                        <button type="button" class="edit-btn" data-field="nom">Modifier</button>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="prenom">Prénom :</label>
-                        <input type="text" id="prenom" name="prenom" value="<?= htmlspecialchars($user['prenom']) ?>" required readonly>
-                        <button type="button" class="edit-btn" data-field="prenom">Modifier</button>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email :</label>
-                        <input type="email" id="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required readonly>
-                        <button type="button" class="edit-btn" data-field="email">Modifier</button>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="telephone">Téléphone :</label>
-                        <input type="tel" id="telephone" name="telephone" value="<?= htmlspecialchars($user['telephone']) ?>" required readonly>
-                        <button type="button" class="edit-btn" data-field="telephone">Modifier</button>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="date_naissance">Date de naissance : </label>
-                        <input type="date" id="date_naissance" name="date_naissance"
-                            value="<?= htmlspecialchars($user['date_naissance']) ?>" readonly>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="date_inscription">Date d'inscription :</label>
-                        <input type="text" name="date_inscription" value="<?= htmlspecialchars($user['date_inscription']) ?>" readonly>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nombre_voyages">Voyages réservés :</label>
-                        <input type="number" name="nombre_voyages" value="<?= htmlspecialchars($user['nombre_voyages']) ?>" readonly>
-                    </div>
+                    <div id="profil-message-area"></div> 
+                    <?php 
+                    // Afficher les messages d'erreur pour les POST non-AJAX
+                    if (isset($_SESSION['error_message_profil'])) {
+                        echo '<div class="profil-message error">' . htmlspecialchars($_SESSION['error_message_profil']) . '</div>';
+                        unset($_SESSION['error_message_profil']);
+                    }
+                    ?>
+                    <form id="profil-form" class="profil-form">
+                        <div class="form-group">
+                            <label for="nom">Nom :</label>
+                            <input type="text" id="nom" name="nom" value="<?= htmlspecialchars($user_to_display['nom']) ?>" required readonly>
+                            <button type="button" class="edit-btn" data-field="nom">Modifier</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="prenom">Prénom :</label>
+                            <input type="text" id="prenom" name="prenom" value="<?= htmlspecialchars($user_to_display['prenom']) ?>" required readonly>
+                            <button type="button" class="edit-btn" data-field="prenom">Modifier</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email :</label>
+                            <input type="email" id="email" name="email" value="<?= htmlspecialchars($user_to_display['email']) ?>" required readonly>
+                            <button type="button" class="edit-btn" data-field="email">Modifier</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone :</label>
+                            <input type="tel" id="telephone" name="telephone" value="<?= htmlspecialchars($user_to_display['telephone'] ?? '') ?>" required readonly>
+                            <button type="button" class="edit-btn" data-field="telephone">Modifier</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="date_naissance">Date de naissance : </label>
+                            <input type="date" id="date_naissance" name="date_naissance"
+                                value="<?= htmlspecialchars($user_to_display['date_naissance']) ?>" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="date_inscription">Date d'inscription :</label>
+                            <input type="text" name="date_inscription" value="<?= htmlspecialchars($user_to_display['date_inscription']) ?>" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre_voyages">Voyages réservés :</label>
+                            <input type="number" name="nombre_voyages" value="<?= htmlspecialchars($user_to_display['nombre_voyages']) ?>" readonly>
+                        </div>
                         <button type="submit" id="save-changes" class="save-btn" style="display: none;">Enregistrer les modifications</button>
                     </form>
                 </section>
@@ -169,19 +260,7 @@ foreach ($users as $u) {
 
             <section class="historique">
                 <h2>Historique des voyages</h2>
-                <?php
-                $data = file_get_contents('json/utilisateurs.json');
-                $utilisateurs = json_decode($data, true);
-                $historique = [];
-
-                foreach ($utilisateurs as $user) {
-                    if ($user['email'] === $_SESSION['user']['email']) {
-                        $historique = $user['historique'] ?? [];
-                        break;
-                    }
-                }
-                ?>
-
+                <?php $historique = $user_to_display['historique'] ?? []; ?>
                 <?php if (empty($historique)): ?>
                     <p>Aucun voyage encore effectué.</p>
                 <?php else: ?>
@@ -197,13 +276,10 @@ foreach ($users as $u) {
                 <?php endif; ?>
             </section>
         </div>
-
     </main>
 
-    <!-- Pied de page -->
     <footer>
         <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
     </footer>
-
 </body>
 </html>
