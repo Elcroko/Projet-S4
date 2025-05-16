@@ -19,6 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     foreach ($utilisateurs as $user) {
         if ($user['email'] === $email && password_verify($mot_de_passe, $user['mot_de_passe'])) {
+            if (!empty($user['banni'])) {
+                // ✅ L'utilisateur est banni → on bloque
+                $erreur_connexion = "❌ Vous avez été banni. Accès refusé.";
+                break;
+            }
+
+            // ✅ L'utilisateur est valide
             $utilisateur_trouve = $user;
             break;
         }
@@ -32,12 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             'email' => $utilisateur_trouve['email'],
             'date_naissance' => $utilisateur_trouve['date_naissance']
         ];
-        $_SESSION['role'] = $utilisateur_trouve['admin'] === true ? 'admin' : 'user';
+        $_SESSION['role'] = !empty($utilisateur_trouve['admin']) ? 'admin' : 'user';
         header("Location: profil.php");
         exit;
-    } else {
-        $erreur_connexion = true;
-        header("refresh:5;url=inscription.php");
     }
 }
 ?>
@@ -94,15 +98,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <h2>Connexion</h2>
             <p>Connectez-vous pour accéder à vos voyages temporels !</p>
-
-            <?php if ($erreur_connexion): ?>
-                <div class="email-erreur">
-                    <h2>Adresse email ou mot de passe incorrect.</h2>
-                    <p>Vous n'avez pas encore de compte ?
-                        <a href="inscription.php">Inscrivez-vous ici</a>.
-                    </p>
-                </div>
-            <?php else: ?>
                 <form id="form-connexion" method="POST" action="connexion.php">
 
                     <input type="email" id="email" name="email" placeholder="Adresse email" required>
@@ -116,8 +111,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                     <a class="forgot-password" href="inscription.php">Créer un compte</a>
                 </form>
-            <?php endif; ?>
-
+                <?php if (!empty($erreur_connexion)): ?>
+                    <div style="background-color: #ff4444; color: white; font-size: 1.3rem; padding: 1em; margin-top: 1em; text-align: center; border-radius: 8px;">
+                        <?= htmlspecialchars($erreur_connexion) ?>
+                    </div>
+                <?php endif; ?>
         </div>
     </section>
 
