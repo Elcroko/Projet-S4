@@ -62,47 +62,12 @@ function afficherOption($categorie, $valeur, $prix = 0) {
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Récapitulatif du Voyage</title>
-    <link rel="stylesheet" href="css/recapitulatif.css">
-    <link rel="stylesheet" href="css/panier.css">
-</head>
-<body class="dynamic-bg" style="background-image: url('<?= htmlspecialchars($data['image']) ?>');">
+<!DOCTYPE html>
+<html lang="fr">
+<?php include 'includes/head.php'; ?>
 
-    <!-- Détection du thème sombre -->
-    <script src="js/theme.js"></script>
-
-    <!-- En-tête -->
-    <header class="header-top">
-        <div class="logo-panier">
-            <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
-            <?php include 'panier.php'; ?>
-        </div>
-        <h1 class="site-title">
-            <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
-        </h1>        
-
-        <button id="theme-toggle" class="btn">🌗</button>
-
-        <nav aria-label="Navigation principale">
-            <ul>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="circuits.php">Circuits</a></li>
-
-                <?php if (!isset($_SESSION['user'])): ?>
-                    <li><a href="inscription.php">Inscription</a></li>
-                    <li><a href="connexion.php">Connexion</a></li>
-                <?php else: ?>
-                    <?php if (!empty($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                        <li><a href="admin.php">Admin</a></li>
-                    <?php endif; ?>
-                    <li><a href="profil.php" class="active">Profil</a></li>
-                    <li><a href="logout.php">Se déconnecter</a></li>
-                <?php endif; ?>
-            </ul>
-        </nav>
-    </header>
+<body>
+<?php include 'includes/header.php'; ?>
     
     <!-- Contenu principal -->
     <main>
