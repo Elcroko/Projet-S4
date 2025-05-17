@@ -99,17 +99,24 @@ function afficherOption($categorie, $valeur, $prix = 0) {
                                 if (!isset($etape['options_choisies']) || !is_array($etape['options_choisies'])) continue;
                                 ?>
                                 <ul>
-                                <?php foreach ($etape['options_choisies'] ?? [] as $categorie => $option): ?>
+                                    <?php foreach ($etape['options_choisies'] ?? [] as $categorie => $valeur): ?>
                                         <?php
                                             $prix_option = 0;
-                                            $available = $etape['options_disponibles'][$categorie] ?? [];
-                                            if (is_array($available) && isset($available[$option])) {
-                                                $prix_option = $available[$option];
+                                            $nom_affiche = $valeur;
+
+                                            $disponibles = $etape['options_disponibles'][$categorie] ?? [];
+                                            foreach ($disponibles as $nom_option => $prix) {
+                                                $valeur_option = strtolower(str_replace(' ', '_', $nom_option));
+                                                if ($valeur_option === $valeur) {
+                                                    $nom_affiche = $nom_option;
+                                                    $prix_option = $prix;
+                                                    break;
+                                                }
                                             }
-                                            
+
                                             $prix_total += $prix_option;
                                         ?>
-                                        <li><strong><?= ucfirst($categorie) ?> :</strong> <?= htmlspecialchars($option) ?> (<?= $prix_option ?> €)</li>
+                                        <li><strong><?= ucfirst($categorie) ?> :</strong> <?= htmlspecialchars($nom_affiche) ?> (<?= $prix_option ?> €)</li>
                                     <?php endforeach; ?>
                                 </ul>
                             <?php endforeach; ?>

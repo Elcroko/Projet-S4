@@ -1,0 +1,210 @@
+{
+    "utilisateur": {
+        "id": 1,
+        "nom": "ZZ",
+        "prenom": "ZZ",
+        "email": "zz@gmail.com",
+        "date_naissance": "2000-09-26",
+        "nombre_voyages": 6
+    },
+    "voyage": {
+        "titre": "La Pr\u00e9histoire",
+        "description": "\u00c9vitez les pr\u00e9dateurs pr\u00e9historiques et survivez dans un monde sauvage et impitoyable.",
+        "image": "images\/udino.jpeg",
+        "epoque": "pr\u00e9histoire",
+        "lieu": "Tous",
+        "dates": {
+            "choix_date_depart": true,
+            "duree": "3 jours"
+        },
+        "prix_base": 1917,
+        "prix_total": 1917,
+        "paiement": false,
+        "nombre_personnes": "2",
+        "personnes": [
+            {
+                "nom": "ZZ",
+                "prenom": "ZZ",
+                "date_naissance": "2000-09-26"
+            }
+        ],
+        "etape1": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Grottes de Lascaux": 0,
+                        "For\u00eat ancestrale": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Chasse au mammouth": 100,
+                        "Fabrication d'outils": 60,
+                        "Peinture rupestre": 50,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Tente en peaux": 80,
+                        "Grotte partag\u00e9e": 70,
+                        "Campement tribal": 60,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Viande grill\u00e9e": 30,
+                        "Racines et baies": 20,
+                        "Soupe pr\u00e9historique": 25,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Chariot en bois": 40,
+                        "\u00c0 dos d\u2019animal": 50,
+                        "Marche guid\u00e9e": 20,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "grottes_de_lascaux",
+                    "activite": "chasse_au_mammouth",
+                    "hebergement": "tente_en_peaux",
+                    "restauration": "viande_grill\u00e9e",
+                    "transport": "chariot_en_bois"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape2": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Grottes de Lascaux": 0,
+                        "For\u00eat ancestrale": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Chasse au mammouth": 100,
+                        "Fabrication d'outils": 60,
+                        "Peinture rupestre": 50,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Tente en peaux": 80,
+                        "Grotte partag\u00e9e": 70,
+                        "Campement tribal": 60,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Viande grill\u00e9e": 30,
+                        "Racines et baies": 20,
+                        "Soupe pr\u00e9historique": 25,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Chariot en bois": 40,
+                        "\u00c0 dos d\u2019animal": 50,
+                        "Marche guid\u00e9e": 20,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "grottes_de_lascaux",
+                    "activite": "chasse_au_mammouth",
+                    "hebergement": "tente_en_peaux",
+                    "restauration": "viande_grill\u00e9e",
+                    "transport": "chariot_en_bois"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape3": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Grottes de Lascaux": 0,
+                        "For\u00eat ancestrale": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Chasse au mammouth": 100,
+                        "Fabrication d'outils": 60,
+                        "Peinture rupestre": 50,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Tente en peaux": 80,
+                        "Grotte partag\u00e9e": 70,
+                        "Campement tribal": 60,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Viande grill\u00e9e": 30,
+                        "Racines et baies": 20,
+                        "Soupe pr\u00e9historique": 25,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Chariot en bois": 40,
+                        "\u00c0 dos d\u2019animal": 50,
+                        "Marche guid\u00e9e": 20,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "grottes_de_lascaux",
+                    "activite": "chasse_au_mammouth",
+                    "hebergement": "tente_en_peaux",
+                    "restauration": "viande_grill\u00e9e",
+                    "transport": "chariot_en_bois"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape4": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Grottes de Lascaux": 0,
+                        "For\u00eat ancestrale": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Chasse au mammouth": 100,
+                        "Fabrication d'outils": 60,
+                        "Peinture rupestre": 50,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Tente en peaux": 80,
+                        "Grotte partag\u00e9e": 70,
+                        "Campement tribal": 60,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Viande grill\u00e9e": 30,
+                        "Racines et baies": 20,
+                        "Soupe pr\u00e9historique": 25,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Chariot en bois": 40,
+                        "\u00c0 dos d\u2019animal": 50,
+                        "Marche guid\u00e9e": 20,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "grottes_de_lascaux",
+                    "activite": "chasse_au_mammouth",
+                    "hebergement": "tente_en_peaux",
+                    "restauration": "viande_grill\u00e9e",
+                    "transport": "chariot_en_bois"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "id": "voyage02",
+        "date_depart": "2025-05-25",
+        "duree": 10
+    },
+    "date": "2025-05-17 23:17:37",
+    "montant": "5834.00",
+    "transaction": "6829190c92571"
+}

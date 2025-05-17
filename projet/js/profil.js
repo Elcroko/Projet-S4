@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function validateForm() {
         const letterRegex = /^[a-zA-ZÀ-ÿ\s-]+$/i;
-        const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/; // Email en minuscules
+        const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
         const phoneRegex = /^[0-9]{10}$/;
 
         const nomInput = document.getElementById('nom');
@@ -78,13 +78,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     form.addEventListener('submit', function (e) {
-        e.preventDefault(); // Empêcher la soumission traditionnelle du formulaire
+        e.preventDefault();
 
         if (!validateForm()) {
-            return; // Arrêter si la validation côté client échoue
+            return;
         }
-        
-        displayMessage('', ''); // Effacer les messages précédents
+
+        displayMessage('', '');
         saveButton.textContent = 'Sauvegarde...';
         saveButton.disabled = true;
 
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch('profil.php', {
             method: 'POST',
             headers: {
-                'X-Requested-With': 'XMLHttpRequest' // Indiquer que c'est une requête AJAX
+                'X-Requested-With': 'XMLHttpRequest'
             },
             body: formData
         })
@@ -101,28 +101,38 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             if (data.success) {
                 displayMessage(data.message || 'Profil mis à jour avec succès!', 'success');
-                // Mettre à jour les valeurs initiales stockées et les champs avec les nouvelles données
                 if (data.user) {
                     Object.keys(data.user).forEach(fieldId => {
                         const input = document.getElementById(fieldId);
                         if (input) {
                             input.value = data.user[fieldId];
-                            fieldsInitialValues[fieldId] = data.user[fieldId]; // Mettre à jour la valeur "originale"
+                            fieldsInitialValues[fieldId] = data.user[fieldId];
                             input.setAttribute('readonly', true);
                             const editBtn = document.querySelector(`.edit-btn[data-field="${fieldId}"]`);
                             if (editBtn) editBtn.textContent = 'Modifier';
                         }
                     });
                 }
-                updateSaveButtonVisibility(); // Devrait cacher le bouton "Enregistrer"
+                updateSaveButtonVisibility();
             } else {
                 displayMessage(data.message || 'Erreur lors de la mise à jour du profil.', 'error');
-                if (data.redirect) { // Si l'authentification est requise
+                
+                // Restaurer les anciennes valeurs si la requête échoue
+                Object.keys(fieldsInitialValues).forEach(fieldId => {
+                    const input = document.getElementById(fieldId);
+                    if (input && !input.hasAttribute('readonly')) {
+                        input.value = fieldsInitialValues[fieldId];
+                        input.setAttribute('readonly', true);
+                        const editBtn = document.querySelector(`.edit-btn[data-field="${fieldId}"]`);
+                        if (editBtn) editBtn.textContent = 'Modifier';
+                    }
+                });
+
+                if (data.redirect) {
                     setTimeout(() => { window.location.href = data.redirect; }, 2000);
                 }
-                // Ne pas restaurer les champs si l'erreur est une erreur de validation serveur, 
-                // l'utilisateur pourrait vouloir corriger.
-                // Si c'est une autre erreur serveur, on pourrait envisager de restaurer.
+
+                updateSaveButtonVisibility();
             }
         })
         .catch(error => {
@@ -132,12 +142,9 @@ document.addEventListener('DOMContentLoaded', function () {
         .finally(() => {
             saveButton.textContent = 'Enregistrer les modifications';
             saveButton.disabled = false;
-            // S'assurer que updateSaveButtonVisibility est appelé si nécessaire,
-            // par exemple, si des champs sont restés éditables après une erreur serveur.
             updateSaveButtonVisibility(); 
         });
     });
 
-    // Initialiser la visibilité du bouton "Enregistrer" au chargement
     updateSaveButtonVisibility();
 });
