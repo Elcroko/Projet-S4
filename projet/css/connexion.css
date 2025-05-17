@@ -250,18 +250,23 @@ input::-webkit-credentials-auto-fill-button {
     user-select: none;         
 }
 
-.erreur-connexion {
-    background-color: #ff4444;
-    color: white;
-    font-size: 1.5rem;
-    padding: 1em;
-    margin-top: 1em;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+.error-message { /* Style de base pour les messages d'erreur PHP */
+    color: #FF0000; /* Rouge pour les erreurs */
+    font-size: 0.9em;
+    margin-top: 5px;
 }
-
-
+.form-container .error-message { /* Pour cibler spécifiquement les erreurs sous les champs */
+    text-align: left;
+    margin-left: 5px; /* Petite marge pour l'alignement */
+}
+.erreur-connexion { /* Style pour l'erreur générale */
+    background-color: #ffdddd;
+    border-left: 6px solid #f44336;
+    color: #5f2120;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
 
 /* ============================== */
 /* DARK MODE */

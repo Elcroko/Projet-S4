@@ -196,6 +196,5 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
     </footer>
     <script src="js/panier.js"></script>
     <script src="js/circuits.js"></script>
-    <script src="js/theme.js"></script>
 </body>
 </html>

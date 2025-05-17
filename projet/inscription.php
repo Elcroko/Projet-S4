@@ -1,19 +1,14 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 ob_start();
-session_start();
+require_once 'verif_banni.php';
 
-if (isset($_SESSION['user'])) {
-    header("Location: index.php");
-    exit;
-}
+$page_title = "Inscription - Tempus Odyssey";
+$css_file = "inscription.css";
 
 $file = 'json/utilisateurs.json';
 $erreurs = [];
 $email_existe = false;
 
-// Créer le fichier s'il n'existe pas
 if (!file_exists($file)) {
     file_put_contents($file, json_encode([]));
 }
@@ -29,110 +24,74 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $terms = isset($_POST['terms']);
 
     if (!preg_match("/^[a-zA-ZÀ-ÿ\- ]+$/", $nom) || !preg_match("/^[a-zA-ZÀ-ÿ\- ]+$/", $prenom)) {
-        $erreur = "Le nom et le prénom doivent contenir uniquement des lettres.";
+        $erreurs[] = "Le nom et le prénom doivent contenir uniquement des lettres.";
     }
 
     if (empty($nom) || empty($prenom) || empty($email) || empty($mot_de_passe) || empty($confirm_mdp) || empty($date_naissance) || empty($telephone)) {
-        $message = "Tous les champs sont requis !";
+        $erreurs[] = "Tous les champs sont requis !";
     } elseif ($mot_de_passe !== $confirm_mdp) {
-        $message = "Les mots de passe ne correspondent pas !";
+        $erreurs[] = "Les mots de passe ne correspondent pas !";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $message = "Email invalide !";
-    } else {
-        if (empty($erreurs)) {
-            $mdp_hacher = password_hash($mot_de_passe, PASSWORD_DEFAULT);
-            $data = file_get_contents($file);
-            $users = json_decode($data, true);
+        $erreurs[] = "Email invalide !";
+    } elseif (!$terms) {
+        $erreurs[] = "Vous devez accepter les termes et conditions.";
+    }
 
-            // Vérifier si l'email existe déjà
-            foreach ($users as $user) {
-                if (strtolower(trim($user['email'])) === $email) {
-                    $email_existe = true;
-                    break;
-                }
+    if (empty($erreurs)) {
+        $mdp_hacher = password_hash($mot_de_passe, PASSWORD_DEFAULT);
+        $data = file_get_contents($file);
+        $users = json_decode($data, true);
+
+        foreach ($users as $user) {
+            if (strtolower(trim($user['email'])) === $email) {
+                $email_existe = true;
+                break;
             }
+        }
 
-            if (!$email_existe) {
-                $newUser = [
-                    "id" => count($users) + 1,
-                    "nom" => $nom,
-                    "prenom" => $prenom,
-                    "email" => $email,
-                    "mot_de_passe" => $mdp_hacher,
-                    "date_naissance" => $date_naissance,
-                    "date_inscription" => date("d/m/Y"),
-                    "admin" => false,
-                    "banni" => false,
-                    "nombre_voyages" => 0,
-                    "telephone" => $telephone
+        if (!$email_existe) {
+            $newUser = [
+                "id" => count($users) + 1,
+                "nom" => $nom,
+                "prenom" => $prenom,
+                "email" => $email,
+                "mot_de_passe" => $mdp_hacher,
+                "date_naissance" => $date_naissance,
+                "date_inscription" => date("d/m/Y"),
+                "admin" => false,
+                "banni" => false,
+                "nombre_voyages" => 0,
+                "telephone" => $telephone
+            ];
+
+            $users[] = $newUser;
+
+            if (file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT)) === false) {
+                $erreurs[] = "Erreur lors de l'enregistrement des données !";
+            } else {
+                $_SESSION['user'] = [
+                    'id' => $newUser['id'],
+                    'nom' => $newUser['nom'],
+                    'prenom' => $newUser['prenom'],
+                    'email' => $newUser['email'],
+                    'date_naissance' => $newUser['date_naissance']
                 ];
+                $_SESSION['role'] = $newUser['admin'] === true ? 'admin' : 'user';
 
-                $users[] = $newUser;
-
-                if (file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT)) === false) {
-                    $message = "Erreur lors de l'enregistrement des données !";
-                } else {
-                    $_SESSION['user'] = [
-                        'id' => $newUser['id'],
-                        'nom' => $newUser['nom'],
-                        'prenom' => $newUser['prenom'],
-                        'email' => $newUser['email'],
-                        'date_naissance' => $newUser['date_naissance']
-                    ];
-                    $_SESSION['role'] = $newUser['admin'] === true ? 'admin' : 'user';
-
-                    header("Location: profil.php");
-                    exit;
-                }
+                header("Location: profil.php");
+                exit;
             }
         }
     }
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription - Tempus Odyssey</title>
-  
-    <link rel="icon" type="image/png" href="images/portail.png">
-    <link rel="stylesheet" href="css/inscription.css">
-</head>
+<?php include 'includes/head.php'; ?>
+
 <body>
-    <!-- Script pour le thème sombre -->
-    <script src="js/theme.js"></script>
-
-    <!-- En-tête -->
-    <header>
-        <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
-
-        <h1 class="site-title">
-            <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
-        </h1>    
-        
-        <button id="theme-toggle" class="btn">🌗</button>
-
-        <nav aria-label="Navigation principale">
-            <ul>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="circuits.php">Circuits</a></li>
-
-                <?php if (!isset($_SESSION['user'])): ?>
-                    <li><a href="inscription.php">Inscription</a></li>
-                    <li><a href="connexion.php">Connexion</a></li>
-                <?php else: ?>
-                    <?php if (!empty($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                        <li><a href="admin.php">Admin</a></li>
-                    <?php endif; ?>
-                    <li><a href="profil.php" class="active">Profil</a></li>
-                    <li><a href="logout.php">Se déconnecter</a></li>
-                <?php endif; ?>
-            </ul>
-        </nav>
-    </header>
+<?php include 'includes/header.php'; ?>
 
     <main>
         <section class="form-container">
@@ -172,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
 
                 <div style="position:relative;">
-                <input type="password" name="mot_de_passe" id="mot_de_passe" placeholder="Mot de passe" autocomplete="new-password">
+                    <input type="password" name="mot_de_passe" id="mot_de_passe" placeholder="Mot de passe" autocomplete="new-password">
                     <span class="eye-icon toggle-password">👁️</span>
                     <div id="mdp-count" class="char-count">0/20</div>
                     <div class="error-message"></div>
@@ -213,8 +172,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <footer>
         <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
     </footer>
-    <!-- Verification du formulaire d'inscription -->
-    <script src="js/verif_inscription.js"></script> 
+
+    <script src="js/verif_inscription.js"></script>
 </body>
 </html>
-<?php ob_end_flush();  ?>
+<?php ob_end_flush(); ?>

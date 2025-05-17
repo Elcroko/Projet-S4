@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once 'verif_banni.php';
 require_once('getapikey.php');
 
 $transaction = $_GET['transaction'] ?? '';
