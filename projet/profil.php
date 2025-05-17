@@ -159,50 +159,12 @@ if ($users_display) {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil - Tempus Odyssey</title>
-    <link rel="stylesheet" href="css/profil.css">
-    <link rel="stylesheet" href="css/panier.css">
-    <style>
-        /* Styles pour les messages de succès/erreur */
-        .profil-message { padding: 10px; margin-bottom: 15px; border-radius: 5px; text-align: center; font-weight: bold; }
-        .profil-message.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-        .profil-message.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-    </style>
-</head>
-<body>
-    <script src="js/profil.js"></script> 
+<!DOCTYPE html>
+<html lang="fr">
+<?php include 'includes/head.php'; ?>
 
-    <script src="js/theme.js"></script>
-    
-    <header class="header-top">
-        <div class="logo-panier">
-            <img src="images/portail.png" alt="Logo Tempus Odyssey" class="logo">
-            <?php include 'panier.php'; ?>
-        </div>
-        <h1 class="site-title">
-            <a href="index.php" style="text-decoration: none; color: inherit;">Tempus Odyssey</a>
-        </h1>    
-        <button id="theme-toggle" class="btn">🌗</button>
-        <nav aria-label="Navigation principale">
-            <ul>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="circuits.php">Circuits</a></li>
-                <?php if (!isset($_SESSION['user'])): ?>
-                    <li><a href="inscription.php">Inscription</a></li>
-                    <li><a href="connexion.php">Connexion</a></li>
-                <?php else: ?>
-                    <?php if (!empty($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                        <li><a href="admin.php">Admin</a></li>
-                    <?php endif; ?>
-                    <li><a href="profil.php" class="active">Profil</a></li>
-                    <li><a href="logout.php">Se déconnecter</a></li>
-                <?php endif; ?>
-            </ul>
-        </nav>
-    </header>
+<body>
+<?php include 'includes/header.php'; ?>
     
     <main>
         <div class="main-container">
@@ -282,5 +244,6 @@ if ($users_display) {
         <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
     </footer>
     <script src="js/panier.js"></script>
+    <script src="js/profil.js"></script>
 </body>
 </html>
