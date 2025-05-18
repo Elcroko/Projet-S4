@@ -94,33 +94,26 @@ function afficherOption($categorie, $valeur, $prix = 0) {
                         <div class="etape">
                             <h4><?= ucfirst($cle) ?></h4>
                             <ul>
-                            <?php foreach ($etapes as $etape): ?>
-                                <?php
-                                if (!isset($etape['options_choisies']) || !is_array($etape['options_choisies'])) continue;
-                                ?>
-                                <ul>
-                                    <?php foreach ($etape['options_choisies'] ?? [] as $categorie => $valeur): ?>
-                                        <?php
-                                            $prix_option = 0;
-                                            $nom_affiche = $valeur;
-
-                                            $disponibles = $etape['options_disponibles'][$categorie] ?? [];
-                                            foreach ($disponibles as $nom_option => $prix) {
-                                                $valeur_option = strtolower(str_replace(' ', '_', $nom_option));
-                                                if ($valeur_option === $valeur) {
-                                                    $nom_affiche = $nom_option;
-                                                    $prix_option = $prix;
-                                                    break;
+                                <?php foreach ($etapes as $etape): ?>
+                                    <?php
+                                    if (!isset($etape['options_choisies']) || !is_array($etape['options_choisies'])) continue;
+                                    ?>
+                                    <ul>
+                                        <?php foreach ($etape['options_choisies'] ?? [] as $categorie => $option): ?>
+                                            <?php
+                                                $prix_option = 0;
+                                                if (isset($etape['options_disponibles'][$categorie][$option])) {
+                                                    $prix_option = $etape['options_disponibles'][$categorie][$option];
                                                 }
-                                            }
-
-                                            $prix_total += $prix_option;
-                                        ?>
-                                        <li><strong><?= ucfirst($categorie) ?> :</strong> <?= htmlspecialchars($nom_affiche) ?> (<?= $prix_option ?> €)</li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            <?php endforeach; ?>
-
+                                            ?>
+                                            <li>
+                                                <strong><?= ucfirst($categorie) ?> :</strong>
+                                                <?= htmlspecialchars($option) ?>
+                                                <?= $prix_option > 0 ? "({$prix_option} €)" : '' ?>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                     <?php endif; ?>

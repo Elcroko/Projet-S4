@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         const select = document.createElement('select');
                         select.name = `options[etape${index + 1}][0][${categorie}]`;
                         select.classList.add('option-select');
+                        select.dataset.etape = `etape${index + 1}`;
+                        select.dataset.categorie = categorie;
 
                         etape[categorie].forEach(option => {
                             const opt = document.createElement('option');
@@ -38,31 +40,51 @@ document.addEventListener('DOMContentLoaded', () => {
                         });
 
                         stepDiv.appendChild(select);
+                        select.addEventListener('change', sendPrixRequest); // ✅ Ajout ici
                     }
                 });
 
                 container.appendChild(stepDiv);
             });
 
-            // Ajout des events pour recalculer le prix
-            document.querySelectorAll('.etapes-wrapper select').forEach(select => {
-                select.addEventListener('change', calculerPrix);
-            });
-
-            calculerPrix();
+            nombreInput.addEventListener('input', sendPrixRequest);
+            sendPrixRequest(); // premier calcul
         });
 
-    function calculerPrix() {
-        let total = basePrix;
+    function sendPrixRequest() {
+        const selections = {};
         document.querySelectorAll('.etapes-wrapper select').forEach(select => {
-            const selected = select.options[select.selectedIndex];
-            const match = selected.textContent.match(/\+(\d+)/);
-            if (match) total += parseFloat(match[1]);
+            const etape = select.dataset.etape;
+            const cat = select.dataset.categorie;
+            const val = select.value;
+            if (!selections[etape]) selections[etape] = [{}];
+            selections[etape][0][cat] = val;
         });
-        const nb = parseInt(nombreInput.value) || 1;
-        total *= nb;
-        prixAffiche.textContent = total.toLocaleString('fr-FR') + ' €';
-    }
 
-    nombreInput.addEventListener('input', calculerPrix);
+        const nb = parseInt(nombreInput.value) || 1;
+
+        fetch('voyage.php?calcul_prix=1', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                id: new URLSearchParams(window.location.search).get('id') || 'voyage01',
+                nombre: nb,
+                options: selections
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                prixAffiche.textContent = data.prix_total.toLocaleString('fr-FR') + ' €';
+            } else {
+                prixAffiche.textContent = 'Erreur';
+            }
+        console.log("Prix recalculé !");
+        console.log("➡ Envoi à serveur :", {
+                id: id,
+                nombre: nb,
+                options: selections
+            });
+        });
+    }
 });

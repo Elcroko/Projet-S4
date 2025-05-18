@@ -1,4 +1,50 @@
 <?php
+// 🔁 Bloc AJAX pour calcul asynchrone du prix
+if (isset($_GET['calcul_prix']) && $_GET['calcul_prix'] === '1') {
+    header('Content-Type: application/json');
+    $json = file_get_contents('php://input');
+    $input = json_decode($json, true);
+
+    $id = $input['id'] ?? 'voyage01';
+    $nombre = intval($input['nombre']) ?: 1;
+    $options = $input['options'] ?? [];
+
+    $fichier = "json/{$id}.json";
+    if (!file_exists($fichier)) {
+        echo json_encode(['success' => false, 'message' => 'Fichier introuvable']);
+        exit;
+    }
+
+    $data = json_decode(file_get_contents($fichier), true);
+    $prix = $data['prix_base'] ?? 0;
+
+    foreach ($data as $cle => $etapes) {
+        if (strpos($cle, 'etape') === 0 && isset($options[$cle])) {
+            foreach ($etapes as $index => $etape) {
+                foreach ($options[$cle][$index] ?? [] as $categorie => $choix) {
+
+                    // ✅ Ignorer les valeurs génériques (aucune option, etc.)
+                    if (
+                        !$choix ||
+                        stripos($choix, 'aucune') !== false ||
+                        stripos($choix, 'disponible') !== false
+                    ) {
+                        continue;
+                    }
+
+                    // ✅ Utiliser directement la clé telle qu'elle est dans le JSON
+                    if (isset($etape['options_disponibles'][$categorie][$choix])) {
+                        $prix += (int) $etape['options_disponibles'][$categorie][$choix];
+                    }
+                }
+            }
+        }
+    }
+
+    echo json_encode(['success' => true, 'prix_total' => $prix * $nombre]);
+    exit;
+}
+
 // 🔁 Bloc AJAX pour chargement dynamique des options
 if (isset($_GET['options'])) {
     header('Content-Type: application/json');
@@ -8,7 +54,7 @@ if (isset($_GET['options'])) {
         foreach ($groupe as $nom => $prix) {
             $liste[] = [
                 'nom' => $nom,
-                'valeur' => strtolower(preg_replace('/\s+/', '_', $nom)),
+                'valeur' => $nom, // ✅ On garde la clé brute du JSON
                 'prix' => $prix
             ];
         }
@@ -92,6 +138,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user'])) {
     exit;
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <?php include 'includes/head.php'; ?>

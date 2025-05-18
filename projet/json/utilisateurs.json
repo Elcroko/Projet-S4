@@ -9,7 +9,7 @@
         "date_inscription": "24\/03\/2025 ",
         "admin": true,
         "banni": false,
-        "nombre_voyages": 5,
+        "nombre_voyages": 4,
         "telephone": "0712345586",
         "historique": [
             {
@@ -31,11 +31,6 @@
                 "titre": "Le Secret des Pyramides",
                 "prix": "4570.00",
                 "fichier_commande": "commande_user1_2025-05-05_09.37.07.json"
-            },
-            {
-                "titre": "La Pr\u00e9histoire",
-                "prix": "5834.00",
-                "fichier_commande": "commande_user1_2025-05-17_23.17.37.json"
             }
         ]
     },
