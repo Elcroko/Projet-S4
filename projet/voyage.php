@@ -106,6 +106,21 @@ $data = json_decode(file_get_contents($nom_fichier), true);
 $data['id'] = $id;
 $_SESSION['recapitulatif_id'] = $id;
 
+// 🔁 Supprimer l’ancien voyage du panier
+if (isset($_GET['retour_modification'], $_GET['supprimer_uid'])) {
+    $supprimer_id = $_GET['supprimer_uid'];
+
+    if (isset($_SESSION['panier']) && is_array($_SESSION['panier'])) {
+        $_SESSION['panier'] = array_filter($_SESSION['panier'], function ($voyage) use ($supprimer_id) {
+            return !(
+                (isset($voyage['_uid']) && $voyage['_uid'] === $supprimer_id) ||
+                (isset($voyage['id']) && $voyage['id'] === $supprimer_id)
+            );
+        });
+        $_SESSION['panier'] = array_values($_SESSION['panier']); // réindexation
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user'])) {
     $data['date_depart'] = $_POST['date_depart'] ?? null;
     $data['duree'] = $data['duree'] ?? 10;

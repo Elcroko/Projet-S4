@@ -1,24 +1,27 @@
 <?php
+$page_title = "Récapitulatif - Tempus Odyssey";
+$css_file = "recapitulatif.css";
 require_once 'verif_banni.php';
+
 $isHistorique = false;
 $commande = null;
 $recapitulatif_id = 'voyage01'; // par défaut
 
-// Si l'utilisateur consulte un ancien voyage via l'historique
+// 🔁 Historique
 if (isset($_GET['fichier'])) {
     $fichierHistorique = 'paiements_json/' . basename($_GET['fichier']);
     if (file_exists($fichierHistorique)) {
         $commande = json_decode(file_get_contents($fichierHistorique), true);
         $recapitulatif_id = $commande['voyage']['id'] ?? 'voyage01';
         $isHistorique = true;
-        $data = $commande['voyage']; // ✅ on affiche les données de l’historique
+        $data = $commande['voyage'];
     } else {
         echo "Erreur : fichier introuvable.";
         exit;
     }
 }
 
-// Sinon on affiche les données de la session (réservation en cours)
+// 🔁 Réservation en cours
 if (!$isHistorique) {
     if (!isset($_SESSION['recapitulatif'])) {
         header('Location: index.php');
@@ -28,15 +31,13 @@ if (!$isHistorique) {
     $data = $_SESSION['recapitulatif'];
     $recapitulatif_id = $_SESSION['recapitulatif_id'] ?? 'voyage01';
 
-    // ✅ AJOUTER AU PANIER UNIQUEMENT SI NON HISTORIQUE
     if (!isset($_SESSION['panier'])) {
         $_SESSION['panier'] = [];
     }
 
-    // Empêche d’ajouter plusieurs fois la même personnalisation
-    $idUnique = $recapitulatif_id . '_' . md5(serialize($data)); // hash basé sur les données
-
+    $idUnique = $recapitulatif_id . '_' . md5(serialize($data));
     $dejaDansPanier = false;
+
     foreach ($_SESSION['panier'] as $item) {
         if (isset($item['_uid']) && $item['_uid'] === $idUnique) {
             $dejaDansPanier = true;
@@ -45,11 +46,10 @@ if (!$isHistorique) {
     }
 
     if (!$dejaDansPanier) {
-        $data['_uid'] = $idUnique; // on garde une clé unique pour comparaison future
+        $data['_uid'] = $idUnique;
         $_SESSION['panier'][] = $data;
     }
 }
-
 
 function afficherOption($categorie, $valeur, $prix = 0) {
     if ($valeur && $valeur !== 'Aucune option') {
@@ -62,102 +62,93 @@ function afficherOption($categorie, $valeur, $prix = 0) {
 
 <!DOCTYPE html>
 <html lang="fr">
-<!DOCTYPE html>
-<html lang="fr">
 <?php include 'includes/head.php'; ?>
 
 <body>
 <?php include 'includes/header.php'; ?>
-    
-    <!-- Contenu principal -->
-    <main>
-        <div class="recap-container">
-            <h2><?= htmlspecialchars($data['titre']) ?></h2>
-            <p><strong>Date de départ :</strong> <?= htmlspecialchars($data['date_depart']) ?></p>
-            <p><strong>Durée :</strong> <?= htmlspecialchars($data['duree']) ?> jours</p>
 
-            <div class="recap-block">
-            <h3>Voyageurs (<?= htmlspecialchars($data['nombre_personnes'] ?? count($data['personnes'])) ?>)</h3>
-                <ul>
-                    <?php foreach ($data['personnes'] as $voyageur): ?>
-                        <li><?= htmlspecialchars($voyageur['prenom'] . ' ' . $voyageur['nom']) ?> (<?= (new DateTime($voyageur['date_naissance']))->diff(new DateTime())->y ?> ans)</li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
+<main>
+    <div class="recap-container">
+        <h2><?= htmlspecialchars($data['titre']) ?></h2>
+        <p><strong>Date de départ :</strong> <?= htmlspecialchars($data['date_depart'] ?? 'Non précisée') ?></p>
+        <p><strong>Durée :</strong> <?= htmlspecialchars($data['duree'] ?? 'Inconnue') ?> jours</p>
 
-            <div class="recap-block">
-                <h3>Étapes et options choisies</h3>
-                <?php 
-                $prix_total = $data['prix_base'] ?? 0;
-                foreach ($data as $cle => $etapes): 
-                    if (strpos($cle, 'etape') === 0 && is_array($etapes)): ?>
-                        <div class="etape">
-                            <h4><?= ucfirst($cle) ?></h4>
-                            <ul>
-                                <?php foreach ($etapes as $etape): ?>
-                                    <?php
-                                    if (!isset($etape['options_choisies']) || !is_array($etape['options_choisies'])) continue;
-                                    ?>
-                                    <ul>
-                                        <?php foreach ($etape['options_choisies'] ?? [] as $categorie => $option): ?>
-                                            <?php
-                                                $prix_option = 0;
-                                                if (isset($etape['options_disponibles'][$categorie][$option])) {
-                                                    $prix_option = $etape['options_disponibles'][$categorie][$option];
-                                                }
-                                            ?>
-                                            <li>
-                                                <strong><?= ucfirst($categorie) ?> :</strong>
-                                                <?= htmlspecialchars($option) ?>
-                                                <?= $prix_option > 0 ? "({$prix_option} €)" : '' ?>
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                    <?php endif; ?>
+        <div class="recap-block">
+            <h3>Voyageurs (<?= htmlspecialchars($data['nombre_personnes'] ?? count($data['personnes'] ?? [])) ?>)</h3>
+            <ul>
+                <?php foreach ($data['personnes'] ?? [] as $voyageur): ?>
+                    <li><?= htmlspecialchars($voyageur['prenom'] . ' ' . $voyageur['nom']) ?>
+                        (<?= (new DateTime($voyageur['date_naissance']))->diff(new DateTime())->y ?> ans)
+                    </li>
                 <?php endforeach; ?>
-
-                <?php
-                $nb_voyageurs = $data['nombre_personnes'] ?? 1;
-                $prix_final = $prix_total * $nb_voyageurs;
-                $_SESSION['cybank_montant'] = $prix_final;
-                ?>
-            </div>
-            
-            <div class="price-total">
-                <div><strong>Sous-total par voyageur :</strong> <?= number_format($prix_total, 0, ',', ' ') ?> €</div>
-                <div><strong>Nombre de voyageurs :</strong> <?= $nb_voyageurs ?></div>
-                <div class="price-total"><strong>Prix total :</strong> <?= number_format($prix_final, 0, ',', ' ') ?> €</div>
-            </div>
-
-            
-            <?php if (!$isHistorique): ?>
-                <div class="retour-voyage">
-                    <form action="voyage.php" method="get">
-                        <input type="hidden" name="id" value="<?= htmlspecialchars($recapitulatif_id ?? ($_SESSION['recapitulatif_id'] ?? 'voyage01')) ?>">
-                        <button class="retour-btn">Modifier ce voyage</button>
-                    </form>
-                
-                    <form action="cybank.php" method="post">
-                        <button type="submit" class="retour-btn">Confirmer la personnalisation et passer au paiement</button>
-                    </form>
-                </div>
-            <?php endif; ?>
-
+            </ul>
         </div>
-        <?php if ($isHistorique): ?>
+
+        <div class="recap-block">
+            <h3>Étapes et options choisies</h3>
+            <?php 
+            $prix_total = $data['prix_base'] ?? 0;
+            foreach ($data as $cle => $etapes): 
+                if (strpos($cle, 'etape') === 0 && is_array($etapes)): ?>
+                    <div class="etape">
+                        <h4><?= ucfirst($cle) ?></h4>
+                        <ul>
+                            <?php foreach ($etapes as $etape): ?>
+                                <?php if (!isset($etape['options_choisies'])) continue; ?>
+                                <ul>
+                                    <?php foreach ($etape['options_choisies'] as $categorie => $option): ?>
+                                        <?php
+                                            $prix_option = $etape['options_disponibles'][$categorie][$option] ?? 0;
+                                        ?>
+                                        <li>
+                                            <strong><?= ucfirst($categorie) ?> :</strong>
+                                            <?= htmlspecialchars($option) ?>
+                                            <?= $prix_option > 0 ? "({$prix_option} €)" : '' ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+            <?php
+            $nb_voyageurs = $data['nombre_personnes'] ?? 1;
+            $prix_final = $prix_total * $nb_voyageurs;
+            $_SESSION['cybank_montant'] = $prix_final;
+            ?>
+        </div>
+
+        <div class="price-total">
+            <div><strong>Sous-total par voyageur :</strong> <?= number_format($prix_total, 0, ',', ' ') ?> €</div>
+            <div><strong>Nombre de voyageurs :</strong> <?= $nb_voyageurs ?></div>
+            <div class="price-total"><strong>Prix total :</strong> <?= number_format($prix_final, 0, ',', ' ') ?> €</div>
+        </div>
+
+        <?php if (!$isHistorique): ?>
+            <div class="retour-voyage">
+                <form action="voyage.php" method="get">
+                    <input type="hidden" name="id" value="<?= htmlspecialchars($recapitulatif_id) ?>">
+                    <input type="hidden" name="supprimer_uid" value="<?= htmlspecialchars($data['_uid'] ?? '') ?>">
+                    <input type="hidden" name="retour_modification" value="1">
+                    <button type="submit" class="retour-btn">Modifier ce voyage</button>
+                </form>
+                <form action="cybank.php" method="post">
+                    <button type="submit" class="retour-btn">Confirmer la personnalisation et passer au paiement</button>
+                </form>
+            </div>
+        <?php else: ?>
             <div class="retour-voyage">
                 <a href="profil.php" class="retour-btn">Retour au profil</a>
             </div>
-        <?php endif; ?> 
-    </main>
+        <?php endif; ?>
+    </div>
+</main>
 
-    <!-- Pied de page -->
-    <footer>
-        <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
-    </footer>
-    <script src="js/panier.js"></script>
+<footer>
+    <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
+</footer>
+<script src="js/panier.js"></script>
 </body>
 </html>

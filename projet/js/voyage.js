@@ -79,12 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 prixAffiche.textContent = 'Erreur';
             }
-        console.log("Prix recalculé !");
-        console.log("➡ Envoi à serveur :", {
-                id: id,
-                nombre: nb,
-                options: selections
-            });
         });
     }
 });
