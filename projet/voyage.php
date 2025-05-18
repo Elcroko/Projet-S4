@@ -162,70 +162,67 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user'])) {
 <body class="dynamic-bg" style="background-image: url('<?= htmlspecialchars($data['image']) ?>');">
 <?php include 'includes/header.php'; ?>
 
-<main class="voyage-form">
-    <h2><?= htmlspecialchars($data['titre']) ?></h2>
-    <p><?= htmlspecialchars($data['description']) ?></p>
+    <main class="voyage-form">
+        <h2><?= htmlspecialchars($data['titre']) ?></h2>
+        <p><?= htmlspecialchars($data['description']) ?></p>
 
-    <form action="voyage.php?id=<?= urlencode($id) ?>" method="POST">
-        <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
+        <form action="voyage.php?id=<?= urlencode($id) ?>" method="POST">
+            <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
 
-        <div class="voyageur">
-            <?php if (!empty($data['dates']['choix_date_depart'])): ?>
-                <label>Date de départ</label>
-                <?php
-                $minDate = date('Y-m-d', strtotime('+1 day'));
-                $maxDate = date('Y-m-d', strtotime('+2 years'));
-                ?>
-                <input type="date" name="date_depart" required min="<?= $minDate ?>" max="<?= $maxDate ?>">
+            <div class="voyageur">
+                <?php if (!empty($data['dates']['choix_date_depart'])): ?>
+                    <label>Date de départ</label>
+                    <?php
+                    $minDate = date('Y-m-d', strtotime('+1 day'));
+                    $maxDate = date('Y-m-d', strtotime('+2 years'));
+                    ?>
+                    <input type="date" name="date_depart" required min="<?= $minDate ?>" max="<?= $maxDate ?>">
+                <?php endif; ?>
+
+                <label>Nombre de voyageurs</label>
+                <input type="number" name="nombre_personnes" min="1" max="8" required placeholder="Entrez un nombre de voyageurs (max. 8)">
+
+                <h4>Voyageur principal</h4>
+
+                <label>Nom :</label>
+                <input type="text" name="personnes[0][nom]"
+                    value="<?= isset($_SESSION['user']) ? htmlspecialchars($_SESSION['user']['nom']) : '' ?>"
+                    <?= isset($_SESSION['user']) ? 'readonly' : 'required' ?>
+                    placeholder="Nom du voyageur">
+
+                <label>Prénom :</label>
+                <input type="text" name="personnes[0][prenom]"
+                    value="<?= isset($_SESSION['user']) ? htmlspecialchars($_SESSION['user']['prenom']) : '' ?>"
+                    <?= isset($_SESSION['user']) ? 'readonly' : 'required' ?>
+                    placeholder="Prénom du voyageur">
+
+                <label>Date de naissance :</label>
+                <input type="date" name="personnes[0][date_naissance]"
+                    value="<?= isset($_SESSION['user']['date_naissance']) ? $_SESSION['user']['date_naissance'] : '' ?>"
+                    <?= isset($_SESSION['user']) ? 'readonly' : 'required' ?>
+                    placeholder="Date de naissance">
+            </div>
+
+            <h3>Étapes</h3>
+            <div class="etapes-wrapper">
+                <!-- Étapes chargées dynamiquement via JS -->
+            </div>
+
+            <p class="prix-total">Prix total : <strong><?= number_format($data['prix_base'], 0, ',', ' ') ?> €</strong></p>
+
+            <?php if (isset($_SESSION['user'])): ?>
+                <button class="btn-valider">Valider la personnalisation</button>
+            <?php else: ?>
+                <p style="color: #c1f762; font-weight: bold;">
+                    <a href="connexion.php" style="color: #c1f762;">Connectez-vous</a> avant de continuer.
+                </p>
             <?php endif; ?>
+        </form>
 
-            <label>Nombre de voyageurs</label>
-            <input type="number" name="nombre_personnes" min="1" max="8" required placeholder="Entrez un nombre de voyageurs (max. 8)">
-
-            <h4>Voyageur principal</h4>
-
-            <label>Nom :</label>
-            <input type="text" name="personnes[0][nom]"
-                   value="<?= isset($_SESSION['user']) ? htmlspecialchars($_SESSION['user']['nom']) : '' ?>"
-                   <?= isset($_SESSION['user']) ? 'readonly' : 'required' ?>
-                   placeholder="Nom du voyageur">
-
-            <label>Prénom :</label>
-            <input type="text" name="personnes[0][prenom]"
-                   value="<?= isset($_SESSION['user']) ? htmlspecialchars($_SESSION['user']['prenom']) : '' ?>"
-                   <?= isset($_SESSION['user']) ? 'readonly' : 'required' ?>
-                   placeholder="Prénom du voyageur">
-
-            <label>Date de naissance :</label>
-            <input type="date" name="personnes[0][date_naissance]"
-                   value="<?= isset($_SESSION['user']['date_naissance']) ? $_SESSION['user']['date_naissance'] : '' ?>"
-                   <?= isset($_SESSION['user']) ? 'readonly' : 'required' ?>
-                   placeholder="Date de naissance">
-        </div>
-
-        <h3>Étapes</h3>
-        <div class="etapes-wrapper">
-            <!-- Étapes chargées dynamiquement via JS -->
-        </div>
-
-        <p class="prix-total">Prix total : <strong><?= number_format($data['prix_base'], 0, ',', ' ') ?> €</strong></p>
-
-        <?php if (isset($_SESSION['user'])): ?>
-            <button class="btn-valider">Valider la personnalisation</button>
-        <?php else: ?>
-            <p style="color: #c1f762; font-weight: bold;">
-                <a href="connexion.php" style="color: #c1f762;">Connectez-vous</a> avant de continuer.
-            </p>
-        <?php endif; ?>
-    </form>
-
-    <a href="circuits.php" class="retour-circuits">← Retour aux circuits</a>
-</main>
-
-<footer>
-    <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
-</footer>
-<script src="js/panier.js"></script>
-<script src="js/voyage.js"></script>
+        <a href="circuits.php" class="retour-circuits">← Retour aux circuits</a>
+    </main>
+    <?php include 'includes/footer.php'; ?>
+    <script src="js/panier.js"></script>
+    <script src="js/voyage.js"></script>
 </body>
 </html>

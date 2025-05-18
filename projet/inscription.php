@@ -168,11 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <?php endif; ?>
         </section>
     </main>
-
-    <footer>
-        <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
-    </footer>
-
+    <?php include 'includes/footer.php'; ?>
     <script src="js/verif_inscription.js"></script>
 </body>
 </html>

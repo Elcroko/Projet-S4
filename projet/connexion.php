@@ -117,10 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </section>
     </main>
-
-    <footer>
-        <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
-    </footer>
+    <?php include 'includes/footer.php'; ?>
     <script src="js/verif_connexion.js"></script>
 </body>
 </html>

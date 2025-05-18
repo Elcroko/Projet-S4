@@ -191,9 +191,7 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
             </div>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
-    </footer>
+    <?php include 'includes/footer.php'; ?>
     <script src="js/panier.js"></script>
     <script src="js/circuits.js"></script>
 </body>

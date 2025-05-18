@@ -96,9 +96,6 @@ if (!isset($_SESSION['paiement_enregistre']) || $_SESSION['paiement_enregistre']
             </div>
         </div>
     </main>
-
-    <footer>
-        <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
-    </footer>
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>

@@ -157,9 +157,7 @@ $usersPage = array_slice($users, $offset, $usersPerPage);
             <?php endif; ?>
         </section>
     </main>   
-    <footer>
-        <p>&copy; 2025 Tempus Odyssey - Traversez les âges, vivez l’histoire.</p>
-    </footer> 
+    <?php include 'includes/footer.php'; ?>
     <script src="js/panier.js"></script>
     <script src="js/admin.js"></script>
 </body>
