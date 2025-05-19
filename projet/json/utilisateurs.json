@@ -18,12 +18,12 @@
                 "fichier_commande": "commande_user1_2025-03-31_01.41.17.json"
             },
             {
-                "titre": "R\u00e9volution a Paris",
+                "titre": "Révolution a Paris",
                 "prix": "11016.00",
                 "fichier_commande": "commande_user1_2025-03-31_01.41.49.json"
             },
             {
-                "titre": "La D\u00e9faite de Waterloo",
+                "titre": "La Défaite de Waterloo",
                 "prix": "5000.00",
                 "fichier_commande": "commande_user1_2025-03-31_01.42.43.json"
             },
@@ -36,7 +36,7 @@
     },
     {
         "id": 2,
-        "nom": "Fran\u00e7ois",
+        "nom": "François",
         "prenom": "Thomas",
         "email": "thomas@gmail.com",
         "mot_de_passe": "$2y$12$0Zw6gTZLj..u\/s9WZcl.LeQYT.ZI.C5TQFNmKSQitcYdTg4W5dgP6",
@@ -69,7 +69,7 @@
     },
     {
         "id": 4,
-        "nom": "z\u00e9ro",
+        "nom": "zéro",
         "prenom": "deux",
         "email": "2@gmail.com",
         "mot_de_passe": "$2y$12$Y5dfcihCYdW3HmoN7CDKJ.ZednlCnGMT7A1s7oK.MteN5y9pEsx7m",
@@ -81,7 +81,7 @@
         "telephone": "0202020202",
         "historique": [
             {
-                "titre": "L'\u00c9poque des Vikings",
+                "titre": "L'Époque des Vikings",
                 "prix": "6304.00",
                 "fichier_commande": "commande_user4_2025-03-30_23.59.02.json"
             },
@@ -106,9 +106,29 @@
         "telephone": "0102030405",
         "historique": [
             {
-                "titre": "L'\u00c8re du Bitcoin",
+                "titre": "L'Ère du Bitcoin",
                 "prix": "5334.00",
                 "fichier_commande": "commande_user5_2025-03-30_23.53.37.json"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "nom": "MARMELAT",
+        "prenom": "Paul",
+        "email": "pmarmelat@gmail.com",
+        "mot_de_passe": "$2y$12$7J30nl8bvhqOwLGdwMBLl.IG71p96AwredQ0tVOgcG0z0Z29Xoy2y",
+        "date_naissance": "2005-07-19",
+        "date_inscription": "19\/05\/2025",
+        "admin": true,
+        "banni": false,
+        "nombre_voyages": 1,
+        "telephone": "0767691958",
+        "historique": [
+            {
+                "titre": "La Construction de la Muraille de Chine",
+                "prix": "7974.00",
+                "fichier_commande": "commande_user6_2025-05-19_12.20.34.json"
             }
         ]
     }
