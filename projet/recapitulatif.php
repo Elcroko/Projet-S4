@@ -68,7 +68,7 @@ function afficherOption($categorie, $valeur, $prix = 0) {
 <?php include 'includes/header.php'; ?>
 
 <main>
-    <div class="recap-container">
+    <div class="recap-container" data-uid="<?= htmlspecialchars($data['_uid'] ?? '') ?>">
         <h2><?= htmlspecialchars($data['titre']) ?></h2>
         <p><strong>Date de départ :</strong> <?= htmlspecialchars($data['date_depart'] ?? 'Non précisée') ?></p>
         <p><strong>Durée :</strong> <?= htmlspecialchars($data['duree'] ?? 'Inconnue') ?> jours</p>

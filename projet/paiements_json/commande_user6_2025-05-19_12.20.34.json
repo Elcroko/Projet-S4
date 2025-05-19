@@ -1,0 +1,123 @@
+{
+    "utilisateur": {
+        "id": 6,
+        "nom": "MARMELAT",
+        "prenom": "Paul",
+        "email": "pmarmelat@gmail.com",
+        "date_naissance": "2005-07-19"
+    },
+    "voyage": {
+        "titre": "La Construction de la Muraille de Chine",
+        "description": "Plongez dans l'immensit\u00e9 du chantier qui a marqu\u00e9 des si\u00e8cles d\u2019histoire chinoise.",
+        "epoque": "Antiquit\u00e9",
+        "lieu": "Asie",
+        "image": "images\/Chine.png",
+        "dates": {
+            "choix_date_depart": true,
+            "duree": "10 jours"
+        },
+        "prix_base": 1329,
+        "prix_total": 1589,
+        "paiement": false,
+        "nombre_personnes": "6",
+        "personnes": [
+            {
+                "nom": "MARMELAT",
+                "prenom": "Paul",
+                "date_naissance": "2005-07-19"
+            }
+        ],
+        "etape1": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Secteur montagneux": 0,
+                        "D\u00e9sert de Gobi": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Transport de pierres": 60,
+                        "Pose de briques": 50,
+                        "Technique de mortier ancestral": 45,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Camp de travailleurs": 40,
+                        "Grotte naturelle": 30,
+                        "Abri de fortune": 25,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Riz nature": 10,
+                        "Soupe aux herbes": 15,
+                        "Galette de mil": 12,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Charrette \u00e0 b\u0153ufs": 20,
+                        "\u00c0 dos d\u2019homme": 15,
+                        "\u00c0 pied": 0,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Secteur montagneux",
+                    "activite": "Transport de pierres",
+                    "hebergement": "Camp de travailleurs",
+                    "restauration": "Riz nature",
+                    "transport": "Charrette \u00e0 b\u0153ufs"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape2": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Secteur montagneux": 0,
+                        "D\u00e9sert de Gobi": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Transport de pierres": 60,
+                        "Pose de briques": 50,
+                        "Technique de mortier ancestral": 45,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Camp de travailleurs": 40,
+                        "Grotte naturelle": 30,
+                        "Abri de fortune": 25,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Riz nature": 10,
+                        "Soupe aux herbes": 15,
+                        "Galette de mil": 12,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Charrette \u00e0 b\u0153ufs": 20,
+                        "\u00c0 dos d\u2019homme": 15,
+                        "\u00c0 pied": 0,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Secteur montagneux",
+                    "activite": "Transport de pierres",
+                    "hebergement": "Camp de travailleurs",
+                    "restauration": "Riz nature",
+                    "transport": "Charrette \u00e0 b\u0153ufs"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "id": "voyage15",
+        "date_depart": "2025-05-20",
+        "duree": 10
+    },
+    "date": "2025-05-19 12:20:34",
+    "montant": "7974.00",
+    "transaction": "682b220880a61"
+}

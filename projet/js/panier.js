@@ -34,12 +34,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     const item = target.closest('.item-panier');
                     if (item) item.remove();
 
-                    // ✅ Mise à jour du compteur
+                    // Mise à jour du compteur
                     if (badge) {
                         const count = document.querySelectorAll('.item-panier').length;
                         badge.textContent = count;
                     }
 
+                    // ✅ Redirection si on est sur la page recap et que c’est ce voyage qui est supprimé
+                    const recapContainer = document.querySelector('.recap-container');
+                    const recapId = recapContainer?.dataset.uid;
+
+                    if (recapId && recapId === id) {
+                        alert("✅ Voyage supprimé du panier.");
+                        window.location.href = 'index.php';
+                        return;
+                    }
                     alert("✅ Voyage supprimé du panier.");
                 } else {
                     alert("⚠ Erreur lors de la suppression du voyage.");
