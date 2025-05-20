@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const togglePassword = document.getElementById('toggle-password');
 
     // Conteneurs d'erreurs JS (vous les avez peut-être déjà)
-    const emailJsError = document.getElementById('email-js-error'); // Assurez-vous que cet ID existe dans votre HTML
-    const passwordJsError = document.getElementById('password-js-error'); // Assurez-vous que cet ID existe
-
+    const emailJsError = document.getElementById('email-js-error'); 
+    const passwordJsError = document.getElementById('password-js-error'); 
+    
     // Ciblez les conteneurs d'erreurs PHP
     const emailPhpError = document.getElementById('email-php-error');
     const passwordPhpError = document.getElementById('password-php-error');
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if(emailJsError) emailJsError.textContent = 'Adresse email invalide.';
             }
 
-            // Validation du mot de passe (simple vérification non vide ici, vous pouvez ajouter plus)
+            // Validation du mot de passe 
             if (passwordInput.value.trim() === '') {
                 valid = false;
                 if(passwordJsError) passwordJsError.textContent = 'Le mot de passe est requis.';

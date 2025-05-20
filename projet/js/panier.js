@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!confirm("Voulez-vous vraiment supprimer ce voyage du panier ?")) return;
 
+            // Envoie la requête de suppression au serveur
             fetch('supprimer_panier.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
+                    // Retirer l'élément du DOM
                     const item = target.closest('.item-panier');
                     if (item) item.remove();
 
@@ -40,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         badge.textContent = count;
                     }
 
-                    // ✅ Redirection si on est sur la page recap et que c’est ce voyage qui est supprimé
+                    // Si on est sur la page récap, redirige vers accueil
                     const recapContainer = document.querySelector('.recap-container');
                     const recapId = recapContainer?.dataset.uid;
 

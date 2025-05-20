@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // *** Tableau contenant tous les circuits ***
     let circuits = Array.from(document.querySelectorAll('.circuit-link'));
 
+    // Fonction principale appliquant tri et filtres
     function applyFiltersAndSort() {
         const selectedEpoque = document.getElementById('epoque').value.toLowerCase();
         const selectedLieu = document.getElementById('lieu').value.toLowerCase();
@@ -35,12 +36,13 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }        
     
-        // Sinon on filtre
+        // Filtrage des circuits selon critères
         let filtered = allCircuits.filter(circuit => {
             const ep = (circuit.dataset.epoque || '').toLowerCase();
             const li = (circuit.dataset.lieu || '').toLowerCase();
             const pr = parseFloat(circuit.dataset.prix) || 0;
     
+            // Application des filtres
             if (selectedEpoque && ep !== selectedEpoque) return false;
             if (selectedLieu && li !== selectedLieu) return false;
             if (selectedPrix === '1' && pr >= 1000) return false;
@@ -50,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return true;
         });
     
-        // Tri
+        // Tri dynamique
         if (sortBy) {
             filtered.sort((a, b) => {
                 const getValue = (el, type) => {
@@ -64,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     
-        // On masque les résultats PHP paginés
+        // Remplace affichage paginé par résultats dynamiques
         document.querySelector('.circuits-container').style.display = 'none';
         pagination.style.display = 'none';
     
@@ -75,10 +77,11 @@ document.addEventListener('DOMContentLoaded', function () {
             jsContainer.innerHTML = '<p class="no-result">Aucun circuit ne correspond à votre recherche.</p>';
         } else {
             filtered.forEach(c => jsContainer.appendChild(c.cloneNode(true)));
-            jsContainer.style.display = 'flex'; // ou '' selon ton CSS
+            jsContainer.style.display = 'flex'; 
         }
 
         const originalContainer = document.getElementById('original-circuits');
+        // S'il n'y a aucun filtre actif, on réaffiche la version paginée PHP
         if (!selectedEpoque && !selectedLieu && !selectedPrix && !sortBy) {
             if (originalContainer) {
                 circuitsContainer.innerHTML = originalContainer.innerHTML;

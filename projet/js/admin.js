@@ -2,18 +2,23 @@ document.addEventListener('DOMContentLoaded', function () {
     const adminButtons = document.querySelectorAll('.rendre-admin-btn');
 
     adminButtons.forEach(button => {
+        // Lorsqu'on clique sur un bouton "rendre admin"
         button.addEventListener('click', function () {
+            // Trouver la ligne de tableau correspondante
             const row = button.closest('tr');
             const adminCell = row.querySelector('.admin-status');
             const email = button.dataset.email;
 
+            // Changer état du bouton pendant la requête
             button.disabled = true;
             button.textContent = "⏳";
             button.classList.add('loading');
 
+            // Vérifie l'état actuel (admin ou non) pour basculer
             const currentAdmin = adminCell.textContent.trim().toLowerCase() === "oui";
             const newAdminStatus = currentAdmin ? 0 : 1;
 
+            // Envoie de la nouvelle valeur au serveur
             fetch('admin.php', {
                 method: 'POST',
                 headers: {
@@ -28,12 +33,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     button.classList.remove('loading');
 
                     if (data.success) {
-                        // Mise à jour de l'affichage admin
+                        // Mise à jour visuelle du statut et bouton
                         adminCell.textContent = newAdminStatus === 1 ? "Oui" : "Non";
                         button.textContent = newAdminStatus === 1 ? "Retirer admin" : "Rendre admin";
                         button.dataset.admin = newAdminStatus;
 
-                        // Mise à jour dynamique du bouton Bannir
+                        // Si nouvel admin, désactiver bannissement
                         const banButton = row.querySelector('.bannir-btn');
                         if (banButton) {
                             if (newAdminStatus === 1) {
@@ -98,28 +103,28 @@ document.addEventListener('DOMContentLoaded', function () {
                         button.textContent = newBanStatus === 1 ? "Débannir" : "Bannir";
                         button.dataset.banni = newBanStatus;
                         const adminButton = row.querySelector('.rendre-admin-btn');
-const adminCell = row.querySelector('.admin-status');
+                        const adminCell = row.querySelector('.admin-status');
 
-if (newBanStatus === 1) {
-    // Désactiver bouton admin
-    if (adminButton) {
-        adminButton.disabled = true;
-        adminButton.classList.add('disabled-btn');
-        adminButton.title = "Impossible de rendre admin un utilisateur banni";
-        adminButton.textContent = "Accès retiré";
-    }
-    if (adminCell) {
-        adminCell.textContent = "Non";
-    }
-} else {
-    // Réactiver bouton admin
-    if (adminButton) {
-        adminButton.disabled = false;
-        adminButton.classList.remove('disabled-btn');
-        adminButton.title = "";
-        adminButton.textContent = "Rendre admin";
-    }
-}
+                        if (newBanStatus === 1) {
+                            // Désactiver bouton admin
+                            if (adminButton) {
+                                adminButton.disabled = true;
+                                adminButton.classList.add('disabled-btn');
+                                adminButton.title = "Impossible de rendre admin un utilisateur banni";
+                                adminButton.textContent = "Accès retiré";
+                            }
+                            if (adminCell) {
+                                adminCell.textContent = "Non";
+                            }
+                        } else {
+                            // Réactiver bouton admin
+                            if (adminButton) {
+                                adminButton.disabled = false;
+                                adminButton.classList.remove('disabled-btn');
+                                adminButton.title = "";
+                                adminButton.textContent = "Rendre admin";
+                            }
+                        }
 
                     } else {
                         alert(data.message);

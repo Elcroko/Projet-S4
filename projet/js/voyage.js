@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const title = document.createElement('h4');
                 title.textContent = `Étape ${index + 1}`;
                 stepDiv.appendChild(title);
-
+                
+                // Pour chaque catégorie (hébergement, transport, etc.)
                 ['position', 'activite', 'hebergement', 'restauration', 'transport'].forEach(categorie => {
                     if (etape[categorie] && etape[categorie].length > 0) {
                         const label = document.createElement('label');
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         select.dataset.etape = `etape${index + 1}`;
                         select.dataset.categorie = categorie;
 
+                        // Ajoute les choix disponibles
                         etape[categorie].forEach(option => {
                             const opt = document.createElement('option');
                             opt.value = option.valeur;
@@ -40,13 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         });
 
                         stepDiv.appendChild(select);
-                        select.addEventListener('change', sendPrixRequest); // ✅ Ajout ici
+                        // Recalcul du prix si changement
+                        select.addEventListener('change', sendPrixRequest); 
                     }
                 });
 
                 container.appendChild(stepDiv);
             });
 
+            // Réagit aussi à un changement du nombre de personnes
             nombreInput.addEventListener('input', sendPrixRequest);
             sendPrixRequest(); // premier calcul
         });

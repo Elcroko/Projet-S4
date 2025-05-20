@@ -120,7 +120,7 @@
         "mot_de_passe": "$2y$12$7J30nl8bvhqOwLGdwMBLl.IG71p96AwredQ0tVOgcG0z0Z29Xoy2y",
         "date_naissance": "2005-07-19",
         "date_inscription": "19\/05\/2025",
-        "admin": true,
+        "admin": false,
         "banni": false,
         "nombre_voyages": 1,
         "telephone": "0767691958",

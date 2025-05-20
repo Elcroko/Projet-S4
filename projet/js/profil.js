@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function displayMessage(message, type) {
         messageArea.textContent = message;
-        messageArea.className = 'profil-message ' + type; // 'success' or 'error'
+        messageArea.className = 'profil-message ' + type; // 'success' ou 'error'
     }
 
     editButtons.forEach(button => {
