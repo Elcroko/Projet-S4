@@ -2,37 +2,42 @@ document.addEventListener('DOMContentLoaded', function () {
     const editButtons = document.querySelectorAll('.edit-btn');
     const saveButton = document.getElementById('save-changes');
     const form = document.getElementById('profil-form');
-    const fieldsInitialValues = {}; // Pour stocker les valeurs initiales des champs éditables
+    const fieldsInitialValues = {}; // Stocke les valeurs initiales des champs pour détecter les modifications
     const messageArea = document.getElementById('profil-message-area');
 
+    // Affiche un message de succès ou d’erreur
     function displayMessage(message, type) {
         messageArea.textContent = message;
-        messageArea.className = 'profil-message ' + type; // 'success' ou 'error'
+        messageArea.className = 'profil-message ' + type; 
     }
 
     editButtons.forEach(button => {
         const fieldId = button.getAttribute('data-field');
         const input = document.getElementById(fieldId);
         
-        // Stocker la valeur initiale au chargement de la page
+        // Enregistre la valeur d'origine du champ à l'ouverture de la page
         fieldsInitialValues[fieldId] = input.value;
 
         button.addEventListener('click', function () {
             if (input.hasAttribute('readonly')) {
+                // Mode édition : on déverrouille le champ
                 input.removeAttribute('readonly');
                 button.textContent = 'Annuler';
                 input.focus();
             } else {
+                // Mode lecture : on restaure la valeur initiale
                 input.setAttribute('readonly', true);
-                input.value = fieldsInitialValues[fieldId]; // Restaurer la valeur initiale en cas d'annulation
+                input.value = fieldsInitialValues[fieldId]; 
                 button.textContent = 'Modifier';
             }
-            updateSaveButtonVisibility();
+            updateSaveButtonVisibility(); // Vérifie si le bouton "Enregistrer" doit apparaître
         });
 
+        // Sur modification du champ, vérifie s’il y a des changements
         input.addEventListener('input', updateSaveButtonVisibility);
     });
 
+    // Affiche ou cache le bouton de sauvegarde selon si un champ a été modifié
     function updateSaveButtonVisibility() {
         let hasChanges = false;
         for (const fieldId in fieldsInitialValues) {
@@ -45,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
         saveButton.style.display = hasChanges ? 'block' : 'none';
     }
 
+    // Vérifie la validité des champs avant soumission
     function validateForm() {
         const letterRegex = /^[a-zA-ZÀ-ÿ\s-]+$/i;
         const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
@@ -57,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
         let errors = [];
 
+        // Validation uniquement si le champ est modifiable
         if (!nomInput.hasAttribute('readonly') && !letterRegex.test(nomInput.value.trim())) {
             errors.push('Le nom doit contenir uniquement des lettres, espaces ou tirets.');
         }
@@ -77,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return true;
     }
 
+    // Envoi du formulaire via fetch au lieu de recharger la page
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -101,7 +109,9 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             if (data.success) {
                 displayMessage(data.message || 'Profil mis à jour avec succès!', 'success');
+                // Mise à jour des champs avec les nouvelles valeurs renvoyées par le serveur
                 if (data.user) {
+                    // En cas d’échec, restauration des anciennes valeurs
                     Object.keys(data.user).forEach(fieldId => {
                         const input = document.getElementById(fieldId);
                         if (input) {
@@ -111,13 +121,13 @@ document.addEventListener('DOMContentLoaded', function () {
                             const editBtn = document.querySelector(`.edit-btn[data-field="${fieldId}"]`);
                             if (editBtn) editBtn.textContent = 'Modifier';
                         }
-                    });
+                    });                    
                 }
                 updateSaveButtonVisibility();
             } else {
                 displayMessage(data.message || 'Erreur lors de la mise à jour du profil.', 'error');
                 
-                // Restaurer les anciennes valeurs si la requête échoue
+                // En cas d’échec, restauration des anciennes valeurs
                 Object.keys(fieldsInitialValues).forEach(fieldId => {
                     const input = document.getElementById(fieldId);
                     if (input && !input.hasAttribute('readonly')) {
@@ -128,6 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
 
+                // Redirection optionnelle si renvoyée par le serveur
                 if (data.redirect) {
                     setTimeout(() => { window.location.href = data.redirect; }, 2000);
                 }
@@ -146,5 +157,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    updateSaveButtonVisibility();
+    updateSaveButtonVisibility(); // Initialisation au chargement
 });

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const sortSelect = document.getElementById('sort-by');
     const form = document.getElementById('filters-form');
 
-    // *** Tableau contenant tous les circuits ***
+    // Tableau contenant tous les circuits 
     let circuits = Array.from(document.querySelectorAll('.circuit-link'));
 
     // Fonction principale appliquant tri et filtres
