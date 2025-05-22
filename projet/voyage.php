@@ -1,4 +1,5 @@
 <?php
+
 // 🔁 Bloc AJAX pour calcul asynchrone du prix
 if (isset($_GET['calcul_prix']) && $_GET['calcul_prix'] === '1') {
     header('Content-Type: application/json');
@@ -89,6 +90,19 @@ if (isset($_GET['options'])) {
 
     echo json_encode(['etapes' => $etapes]);
     exit;
+}
+
+// 🔁 Bloc AJAX pour suppression d'un voyage du panier
+if (isset($_GET['modifier']) && isset($_SESSION['panier'])) {
+    $uid = $_GET['modifier'];
+
+    foreach ($_SESSION['panier'] as $index => $item) {
+        if (isset($item['_uid']) && $item['_uid'] === $uid) {
+            unset($_SESSION['panier'][$index]);
+            $_SESSION['panier'] = array_values($_SESSION['panier']); // réindexation
+            break;
+        }
+    }
 }
 
 // 🌐 Traitement standard de la page
