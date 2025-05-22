@@ -18,12 +18,12 @@
                 "fichier_commande": "commande_user1_2025-03-31_01.41.17.json"
             },
             {
-                "titre": "Révolution a Paris",
+                "titre": "R\u00e9volution a Paris",
                 "prix": "11016.00",
                 "fichier_commande": "commande_user1_2025-03-31_01.41.49.json"
             },
             {
-                "titre": "La Défaite de Waterloo",
+                "titre": "La D\u00e9faite de Waterloo",
                 "prix": "5000.00",
                 "fichier_commande": "commande_user1_2025-03-31_01.42.43.json"
             },
@@ -36,7 +36,7 @@
     },
     {
         "id": 2,
-        "nom": "François",
+        "nom": "Fran\u00e7ois",
         "prenom": "Thomas",
         "email": "thomas@gmail.com",
         "mot_de_passe": "$2y$12$0Zw6gTZLj..u\/s9WZcl.LeQYT.ZI.C5TQFNmKSQitcYdTg4W5dgP6",
@@ -69,7 +69,7 @@
     },
     {
         "id": 4,
-        "nom": "zéro",
+        "nom": "z\u00e9ro",
         "prenom": "deux",
         "email": "2@gmail.com",
         "mot_de_passe": "$2y$12$Y5dfcihCYdW3HmoN7CDKJ.ZednlCnGMT7A1s7oK.MteN5y9pEsx7m",
@@ -81,7 +81,7 @@
         "telephone": "0202020202",
         "historique": [
             {
-                "titre": "L'Époque des Vikings",
+                "titre": "L'\u00c9poque des Vikings",
                 "prix": "6304.00",
                 "fichier_commande": "commande_user4_2025-03-30_23.59.02.json"
             },
@@ -106,7 +106,7 @@
         "telephone": "0102030405",
         "historique": [
             {
-                "titre": "L'Ère du Bitcoin",
+                "titre": "L'\u00c8re du Bitcoin",
                 "prix": "5334.00",
                 "fichier_commande": "commande_user5_2025-03-30_23.53.37.json"
             }
