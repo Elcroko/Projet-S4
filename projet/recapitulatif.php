@@ -94,19 +94,27 @@ function afficherOption($categorie, $valeur, $prix = 0) {
                         <h4><?= ucfirst($cle) ?></h4>
                         <ul>
                             <?php foreach ($etapes as $etape): ?>
-                                <?php if (!isset($etape['options_choisies'])) continue; ?>
-                                <ul>
-                                    <?php foreach ($etape['options_choisies'] as $categorie => $option): ?>
-                                        <?php
-                                            $prix_option = $etape['options_disponibles'][$categorie][$option] ?? 0;
-                                        ?>
+                                <?php 
+                                if (!isset($etape['options_choisies'])) continue;
+
+                                // Prix de base de l'étape (s'il y en a)
+                                $prix_etape = $etape['prix'] ?? 0;
+
+                                // Boucle sur les options choisies
+                                foreach ($etape['options_choisies'] as $categorie => $option): 
+                                    $prix_option = $etape['options_disponibles'][$categorie][$option] ?? 0;
+                                    $prix_etape += (float) $prix_option;
+                                ?>
+                                    <ul>
                                         <li>
                                             <strong><?= ucfirst($categorie) ?> :</strong>
                                             <?= htmlspecialchars($option) ?>
                                             <?= $prix_option > 0 ? "({$prix_option} €)" : '' ?>
                                         </li>
-                                    <?php endforeach; ?>
-                                </ul>
+                                    </ul>
+                                <?php endforeach; ?>
+
+                                <?php $prix_total += $prix_etape; ?>
                             <?php endforeach; ?>
                         </ul>
                     </div>
