@@ -1,0 +1,167 @@
+{
+    "utilisateur": {
+        "id": 8,
+        "nom": "Doe",
+        "prenom": "John",
+        "email": "jdoe@gmail.com",
+        "date_naissance": "2000-12-12",
+        "nombre_voyages": 2
+    },
+    "voyage": {
+        "titre": "Fin du Monde",
+        "description": "Vivez en direct l\u2019apocalypse et assistez aux derniers instants de l\u2019humanit\u00e9.",
+        "image": "images\/Fin_du_monde.jpeg",
+        "epoque": "Futur",
+        "lieu": "Tous",
+        "dates": {
+            "choix_date_depart": true,
+            "duree": "3 jours"
+        },
+        "prix_base": 2120,
+        "prix_total": 2930,
+        "paiement": false,
+        "nombre_personnes": "2",
+        "etape1": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Bunker s\u00e9curis\u00e9": 0,
+                        "Toit d\u2019un gratte-ciel": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Observation cataclysme": 100,
+                        "Message final \u00e0 l'humanit\u00e9": 80,
+                        "Survie extr\u00eame": 120,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Chambre blind\u00e9e": 100,
+                        "Sous-sol renforc\u00e9": 80,
+                        "Refuge temporaire": 60,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Ration militaire": 20,
+                        "Plats d\u00e9shydrat\u00e9s": 15,
+                        "Aliments en conserve": 10,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Camion blind\u00e9": 50,
+                        "H\u00e9licopt\u00e8re d\u2019\u00e9vacuation": 150,
+                        "Train de secours": 60,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Bunker s\u00e9curis\u00e9",
+                    "activite": "Observation cataclysme",
+                    "hebergement": "Chambre blind\u00e9e",
+                    "restauration": "Ration militaire",
+                    "transport": "Camion blind\u00e9"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape2": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Bunker s\u00e9curis\u00e9": 0,
+                        "Toit d\u2019un gratte-ciel": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Observation cataclysme": 100,
+                        "Message final \u00e0 l'humanit\u00e9": 80,
+                        "Survie extr\u00eame": 120,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Chambre blind\u00e9e": 100,
+                        "Sous-sol renforc\u00e9": 80,
+                        "Refuge temporaire": 60,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Ration militaire": 20,
+                        "Plats d\u00e9shydrat\u00e9s": 15,
+                        "Aliments en conserve": 10,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Camion blind\u00e9": 50,
+                        "H\u00e9licopt\u00e8re d\u2019\u00e9vacuation": 150,
+                        "Train de secours": 60,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Bunker s\u00e9curis\u00e9",
+                    "activite": "Observation cataclysme",
+                    "hebergement": "Chambre blind\u00e9e",
+                    "restauration": "Ration militaire",
+                    "transport": "Camion blind\u00e9"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape3": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Bunker s\u00e9curis\u00e9": 0,
+                        "Toit d\u2019un gratte-ciel": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Observation cataclysme": 100,
+                        "Message final \u00e0 l'humanit\u00e9": 80,
+                        "Survie extr\u00eame": 120,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Chambre blind\u00e9e": 100,
+                        "Sous-sol renforc\u00e9": 80,
+                        "Refuge temporaire": 60,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Ration militaire": 20,
+                        "Plats d\u00e9shydrat\u00e9s": 15,
+                        "Aliments en conserve": 10,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Camion blind\u00e9": 50,
+                        "H\u00e9licopt\u00e8re d\u2019\u00e9vacuation": 150,
+                        "Train de secours": 60,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Bunker s\u00e9curis\u00e9",
+                    "activite": "Observation cataclysme",
+                    "hebergement": "Chambre blind\u00e9e",
+                    "restauration": "Ration militaire",
+                    "transport": "Camion blind\u00e9"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "id": "voyage03",
+        "date_depart": "2025-05-24",
+        "duree": 10,
+        "personnes": [
+            {
+                "nom": "Doe",
+                "prenom": "John",
+                "date_naissance": "2000-12-12"
+            }
+        ]
+    },
+    "date": "2025-05-21 10:37:55",
+    "montant": "4240.00",
+    "transaction": "682dacf2d9583"
+}

@@ -1,0 +1,167 @@
+{
+    "utilisateur": {
+        "id": 8,
+        "nom": "Doe",
+        "prenom": "John",
+        "email": "jdoe@gmail.com",
+        "date_naissance": "2000-12-12",
+        "nombre_voyages": 1
+    },
+    "voyage": {
+        "titre": "Croisi\u00e8re Interplan\u00e9taire",
+        "description": "Embarquez pour un voyage \u00e0 travers les \u00e9toiles et explorez les confins de l\u2019univers.",
+        "epoque": "Futur",
+        "lieu": "Espace",
+        "image": "images\/croisiere_interplanetaire.jpeg",
+        "dates": {
+            "choix_date_depart": true,
+            "duree": "10 jours"
+        },
+        "prix_base": 2400,
+        "prix_total": 2960,
+        "paiement": false,
+        "nombre_personnes": "7",
+        "personnes": [
+            {
+                "nom": "Doe",
+                "prenom": "John",
+                "date_naissance": "2000-12-12"
+            }
+        ],
+        "etape1": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Station spatiale Alpha": 0,
+                        "Orbital Lounge": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Marche lunaire": 90,
+                        "Observation des \u00e9toiles": 50,
+                        "Simulation de vol spatial": 70,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Cabine avec hublot": 60,
+                        "Module gravit\u00e9 0": 75,
+                        "Suite orbitale": 90,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Repas lyophilis\u00e9 gourmet": 40,
+                        "Cocktail galactique": 35,
+                        "Fusion cosmique": 50,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Shuttle spatial": 60,
+                        "Train magn\u00e9tique interorbital": 45,
+                        "Drone personnel": 70,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Station spatiale Alpha",
+                    "activite": "Observation des \u00e9toiles",
+                    "hebergement": "Module gravit\u00e9 0",
+                    "restauration": "Cocktail galactique",
+                    "transport": "Shuttle spatial"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape2": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Station spatiale Alpha": 0,
+                        "Orbital Lounge": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Marche lunaire": 90,
+                        "Observation des \u00e9toiles": 50,
+                        "Simulation de vol spatial": 70,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Cabine avec hublot": 60,
+                        "Module gravit\u00e9 0": 75,
+                        "Suite orbitale": 90,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Repas lyophilis\u00e9 gourmet": 40,
+                        "Cocktail galactique": 35,
+                        "Fusion cosmique": 50,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Shuttle spatial": 60,
+                        "Train magn\u00e9tique interorbital": 45,
+                        "Drone personnel": 70,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Station spatiale Alpha",
+                    "activite": "Aucune option",
+                    "hebergement": "Suite orbitale",
+                    "restauration": "Fusion cosmique",
+                    "transport": "Aucune option"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "etape3": [
+            {
+                "options_disponibles": {
+                    "position": {
+                        "Station spatiale Alpha": 0,
+                        "Orbital Lounge": 0,
+                        "Aucune option": 0
+                    },
+                    "activite": {
+                        "Marche lunaire": 90,
+                        "Observation des \u00e9toiles": 50,
+                        "Simulation de vol spatial": 70,
+                        "Aucune option": 0
+                    },
+                    "hebergement": {
+                        "Cabine avec hublot": 60,
+                        "Module gravit\u00e9 0": 75,
+                        "Suite orbitale": 90,
+                        "Aucune option": 0
+                    },
+                    "restauration": {
+                        "Repas lyophilis\u00e9 gourmet": 40,
+                        "Cocktail galactique": 35,
+                        "Fusion cosmique": 50,
+                        "Aucune option": 0
+                    },
+                    "transport": {
+                        "Shuttle spatial": 60,
+                        "Train magn\u00e9tique interorbital": 45,
+                        "Drone personnel": 70,
+                        "Aucune option": 0
+                    }
+                },
+                "options_choisies": {
+                    "position": "Station spatiale Alpha",
+                    "activite": "Aucune option",
+                    "hebergement": "Suite orbitale",
+                    "restauration": "Repas lyophilis\u00e9 gourmet",
+                    "transport": "Drone personnel"
+                },
+                "personnes_supplementaires": []
+            }
+        ],
+        "id": "voyage12",
+        "date_depart": "2025-06-08",
+        "duree": 10
+    },
+    "date": "2025-05-21 10:30:40",
+    "montant": "16800.00",
+    "transaction": "682dab4bc8595"
+}
