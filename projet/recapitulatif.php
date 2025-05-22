@@ -7,10 +7,11 @@ $isHistorique = false;
 $commande = null;
 $recapitulatif_id = 'voyage01'; // par défaut
 
-// 🔁 Historique
+// Vérifie si un nom de fichier de commande est passé en paramètre
 if (isset($_GET['fichier'])) {
     $fichierHistorique = 'paiements_json/' . basename($_GET['fichier']);
     if (file_exists($fichierHistorique)) {
+        // Lit le contenu du fichier de commande JSON
         $commande = json_decode(file_get_contents($fichierHistorique), true);
         $recapitulatif_id = $commande['voyage']['id'] ?? 'voyage01';
         $isHistorique = true;
@@ -21,7 +22,7 @@ if (isset($_GET['fichier'])) {
     }
 }
 
-// 🔁 Réservation en cours
+// Réservation en cours
 if (!$isHistorique) {
     if (!isset($_SESSION['recapitulatif'])) {
         header('Location: index.php');

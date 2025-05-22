@@ -1,6 +1,6 @@
 <?php
 require_once 'verif_banni.php';
-require_once('getapikey.php'); 
+require_once 'getapikey.php'; 
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -27,9 +27,9 @@ $montant = number_format($_SESSION['cybank_montant'] , 2, '.', '');
 $vendeur = "MEF-2_C"; 
 $host = $_SERVER['HTTP_HOST'];
 $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-$retour = "http://$host$uri/paiement_retour.php";
- // URL de retour après le paiement
 
+ // URL de retour après le paiement
+$retour = "http://$host$uri/paiement_retour.php";
 
 $api_key = getAPIKey($vendeur);
 $control = md5($api_key . "#" . $transaction . "#" . $montant . "#" . $vendeur . "#" . $retour . "#");

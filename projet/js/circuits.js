@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Vérifie s'il y a un filtre ou tri actif
         const filtreActif = selectedEpoque || selectedLieu || selectedPrix || sortBy;
     
-        // Si aucun filtre/tri, on n'agit pas : laisser le PHP afficher ses 6 voyages paginés
+        // Si aucun filtre/tri, on n'agit pas : on laisse le PHP afficher ses 6 voyages paginés
         if (!filtreActif) {
             const originalContainer = document.getElementById('original-circuits');
             const jsContainer = document.querySelector('.circuits-container');

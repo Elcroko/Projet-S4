@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 require_once 'verif_banni.php';
 header('Content-Type: application/json');
 
+// Vérifie si un identifiant de voyage à supprimer est bien envoyé
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['supprimer_id'])) {
     $id = $_POST['supprimer_id'];
 
@@ -18,11 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['supprimer_id'])) {
             );
         });
 
+        // Réindexe le tableau pour éviter les clés manquantes après suppression
         $_SESSION['panier'] = array_values($_SESSION['panier']);
+        // Renvoie une réponse JSON pour informer le JavaScript du succès
         echo json_encode(['success' => true]);
         exit;
     }
 }
 
+// 📤 Renvoie une réponse JSON pour informer le JavaScript du succès
 echo json_encode(['success' => false]);
 exit;

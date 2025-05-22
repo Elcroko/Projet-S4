@@ -1,9 +1,10 @@
 <?php
 
-// 🔁 Bloc AJAX pour calcul asynchrone du prix
+// Bloc AJAX pour calcul asynchrone du prix
 if (isset($_GET['calcul_prix']) && $_GET['calcul_prix'] === '1') {
     header('Content-Type: application/json');
     $json = file_get_contents('php://input');
+    // Récupère les données depuis la session si pas de fichier transmis
     $input = json_decode($json, true);
 
     $id = $input['id'] ?? 'voyage01';
@@ -24,7 +25,7 @@ if (isset($_GET['calcul_prix']) && $_GET['calcul_prix'] === '1') {
             foreach ($etapes as $index => $etape) {
                 foreach ($options[$cle][$index] ?? [] as $categorie => $choix) {
 
-                    // ✅ Ignorer les valeurs génériques (aucune option, etc.)
+                    // Ignorer les valeurs génériques (aucune option, etc.)
                     if (
                         !$choix ||
                         stripos($choix, 'aucune') !== false ||
@@ -33,7 +34,7 @@ if (isset($_GET['calcul_prix']) && $_GET['calcul_prix'] === '1') {
                         continue;
                     }
 
-                    // ✅ Utiliser directement la clé telle qu'elle est dans le JSON
+                    // Utiliser directement la clé telle qu'elle est dans le JSON
                     if (isset($etape['options_disponibles'][$categorie][$choix])) {
                         $prix += (int) $etape['options_disponibles'][$categorie][$choix];
                     }
@@ -46,7 +47,7 @@ if (isset($_GET['calcul_prix']) && $_GET['calcul_prix'] === '1') {
     exit;
 }
 
-// 🔁 Bloc AJAX pour chargement dynamique des options
+// Bloc AJAX pour chargement dynamique des options
 if (isset($_GET['options'])) {
     header('Content-Type: application/json');
 
@@ -55,7 +56,7 @@ if (isset($_GET['options'])) {
         foreach ($groupe as $nom => $prix) {
             $liste[] = [
                 'nom' => $nom,
-                'valeur' => $nom, // ✅ On garde la clé brute du JSON
+                'valeur' => $nom, // On garde la clé brute du JSON
                 'prix' => $prix
             ];
         }
@@ -92,7 +93,7 @@ if (isset($_GET['options'])) {
     exit;
 }
 
-// 🔁 Bloc AJAX pour suppression d'un voyage du panier
+// Bloc AJAX pour suppression d'un voyage du panier
 if (isset($_GET['modifier']) && isset($_SESSION['panier'])) {
     $uid = $_GET['modifier'];
 
@@ -105,7 +106,7 @@ if (isset($_GET['modifier']) && isset($_SESSION['panier'])) {
     }
 }
 
-// 🌐 Traitement standard de la page
+// Traitement standard de la page
 require_once 'verif_banni.php';
 
 $id = isset($_GET['id']) ? basename($_GET['id']) : 'voyage01';
@@ -120,7 +121,7 @@ $data = json_decode(file_get_contents($nom_fichier), true);
 $data['id'] = $id;
 $_SESSION['recapitulatif_id'] = $id;
 
-// 🔁 Supprimer l’ancien voyage du panier
+// Supprimer l’ancien voyage du panier
 if (isset($_GET['retour_modification'], $_GET['supprimer_uid'])) {
     $supprimer_id = $_GET['supprimer_uid'];
 

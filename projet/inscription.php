@@ -9,6 +9,7 @@ $file = 'json/utilisateurs.json';
 $erreurs = [];
 $email_existe = false;
 
+// Vérifie si le fichier existe, sinon le crée
 if (!file_exists($file)) {
     file_put_contents($file, json_encode([]));
 }
@@ -38,8 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if (empty($erreurs)) {
+        // Hachage du mot de passe pour la sécurité
         $mdp_hacher = password_hash($mot_de_passe, PASSWORD_DEFAULT);
         $data = file_get_contents($file);
+        // Lecture des utilisateurs existants depuis le fichier JSON
         $users = json_decode($data, true);
 
         foreach ($users as $user) {
@@ -65,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ];
 
             $users[] = $newUser;
-
+            // Sauvegarde du nouvel utilisateur dans le fichier JSON
             if (file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT)) === false) {
                 $erreurs[] = "Erreur lors de l'enregistrement des données !";
             } else {

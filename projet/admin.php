@@ -2,11 +2,13 @@
 $page_title = "Admin - Gestion des Utilisateurs";
 require_once 'verif_banni.php';
 
+// Vérifie que l'utilisateur est connecté et est un admin
 if (!isset($_SESSION['user']) || empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: connexion.php");
     exit;
 }
 
+// Charge le fichier utilisateurs.json
 $file = 'json/utilisateurs.json'; 
 
 if (!file_exists($file)) {
@@ -14,7 +16,7 @@ if (!file_exists($file)) {
     exit;
 }
 
-// Gestion spéciale des requêtes AJAX
+// Traitement AJAX des actions POST : bannir, débannir, supprimer
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
     header('Content-Type: application/json');
 

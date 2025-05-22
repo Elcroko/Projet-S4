@@ -5,6 +5,7 @@ require_once 'verif_banni.php';
 
 // Vérification de l'authentification
 if (!isset($_SESSION['user'])) {
+    // Redirige vers la page de connexion en AJAX ou HTTP
     if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
         header('Content-Type: application/json');
         echo json_encode(['success' => false, 'message' => 'Utilisateur non authentifié.', 'redirect' => 'connexion.php']);
@@ -40,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die('Erreur: Impossible de lire le fichier utilisateurs.');
     }
 
+    // Décodage du JSON en tableau PHP
     $users = json_decode($users_data, true);
     if ($users === null) {
          if ($is_ajax_request) {
@@ -53,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_found_and_updated = false;
     $updated_user_data_for_session = [];
 
+    // Mise à jour des infos si l'utilisateur est trouvé
     foreach ($users as &$user_record) { // Utiliser une référence pour modifier directement le tableau
         if ($user_record['id'] == $id) {
             // Récupérer et valider les données postées
@@ -61,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = isset($_POST['email']) ? trim(strtolower($_POST['email'])) : $user_record['email'];
             $telephone = isset($_POST['telephone']) ? trim($_POST['telephone']) : $user_record['telephone'];
 
-            // Validation basique (vous devriez étendre cela)
+            // Validation des données
             if (empty($nom) || !preg_match("/^[a-zA-ZÀ-ÿ\s-]+$/i", $nom)) { $error_msg = 'Nom invalide.'; break; }
             if (empty($prenom) || !preg_match("/^[a-zA-ZÀ-ÿ\s-]+$/i", $prenom)) { $error_msg = 'Prénom invalide.'; break; }
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { $error_msg = 'Email invalide.'; break; }

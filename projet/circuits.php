@@ -158,7 +158,7 @@ $voyagesPage = array_slice($voyagesFiltres, $offset, $voyagesParPage);
             </div>
             <?php endif; ?>
 
-            <!-- ⬇️ CONTENEUR MASQUÉ POUR JS (TOUS LES VOYAGES) -->
+            <!-- CONTENEUR MASQUÉ POUR JS (TOUS LES VOYAGES) -->
             <div id="js-voyages" style="display: none;">
             <?php foreach ($tousVoyages as $index => $voyage): ?>
                 <a href="voyage.php?id=<?= 'voyage' . str_pad($index + 1, 2, '0', STR_PAD_LEFT) ?>" 

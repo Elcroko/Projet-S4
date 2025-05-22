@@ -14,6 +14,7 @@ $nbVoyages = count($voyagesNonPayes);
 // Suppression d'un voyage du panier si demandé
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['supprimer_id'])) {
     $idASupprimer = $_POST['supprimer_id'];
+    // Vérifie si le panier existe dans la session
     if (isset($_SESSION['panier'])) {
         $_SESSION['panier'] = array_filter($_SESSION['panier'], function($voyage) use ($idASupprimer) {
             return $voyage['id'] !== $idASupprimer;
@@ -43,8 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['supprimer_id'])) {
                     <img src="<?= htmlspecialchars($voyage['image']) ?>" alt="Image">
                     <div>
                         <p><strong><?= htmlspecialchars($voyage['titre']) ?></strong></p>
+                        <!-- Lien vers la page de paiement du voyage -->
                         <a href="cybank.php?id=<?= urlencode($voyage['id']) ?>" class="cart-link">Procéder au paiement</a>
-                        <!-- 🧹 Bouton de suppression avec confirmation -->
+                        <!-- Bouton de suppression avec confirmation -->
                         <button type="button" class="supprimer-btn" data-id="<?= htmlspecialchars($voyage['_uid']) ?>" title="Supprimer">❌</button>
                     </div>
                 </div>

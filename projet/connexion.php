@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (empty($erreurs)) {
         if (file_exists($fichier_utilisateurs)) {
+             // Chargement des utilisateurs depuis le fichier JSON
             $utilisateurs = json_decode(file_get_contents($fichier_utilisateurs), true);
             $utilisateur_trouve = null;
             $email_existe = false;
@@ -37,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 if ($user['email'] === $email) {
                     $email_existe = true;
 
+                    // Vérifie que le mot de passe correspond au hash enregistré
                     if (password_verify($mot_de_passe, $user['mot_de_passe'])) {
                         if (!empty($user['banni'])) {
                             $erreurs['general'] = "❌ Votre compte a été banni. Accès refusé.";
@@ -58,6 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
 
             if ($utilisateur_trouve && empty($erreurs['general'])) {
+                // Stockage des infos utilisateur en session (connexion réussie)
                 $_SESSION['user'] = [
                     'id' => $utilisateur_trouve['id'],
                     'nom' => $utilisateur_trouve['nom'],
@@ -66,6 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     'date_naissance' => $utilisateur_trouve['date_naissance']
                 ];
                 $_SESSION['role'] = !empty($utilisateur_trouve['admin']) ? 'admin' : 'user';
+                // Redirection après connexion réussie
                 header("Location: profil.php");
                 exit;
             }
