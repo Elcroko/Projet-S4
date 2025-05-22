@@ -97,9 +97,6 @@ function afficherOption($categorie, $valeur, $prix = 0) {
                                 <?php 
                                 if (!isset($etape['options_choisies'])) continue;
 
-                                // Prix de base de l'étape (s'il y en a)
-                                $prix_etape = $etape['prix'] ?? 0;
-
                                 // Boucle sur les options choisies
                                 foreach ($etape['options_choisies'] as $categorie => $option): 
                                     $prix_option = $etape['options_disponibles'][$categorie][$option] ?? 0;
